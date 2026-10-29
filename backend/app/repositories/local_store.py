@@ -1,0 +1,1 @@
+"""Local filesystem fallback repository for testing and offline development."""

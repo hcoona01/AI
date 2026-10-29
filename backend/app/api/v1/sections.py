@@ -1,0 +1,1 @@
+"""Course section endpoints: scheduling, capacity, and section instances."""

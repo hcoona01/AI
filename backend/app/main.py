@@ -1,0 +1,1 @@
+"""FastAPI application entrypoint, lifecycle events, and router registration."""

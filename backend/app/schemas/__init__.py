@@ -1,0 +1,1 @@
+"""Pydantic v2 DTO schemas for API contracts and domain entities."""

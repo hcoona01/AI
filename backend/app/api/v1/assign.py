@@ -1,0 +1,1 @@
+"""Course assignment optimization endpoints (CP-SAT and baseline execution)."""

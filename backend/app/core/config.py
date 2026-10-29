@@ -1,0 +1,1 @@
+"""Pydantic v2 application settings loaded from environment variables."""

@@ -1,0 +1,1 @@
+"""Service layer implementing business logic and orchestration."""

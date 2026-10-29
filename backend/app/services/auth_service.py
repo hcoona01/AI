@@ -1,0 +1,1 @@
+"""Service handling user authentication and JWT session lifecycle."""

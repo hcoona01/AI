@@ -1,0 +1,1 @@
+"""Benchmarking script comparing CP-SAT against greedy heuristic across test fixtures."""

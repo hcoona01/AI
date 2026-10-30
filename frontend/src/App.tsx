@@ -1,13 +1,12 @@
 import React from 'react';
-import { QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider } from 'react-router-dom';
-import { queryClient } from './app/queryClient';
+import { AppProviders } from './app/providers';
 import { router } from './app/router';
 
 export default function App(): React.JSX.Element {
   return (
-    <QueryClientProvider client={queryClient}>
+    <AppProviders>
       <RouterProvider router={router} />
-    </QueryClientProvider>
+    </AppProviders>
   );
 }

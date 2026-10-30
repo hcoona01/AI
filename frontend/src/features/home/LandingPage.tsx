@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchHealth, HealthResponse, API_BASE_URL } from '../../lib/apiClient';
+import { useAuth } from '../auth/AuthContext';
 
 export const LandingPage = () => {
+  const { user, isAuthenticated } = useAuth();
+  const dashboardLink = user?.role === 'admin' ? '/admin' : '/faculty';
+
   const { data: health, isLoading, isError, error, refetch, isFetching } = useQuery<HealthResponse, Error>({
     queryKey: ['health'],
     queryFn: fetchHealth,
@@ -24,12 +28,26 @@ export const LandingPage = () => {
           </div>
 
           <nav className="flex items-center space-x-3 text-sm">
-            <Link
-              to="/login"
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition shadow-md shadow-blue-600/20"
-            >
-              Sign In
-            </Link>
+            {isAuthenticated && user ? (
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+                  {user.email}
+                </span>
+                <Link
+                  to={dashboardLink}
+                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition shadow-md shadow-blue-600/20 text-xs sm:text-sm"
+                >
+                  Dashboard &rarr;
+                </Link>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition shadow-md shadow-blue-600/20"
+              >
+                Sign In
+              </Link>
+            )}
           </nav>
         </div>
       </header>

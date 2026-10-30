@@ -1,2 +1,2 @@
-// Custom hook for accessing authentication state and login/logout methods
-export const useAuth = () => ({ isAuthenticated: false });
+export { useAuth } from '../features/auth/AuthContext';
+export type { AuthContextType } from '../features/auth/AuthContext';

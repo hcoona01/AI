@@ -248,3 +248,38 @@
 - **Next Steps / Backlog Items**:
   - Wire frontend auth flow (`LoginPage`, `OtpStep`) to `/auth/request-otp` and `/auth/verify-otp`.
   - Implement ML demand forecasting and OR-Tools optimization engine.
+
+## 2026-10-30: Frontend Passwordless Authentication Flow & Dashboard Shells
+- **Task Objective**: Build complete frontend authentication flow with 2-step OTP login, in-memory token state, silent cookie refresh, route guards, 403/404 error pages, and responsive layout shells for Admin and Faculty dashboards.
+- **Changes Implemented**:
+  - API Client Updates in [`frontend/src/lib/apiClient.ts`](file:///e:/AI%20project/frontend/src/lib/apiClient.ts):
+    - Configured `withCredentials: true` for httpOnly refresh cookies.
+    - Implemented in-memory access token storage via closure (`setAccessToken`, `getAccessToken`), completely eliminating `localStorage`.
+    - Request interceptor attaching `Authorization: Bearer <inMemoryToken>`.
+    - Added typed methods: `requestOtpApi`, `verifyOtpApi`, `refreshSessionApi`, `logoutApi`, `fetchCurrentUserApi`.
+  - Auth State Context in [`frontend/src/features/auth/AuthContext.tsx`](file:///e:/AI%20project/frontend/src/features/auth/AuthContext.tsx) & [`frontend/src/hooks/useAuth.ts`](file:///e:/AI%20project/frontend/src/hooks/useAuth.ts):
+    - `AuthProvider` maintaining `user`, `accessToken`, `isAuthenticated`, `isLoading`, and `error` in memory.
+    - Silent refresh on page load calling `/auth/refresh` with cookies.
+    - `requestOtp`, `verifyOtp`, and `logout` (clearing queries and memory tokens).
+  - 2-Step Login UI:
+    - [`frontend/src/features/auth/LoginPage.tsx`](file:///e:/AI%20project/frontend/src/features/auth/LoginPage.tsx): Step 1 email input with Zod validation, accessible aria attributes, loading spinners, inline errors, quick-fill test account pills (`admin@university.edu`, `alan.turing@university.edu`), and role-based redirect upon login.
+    - [`frontend/src/features/auth/OtpStep.tsx`](file:///e:/AI%20project/frontend/src/features/auth/OtpStep.tsx): Step 2 6-digit numeric OTP input with 60-second countdown resend cooldown timer, automatic submit upon 6th digit, dev-mode console hint banner, inline error alert, and "Change Email" action.
+  - Route Guards & Error Pages:
+    - [`frontend/src/components/layout/ProtectedRoute.tsx`](file:///e:/AI%20project/frontend/src/components/layout/ProtectedRoute.tsx): Checks session loading state, redirects unauthenticated users to `/login`, and blocks unauthorized roles with 403 Forbidden page.
+    - [`frontend/src/components/layout/ForbiddenPage.tsx`](file:///e:/AI%20project/frontend/src/components/layout/ForbiddenPage.tsx): Accessible 403 page with clear role explanations, "Go to My Dashboard" button, and "Switch Account" action.
+    - [`frontend/src/components/layout/NotFoundPage.tsx`](file:///e:/AI%20project/frontend/src/components/layout/NotFoundPage.tsx): Accessible 404 page returning to dashboard.
+  - Dashboard Shells & Navigation:
+    - [`frontend/src/components/layout/AdminLayout.tsx`](file:///e:/AI%20project/frontend/src/components/layout/AdminLayout.tsx): Admin console sidebar (Overview, Assignments, Forecasts, Faculty, Courses, Constraints, Scenarios, Audit) with active state highlighting, mobile responsive drawer, and topbar with user badge and Sign Out button.
+    - [`frontend/src/components/layout/FacultyLayout.tsx`](file:///e:/AI%20project/frontend/src/components/layout/FacultyLayout.tsx): Faculty portal sidebar (Schedule, Availability, Expertise, Courses) and topbar with user email, faculty ID, and Sign Out button.
+    - [`frontend/src/components/layout/FeaturePlaceholderPage.tsx`](file:///e:/AI%20project/frontend/src/components/layout/FeaturePlaceholderPage.tsx): Placeholder components for upcoming feature views.
+    - Updated [`frontend/src/app/router.tsx`](file:///e:/AI%20project/frontend/src/app/router.tsx) with nested route structure.
+- **Test Results & Verification Status**:
+  - `npm --prefix frontend run build`: TypeScript compiled and Vite production build succeeded with zero errors (163 modules transformed in 4.68s).
+  - Integration acceptance test verified:
+    - Admin login via OTP -> lands on `/admin`, prevented from unauthorized faculty reads (403).
+    - Faculty login via OTP -> lands on `/faculty`, prevented from admin operations (403).
+    - Silent refresh and logout verified.
+  - Backend tests: 113 tests passing cleanly in `pytest backend/tests`.
+- **Next Steps / Backlog Items**:
+  - Implement LightGBM quantile regression demand forecasting offline pipeline (`make train`).
+  - Implement OR-Tools CP-SAT solver service for section-to-faculty balancing.

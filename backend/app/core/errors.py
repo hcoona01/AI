@@ -69,6 +69,19 @@ class RateLimitError(AppException):
         )
 
 
+class ServiceUnavailableError(AppException):
+    def __init__(
+        self,
+        message: str = "Service unavailable",
+        details: dict[str, Any] | None = None,
+    ):
+        super().__init__(
+            message=message,
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            details=details,
+        )
+
+
 def register_error_handlers(app: FastAPI) -> None:
     """Register global error and exception handlers on the FastAPI app."""
 

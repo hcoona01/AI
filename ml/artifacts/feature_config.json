@@ -1,0 +1,26 @@
+{
+  "feature_names": [
+    "credits",
+    "is_lab",
+    "is_elective",
+    "level_enc",
+    "lag1_enrolled",
+    "lag2_enrolled",
+    "rolling3_mean",
+    "term_index_norm",
+    "season_enc",
+    "prereq_cohort_size"
+  ],
+  "level_enc": {
+    "undergraduate": 0,
+    "graduate": 1,
+    "doctoral": 2
+  },
+  "season_enc": {
+    "Summer": 0,
+    "Spring": 1,
+    "Fall": 2
+  },
+  "section_cap": 50,
+  "term_index_scale": 12.0
+}

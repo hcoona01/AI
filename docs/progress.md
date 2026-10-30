@@ -283,3 +283,47 @@
 - **Next Steps / Backlog Items**:
   - Implement LightGBM quantile regression demand forecasting offline pipeline (`make train`).
   - Implement OR-Tools CP-SAT solver service for section-to-faculty balancing.
+
+## 2026-10-31: Section Demand Forecaster (Quantile Regression & Precomputed Inference)
+- **Task Objective**: Build the CPU-only section-demand forecaster in `/ml/forecast` with offline training (`make train`), quantile regression (P10, P50, P90), baselines comparison, portable text serialization, backend inference endpoints, and comprehensive unit tests.
+- **Changes Implemented**:
+  - Baseline Demand Heuristics ([`ml/forecast/baselines.py`](file:///e:/AI%20project/ml/forecast/baselines.py)):
+    - `seasonal_naive`: Returns historical enrollment from the most recent identical season.
+    - `moving_average_3`: Computes mean enrollment across the prior 3 observed terms.
+    - `evaluate_baseline`: Measures MAE and RMSE on held-out validation records using strictly prior context.
+  - LightGBM Quantile Regressors ([`ml/forecast/model.py`](file:///e:/AI%20project/ml/forecast/model.py)):
+    - Feature pipeline engineering 10 lightweight features: `credits`, `is_lab`, `is_elective`, `level_enc`, `lag1_enrolled`, `lag2_enrolled`, `rolling3_mean`, `term_index_norm`, `season_enc`, `prereq_cohort_size`.
+    - Downcasts data structures to `float32` for strict memory efficiency.
+    - Trains 3 LightGBM quantile regressors ($\alpha \in \{0.1, 0.5, 0.9\}$) with `n_jobs=1`, `num_leaves=15`, `n_estimators=150`, fixed `random_state=42`.
+  - Metrics & Evaluation ([`ml/forecast/evaluate.py`](file:///e:/AI%20project/ml/forecast/evaluate.py)):
+    - Computes MAE, RMSE, WAPE, and P10-P90 interval coverage.
+  - Inference & Monotonicity Enforcement ([`ml/forecast/predict.py`](file:///e:/AI%20project/ml/forecast/predict.py)):
+    - Loads native LightGBM text models (`.txt`, never pickle).
+    - Enforces strict quantile monotonicity ($P_{10} \le P_{50} \le P_{90}$) by sorting per row.
+    - Converts demand to sections: $\text{n\_sections} = \lceil P_{50} / \text{section\_cap} \rceil$ and $\text{p90\_risk\_sections} = \lceil P_{90} / \text{section\_cap} \rceil$.
+  - Offline Training Script ([`ml/scripts/train.py`](file:///e:/AI%20project/ml/scripts/train.py)):
+    - Executed via `make train` (or `python ml/scripts/train.py`), finishing in ~0.3s on CPU.
+    - Time-ordered split: Terms 1-7 for training (280 records), Terms 8-9 for validation (80 records).
+    - Produces artifacts in `ml/artifacts/`: `forecast_p10.txt` (228 KB), `forecast_p50.txt` (226 KB), `forecast_p90.txt` (226 KB), `feature_config.json` (<1 KB), `metrics.json` (~1 KB, SHA-256 hash `43fe3034...`), `precomputed_forecasts.json` (28 KB). All files $< 0.25$ MB, well under the 5 MB threshold.
+  - Backend Integration:
+    - Domain schemas in [`backend/app/schemas/forecast.py`](file:///e:/AI%20project/backend/app/schemas/forecast.py) (`ForecastRecord`, `ForecastRunResponse`).
+    - Service layer in [`backend/app/services/forecast_service.py`](file:///e:/AI%20project/backend/app/services/forecast_service.py):
+      - `FORECAST_MODE=model`: Loads text artifacts and computes quantiles on demand. Never trains models. Returns HTTP 503 if artifacts are missing, advising the user to run `make train`.
+      - `FORECAST_MODE=precomputed`: Reads `precomputed_forecasts.json` without importing `lightgbm`, preserving the 512 MB memory budget.
+      - Updates matching `Section` instances in `sections.json` (`size_p10`, `size_p50`, `size_p90`).
+      - Emits audit event `FORECAST_RUN`.
+    - API router in [`backend/app/api/v1/forecast.py`](file:///e:/AI%20project/backend/app/api/v1/forecast.py):
+      - `POST /api/v1/forecast/run` (admin only).
+      - `GET /api/v1/forecast` (authenticated, query param `term`).
+      - Registered in [`backend/app/api/v1/__init__.py`](file:///e:/AI%20project/backend/app/api/v1/__init__.py).
+  - Documentation:
+    - Authored [`docs/model_card.md`](file:///e:/AI%20project/docs/model_card.md) covering training data, features, hyperparameters, validation metrics (MAE 4.34 vs baseline 4.51/12.05), operational modes, limitations, and retraining workflow.
+  - Tests:
+    - Unit & validation tests in [`ml/tests/test_artifacts.py`](file:///e:/AI%20project/ml/tests/test_artifacts.py): artifact existence, file size limits (<5MB), JSON schemas, monotonicity, section conversion, baselines, determinism, 503 guard on missing artifacts, and precomputed mode without `lightgbm`.
+    - Integration tests in [`backend/tests/test_forecast_api.py`](file:///e:/AI%20project/backend/tests/test_forecast_api.py): RBAC checks (403 for faculty, 401 unauth, 200 for admin), query by term, and 503 error handling.
+- **Test Results & Verification Status**:
+  - `python ml/scripts/train.py`: offline training finished in 0.3s; all 6 artifacts created and verified $< 5$ MB.
+  - `pytest ml/tests backend/tests`: 150 passed in 4.96s (100% pass rate).
+- **Next Steps / Backlog Items**:
+  - Implement faculty-course matching & expertise similarity scoring (TF-IDF & domain tag overlap).
+  - Implement OR-Tools CP-SAT multi-objective optimization assignment solver.

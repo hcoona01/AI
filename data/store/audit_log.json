@@ -1302,5 +1302,248 @@
       }
     },
     "timestamp": "2026-10-30T14:57:47.844096Z"
+  },
+  {
+    "id": "audit-3fa39afe484b",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T19:38:04.248845Z"
+  },
+  {
+    "id": "audit-ad4f3de9fd7b",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T19:38:04.276324Z"
+  },
+  {
+    "id": "audit-750cc434344f",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T19:38:04.322816Z"
+  },
+  {
+    "id": "audit-0861586ba5ed",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T19:38:04.464474Z"
+  },
+  {
+    "id": "audit-03df272f04a9",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T19:38:04.688796Z"
+  },
+  {
+    "id": "audit-0dc886aac7a1",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-30T19:38:06.627859Z"
+  },
+  {
+    "id": "audit-715bf6199078",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-30T19:39:00.978075Z"
+  },
+  {
+    "id": "audit-50fca7af7bc5",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T19:39:16.862949Z"
+  },
+  {
+    "id": "audit-142d430532e7",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T19:39:16.877436Z"
+  },
+  {
+    "id": "audit-3cc24f25bf9a",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T19:39:16.894429Z"
+  },
+  {
+    "id": "audit-bff1348870fe",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T19:39:16.970967Z"
+  },
+  {
+    "id": "audit-e53912c3c581",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T19:39:17.021927Z"
+  },
+  {
+    "id": "audit-fcbd78d5297c",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-30T19:39:17.747745Z"
   }
 ]

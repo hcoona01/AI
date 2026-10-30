@@ -8,6 +8,7 @@ from app.api.v1 import (
     constraints,
     courses,
     faculty,
+    forecast,
     health,
     me,
     resources,
@@ -30,3 +31,4 @@ api_router.include_router(resources.router)
 api_router.include_router(timeslots.router)
 api_router.include_router(scenarios.router)
 api_router.include_router(audit.router)
+api_router.include_router(forecast.router)

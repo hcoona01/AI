@@ -5,9 +5,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 30,
-    "size_p10": 22,
-    "size_p50": 30,
-    "size_p90": 37,
+    "size_p10": 57,
+    "size_p50": 103,
+    "size_p90": 105,
     "time_slot_id": "TS-MON-0900"
   },
   {
@@ -16,9 +16,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 26,
-    "size_p10": 19,
-    "size_p50": 26,
-    "size_p90": 32,
+    "size_p10": 63,
+    "size_p50": 72,
+    "size_p90": 81,
     "time_slot_id": "TS-MON-1030"
   },
   {
@@ -27,9 +27,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 43,
-    "size_p10": 32,
-    "size_p50": 43,
-    "size_p90": 53,
+    "size_p10": 56,
+    "size_p50": 71,
+    "size_p90": 79,
     "time_slot_id": "TS-MON-1300"
   },
   {
@@ -38,9 +38,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 40,
-    "size_p10": 30,
-    "size_p50": 40,
-    "size_p90": 50,
+    "size_p10": 62,
+    "size_p50": 67,
+    "size_p90": 74,
     "time_slot_id": "TS-MON-1430"
   },
   {
@@ -49,9 +49,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 46,
-    "size_p10": 34,
-    "size_p50": 46,
-    "size_p90": 57,
+    "size_p10": 62,
+    "size_p50": 71,
+    "size_p90": 80,
     "time_slot_id": "TS-TUE-0900"
   },
   {
@@ -60,9 +60,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 43,
-    "size_p10": 32,
-    "size_p50": 43,
-    "size_p90": 50,
+    "size_p10": 62,
+    "size_p50": 65,
+    "size_p90": 71,
     "time_slot_id": "TS-TUE-1300"
   },
   {
@@ -71,9 +71,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 26,
-    "size_p10": 19,
-    "size_p50": 26,
-    "size_p90": 32,
+    "size_p10": 63,
+    "size_p50": 68,
+    "size_p90": 73,
     "time_slot_id": "TS-THU-1030"
   },
   {
@@ -82,9 +82,9 @@
     "term": "Fall 2026",
     "section_cap": 40,
     "expected_size": 36,
-    "size_p10": 27,
-    "size_p50": 36,
-    "size_p90": 40,
+    "size_p10": 56,
+    "size_p50": 70,
+    "size_p90": 72,
     "time_slot_id": "TS-FRI-1030"
   },
   {
@@ -93,9 +93,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 53,
-    "size_p10": 39,
-    "size_p50": 53,
-    "size_p90": 60,
+    "size_p10": 63,
+    "size_p50": 72,
+    "size_p90": 81,
     "time_slot_id": "TS-TUE-1300"
   },
   {
@@ -104,9 +104,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 38,
-    "size_p10": 28,
-    "size_p50": 38,
-    "size_p90": 47,
+    "size_p10": 56,
+    "size_p50": 70,
+    "size_p90": 72,
     "time_slot_id": "TS-MON-1300"
   },
   {
@@ -115,9 +115,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 40,
-    "size_p10": 30,
-    "size_p50": 40,
-    "size_p90": 50,
+    "size_p10": 60,
+    "size_p50": 66,
+    "size_p90": 71,
     "time_slot_id": "TS-FRI-1430"
   },
   {
@@ -126,9 +126,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 28,
-    "size_p10": 21,
-    "size_p50": 28,
-    "size_p90": 35,
+    "size_p10": 65,
+    "size_p50": 69,
+    "size_p90": 71,
     "time_slot_id": "TS-WED-1030"
   },
   {
@@ -137,9 +137,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 39,
-    "size_p10": 29,
-    "size_p50": 39,
-    "size_p90": 48,
+    "size_p10": 63,
+    "size_p50": 67,
+    "size_p90": 71,
     "time_slot_id": "TS-THU-1030"
   },
   {
@@ -148,9 +148,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 37,
-    "size_p10": 27,
-    "size_p50": 37,
-    "size_p90": 46,
+    "size_p10": 56,
+    "size_p50": 70,
+    "size_p90": 72,
     "time_slot_id": "TS-WED-1030"
   },
   {
@@ -159,9 +159,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 34,
-    "size_p10": 25,
-    "size_p50": 34,
-    "size_p90": 42,
+    "size_p10": 56,
+    "size_p50": 71,
+    "size_p90": 79,
     "time_slot_id": "TS-TUE-1300"
   },
   {
@@ -171,8 +171,8 @@
     "section_cap": 50,
     "expected_size": 37,
     "size_p10": 27,
-    "size_p50": 37,
-    "size_p90": 46,
+    "size_p50": 32,
+    "size_p90": 36,
     "time_slot_id": "TS-TUE-1030"
   },
   {
@@ -181,9 +181,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 48,
-    "size_p10": 36,
-    "size_p50": 48,
-    "size_p90": 60,
+    "size_p10": 27,
+    "size_p50": 30,
+    "size_p90": 35,
     "time_slot_id": "TS-WED-1030"
   },
   {
@@ -192,9 +192,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 42,
-    "size_p10": 31,
-    "size_p50": 42,
-    "size_p90": 50,
+    "size_p10": 60,
+    "size_p50": 61,
+    "size_p90": 69,
     "time_slot_id": "TS-MON-0900"
   },
   {
@@ -203,9 +203,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 34,
-    "size_p10": 25,
-    "size_p50": 34,
-    "size_p90": 42,
+    "size_p10": 57,
+    "size_p50": 67,
+    "size_p90": 75,
     "time_slot_id": "TS-TUE-1300"
   },
   {
@@ -214,9 +214,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 43,
-    "size_p10": 32,
-    "size_p50": 43,
-    "size_p90": 50,
+    "size_p10": 62,
+    "size_p50": 67,
+    "size_p90": 75,
     "time_slot_id": "TS-FRI-1430"
   },
   {
@@ -225,9 +225,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 40,
-    "size_p10": 30,
-    "size_p50": 40,
-    "size_p90": 50,
+    "size_p10": 24,
+    "size_p50": 28,
+    "size_p90": 35,
     "time_slot_id": "TS-THU-1300"
   },
   {
@@ -236,9 +236,9 @@
     "term": "Fall 2026",
     "section_cap": 50,
     "expected_size": 39,
-    "size_p10": 29,
-    "size_p50": 39,
-    "size_p90": 48,
+    "size_p10": 61,
+    "size_p50": 66,
+    "size_p90": 71,
     "time_slot_id": "TS-TUE-1300"
   },
   {
@@ -247,9 +247,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 45,
-    "size_p10": 33,
-    "size_p50": 45,
-    "size_p90": 56,
+    "size_p10": 27,
+    "size_p50": 29,
+    "size_p90": 31,
     "time_slot_id": "TS-TUE-1030"
   },
   {
@@ -258,9 +258,9 @@
     "term": "Fall 2026",
     "section_cap": 100,
     "expected_size": 55,
-    "size_p10": 41,
-    "size_p50": 55,
-    "size_p90": 68,
+    "size_p10": 57,
+    "size_p50": 103,
+    "size_p90": 105,
     "time_slot_id": "TS-WED-1030"
   },
   {
@@ -269,9 +269,9 @@
     "term": "Fall 2026",
     "section_cap": 60,
     "expected_size": 51,
-    "size_p10": 38,
-    "size_p50": 51,
-    "size_p90": 60,
+    "size_p10": 62,
+    "size_p50": 67,
+    "size_p90": 74,
     "time_slot_id": "TS-FRI-1430"
   },
   {

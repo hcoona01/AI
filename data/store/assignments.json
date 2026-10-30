@@ -1,0 +1,14 @@
+[
+  {
+    "id": "a-quantum-1",
+    "section_id": "s-quantum-1",
+    "faculty_id": "f-novice-1",
+    "source": "solver",
+    "fit_score": 0.1,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-quantum",
+    "created_at": "2026-10-30T11:22:34.427968Z"
+  }
+]

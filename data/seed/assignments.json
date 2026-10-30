@@ -1,0 +1,62 @@
+[
+  {
+    "id": "asgn-base-0",
+    "section_id": "SEC-FA26-CS580-01",
+    "faculty_id": "f-01",
+    "source": "solver",
+    "fit_score": 0.92,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-baseline",
+    "created_at": "2026-10-30T11:03:07.970174Z"
+  },
+  {
+    "id": "asgn-base-1",
+    "section_id": "SEC-FA26-CS315-02",
+    "faculty_id": "f-02",
+    "source": "solver",
+    "fit_score": 0.92,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-baseline",
+    "created_at": "2026-10-30T11:03:07.970174Z"
+  },
+  {
+    "id": "asgn-base-2",
+    "section_id": "SEC-FA26-CS301-03",
+    "faculty_id": "f-03",
+    "source": "solver",
+    "fit_score": 0.92,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-baseline",
+    "created_at": "2026-10-30T11:03:07.970174Z"
+  },
+  {
+    "id": "asgn-base-3",
+    "section_id": "SEC-FA26-CS570-04",
+    "faculty_id": "f-04",
+    "source": "solver",
+    "fit_score": 0.92,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-baseline",
+    "created_at": "2026-10-30T11:03:07.970174Z"
+  },
+  {
+    "id": "asgn-base-4",
+    "section_id": "SEC-FA26-CS501-05",
+    "faculty_id": "f-05",
+    "source": "solver",
+    "fit_score": 0.92,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-baseline",
+    "created_at": "2026-10-30T11:03:07.970174Z"
+  }
+]

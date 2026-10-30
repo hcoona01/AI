@@ -5,7 +5,9 @@ Provides unified data access whether running against local JSON storage or remot
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Annotated, Any
+
+from fastapi import Depends
 
 from app.core.config import settings
 from app.repositories.base import BaseStore, Repository
@@ -48,56 +50,56 @@ def reset_store_instance() -> None:
 # Typed Repository Factory Functions (compatible with FastAPI Depends)
 
 
-def get_user_repository(store: BaseStore | None = None) -> Repository[User]:
+def get_user_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[User]:  # type: ignore[assignment]
     return Repository(store or get_store(), "users.json", User, id_field="id")
 
 
-def get_faculty_repository(store: BaseStore | None = None) -> Repository[Faculty]:
+def get_faculty_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[Faculty]:  # type: ignore[assignment]
     return Repository(store or get_store(), "faculty.json", Faculty, id_field="id")
 
 
-def get_course_repository(store: BaseStore | None = None) -> Repository[Course]:
+def get_course_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[Course]:  # type: ignore[assignment]
     return Repository(store or get_store(), "courses.json", Course, id_field="id")
 
 
-def get_section_repository(store: BaseStore | None = None) -> Repository[Section]:
+def get_section_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[Section]:  # type: ignore[assignment]
     return Repository(store or get_store(), "sections.json", Section, id_field="id")
 
 
-def get_resource_repository(store: BaseStore | None = None) -> Repository[Resource]:
+def get_resource_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[Resource]:  # type: ignore[assignment]
     return Repository(store or get_store(), "resources.json", Resource, id_field="id")
 
 
-def get_timeslot_repository(store: BaseStore | None = None) -> Repository[TimeSlot]:
+def get_timeslot_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[TimeSlot]:  # type: ignore[assignment]
     return Repository(store or get_store(), "timeslots.json", TimeSlot, id_field="id")
 
 
 def get_constraint_repository(
-    store: BaseStore | None = None,
+    store: Annotated[BaseStore, Depends(get_store)] = None,  # type: ignore[assignment]
 ) -> Repository[ConstraintRule]:
     return Repository(
         store or get_store(), "constraints.json", ConstraintRule, id_field="rule_id"
     )
 
 
-def get_assignment_repository(store: BaseStore | None = None) -> Repository[Assignment]:
+def get_assignment_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[Assignment]:  # type: ignore[assignment]
     return Repository(
         store or get_store(), "assignments.json", Assignment, id_field="id"
     )
 
 
-def get_override_repository(store: BaseStore | None = None) -> Repository[Override]:
+def get_override_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[Override]:  # type: ignore[assignment]
     return Repository(store or get_store(), "overrides.json", Override, id_field="id")
 
 
-def get_audit_repository(store: BaseStore | None = None) -> Repository[AuditLogEntry]:
+def get_audit_repository(store: Annotated[BaseStore, Depends(get_store)] = None) -> Repository[AuditLogEntry]:  # type: ignore[assignment]
     return Repository(
         store or get_store(), "audit_log.json", AuditLogEntry, id_field="id"
     )
 
 
 def get_forecast_repository(
-    store: BaseStore | None = None,
+    store: Annotated[BaseStore, Depends(get_store)] = None,  # type: ignore[assignment]
 ) -> Repository[dict[str, Any]]:
     return Repository(
         store or get_store(), "forecasts.json", dict, id_field="course_id"

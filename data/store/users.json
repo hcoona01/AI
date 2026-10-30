@@ -1,0 +1,164 @@
+[
+  {
+    "id": "u-admin-1",
+    "email": "admin@university.edu",
+    "role": "admin",
+    "faculty_id": null
+  },
+  {
+    "id": "u-chair-2",
+    "email": "chair@university.edu",
+    "role": "admin",
+    "faculty_id": null
+  },
+  {
+    "id": "u-f-01",
+    "email": "alan.turing@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-01"
+  },
+  {
+    "id": "u-f-02",
+    "email": "ada.lovelace@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-02"
+  },
+  {
+    "id": "u-f-03",
+    "email": "grace.hopper@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-03"
+  },
+  {
+    "id": "u-f-04",
+    "email": "donald.knuth@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-04"
+  },
+  {
+    "id": "u-f-05",
+    "email": "barbara.liskov@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-05"
+  },
+  {
+    "id": "u-f-06",
+    "email": "edsger.dijkstra@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-06"
+  },
+  {
+    "id": "u-f-07",
+    "email": "shafi.goldwasser@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-07"
+  },
+  {
+    "id": "u-f-08",
+    "email": "leslie.lamport@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-08"
+  },
+  {
+    "id": "u-f-09",
+    "email": "judea.pearl@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-09"
+  },
+  {
+    "id": "u-f-10",
+    "email": "geoffrey.hinton@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-10"
+  },
+  {
+    "id": "u-f-11",
+    "email": "yann.lecun@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-11"
+  },
+  {
+    "id": "u-f-12",
+    "email": "fei-fei.li@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-12"
+  },
+  {
+    "id": "u-f-13",
+    "email": "andrew.ng@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-13"
+  },
+  {
+    "id": "u-f-14",
+    "email": "timnit.gebru@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-14"
+  },
+  {
+    "id": "u-f-15",
+    "email": "yoshua.bengio@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-15"
+  },
+  {
+    "id": "u-f-16",
+    "email": "silvio.micali@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-16"
+  },
+  {
+    "id": "u-f-17",
+    "email": "radia.perlman@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-17"
+  },
+  {
+    "id": "u-f-18",
+    "email": "ken.thompson@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-18"
+  },
+  {
+    "id": "u-f-19",
+    "email": "dennis.ritchie@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-19"
+  },
+  {
+    "id": "u-f-20",
+    "email": "frances.allen@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-20"
+  },
+  {
+    "id": "u-f-21",
+    "email": "margaret.hamilton@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-21"
+  },
+  {
+    "id": "u-f-22",
+    "email": "vint.cerf@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-22"
+  },
+  {
+    "id": "u-f-23",
+    "email": "tim.berners-lee@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-23"
+  },
+  {
+    "id": "u-f-24",
+    "email": "john.mccarthy@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-24"
+  },
+  {
+    "id": "u-f-25",
+    "email": "claude.shannon@university.edu",
+    "role": "faculty",
+    "faculty_id": "f-25"
+  }
+]

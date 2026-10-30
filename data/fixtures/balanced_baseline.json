@@ -588,7 +588,7 @@
       "rule_ids_satisfied": [],
       "rule_ids_violated": [],
       "run_id": "run-baseline",
-      "created_at": "2026-10-30T11:03:07.970174Z"
+      "created_at": "2026-10-30T11:22:34.427968Z"
     },
     {
       "id": "asgn-base-1",
@@ -600,7 +600,7 @@
       "rule_ids_satisfied": [],
       "rule_ids_violated": [],
       "run_id": "run-baseline",
-      "created_at": "2026-10-30T11:03:07.970174Z"
+      "created_at": "2026-10-30T11:22:34.427968Z"
     },
     {
       "id": "asgn-base-2",
@@ -612,7 +612,7 @@
       "rule_ids_satisfied": [],
       "rule_ids_violated": [],
       "run_id": "run-baseline",
-      "created_at": "2026-10-30T11:03:07.970174Z"
+      "created_at": "2026-10-30T11:22:34.427968Z"
     },
     {
       "id": "asgn-base-3",
@@ -624,7 +624,7 @@
       "rule_ids_satisfied": [],
       "rule_ids_violated": [],
       "run_id": "run-baseline",
-      "created_at": "2026-10-30T11:03:07.970174Z"
+      "created_at": "2026-10-30T11:22:34.427968Z"
     },
     {
       "id": "asgn-base-4",
@@ -636,7 +636,7 @@
       "rule_ids_satisfied": [],
       "rule_ids_violated": [],
       "run_id": "run-baseline",
-      "created_at": "2026-10-30T11:03:07.970174Z"
+      "created_at": "2026-10-30T11:22:34.427968Z"
     }
   ]
 }

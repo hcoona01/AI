@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     STORE_BACKEND: str = "local"
     GIST_TOKEN: str = ""
     GIST_ID: str = ""
-    LOCAL_DATA_DIR: str = "data/seed"
+    LOCAL_DATA_DIR: str = "data/store"
 
     # Security & Auth
     JWT_SECRET: str = "super-secret-development-key-change-in-production-min32chars"

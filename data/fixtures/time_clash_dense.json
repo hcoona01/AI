@@ -95,7 +95,7 @@
       "rule_ids_satisfied": [],
       "rule_ids_violated": [],
       "run_id": "run-clash",
-      "created_at": "2026-10-30T11:03:07.970174Z"
+      "created_at": "2026-10-30T11:22:34.427968Z"
     },
     {
       "id": "a-clash-2",
@@ -107,7 +107,7 @@
       "rule_ids_satisfied": [],
       "rule_ids_violated": [],
       "run_id": "run-clash",
-      "created_at": "2026-10-30T11:03:07.970174Z"
+      "created_at": "2026-10-30T11:22:34.427968Z"
     }
   ]
 }

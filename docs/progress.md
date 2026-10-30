@@ -154,7 +154,51 @@
   - Frontend build: `npm run build` clean in 3.15s.
 - **Next Steps / Backlog Items**:
   - Implement ML course demand forecaster (`ml/forecast/model.py`, LightGBM training script).
-  - Implement OR-Tools CP-SAT assignment optimizer and heuristics.
-  - Connect repositories to FastAPI endpoints and auth services.
+  - Implement OR-Tools CP-SAT assignment optimizer and heuristics (`backend/app/services/solver.py`).
+  - Implement passwordless OTP authentication service and email verification router.
+
+## 2026-10-30: Seed Store Utility, Role-Enforced CRUD Routers, & Scenario Loading
+- **Task Objective**: Build `scripts/seed_store.py` for idempotent/reset persistence seeding, implement CRUD routers and domain services for `faculty`, `courses`, `sections`, `resources`, and `timeslots` with role-aware privacy and admin write locks, create scenario loading endpoint `POST /api/v1/scenarios/load/{name}`, and record immutable audit logs on every write mutation.
+- **Changes Implemented**:
+  - Created [`scripts/seed_store.py`](file:///e:/AI%20project/scripts/seed_store.py):
+    - Idempotent seeding by default; supports `--reset` to atomically bulk-replace collections.
+    - Loads all 7 core collections (`users`, `faculty`, `courses`, `sections`, `resources`, `timeslots`, `constraints`) into configured store (`local` or `gist`).
+    - Records audit log event `STORE_SEEDED` in `audit_log.json`.
+  - Implemented Domain Services in `backend/app/services/`:
+    - [`audit_service.py`](file:///e:/AI%20project/backend/app/services/audit_service.py): `AuditService` logging immutable events and querying history by entity, actor, and action.
+    - [`faculty_service.py`](file:///e:/AI%20project/backend/app/services/faculty_service.py): Role-aware querying (admins view directory; faculty view own profile only; 403 on other profiles) and admin-only CRUD with `FACULTY_CREATED`, `FACULTY_UPDATED`, `FACULTY_DELETED` audit logging.
+    - [`course_service.py`](file:///e:/AI%20project/backend/app/services/course_service.py): Shared course catalog reads and admin-only CRUD with `COURSE_CREATED`, `COURSE_UPDATED`, `COURSE_DELETED` audit logging.
+    - [`section_service.py`](file:///e:/AI%20project/backend/app/services/section_service.py): Section reads with term filtering and admin-only CRUD with `SECTION_CREATED`, `SECTION_UPDATED`, `SECTION_DELETED` audit logging.
+    - [`resource_service.py`](file:///e:/AI%20project/backend/app/services/resource_service.py): Shared lecture halls and labs catalog with admin-only CRUD with `RESOURCE_CREATED`, `RESOURCE_UPDATED`, `RESOURCE_DELETED` audit logging.
+    - [`timeslot_service.py`](file:///e:/AI%20project/backend/app/services/timeslot_service.py): Weekly scheduling grid management with admin-only CRUD with `TIMESLOT_CREATED`, `TIMESLOT_UPDATED`, `TIMESLOT_DELETED` audit logging.
+    - [`scenario_service.py`](file:///e:/AI%20project/backend/app/services/scenario_service.py): Reads evaluation fixtures from `/data/fixtures/{name}.json`, validates Pydantic models, executes atomic bulk replacement across the store, and logs `SCENARIO_LOADED` audit entry.
+  - Implemented Routers in `backend/app/api/v1/`:
+    - [`faculty.py`](file:///e:/AI%20project/backend/app/api/v1/faculty.py): `GET /api/v1/faculty`, `GET /api/v1/faculty/{id}`, `POST`, `PUT`, `DELETE`.
+    - [`courses.py`](file:///e:/AI%20project/backend/app/api/v1/courses.py): `GET /api/v1/courses`, `GET /api/v1/courses/{id}`, `POST`, `PUT`, `DELETE`.
+    - [`sections.py`](file:///e:/AI%20project/backend/app/api/v1/sections.py): `GET /api/v1/sections?term=...`, `GET /api/v1/sections/{id}`, `POST`, `PUT`, `DELETE`.
+    - [`resources.py`](file:///e:/AI%20project/backend/app/api/v1/resources.py): `GET /api/v1/resources`, `GET /api/v1/resources/{id}`, `POST`, `PUT`, `DELETE`.
+    - [`timeslots.py`](file:///e:/AI%20project/backend/app/api/v1/timeslots.py): `GET /api/v1/timeslots`, `GET /api/v1/timeslots/{id}`, `POST`, `PUT`, `DELETE`.
+    - [`scenarios.py`](file:///e:/AI%20project/backend/app/api/v1/scenarios.py): `POST /api/v1/scenarios/load/{name}` (admin-only).
+    - [`audit.py`](file:///e:/AI%20project/backend/app/api/v1/audit.py): `GET /api/v1/audit` (admin-only with filtering).
+    - Aggregated all subrouters in [`backend/app/api/v1/__init__.py`](file:///e:/AI%20project/backend/app/api/v1/__init__.py).
+  - Configured Security & RBAC in [`backend/app/core/security.py`](file:///e:/AI%20project/backend/app/core/security.py):
+    - `get_current_user` supporting JWT Bearer tokens and testing headers (`X-User-Role`, `X-User-Id`, `X-Faculty-Id`).
+    - RBAC guards `require_admin` and `require_authenticated`.
+  - Configured Storage Separation:
+    - Pointed runtime `LOCAL_DATA_DIR` to `data/store`, protecting `data/seed` as pristine source of truth.
+  - Comprehensive Test Suite in [`backend/tests/test_api_crud_and_rbac.py`](file:///e:/AI%20project/backend/tests/test_api_crud_and_rbac.py):
+    - Role-aware faculty profile isolation (faculty reading other profile -> 403 Forbidden).
+    - Shared reference data accessibility across all authenticated roles.
+    - Strict rejection of write operations by faculty (403 Forbidden).
+    - Admin CRUD execution and verification of audit trail entries.
+    - Scenario fixture loading (`POST /api/v1/scenarios/load/{name}`), audit confirmation, and 403/404 validations.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests ml/tests`: 117 passed in 2.15s.
+  - `ruff` & `black`: 100% compliant across `backend/`, `ml/`, and `scripts/`.
+  - Frontend build: `npm run build` clean in 3.08s.
+- **Next Steps / Backlog Items**:
+  - Implement course demand forecasting pipeline with LightGBM.
+  - Implement OR-Tools CP-SAT optimizer for assignment balance and repair heuristics.
+  - Build frontend pages connecting to the new CRUD APIs.
 
 

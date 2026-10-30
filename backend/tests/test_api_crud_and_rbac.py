@@ -238,6 +238,12 @@ def test_scenario_loading_and_audit():
 
     # 5. Restore full seed state after test
     import asyncio
+    import sys
+    from pathlib import Path
+
+    repo_root = str(Path(__file__).resolve().parents[2])
+    if repo_root not in sys.path:
+        sys.path.insert(0, repo_root)
 
     from scripts.seed_store import seed_data
 

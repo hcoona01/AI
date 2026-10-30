@@ -327,3 +327,36 @@
 - **Next Steps / Backlog Items**:
   - Implement faculty-course matching & expertise similarity scoring (TF-IDF & domain tag overlap).
   - Implement OR-Tools CP-SAT multi-objective optimization assignment solver.
+
+
+## 2026-10-31: Faculty-to-Course Expertise Fit Scoring Pipeline
+- **Task Objective**: Implement `/ml/fit/scoring.py` with multi-component expertise fit scoring in $[0.0, 1.0]$, runtime TF-IDF text similarity, explainable breakdown dictionary, independent HC-01 feasibility gating, and vectorized full-matrix evaluation in `float32`.
+- **Changes Implemented**:
+  - Fit Scoring Pipeline ([`ml/fit/scoring.py`](file:///e:/AI%20project/ml/fit/scoring.py)):
+    - Formulated 3-component weighted score:
+      $$\text{fit}(f, c) = 0.60 \times M_{\text{tag}} + 0.25 \times M_{\text{tfidf}} + 0.15 \times M_{\text{past}}$$
+    - $M_{\text{tag}}$: Normalized mean proficiency ($\text{proficiency}/5.0$) across course required tags (with optional tag weights; 1.0 if no tags required).
+    - $M_{\text{tfidf}}$: Dynamic runtime TF-IDF vectorization and cosine similarity between faculty profile text (name, rank, expertise tags, past courses) and course syllabus text (code, title, description, tags). Never pickled.
+    - $M_{\text{past}}$: Historical past-teaching bonus, scaled and capped at `past_teaching_cap` (default 2 terms).
+    - Explainable UI breakdown dictionary returning component scores, weighted values, tag details, times taught, and HC-01 compliance evidence.
+    - `FitResult` interface supporting float conversion, tuple unpacking `(score, breakdown)`, attribute access, and subscripting.
+    - Hard constraint filter `check_hc01`: Assesses whether faculty proficiency $\ge$ course `min_proficiency` across all required tags as an independent gate (not subtracted from fit score).
+    - Vectorized full matrix evaluation:
+      - `compute_fit_matrix`: Fits TF-IDF on combined corpus at runtime, computes sparse cosine product, and aggregates tag and past-teaching matrices into an $(N, M)$ `float32` ndarray in $[0.0, 1.0]$.
+      - `compute_hc01_mask`: Produces an $(N, M)$ boolean feasibility mask for HC-01.
+  - Subpackage Exports ([`ml/fit/__init__.py`](file:///e:/AI%20project/ml/fit/__init__.py)):
+    - Exported `fit`, `check_hc01`, `compute_fit_matrix`, `compute_hc01_mask`, and `FitResult`.
+  - Comprehensive Unit Tests ([`ml/tests/test_fit_scoring.py`](file:///e:/AI%20project/ml/tests/test_fit_scoring.py)):
+    - Hand-computed exact numerical test verifying tag match, past teaching bonus, and dynamic TF-IDF breakdown.
+    - Past-teaching bonus scaling and capping validation ($0 \to 0.0$, $1 \to 0.50$, $2 \to 1.00$, $5 \to 1.00$).
+    - HC-01 independence test verifying deficient proficiency fails feasibility without distorting continuous score.
+    - Missing tag handling ($0/5$ proficiency) and course without required tags ($1.0$ tag match).
+    - Disjoint vocabulary test yielding $0.0$ TF-IDF score.
+    - Pydantic v2 domain model (`Faculty`, `Course`) and raw dictionary compatibility.
+    - Vectorized `compute_fit_matrix` shape $(10, 5)$, `float32` dtype, and $[0.0, 1.0]$ bounds.
+    - Vectorized `compute_hc01_mask` shape and boolean accuracy.
+- **Test Results & Verification Status**:
+  - `pytest ml/tests/test_fit_scoring.py`: 9 passed in 2.50s.
+  - `pytest ml/tests backend/tests`: 159 passed in 6.56s (100% pass rate).
+- **Next Steps / Backlog Items**:
+  - Implement Google OR-Tools CP-SAT multi-objective optimization assignment solver integrating demand quantiles, expertise fit matrix, and hard/soft constraints.

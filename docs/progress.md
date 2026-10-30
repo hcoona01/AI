@@ -118,6 +118,43 @@
 - **Next Steps / Backlog Items**:
   - Implement time-series & LightGBM course enrollment forecasting models (`ml/models/forecaster.py`, `ml/scripts/train.py`).
   - Implement OR-Tools CP-SAT solver and greedy baseline heuristics (`backend/app/services/solver.py`).
-  - Wire Gist and local repository storage backend.
+  - Wire Gist and local repository storage backend into FastAPI routers and domain services.
+
+## 2026-10-30: Data Persistence & Repository Layer (`backend/app/repositories`)
+- **Task Objective**: Implement `backend/app/repositories` as the sole data-access layer for the monorepo, supporting both private GitHub Gist and local JSON storage with identical interfaces, optimistic concurrency, caching, rate-limit backoff, and full test coverage.
+- **Changes Implemented**:
+  - Authored [`backend/app/repositories/base.py`](file:///e:/AI%20project/backend/app/repositories/base.py):
+    - `BaseStore` abstract contract (`read_file`, `write_file`, `get_file_metadata`).
+    - Generic `Repository[T]` with `get_all`, `get(id)`, `upsert(item)`, `delete(id)`, and `bulk_replace(items)`. Supports typed Pydantic v2 deserialization, custom `id_field`, and per-file async locking.
+  - Implemented [`backend/app/repositories/local_store.py`](file:///e:/AI%20project/backend/app/repositories/local_store.py):
+    - JSON-backed filesystem storage with atomic file writing via temporary replacements.
+    - Deterministic version calculation using file `mtime_ns` and content SHA-256 digest.
+    - Optimistic concurrency control detecting external file changes and raising `ConflictError` (`HTTP 409`).
+    - In-memory TTL cache with force refresh support.
+    - Automatic seeding from `data/seed` for offline development.
+  - Implemented [`backend/app/repositories/gist_store.py`](file:///e:/AI%20project/backend/app/repositories/gist_store.py):
+    - Async `httpx.AsyncClient` communicating with GitHub Gists API (`https://api.github.com/gists`).
+    - Automatic creation of private GitHub Gist with all 11 managed files when `GIST_ID` is empty, printing the new Gist ID.
+    - Truncated file handling (>1MB): detects `truncated: true` and fetches complete payload from `raw_url`.
+    - GitHub rate-limit detection: inspects `X-RateLimit-Remaining` and `X-RateLimit-Reset`, raising structured `RateLimitError` (`HTTP 403`).
+    - HTTP ETag conditional caching (`If-None-Match` -> `304 Not Modified`).
+    - In-memory TTL cache preventing redundant API traffic.
+    - Optimistic concurrency: monitors Gist `updated_at`, re-fetches and retries once upon collision, raising `ConflictError` (`HTTP 409`) on persistent conflict.
+    - Per-file async write lock preventing concurrent in-process race conditions.
+  - Configured [`backend/app/repositories/__init__.py`](file:///e:/AI%20project/backend/app/repositories/__init__.py):
+    - Factory function `get_store()` selecting `LocalStore` or `GistStore` based on `STORE_BACKEND`.
+    - Typed repository factory accessors for all 11 managed entities (`User`, `Faculty`, `Course`, `Section`, `Resource`, `TimeSlot`, `ConstraintRule`, `Assignment`, `Override`, `AuditLogEntry`, `forecasts`).
+  - Added [`RateLimitError`](file:///e:/AI%20project/backend/app/core/errors.py) to global error handling hierarchy.
+  - Authored comprehensive test suites:
+    - [`backend/tests/test_local_store.py`](file:///e:/AI%20project/backend/tests/test_local_store.py): 6 tests covering CRUD, bulk replace, custom ID fields, optimistic concurrency conflicts, TTL caching, and 10 concurrent async writes.
+    - [`backend/tests/test_gist_store.py`](file:///e:/AI%20project/backend/tests/test_gist_store.py): 5 tests with mocked `httpx.MockTransport` covering standard fetch/patch, ETag 304, in-memory TTL caching, >1MB truncated file `raw_url` fallback, 403 rate-limit handling, 409 optimistic concurrency conflict and retry, and private Gist auto-creation.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests ml/tests`: 112 passed in 1.62s.
+  - `ruff` & `black`: 100% compliant across `backend/` and `ml/`.
+  - Frontend build: `npm run build` clean in 3.15s.
+- **Next Steps / Backlog Items**:
+  - Implement ML course demand forecaster (`ml/forecast/model.py`, LightGBM training script).
+  - Implement OR-Tools CP-SAT assignment optimizer and heuristics.
+  - Connect repositories to FastAPI endpoints and auth services.
 
 

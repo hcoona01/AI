@@ -51,6 +51,24 @@ class ForbiddenError(AppException):
         super().__init__(message=message, status_code=status.HTTP_403_FORBIDDEN)
 
 
+class RateLimitError(AppException):
+    def __init__(
+        self,
+        message: str = "Rate limit exceeded. Please back off and retry.",
+        status_code: int = status.HTTP_403_FORBIDDEN,
+        reset_at: int | None = None,
+        details: dict[str, Any] | None = None,
+    ):
+        info = details or {}
+        if reset_at is not None:
+            info["reset_at"] = reset_at
+        super().__init__(
+            message=message,
+            status_code=status_code,
+            details=info,
+        )
+
+
 def register_error_handlers(app: FastAPI) -> None:
     """Register global error and exception handlers on the FastAPI app."""
 

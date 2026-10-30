@@ -1,0 +1,79 @@
+{
+  "name": "lab_resource_shortage",
+  "expected_outcome": {
+    "feasible": false,
+    "reason": "Infeasible due to HC-07: Specialized lab facility capacity (15) cannot accommodate section expected enrollment (40)."
+  },
+  "scenario": {
+    "faculty": [
+      {
+        "id": "f-dummy",
+        "name": "Dr. Lab Instructor",
+        "email": "lab@univ.edu",
+        "rank": "Lecturer",
+        "expertise": [],
+        "max_weekly_load_hours": 15.0,
+        "max_courses": 4,
+        "min_courses": 1,
+        "max_preparations": 3,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      }
+    ],
+    "courses": [
+      {
+        "id": "c-huge-lab",
+        "code": "CS210L",
+        "title": "Heavy Lab Course",
+        "description": "",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "undergraduate",
+        "required_tags": [],
+        "min_proficiency": 1,
+        "is_lab": true,
+        "required_resource_ids": [
+          "LAB-TINY"
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": "s-huge-lab-1",
+        "course_id": "c-huge-lab",
+        "term": "Fall 2026",
+        "section_cap": 50,
+        "expected_size": 40,
+        "size_p10": 30,
+        "size_p50": 40,
+        "size_p90": 48,
+        "time_slot_id": null
+      }
+    ],
+    "resources": [
+      {
+        "id": "LAB-TINY",
+        "type": "lab",
+        "capacity": 15,
+        "unavailable_slots": []
+      }
+    ],
+    "timeslots": [],
+    "previous_assignments": []
+  },
+  "assignments": [
+    {
+      "id": "a-lab-1",
+      "section_id": "s-huge-lab-1",
+      "faculty_id": "f-dummy",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-lab",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+[
+  {
+    "rule_id": "HC-01",
+    "type": "hard",
+    "description": "Faculty proficiency must be greater than or equal to course min_proficiency on all required syllabus tags",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {
+      "strict": true
+    }
+  },
+  {
+    "rule_id": "HC-02",
+    "type": "hard",
+    "description": "Total assigned weekly contact hours must not exceed faculty max_weekly_load_hours",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {
+      "allow_overload": false,
+      "max_overload_hours": 0.0
+    }
+  },
+  {
+    "rule_id": "HC-03",
+    "type": "hard",
+    "description": "No overlapping time slots permitted for the same faculty member across assigned sections",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "rule_id": "HC-04",
+    "type": "hard",
+    "description": "No faculty assignment during approved leave terms or during designated unavailable time slots",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "rule_id": "HC-05",
+    "type": "hard",
+    "description": "Number of distinct course preparations assigned to faculty must not exceed max_preparations",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "rule_id": "HC-06",
+    "type": "hard",
+    "description": "Every active course section in the scenario must be assigned to exactly one faculty member",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "rule_id": "HC-07",
+    "type": "hard",
+    "description": "Required course resources must be available and assigned resource capacity must accommodate section expected size",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {
+      "check_capacity": true
+    }
+  },
+  {
+    "rule_id": "SC-01",
+    "type": "soft",
+    "description": "Maximize faculty expertise fit score with assigned course content",
+    "weight": 3.0,
+    "enabled": true,
+    "params": {
+      "min_acceptable_fit": 0.6
+    }
+  },
+  {
+    "rule_id": "SC-02",
+    "type": "soft",
+    "description": "Minimize teaching load imbalance and standard deviation across faculty of equal rank",
+    "weight": 2.0,
+    "enabled": true,
+    "params": {
+      "max_discrepancy_hours": 3.0
+    }
+  },
+  {
+    "rule_id": "SC-03",
+    "type": "soft",
+    "description": "Honor faculty explicit course preferences whenever feasible",
+    "weight": 1.5,
+    "enabled": true,
+    "params": {
+      "penalty_per_unpreferred": 1.0
+    }
+  },
+  {
+    "rule_id": "SC-04",
+    "type": "soft",
+    "description": "Foster pedagogical continuity by re-assigning courses taught by the same instructor in previous terms",
+    "weight": 1.0,
+    "enabled": true,
+    "params": {
+      "reward_continuity": 1.0
+    }
+  },
+  {
+    "rule_id": "SC-05",
+    "type": "soft",
+    "description": "Respect faculty contractual minimum course assignment floor (min_courses)",
+    "weight": 2.5,
+    "enabled": true,
+    "params": {}
+  }
+]

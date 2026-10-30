@@ -1,0 +1,113 @@
+{
+  "name": "time_clash_dense",
+  "expected_outcome": {
+    "feasible": false,
+    "reason": "Infeasible due to HC-03: Two course sections assigned to the same instructor share the exact same time slot TS-CLASH."
+  },
+  "scenario": {
+    "faculty": [
+      {
+        "id": "f-clash",
+        "name": "Dr. Split Identity",
+        "email": "split@univ.edu",
+        "rank": "Professor",
+        "expertise": [],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      }
+    ],
+    "courses": [
+      {
+        "id": "c-clash-1",
+        "code": "CS101",
+        "title": "Course 1",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "undergraduate",
+        "required_tags": [],
+        "min_proficiency": 1,
+        "is_lab": false,
+        "required_resource_ids": []
+      },
+      {
+        "id": "c-clash-2",
+        "code": "CS102",
+        "title": "Course 2",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "undergraduate",
+        "required_tags": [],
+        "min_proficiency": 1,
+        "is_lab": false,
+        "required_resource_ids": []
+      }
+    ],
+    "sections": [
+      {
+        "id": "s-clash-1",
+        "course_id": "c-clash-1",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-CLASH"
+      },
+      {
+        "id": "s-clash-2",
+        "course_id": "c-clash-2",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-CLASH"
+      }
+    ],
+    "resources": [],
+    "timeslots": [
+      {
+        "id": "TS-CLASH",
+        "day": "MON",
+        "start": "09:00",
+        "end": "10:30"
+      }
+    ],
+    "previous_assignments": []
+  },
+  "assignments": [
+    {
+      "id": "a-clash-1",
+      "section_id": "s-clash-1",
+      "faculty_id": "f-clash",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-clash",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-clash-2",
+      "section_id": "s-clash-2",
+      "faculty_id": "f-clash",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-clash",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    }
+  ]
+}

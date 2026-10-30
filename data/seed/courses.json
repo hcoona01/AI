@@ -1,1 +1,711 @@
-[] /* Seed course catalog with credit hours, section demand, and required tags */
+[
+  {
+    "id": "c-cs101",
+    "code": "CS101",
+    "title": "Introduction to Computer Science",
+    "description": "Comprehensive curriculum for Introduction to Computer Science.",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Algorithms",
+      "Programming Languages"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-202"
+    ]
+  },
+  {
+    "id": "c-cs102",
+    "code": "CS102",
+    "title": "Data Structures Fundamentals",
+    "description": "Comprehensive curriculum for Data Structures Fundamentals.",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Data Structures",
+      "Algorithms"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-201"
+    ]
+  },
+  {
+    "id": "c-cs105",
+    "code": "CS105",
+    "title": "Discrete Mathematics for Computing",
+    "description": "Comprehensive curriculum for Discrete Mathematics for Computing.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Theory of Computation"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-101"
+    ]
+  },
+  {
+    "id": "c-cs108",
+    "code": "CS108",
+    "title": "Introduction to Web Development",
+    "description": "Comprehensive curriculum for Introduction to Web Development.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Web Development"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-102"
+    ]
+  },
+  {
+    "id": "c-cs150",
+    "code": "CS150",
+    "title": "Python Programming Workshop",
+    "description": "Comprehensive curriculum for Python Programming Workshop.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Programming Languages",
+      "Data Science"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-103"
+    ]
+  },
+  {
+    "id": "c-cs201",
+    "code": "CS201",
+    "title": "Computer Systems & Assembly",
+    "description": "Comprehensive curriculum for Computer Systems & Assembly.",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Computer Systems",
+      "Computer Architecture"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-101"
+    ]
+  },
+  {
+    "id": "c-cs210",
+    "code": "CS210",
+    "title": "Operating Systems Internals",
+    "description": "Comprehensive curriculum for Operating Systems Internals.",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Operating Systems",
+      "Computer Systems"
+    ],
+    "min_proficiency": 3,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-SYS-2"
+    ]
+  },
+  {
+    "id": "c-cs220",
+    "code": "CS220",
+    "title": "Database Management Systems",
+    "description": "Comprehensive curriculum for Database Management Systems.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Database Systems"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-102"
+    ]
+  },
+  {
+    "id": "c-cs230",
+    "code": "CS230",
+    "title": "Design & Analysis of Algorithms",
+    "description": "Comprehensive curriculum for Design & Analysis of Algorithms.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Algorithms",
+      "Theory of Computation"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-103"
+    ]
+  },
+  {
+    "id": "c-cs240",
+    "code": "CS240",
+    "title": "Computer Networks & Protocols",
+    "description": "Comprehensive curriculum for Computer Networks & Protocols.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Computer Networks"
+    ],
+    "min_proficiency": 3,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-NET-3"
+    ]
+  },
+  {
+    "id": "c-cs250",
+    "code": "CS250",
+    "title": "Software Engineering Principles",
+    "description": "Comprehensive curriculum for Software Engineering Principles.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Software Engineering"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-201"
+    ]
+  },
+  {
+    "id": "c-cs260",
+    "code": "CS260",
+    "title": "Automata & Formal Languages",
+    "description": "Comprehensive curriculum for Automata & Formal Languages.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Theory of Computation"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-101"
+    ]
+  },
+  {
+    "id": "c-cs301",
+    "code": "CS301",
+    "title": "Artificial Intelligence Concepts",
+    "description": "Comprehensive curriculum for Artificial Intelligence Concepts.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Artificial Intelligence",
+      "Algorithms"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-202"
+    ]
+  },
+  {
+    "id": "c-cs310",
+    "code": "CS310",
+    "title": "Applied Machine Learning",
+    "description": "Comprehensive curriculum for Applied Machine Learning.",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Machine Learning",
+      "Data Science"
+    ],
+    "min_proficiency": 3,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-AI-1"
+    ]
+  },
+  {
+    "id": "c-cs315",
+    "code": "CS315",
+    "title": "Deep Learning Foundations",
+    "description": "Comprehensive curriculum for Deep Learning Foundations.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Deep Learning",
+      "Machine Learning"
+    ],
+    "min_proficiency": 4,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-AI-1"
+    ]
+  },
+  {
+    "id": "c-cs320",
+    "code": "CS320",
+    "title": "Cybersecurity & Cryptography",
+    "description": "Comprehensive curriculum for Cybersecurity & Cryptography.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Cybersecurity",
+      "Computer Networks"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-102"
+    ]
+  },
+  {
+    "id": "c-cs330",
+    "code": "CS330",
+    "title": "Cloud Infrastructure & DevOps",
+    "description": "Comprehensive curriculum for Cloud Infrastructure & DevOps.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Cloud Computing",
+      "Distributed Systems"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-103"
+    ]
+  },
+  {
+    "id": "c-cs340",
+    "code": "CS340",
+    "title": "Distributed Systems Engineering",
+    "description": "Comprehensive curriculum for Distributed Systems Engineering.",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Distributed Systems",
+      "Operating Systems"
+    ],
+    "min_proficiency": 4,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-SYS-2"
+    ]
+  },
+  {
+    "id": "c-cs350",
+    "code": "CS350",
+    "title": "Human-Computer Interaction",
+    "description": "Comprehensive curriculum for Human-Computer Interaction.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Human-Computer Interaction"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-101"
+    ]
+  },
+  {
+    "id": "c-cs360",
+    "code": "CS360",
+    "title": "Computer Graphics & Media",
+    "description": "Comprehensive curriculum for Computer Graphics & Media.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Human-Computer Interaction"
+    ],
+    "min_proficiency": 3,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-MEDIA-4"
+    ]
+  },
+  {
+    "id": "c-cs370",
+    "code": "CS370",
+    "title": "Robotics Systems & Control",
+    "description": "Comprehensive curriculum for Robotics Systems & Control.",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Robotics",
+      "Artificial Intelligence"
+    ],
+    "min_proficiency": 3,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-AI-1"
+    ]
+  },
+  {
+    "id": "c-cs380",
+    "code": "CS380",
+    "title": "Compilers & Language Design",
+    "description": "Comprehensive curriculum for Compilers & Language Design.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Programming Languages",
+      "Computer Architecture"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-102"
+    ]
+  },
+  {
+    "id": "c-cs501",
+    "code": "CS501",
+    "title": "Advanced Algorithm Design",
+    "description": "Comprehensive curriculum for Advanced Algorithm Design.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Algorithms",
+      "Theory of Computation"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-103"
+    ]
+  },
+  {
+    "id": "c-cs510",
+    "code": "CS510",
+    "title": "Advanced Machine Learning Theory",
+    "description": "Comprehensive curriculum for Advanced Machine Learning Theory.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Machine Learning",
+      "Algorithms"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-201"
+    ]
+  },
+  {
+    "id": "c-cs520",
+    "code": "CS520",
+    "title": "Statistical Natural Language Processing",
+    "description": "Comprehensive curriculum for Statistical Natural Language Processing.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Artificial Intelligence",
+      "Machine Learning"
+    ],
+    "min_proficiency": 4,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-AI-1"
+    ]
+  },
+  {
+    "id": "c-cs530",
+    "code": "CS530",
+    "title": "Advanced Distributed Systems",
+    "description": "Comprehensive curriculum for Advanced Distributed Systems.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Distributed Systems",
+      "Computer Networks"
+    ],
+    "min_proficiency": 4,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-SYS-2"
+    ]
+  },
+  {
+    "id": "c-cs540",
+    "code": "CS540",
+    "title": "Network Security Architecture",
+    "description": "Comprehensive curriculum for Network Security Architecture.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Cybersecurity",
+      "Computer Networks"
+    ],
+    "min_proficiency": 4,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-NET-3"
+    ]
+  },
+  {
+    "id": "c-cs550",
+    "code": "CS550",
+    "title": "Scalable Database Architectures",
+    "description": "Comprehensive curriculum for Scalable Database Architectures.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Database Systems",
+      "Cloud Computing"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-102"
+    ]
+  },
+  {
+    "id": "c-cs560",
+    "code": "CS560",
+    "title": "Robotics Perception & SLAM",
+    "description": "Comprehensive curriculum for Robotics Perception & SLAM.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Robotics",
+      "Deep Learning"
+    ],
+    "min_proficiency": 4,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-AI-1"
+    ]
+  },
+  {
+    "id": "c-cs570",
+    "code": "CS570",
+    "title": "Advanced Computer Architecture",
+    "description": "Comprehensive curriculum for Advanced Computer Architecture.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Computer Architecture",
+      "Computer Systems"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-101"
+    ]
+  },
+  {
+    "id": "c-cs580",
+    "code": "CS580",
+    "title": "Quantum Computing Foundations",
+    "description": "Comprehensive curriculum for Quantum Computing Foundations.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Theory of Computation",
+      "Algorithms"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-103"
+    ]
+  },
+  {
+    "id": "c-cs590",
+    "code": "CS590",
+    "title": "Graduate Research Seminar",
+    "description": "Comprehensive curriculum for Graduate Research Seminar.",
+    "credits": 1,
+    "contact_hours": 1.0,
+    "level": "graduate",
+    "required_tags": [
+      "Algorithms"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-101"
+    ]
+  },
+  {
+    "id": "c-ds101",
+    "code": "DS101",
+    "title": "Introduction to Data Science",
+    "description": "Comprehensive curriculum for Introduction to Data Science.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Data Science",
+      "Data Structures"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-202"
+    ]
+  },
+  {
+    "id": "c-ds201",
+    "code": "DS201",
+    "title": "Statistical Modeling for Data Science",
+    "description": "Comprehensive curriculum for Statistical Modeling for Data Science.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Data Science",
+      "Machine Learning"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-201"
+    ]
+  },
+  {
+    "id": "c-ds301",
+    "code": "DS301",
+    "title": "Big Data Analytics Pipeline",
+    "description": "Comprehensive curriculum for Big Data Analytics Pipeline.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Data Science",
+      "Cloud Computing"
+    ],
+    "min_proficiency": 3,
+    "is_lab": true,
+    "required_resource_ids": [
+      "LAB-AI-1"
+    ]
+  },
+  {
+    "id": "c-ds501",
+    "code": "DS501",
+    "title": "Advanced Big Data Architectures",
+    "description": "Comprehensive curriculum for Advanced Big Data Architectures.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Data Science",
+      "Distributed Systems"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-102"
+    ]
+  },
+  {
+    "id": "c-se101",
+    "code": "SE101",
+    "title": "Software Construction & Tools",
+    "description": "Comprehensive curriculum for Software Construction & Tools.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Software Engineering",
+      "Programming Languages"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-103"
+    ]
+  },
+  {
+    "id": "c-se201",
+    "code": "SE201",
+    "title": "Object-Oriented Design Patterns",
+    "description": "Comprehensive curriculum for Object-Oriented Design Patterns.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Software Engineering"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-101"
+    ]
+  },
+  {
+    "id": "c-se301",
+    "code": "SE301",
+    "title": "Software Testing & Verification",
+    "description": "Comprehensive curriculum for Software Testing & Verification.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Software Engineering"
+    ],
+    "min_proficiency": 3,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-102"
+    ]
+  },
+  {
+    "id": "c-se501",
+    "code": "SE501",
+    "title": "Advanced Software Architecture",
+    "description": "Comprehensive curriculum for Advanced Software Architecture.",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "graduate",
+    "required_tags": [
+      "Software Engineering",
+      "Distributed Systems"
+    ],
+    "min_proficiency": 4,
+    "is_lab": false,
+    "required_resource_ids": [
+      "ROOM-201"
+    ]
+  }
+]

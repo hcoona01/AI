@@ -1,0 +1,300 @@
+{
+  "name": "leave_heavy",
+  "expected_outcome": {
+    "feasible": false,
+    "reason": "Infeasible due to HC-04: 30% of faculty members are on leave in Fall 2026, causing direct HC-04 sabbatical violations upon assignment."
+  },
+  "scenario": {
+    "faculty": [
+      {
+        "id": "f-leave-0",
+        "name": "Dr. LeaveFaculty 0",
+        "email": "leave0@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [
+          "Fall 2026"
+        ],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-1",
+        "name": "Dr. LeaveFaculty 1",
+        "email": "leave1@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [
+          "Fall 2026"
+        ],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-2",
+        "name": "Dr. LeaveFaculty 2",
+        "email": "leave2@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [
+          "Fall 2026"
+        ],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-3",
+        "name": "Dr. LeaveFaculty 3",
+        "email": "leave3@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-4",
+        "name": "Dr. LeaveFaculty 4",
+        "email": "leave4@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-5",
+        "name": "Dr. LeaveFaculty 5",
+        "email": "leave5@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-6",
+        "name": "Dr. LeaveFaculty 6",
+        "email": "leave6@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-7",
+        "name": "Dr. LeaveFaculty 7",
+        "email": "leave7@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-8",
+        "name": "Dr. LeaveFaculty 8",
+        "email": "leave8@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-leave-9",
+        "name": "Dr. LeaveFaculty 9",
+        "email": "leave9@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 4
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      }
+    ],
+    "courses": [
+      {
+        "id": "c-leave-101",
+        "code": "CS101",
+        "title": "Intro CS",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "undergraduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 3,
+        "is_lab": false,
+        "required_resource_ids": []
+      }
+    ],
+    "sections": [
+      {
+        "id": "s-leave-0",
+        "course_id": "c-leave-101",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": null
+      },
+      {
+        "id": "s-leave-1",
+        "course_id": "c-leave-101",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": null
+      },
+      {
+        "id": "s-leave-2",
+        "course_id": "c-leave-101",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": null
+      }
+    ],
+    "resources": [],
+    "timeslots": [],
+    "previous_assignments": []
+  },
+  "assignments": [
+    {
+      "id": "a-leave-0",
+      "section_id": "s-leave-0",
+      "faculty_id": "f-leave-0",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-leave",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-leave-1",
+      "section_id": "s-leave-1",
+      "faculty_id": "f-leave-1",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-leave",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-leave-2",
+      "section_id": "s-leave-2",
+      "faculty_id": "f-leave-2",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-leave",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    }
+  ]
+}

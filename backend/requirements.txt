@@ -1,12 +1,15 @@
-# Runtime-only dependencies (CPU-only, no pandas, memory budget <= 512MB)
-fastapi==0.110.0
-uvicorn[standard]==0.28.0
-pydantic==2.6.4
-pydantic-settings==2.2.1
-httpx==0.27.0
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-ortools==9.9.3963
-lightgbm==4.3.0
-numpy==1.26.4
-pytest==8.2.0
+# Backend runtime dependencies (pinned exact versions, CPU-only, RAM budget <= 512MB)
+fastapi==0.162.0
+uvicorn==0.54.0
+httpx==0.28.1
+pydantic==2.14.2
+pydantic-settings==2.16.2
+ortools==9.15.6755
+numpy==2.4.6
+scikit-learn==1.9.1
+lightgbm==4.7.0
+python-jose[cryptography]==3.5.0
+passlib==1.7.4
+bcrypt==5.0.0
+email-validator==2.3.0
+pytest==9.2.0

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "TS-MON-0900",
+    "day": "MON",
+    "start": "09:00",
+    "end": "10:30"
+  },
+  {
+    "id": "TS-MON-1030",
+    "day": "MON",
+    "start": "10:30",
+    "end": "12:00"
+  },
+  {
+    "id": "TS-MON-1300",
+    "day": "MON",
+    "start": "13:00",
+    "end": "14:30"
+  },
+  {
+    "id": "TS-MON-1430",
+    "day": "MON",
+    "start": "14:30",
+    "end": "16:00"
+  },
+  {
+    "id": "TS-TUE-0900",
+    "day": "TUE",
+    "start": "09:00",
+    "end": "10:30"
+  },
+  {
+    "id": "TS-TUE-1030",
+    "day": "TUE",
+    "start": "10:30",
+    "end": "12:00"
+  },
+  {
+    "id": "TS-TUE-1300",
+    "day": "TUE",
+    "start": "13:00",
+    "end": "14:30"
+  },
+  {
+    "id": "TS-TUE-1430",
+    "day": "TUE",
+    "start": "14:30",
+    "end": "16:00"
+  },
+  {
+    "id": "TS-WED-0900",
+    "day": "WED",
+    "start": "09:00",
+    "end": "10:30"
+  },
+  {
+    "id": "TS-WED-1030",
+    "day": "WED",
+    "start": "10:30",
+    "end": "12:00"
+  },
+  {
+    "id": "TS-WED-1300",
+    "day": "WED",
+    "start": "13:00",
+    "end": "14:30"
+  },
+  {
+    "id": "TS-WED-1430",
+    "day": "WED",
+    "start": "14:30",
+    "end": "16:00"
+  },
+  {
+    "id": "TS-THU-0900",
+    "day": "THU",
+    "start": "09:00",
+    "end": "10:30"
+  },
+  {
+    "id": "TS-THU-1030",
+    "day": "THU",
+    "start": "10:30",
+    "end": "12:00"
+  },
+  {
+    "id": "TS-THU-1300",
+    "day": "THU",
+    "start": "13:00",
+    "end": "14:30"
+  },
+  {
+    "id": "TS-THU-1430",
+    "day": "THU",
+    "start": "14:30",
+    "end": "16:00"
+  },
+  {
+    "id": "TS-FRI-0900",
+    "day": "FRI",
+    "start": "09:00",
+    "end": "10:30"
+  },
+  {
+    "id": "TS-FRI-1030",
+    "day": "FRI",
+    "start": "10:30",
+    "end": "12:00"
+  },
+  {
+    "id": "TS-FRI-1300",
+    "day": "FRI",
+    "start": "13:00",
+    "end": "14:30"
+  },
+  {
+    "id": "TS-FRI-1430",
+    "day": "FRI",
+    "start": "14:30",
+    "end": "16:00"
+  }
+]

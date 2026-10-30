@@ -1,0 +1,496 @@
+{
+  "name": "tight_capacity",
+  "expected_outcome": {
+    "feasible": true,
+    "reason": "Feasible but tightly constrained; total contact hours required (~98% capacity) leave minimal slack for load balancing."
+  },
+  "scenario": {
+    "faculty": [
+      {
+        "id": "f-tight-0",
+        "name": "Dr. Tight 0",
+        "email": "tight0@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 5
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-tight-1",
+        "name": "Dr. Tight 1",
+        "email": "tight1@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 5
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      },
+      {
+        "id": "f-tight-2",
+        "name": "Dr. Tight 2",
+        "email": "tight2@univ.edu",
+        "rank": "Associate Professor",
+        "expertise": [
+          {
+            "tag": "Algorithms",
+            "proficiency": 5
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      }
+    ],
+    "courses": [
+      {
+        "id": "c-tight-4",
+        "code": "CS400",
+        "title": "Tight 4h Course",
+        "description": "",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "undergraduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 3,
+        "is_lab": false,
+        "required_resource_ids": []
+      },
+      {
+        "id": "c-tight-3",
+        "code": "CS300",
+        "title": "Tight 3h Course",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "undergraduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 3,
+        "is_lab": false,
+        "required_resource_ids": []
+      }
+    ],
+    "sections": [
+      {
+        "id": "s-tight-0-0",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-MON-0900"
+      },
+      {
+        "id": "s-tight-0-1",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-MON-1030"
+      },
+      {
+        "id": "s-tight-0-2",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-MON-1300"
+      },
+      {
+        "id": "s-tight-1-0",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-MON-1430"
+      },
+      {
+        "id": "s-tight-1-1",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-TUE-0900"
+      },
+      {
+        "id": "s-tight-1-2",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-TUE-1030"
+      },
+      {
+        "id": "s-tight-2-0",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-TUE-1300"
+      },
+      {
+        "id": "s-tight-2-1",
+        "course_id": "c-tight-4",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-TUE-1430"
+      },
+      {
+        "id": "s-tight-2-2",
+        "course_id": "c-tight-3",
+        "term": "Fall 2026",
+        "section_cap": 40,
+        "expected_size": 30,
+        "size_p10": 20,
+        "size_p50": 30,
+        "size_p90": 35,
+        "time_slot_id": "TS-WED-0900"
+      }
+    ],
+    "resources": [
+      {
+        "id": "ROOM-101",
+        "type": "room",
+        "capacity": 60,
+        "unavailable_slots": []
+      },
+      {
+        "id": "ROOM-102",
+        "type": "room",
+        "capacity": 45,
+        "unavailable_slots": []
+      },
+      {
+        "id": "ROOM-103",
+        "type": "room",
+        "capacity": 80,
+        "unavailable_slots": []
+      },
+      {
+        "id": "ROOM-201",
+        "type": "room",
+        "capacity": 50,
+        "unavailable_slots": []
+      },
+      {
+        "id": "ROOM-202",
+        "type": "room",
+        "capacity": 100,
+        "unavailable_slots": []
+      },
+      {
+        "id": "AUD-MAIN",
+        "type": "room",
+        "capacity": 150,
+        "unavailable_slots": []
+      },
+      {
+        "id": "LAB-AI-1",
+        "type": "lab",
+        "capacity": 35,
+        "unavailable_slots": []
+      },
+      {
+        "id": "LAB-SYS-2",
+        "type": "lab",
+        "capacity": 30,
+        "unavailable_slots": []
+      },
+      {
+        "id": "LAB-NET-3",
+        "type": "lab",
+        "capacity": 40,
+        "unavailable_slots": []
+      },
+      {
+        "id": "LAB-MEDIA-4",
+        "type": "lab",
+        "capacity": 30,
+        "unavailable_slots": []
+      }
+    ],
+    "timeslots": [
+      {
+        "id": "TS-MON-0900",
+        "day": "MON",
+        "start": "09:00",
+        "end": "10:30"
+      },
+      {
+        "id": "TS-MON-1030",
+        "day": "MON",
+        "start": "10:30",
+        "end": "12:00"
+      },
+      {
+        "id": "TS-MON-1300",
+        "day": "MON",
+        "start": "13:00",
+        "end": "14:30"
+      },
+      {
+        "id": "TS-MON-1430",
+        "day": "MON",
+        "start": "14:30",
+        "end": "16:00"
+      },
+      {
+        "id": "TS-TUE-0900",
+        "day": "TUE",
+        "start": "09:00",
+        "end": "10:30"
+      },
+      {
+        "id": "TS-TUE-1030",
+        "day": "TUE",
+        "start": "10:30",
+        "end": "12:00"
+      },
+      {
+        "id": "TS-TUE-1300",
+        "day": "TUE",
+        "start": "13:00",
+        "end": "14:30"
+      },
+      {
+        "id": "TS-TUE-1430",
+        "day": "TUE",
+        "start": "14:30",
+        "end": "16:00"
+      },
+      {
+        "id": "TS-WED-0900",
+        "day": "WED",
+        "start": "09:00",
+        "end": "10:30"
+      },
+      {
+        "id": "TS-WED-1030",
+        "day": "WED",
+        "start": "10:30",
+        "end": "12:00"
+      },
+      {
+        "id": "TS-WED-1300",
+        "day": "WED",
+        "start": "13:00",
+        "end": "14:30"
+      },
+      {
+        "id": "TS-WED-1430",
+        "day": "WED",
+        "start": "14:30",
+        "end": "16:00"
+      },
+      {
+        "id": "TS-THU-0900",
+        "day": "THU",
+        "start": "09:00",
+        "end": "10:30"
+      },
+      {
+        "id": "TS-THU-1030",
+        "day": "THU",
+        "start": "10:30",
+        "end": "12:00"
+      },
+      {
+        "id": "TS-THU-1300",
+        "day": "THU",
+        "start": "13:00",
+        "end": "14:30"
+      },
+      {
+        "id": "TS-THU-1430",
+        "day": "THU",
+        "start": "14:30",
+        "end": "16:00"
+      },
+      {
+        "id": "TS-FRI-0900",
+        "day": "FRI",
+        "start": "09:00",
+        "end": "10:30"
+      },
+      {
+        "id": "TS-FRI-1030",
+        "day": "FRI",
+        "start": "10:30",
+        "end": "12:00"
+      },
+      {
+        "id": "TS-FRI-1300",
+        "day": "FRI",
+        "start": "13:00",
+        "end": "14:30"
+      },
+      {
+        "id": "TS-FRI-1430",
+        "day": "FRI",
+        "start": "14:30",
+        "end": "16:00"
+      }
+    ],
+    "previous_assignments": []
+  },
+  "assignments": [
+    {
+      "id": "a-tight-0-0",
+      "section_id": "s-tight-0-0",
+      "faculty_id": "f-tight-0",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-0-1",
+      "section_id": "s-tight-0-1",
+      "faculty_id": "f-tight-0",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-0-2",
+      "section_id": "s-tight-0-2",
+      "faculty_id": "f-tight-0",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-1-0",
+      "section_id": "s-tight-1-0",
+      "faculty_id": "f-tight-1",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-1-1",
+      "section_id": "s-tight-1-1",
+      "faculty_id": "f-tight-1",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-1-2",
+      "section_id": "s-tight-1-2",
+      "faculty_id": "f-tight-1",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-2-0",
+      "section_id": "s-tight-2-0",
+      "faculty_id": "f-tight-2",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-2-1",
+      "section_id": "s-tight-2-1",
+      "faculty_id": "f-tight-2",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-tight-2-2",
+      "section_id": "s-tight-2-2",
+      "faculty_id": "f-tight-2",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-tight",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "name": "single_expert_bottleneck",
+  "expected_outcome": {
+    "feasible": false,
+    "reason": "Infeasible due to HC-02 and HC-05: Single expert is the only qualified instructor for 5 distinct required courses, violating max load (15h > 12h) and max preparations (5 > 2)."
+  },
+  "scenario": {
+    "faculty": [
+      {
+        "id": "f-turing-bottleneck",
+        "name": "Dr. Alan Turing",
+        "email": "turing.bottleneck@univ.edu",
+        "rank": "Professor",
+        "expertise": [
+          {
+            "tag": "Advanced Cryptography",
+            "proficiency": 5
+          },
+          {
+            "tag": "Quantum Complexity",
+            "proficiency": 5
+          },
+          {
+            "tag": "Formal Verification",
+            "proficiency": 5
+          },
+          {
+            "tag": "Distributed Consensus",
+            "proficiency": 5
+          },
+          {
+            "tag": "Neural Compilers",
+            "proficiency": 5
+          }
+        ],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      }
+    ],
+    "courses": [
+      {
+        "id": "c-b-0",
+        "code": "CS800",
+        "title": "Bottleneck Course 0",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "graduate",
+        "required_tags": [
+          "Advanced Cryptography"
+        ],
+        "min_proficiency": 5,
+        "is_lab": false,
+        "required_resource_ids": []
+      },
+      {
+        "id": "c-b-1",
+        "code": "CS801",
+        "title": "Bottleneck Course 1",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "graduate",
+        "required_tags": [
+          "Quantum Complexity"
+        ],
+        "min_proficiency": 5,
+        "is_lab": false,
+        "required_resource_ids": []
+      },
+      {
+        "id": "c-b-2",
+        "code": "CS802",
+        "title": "Bottleneck Course 2",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "graduate",
+        "required_tags": [
+          "Formal Verification"
+        ],
+        "min_proficiency": 5,
+        "is_lab": false,
+        "required_resource_ids": []
+      },
+      {
+        "id": "c-b-3",
+        "code": "CS803",
+        "title": "Bottleneck Course 3",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "graduate",
+        "required_tags": [
+          "Distributed Consensus"
+        ],
+        "min_proficiency": 5,
+        "is_lab": false,
+        "required_resource_ids": []
+      },
+      {
+        "id": "c-b-4",
+        "code": "CS804",
+        "title": "Bottleneck Course 4",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "graduate",
+        "required_tags": [
+          "Neural Compilers"
+        ],
+        "min_proficiency": 5,
+        "is_lab": false,
+        "required_resource_ids": []
+      }
+    ],
+    "sections": [
+      {
+        "id": "s-b-0",
+        "course_id": "c-b-0",
+        "term": "Fall 2026",
+        "section_cap": 30,
+        "expected_size": 20,
+        "size_p10": 10,
+        "size_p50": 20,
+        "size_p90": 25,
+        "time_slot_id": null
+      },
+      {
+        "id": "s-b-1",
+        "course_id": "c-b-1",
+        "term": "Fall 2026",
+        "section_cap": 30,
+        "expected_size": 20,
+        "size_p10": 10,
+        "size_p50": 20,
+        "size_p90": 25,
+        "time_slot_id": null
+      },
+      {
+        "id": "s-b-2",
+        "course_id": "c-b-2",
+        "term": "Fall 2026",
+        "section_cap": 30,
+        "expected_size": 20,
+        "size_p10": 10,
+        "size_p50": 20,
+        "size_p90": 25,
+        "time_slot_id": null
+      },
+      {
+        "id": "s-b-3",
+        "course_id": "c-b-3",
+        "term": "Fall 2026",
+        "section_cap": 30,
+        "expected_size": 20,
+        "size_p10": 10,
+        "size_p50": 20,
+        "size_p90": 25,
+        "time_slot_id": null
+      },
+      {
+        "id": "s-b-4",
+        "course_id": "c-b-4",
+        "term": "Fall 2026",
+        "section_cap": 30,
+        "expected_size": 20,
+        "size_p10": 10,
+        "size_p50": 20,
+        "size_p90": 25,
+        "time_slot_id": null
+      }
+    ],
+    "resources": [],
+    "timeslots": [],
+    "previous_assignments": []
+  },
+  "assignments": [
+    {
+      "id": "a-b-0",
+      "section_id": "s-b-0",
+      "faculty_id": "f-turing-bottleneck",
+      "source": "solver",
+      "fit_score": 0.98,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-b",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-b-1",
+      "section_id": "s-b-1",
+      "faculty_id": "f-turing-bottleneck",
+      "source": "solver",
+      "fit_score": 0.98,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-b",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-b-2",
+      "section_id": "s-b-2",
+      "faculty_id": "f-turing-bottleneck",
+      "source": "solver",
+      "fit_score": 0.98,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-b",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-b-3",
+      "section_id": "s-b-3",
+      "faculty_id": "f-turing-bottleneck",
+      "source": "solver",
+      "fit_score": 0.98,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-b",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    },
+    {
+      "id": "a-b-4",
+      "section_id": "s-b-4",
+      "faculty_id": "f-turing-bottleneck",
+      "source": "solver",
+      "fit_score": 0.98,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-b",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    }
+  ]
+}

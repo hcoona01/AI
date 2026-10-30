@@ -1,0 +1,79 @@
+{
+  "name": "boundary_zero_capacity",
+  "expected_outcome": {
+    "feasible": false,
+    "reason": "Infeasible due to HC-07: Resource has capacity (1) that fails to accommodate section expected enrollment (25), alongside empty term verification."
+  },
+  "scenario": {
+    "faculty": [
+      {
+        "id": "f-zero",
+        "name": "Dr. Zero",
+        "email": "zero@univ.edu",
+        "rank": "Professor",
+        "expertise": [],
+        "max_weekly_load_hours": 12.0,
+        "max_courses": 3,
+        "min_courses": 1,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": []
+      }
+    ],
+    "courses": [
+      {
+        "id": "c-zero",
+        "code": "CS999",
+        "title": "Zero Cap Test",
+        "description": "",
+        "credits": 3,
+        "contact_hours": 3.0,
+        "level": "undergraduate",
+        "required_tags": [],
+        "min_proficiency": 1,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-ZERO"
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": "s-zero-1",
+        "course_id": "c-zero",
+        "term": "Fall 2026",
+        "section_cap": 30,
+        "expected_size": 25,
+        "size_p10": 15,
+        "size_p50": 25,
+        "size_p90": 30,
+        "time_slot_id": null
+      }
+    ],
+    "resources": [
+      {
+        "id": "ROOM-ZERO",
+        "type": "room",
+        "capacity": 1,
+        "unavailable_slots": []
+      }
+    ],
+    "timeslots": [],
+    "previous_assignments": []
+  },
+  "assignments": [
+    {
+      "id": "a-zero-1",
+      "section_id": "s-zero-1",
+      "faculty_id": "f-zero",
+      "source": "solver",
+      "fit_score": 0.9,
+      "fit_breakdown": {},
+      "rule_ids_satisfied": [],
+      "rule_ids_violated": [],
+      "run_id": "run-zero",
+      "created_at": "2026-10-30T11:03:07.970174Z"
+    }
+  ]
+}

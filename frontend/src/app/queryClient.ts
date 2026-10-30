@@ -1,2 +1,11 @@
-// TanStack React Query client instance with default cache settings
-export const queryClient = null;
+import { QueryClient } from '@tanstack/react-query';
+
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 30, // 30 seconds
+    },
+  },
+});

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ROOM-101",
+    "type": "room",
+    "capacity": 60,
+    "unavailable_slots": []
+  },
+  {
+    "id": "ROOM-102",
+    "type": "room",
+    "capacity": 45,
+    "unavailable_slots": []
+  },
+  {
+    "id": "ROOM-103",
+    "type": "room",
+    "capacity": 80,
+    "unavailable_slots": []
+  },
+  {
+    "id": "ROOM-201",
+    "type": "room",
+    "capacity": 50,
+    "unavailable_slots": []
+  },
+  {
+    "id": "ROOM-202",
+    "type": "room",
+    "capacity": 100,
+    "unavailable_slots": []
+  },
+  {
+    "id": "AUD-MAIN",
+    "type": "room",
+    "capacity": 150,
+    "unavailable_slots": []
+  },
+  {
+    "id": "LAB-AI-1",
+    "type": "lab",
+    "capacity": 35,
+    "unavailable_slots": []
+  },
+  {
+    "id": "LAB-SYS-2",
+    "type": "lab",
+    "capacity": 30,
+    "unavailable_slots": []
+  },
+  {
+    "id": "LAB-NET-3",
+    "type": "lab",
+    "capacity": 40,
+    "unavailable_slots": []
+  },
+  {
+    "id": "LAB-MEDIA-4",
+    "type": "lab",
+    "capacity": 30,
+    "unavailable_slots": []
+  }
+]

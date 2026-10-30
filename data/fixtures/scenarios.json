@@ -1,1 +1,2250 @@
-[] /* Named boundary evaluation scenarios for solver benchmarking */
+{
+  "balanced_baseline": {
+    "name": "balanced_baseline",
+    "expected_outcome": {
+      "feasible": true,
+      "reason": "Standard balanced academic scenario with adequate faculty capacity, clean expertise matches, and non-conflicting time slots."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-01",
+          "name": "Dr. Alan Turing",
+          "email": "alan.turing@university.edu",
+          "rank": "Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            },
+            {
+              "tag": "Theory of Computation",
+              "proficiency": 4
+            },
+            {
+              "tag": "Artificial Intelligence",
+              "proficiency": 5
+            },
+            {
+              "tag": "Cybersecurity",
+              "proficiency": 2
+            },
+            {
+              "tag": "Robotics",
+              "proficiency": 2
+            },
+            {
+              "tag": "Operating Systems",
+              "proficiency": 3
+            },
+            {
+              "tag": "Programming Languages",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 9.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [
+            "TS-FRI-1300"
+          ],
+          "leave_terms": [],
+          "preferred_course_ids": [
+            "c-cs102",
+            "c-cs201"
+          ]
+        },
+        {
+          "id": "f-02",
+          "name": "Dr. Ada Lovelace",
+          "email": "ada.lovelace@university.edu",
+          "rank": "Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            },
+            {
+              "tag": "Programming Languages",
+              "proficiency": 5
+            },
+            {
+              "tag": "Data Structures",
+              "proficiency": 4
+            },
+            {
+              "tag": "Distributed Systems",
+              "proficiency": 2
+            },
+            {
+              "tag": "Software Engineering",
+              "proficiency": 2
+            },
+            {
+              "tag": "Theory of Computation",
+              "proficiency": 3
+            }
+          ],
+          "max_weekly_load_hours": 9.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": [
+            "c-cs340",
+            "c-cs240",
+            "c-cs310"
+          ]
+        },
+        {
+          "id": "f-03",
+          "name": "Dr. Grace Hopper",
+          "email": "grace.hopper@university.edu",
+          "rank": "Professor",
+          "expertise": [
+            {
+              "tag": "Programming Languages",
+              "proficiency": 5
+            },
+            {
+              "tag": "Operating Systems",
+              "proficiency": 4
+            },
+            {
+              "tag": "Software Engineering",
+              "proficiency": 4
+            },
+            {
+              "tag": "Theory of Computation",
+              "proficiency": 3
+            },
+            {
+              "tag": "Database Systems",
+              "proficiency": 3
+            },
+            {
+              "tag": "Machine Learning",
+              "proficiency": 2
+            }
+          ],
+          "max_weekly_load_hours": 9.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [
+            "TS-FRI-1430"
+          ],
+          "leave_terms": [],
+          "preferred_course_ids": [
+            "c-cs570",
+            "c-ds301",
+            "c-cs220",
+            "c-cs520"
+          ]
+        },
+        {
+          "id": "f-04",
+          "name": "Dr. Donald Knuth",
+          "email": "donald.knuth@university.edu",
+          "rank": "Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 5
+            },
+            {
+              "tag": "Data Structures",
+              "proficiency": 4
+            },
+            {
+              "tag": "Theory of Computation",
+              "proficiency": 4
+            },
+            {
+              "tag": "Operating Systems",
+              "proficiency": 3
+            },
+            {
+              "tag": "Cybersecurity",
+              "proficiency": 2
+            },
+            {
+              "tag": "Programming Languages",
+              "proficiency": 2
+            },
+            {
+              "tag": "Web Development",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 9.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": [
+            "c-cs520",
+            "c-cs340"
+          ]
+        },
+        {
+          "id": "f-05",
+          "name": "Dr. Barbara Liskov",
+          "email": "barbara.liskov@university.edu",
+          "rank": "Professor",
+          "expertise": [
+            {
+              "tag": "Distributed Systems",
+              "proficiency": 5
+            },
+            {
+              "tag": "Software Engineering",
+              "proficiency": 4
+            },
+            {
+              "tag": "Operating Systems",
+              "proficiency": 5
+            },
+            {
+              "tag": "Computer Architecture",
+              "proficiency": 3
+            },
+            {
+              "tag": "Deep Learning",
+              "proficiency": 2
+            },
+            {
+              "tag": "Cloud Computing",
+              "proficiency": 2
+            },
+            {
+              "tag": "Programming Languages",
+              "proficiency": 5
+            },
+            {
+              "tag": "Data Science",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 9.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [
+            "TS-FRI-1300"
+          ],
+          "leave_terms": [],
+          "preferred_course_ids": [
+            "c-cs320",
+            "c-cs250",
+            "c-cs570",
+            "c-cs520"
+          ]
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-cs101",
+          "code": "CS101",
+          "title": "Introduction to Computer Science",
+          "description": "Comprehensive curriculum for Introduction to Computer Science.",
+          "credits": 4,
+          "contact_hours": 4.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Algorithms",
+            "Programming Languages"
+          ],
+          "min_proficiency": 2,
+          "is_lab": false,
+          "required_resource_ids": [
+            "ROOM-202"
+          ]
+        },
+        {
+          "id": "c-cs102",
+          "code": "CS102",
+          "title": "Data Structures Fundamentals",
+          "description": "Comprehensive curriculum for Data Structures Fundamentals.",
+          "credits": 4,
+          "contact_hours": 4.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Data Structures",
+            "Algorithms"
+          ],
+          "min_proficiency": 2,
+          "is_lab": false,
+          "required_resource_ids": [
+            "ROOM-201"
+          ]
+        },
+        {
+          "id": "c-cs105",
+          "code": "CS105",
+          "title": "Discrete Mathematics for Computing",
+          "description": "Comprehensive curriculum for Discrete Mathematics for Computing.",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Theory of Computation"
+          ],
+          "min_proficiency": 2,
+          "is_lab": false,
+          "required_resource_ids": [
+            "ROOM-101"
+          ]
+        },
+        {
+          "id": "c-cs108",
+          "code": "CS108",
+          "title": "Introduction to Web Development",
+          "description": "Comprehensive curriculum for Introduction to Web Development.",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Web Development"
+          ],
+          "min_proficiency": 2,
+          "is_lab": false,
+          "required_resource_ids": [
+            "ROOM-102"
+          ]
+        },
+        {
+          "id": "c-cs150",
+          "code": "CS150",
+          "title": "Python Programming Workshop",
+          "description": "Comprehensive curriculum for Python Programming Workshop.",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Programming Languages",
+            "Data Science"
+          ],
+          "min_proficiency": 2,
+          "is_lab": false,
+          "required_resource_ids": [
+            "ROOM-103"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "SEC-FA26-CS580-01",
+          "course_id": "c-cs101",
+          "term": "Fall 2026",
+          "section_cap": 50,
+          "expected_size": 30,
+          "size_p10": 22,
+          "size_p50": 30,
+          "size_p90": 37,
+          "time_slot_id": "TS-MON-0900"
+        },
+        {
+          "id": "SEC-FA26-CS315-02",
+          "course_id": "c-cs102",
+          "term": "Fall 2026",
+          "section_cap": 50,
+          "expected_size": 26,
+          "size_p10": 19,
+          "size_p50": 26,
+          "size_p90": 32,
+          "time_slot_id": "TS-MON-1030"
+        },
+        {
+          "id": "SEC-FA26-CS301-03",
+          "course_id": "c-cs105",
+          "term": "Fall 2026",
+          "section_cap": 60,
+          "expected_size": 43,
+          "size_p10": 32,
+          "size_p50": 43,
+          "size_p90": 53,
+          "time_slot_id": "TS-MON-1300"
+        },
+        {
+          "id": "SEC-FA26-CS570-04",
+          "course_id": "c-cs108",
+          "term": "Fall 2026",
+          "section_cap": 60,
+          "expected_size": 40,
+          "size_p10": 30,
+          "size_p50": 40,
+          "size_p90": 50,
+          "time_slot_id": "TS-MON-1430"
+        },
+        {
+          "id": "SEC-FA26-CS501-05",
+          "course_id": "c-cs150",
+          "term": "Fall 2026",
+          "section_cap": 60,
+          "expected_size": 46,
+          "size_p10": 34,
+          "size_p50": 46,
+          "size_p90": 57,
+          "time_slot_id": "TS-TUE-0900"
+        }
+      ],
+      "resources": [
+        {
+          "id": "ROOM-101",
+          "type": "room",
+          "capacity": 60,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-102",
+          "type": "room",
+          "capacity": 45,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-103",
+          "type": "room",
+          "capacity": 80,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-201",
+          "type": "room",
+          "capacity": 50,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-202",
+          "type": "room",
+          "capacity": 100,
+          "unavailable_slots": []
+        },
+        {
+          "id": "AUD-MAIN",
+          "type": "room",
+          "capacity": 150,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-AI-1",
+          "type": "lab",
+          "capacity": 35,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-SYS-2",
+          "type": "lab",
+          "capacity": 30,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-NET-3",
+          "type": "lab",
+          "capacity": 40,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-MEDIA-4",
+          "type": "lab",
+          "capacity": 30,
+          "unavailable_slots": []
+        }
+      ],
+      "timeslots": [
+        {
+          "id": "TS-MON-0900",
+          "day": "MON",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-MON-1030",
+          "day": "MON",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-MON-1300",
+          "day": "MON",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-MON-1430",
+          "day": "MON",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-TUE-0900",
+          "day": "TUE",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-TUE-1030",
+          "day": "TUE",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-TUE-1300",
+          "day": "TUE",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-TUE-1430",
+          "day": "TUE",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-WED-0900",
+          "day": "WED",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-WED-1030",
+          "day": "WED",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-WED-1300",
+          "day": "WED",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-WED-1430",
+          "day": "WED",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-THU-0900",
+          "day": "THU",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-THU-1030",
+          "day": "THU",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-THU-1300",
+          "day": "THU",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-THU-1430",
+          "day": "THU",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-FRI-0900",
+          "day": "FRI",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-FRI-1030",
+          "day": "FRI",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-FRI-1300",
+          "day": "FRI",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-FRI-1430",
+          "day": "FRI",
+          "start": "14:30",
+          "end": "16:00"
+        }
+      ],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "asgn-base-0",
+        "section_id": "SEC-FA26-CS580-01",
+        "faculty_id": "f-01",
+        "source": "solver",
+        "fit_score": 0.92,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-baseline",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "asgn-base-1",
+        "section_id": "SEC-FA26-CS315-02",
+        "faculty_id": "f-02",
+        "source": "solver",
+        "fit_score": 0.92,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-baseline",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "asgn-base-2",
+        "section_id": "SEC-FA26-CS301-03",
+        "faculty_id": "f-03",
+        "source": "solver",
+        "fit_score": 0.92,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-baseline",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "asgn-base-3",
+        "section_id": "SEC-FA26-CS570-04",
+        "faculty_id": "f-04",
+        "source": "solver",
+        "fit_score": 0.92,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-baseline",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "asgn-base-4",
+        "section_id": "SEC-FA26-CS501-05",
+        "faculty_id": "f-05",
+        "source": "solver",
+        "fit_score": 0.92,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-baseline",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "tight_capacity": {
+    "name": "tight_capacity",
+    "expected_outcome": {
+      "feasible": true,
+      "reason": "Feasible but tightly constrained; total contact hours required (~98% capacity) leave minimal slack for load balancing."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-tight-0",
+          "name": "Dr. Tight 0",
+          "email": "tight0@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-tight-1",
+          "name": "Dr. Tight 1",
+          "email": "tight1@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-tight-2",
+          "name": "Dr. Tight 2",
+          "email": "tight2@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-tight-4",
+          "code": "CS400",
+          "title": "Tight 4h Course",
+          "description": "",
+          "credits": 4,
+          "contact_hours": 4.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Algorithms"
+          ],
+          "min_proficiency": 3,
+          "is_lab": false,
+          "required_resource_ids": []
+        },
+        {
+          "id": "c-tight-3",
+          "code": "CS300",
+          "title": "Tight 3h Course",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Algorithms"
+          ],
+          "min_proficiency": 3,
+          "is_lab": false,
+          "required_resource_ids": []
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-tight-0-0",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-MON-0900"
+        },
+        {
+          "id": "s-tight-0-1",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-MON-1030"
+        },
+        {
+          "id": "s-tight-0-2",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-MON-1300"
+        },
+        {
+          "id": "s-tight-1-0",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-MON-1430"
+        },
+        {
+          "id": "s-tight-1-1",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-TUE-0900"
+        },
+        {
+          "id": "s-tight-1-2",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-TUE-1030"
+        },
+        {
+          "id": "s-tight-2-0",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-TUE-1300"
+        },
+        {
+          "id": "s-tight-2-1",
+          "course_id": "c-tight-4",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-TUE-1430"
+        },
+        {
+          "id": "s-tight-2-2",
+          "course_id": "c-tight-3",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-WED-0900"
+        }
+      ],
+      "resources": [
+        {
+          "id": "ROOM-101",
+          "type": "room",
+          "capacity": 60,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-102",
+          "type": "room",
+          "capacity": 45,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-103",
+          "type": "room",
+          "capacity": 80,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-201",
+          "type": "room",
+          "capacity": 50,
+          "unavailable_slots": []
+        },
+        {
+          "id": "ROOM-202",
+          "type": "room",
+          "capacity": 100,
+          "unavailable_slots": []
+        },
+        {
+          "id": "AUD-MAIN",
+          "type": "room",
+          "capacity": 150,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-AI-1",
+          "type": "lab",
+          "capacity": 35,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-SYS-2",
+          "type": "lab",
+          "capacity": 30,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-NET-3",
+          "type": "lab",
+          "capacity": 40,
+          "unavailable_slots": []
+        },
+        {
+          "id": "LAB-MEDIA-4",
+          "type": "lab",
+          "capacity": 30,
+          "unavailable_slots": []
+        }
+      ],
+      "timeslots": [
+        {
+          "id": "TS-MON-0900",
+          "day": "MON",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-MON-1030",
+          "day": "MON",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-MON-1300",
+          "day": "MON",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-MON-1430",
+          "day": "MON",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-TUE-0900",
+          "day": "TUE",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-TUE-1030",
+          "day": "TUE",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-TUE-1300",
+          "day": "TUE",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-TUE-1430",
+          "day": "TUE",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-WED-0900",
+          "day": "WED",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-WED-1030",
+          "day": "WED",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-WED-1300",
+          "day": "WED",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-WED-1430",
+          "day": "WED",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-THU-0900",
+          "day": "THU",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-THU-1030",
+          "day": "THU",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-THU-1300",
+          "day": "THU",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-THU-1430",
+          "day": "THU",
+          "start": "14:30",
+          "end": "16:00"
+        },
+        {
+          "id": "TS-FRI-0900",
+          "day": "FRI",
+          "start": "09:00",
+          "end": "10:30"
+        },
+        {
+          "id": "TS-FRI-1030",
+          "day": "FRI",
+          "start": "10:30",
+          "end": "12:00"
+        },
+        {
+          "id": "TS-FRI-1300",
+          "day": "FRI",
+          "start": "13:00",
+          "end": "14:30"
+        },
+        {
+          "id": "TS-FRI-1430",
+          "day": "FRI",
+          "start": "14:30",
+          "end": "16:00"
+        }
+      ],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-tight-0-0",
+        "section_id": "s-tight-0-0",
+        "faculty_id": "f-tight-0",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-0-1",
+        "section_id": "s-tight-0-1",
+        "faculty_id": "f-tight-0",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-0-2",
+        "section_id": "s-tight-0-2",
+        "faculty_id": "f-tight-0",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-1-0",
+        "section_id": "s-tight-1-0",
+        "faculty_id": "f-tight-1",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-1-1",
+        "section_id": "s-tight-1-1",
+        "faculty_id": "f-tight-1",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-1-2",
+        "section_id": "s-tight-1-2",
+        "faculty_id": "f-tight-1",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-2-0",
+        "section_id": "s-tight-2-0",
+        "faculty_id": "f-tight-2",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-2-1",
+        "section_id": "s-tight-2-1",
+        "faculty_id": "f-tight-2",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-tight-2-2",
+        "section_id": "s-tight-2-2",
+        "faculty_id": "f-tight-2",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-tight",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "infeasible_expertise": {
+    "name": "infeasible_expertise",
+    "expected_outcome": {
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-novice-1",
+          "name": "Dr. Web Specialist",
+          "email": "web@univ.edu",
+          "rank": "Assistant Professor",
+          "expertise": [
+            {
+              "tag": "Web Development",
+              "proficiency": 3
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 2,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-quantum",
+          "code": "CS699",
+          "title": "Exotic Quantum Algorithms",
+          "description": "",
+          "credits": 4,
+          "contact_hours": 4.0,
+          "level": "graduate",
+          "required_tags": [
+            "Quantum Algorithms"
+          ],
+          "min_proficiency": 5,
+          "is_lab": false,
+          "required_resource_ids": []
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-quantum-1",
+          "course_id": "c-quantum",
+          "term": "Fall 2026",
+          "section_cap": 25,
+          "expected_size": 15,
+          "size_p10": 10,
+          "size_p50": 15,
+          "size_p90": 20,
+          "time_slot_id": null
+        }
+      ],
+      "resources": [],
+      "timeslots": [],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-quantum-1",
+        "section_id": "s-quantum-1",
+        "faculty_id": "f-novice-1",
+        "source": "solver",
+        "fit_score": 0.1,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-quantum",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "leave_heavy": {
+    "name": "leave_heavy",
+    "expected_outcome": {
+      "feasible": false,
+      "reason": "Infeasible due to HC-04: 30% of faculty members are on leave in Fall 2026, causing direct HC-04 sabbatical violations upon assignment."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-leave-0",
+          "name": "Dr. LeaveFaculty 0",
+          "email": "leave0@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [
+            "Fall 2026"
+          ],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-1",
+          "name": "Dr. LeaveFaculty 1",
+          "email": "leave1@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [
+            "Fall 2026"
+          ],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-2",
+          "name": "Dr. LeaveFaculty 2",
+          "email": "leave2@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [
+            "Fall 2026"
+          ],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-3",
+          "name": "Dr. LeaveFaculty 3",
+          "email": "leave3@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-4",
+          "name": "Dr. LeaveFaculty 4",
+          "email": "leave4@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-5",
+          "name": "Dr. LeaveFaculty 5",
+          "email": "leave5@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-6",
+          "name": "Dr. LeaveFaculty 6",
+          "email": "leave6@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-7",
+          "name": "Dr. LeaveFaculty 7",
+          "email": "leave7@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-8",
+          "name": "Dr. LeaveFaculty 8",
+          "email": "leave8@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        },
+        {
+          "id": "f-leave-9",
+          "name": "Dr. LeaveFaculty 9",
+          "email": "leave9@univ.edu",
+          "rank": "Associate Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 4
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-leave-101",
+          "code": "CS101",
+          "title": "Intro CS",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Algorithms"
+          ],
+          "min_proficiency": 3,
+          "is_lab": false,
+          "required_resource_ids": []
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-leave-0",
+          "course_id": "c-leave-101",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-leave-1",
+          "course_id": "c-leave-101",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-leave-2",
+          "course_id": "c-leave-101",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": null
+        }
+      ],
+      "resources": [],
+      "timeslots": [],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-leave-0",
+        "section_id": "s-leave-0",
+        "faculty_id": "f-leave-0",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-leave",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-leave-1",
+        "section_id": "s-leave-1",
+        "faculty_id": "f-leave-1",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-leave",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-leave-2",
+        "section_id": "s-leave-2",
+        "faculty_id": "f-leave-2",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-leave",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "single_expert_bottleneck": {
+    "name": "single_expert_bottleneck",
+    "expected_outcome": {
+      "feasible": false,
+      "reason": "Infeasible due to HC-02 and HC-05: Single expert is the only qualified instructor for 5 distinct required courses, violating max load (15h > 12h) and max preparations (5 > 2)."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-turing-bottleneck",
+          "name": "Dr. Alan Turing",
+          "email": "turing.bottleneck@univ.edu",
+          "rank": "Professor",
+          "expertise": [
+            {
+              "tag": "Advanced Cryptography",
+              "proficiency": 5
+            },
+            {
+              "tag": "Quantum Complexity",
+              "proficiency": 5
+            },
+            {
+              "tag": "Formal Verification",
+              "proficiency": 5
+            },
+            {
+              "tag": "Distributed Consensus",
+              "proficiency": 5
+            },
+            {
+              "tag": "Neural Compilers",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-b-0",
+          "code": "CS800",
+          "title": "Bottleneck Course 0",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "graduate",
+          "required_tags": [
+            "Advanced Cryptography"
+          ],
+          "min_proficiency": 5,
+          "is_lab": false,
+          "required_resource_ids": []
+        },
+        {
+          "id": "c-b-1",
+          "code": "CS801",
+          "title": "Bottleneck Course 1",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "graduate",
+          "required_tags": [
+            "Quantum Complexity"
+          ],
+          "min_proficiency": 5,
+          "is_lab": false,
+          "required_resource_ids": []
+        },
+        {
+          "id": "c-b-2",
+          "code": "CS802",
+          "title": "Bottleneck Course 2",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "graduate",
+          "required_tags": [
+            "Formal Verification"
+          ],
+          "min_proficiency": 5,
+          "is_lab": false,
+          "required_resource_ids": []
+        },
+        {
+          "id": "c-b-3",
+          "code": "CS803",
+          "title": "Bottleneck Course 3",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "graduate",
+          "required_tags": [
+            "Distributed Consensus"
+          ],
+          "min_proficiency": 5,
+          "is_lab": false,
+          "required_resource_ids": []
+        },
+        {
+          "id": "c-b-4",
+          "code": "CS804",
+          "title": "Bottleneck Course 4",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "graduate",
+          "required_tags": [
+            "Neural Compilers"
+          ],
+          "min_proficiency": 5,
+          "is_lab": false,
+          "required_resource_ids": []
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-b-0",
+          "course_id": "c-b-0",
+          "term": "Fall 2026",
+          "section_cap": 30,
+          "expected_size": 20,
+          "size_p10": 10,
+          "size_p50": 20,
+          "size_p90": 25,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-b-1",
+          "course_id": "c-b-1",
+          "term": "Fall 2026",
+          "section_cap": 30,
+          "expected_size": 20,
+          "size_p10": 10,
+          "size_p50": 20,
+          "size_p90": 25,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-b-2",
+          "course_id": "c-b-2",
+          "term": "Fall 2026",
+          "section_cap": 30,
+          "expected_size": 20,
+          "size_p10": 10,
+          "size_p50": 20,
+          "size_p90": 25,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-b-3",
+          "course_id": "c-b-3",
+          "term": "Fall 2026",
+          "section_cap": 30,
+          "expected_size": 20,
+          "size_p10": 10,
+          "size_p50": 20,
+          "size_p90": 25,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-b-4",
+          "course_id": "c-b-4",
+          "term": "Fall 2026",
+          "section_cap": 30,
+          "expected_size": 20,
+          "size_p10": 10,
+          "size_p50": 20,
+          "size_p90": 25,
+          "time_slot_id": null
+        }
+      ],
+      "resources": [],
+      "timeslots": [],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-b-0",
+        "section_id": "s-b-0",
+        "faculty_id": "f-turing-bottleneck",
+        "source": "solver",
+        "fit_score": 0.98,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-b",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-b-1",
+        "section_id": "s-b-1",
+        "faculty_id": "f-turing-bottleneck",
+        "source": "solver",
+        "fit_score": 0.98,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-b",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-b-2",
+        "section_id": "s-b-2",
+        "faculty_id": "f-turing-bottleneck",
+        "source": "solver",
+        "fit_score": 0.98,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-b",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-b-3",
+        "section_id": "s-b-3",
+        "faculty_id": "f-turing-bottleneck",
+        "source": "solver",
+        "fit_score": 0.98,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-b",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-b-4",
+        "section_id": "s-b-4",
+        "faculty_id": "f-turing-bottleneck",
+        "source": "solver",
+        "fit_score": 0.98,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-b",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "lab_resource_shortage": {
+    "name": "lab_resource_shortage",
+    "expected_outcome": {
+      "feasible": false,
+      "reason": "Infeasible due to HC-07: Specialized lab facility capacity (15) cannot accommodate section expected enrollment (40)."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-dummy",
+          "name": "Dr. Lab Instructor",
+          "email": "lab@univ.edu",
+          "rank": "Lecturer",
+          "expertise": [],
+          "max_weekly_load_hours": 15.0,
+          "max_courses": 4,
+          "min_courses": 1,
+          "max_preparations": 3,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-huge-lab",
+          "code": "CS210L",
+          "title": "Heavy Lab Course",
+          "description": "",
+          "credits": 4,
+          "contact_hours": 4.0,
+          "level": "undergraduate",
+          "required_tags": [],
+          "min_proficiency": 1,
+          "is_lab": true,
+          "required_resource_ids": [
+            "LAB-TINY"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-huge-lab-1",
+          "course_id": "c-huge-lab",
+          "term": "Fall 2026",
+          "section_cap": 50,
+          "expected_size": 40,
+          "size_p10": 30,
+          "size_p50": 40,
+          "size_p90": 48,
+          "time_slot_id": null
+        }
+      ],
+      "resources": [
+        {
+          "id": "LAB-TINY",
+          "type": "lab",
+          "capacity": 15,
+          "unavailable_slots": []
+        }
+      ],
+      "timeslots": [],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-lab-1",
+        "section_id": "s-huge-lab-1",
+        "faculty_id": "f-dummy",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-lab",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "time_clash_dense": {
+    "name": "time_clash_dense",
+    "expected_outcome": {
+      "feasible": false,
+      "reason": "Infeasible due to HC-03: Two course sections assigned to the same instructor share the exact same time slot TS-CLASH."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-clash",
+          "name": "Dr. Split Identity",
+          "email": "split@univ.edu",
+          "rank": "Professor",
+          "expertise": [],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-clash-1",
+          "code": "CS101",
+          "title": "Course 1",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [],
+          "min_proficiency": 1,
+          "is_lab": false,
+          "required_resource_ids": []
+        },
+        {
+          "id": "c-clash-2",
+          "code": "CS102",
+          "title": "Course 2",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [],
+          "min_proficiency": 1,
+          "is_lab": false,
+          "required_resource_ids": []
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-clash-1",
+          "course_id": "c-clash-1",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-CLASH"
+        },
+        {
+          "id": "s-clash-2",
+          "course_id": "c-clash-2",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": "TS-CLASH"
+        }
+      ],
+      "resources": [],
+      "timeslots": [
+        {
+          "id": "TS-CLASH",
+          "day": "MON",
+          "start": "09:00",
+          "end": "10:30"
+        }
+      ],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-clash-1",
+        "section_id": "s-clash-1",
+        "faculty_id": "f-clash",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-clash",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-clash-2",
+        "section_id": "s-clash-2",
+        "faculty_id": "f-clash",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-clash",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "demand_spike": {
+    "name": "demand_spike",
+    "expected_outcome": {
+      "feasible": true,
+      "reason": "Feasible under P50 expected demand (40 students), but demonstrates an extreme demand spike where P90 (120 students) triples P50, testing capacity risk planning."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-spike",
+          "name": "Dr. Spike",
+          "email": "spike@univ.edu",
+          "rank": "Professor",
+          "expertise": [],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-spike",
+          "code": "CS450",
+          "title": "Spike Course",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [],
+          "min_proficiency": 1,
+          "is_lab": false,
+          "required_resource_ids": [
+            "ROOM-SPIKE"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-spike-1",
+          "course_id": "c-spike",
+          "term": "Fall 2026",
+          "section_cap": 125,
+          "expected_size": 40,
+          "size_p10": 30,
+          "size_p50": 40,
+          "size_p90": 120,
+          "time_slot_id": null
+        }
+      ],
+      "resources": [
+        {
+          "id": "ROOM-SPIKE",
+          "type": "room",
+          "capacity": 130,
+          "unavailable_slots": []
+        }
+      ],
+      "timeslots": [],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-spike-1",
+        "section_id": "s-spike-1",
+        "faculty_id": "f-spike",
+        "source": "solver",
+        "fit_score": 0.95,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-spike",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "boundary_exact_limit": {
+    "name": "boundary_exact_limit",
+    "expected_outcome": {
+      "feasible": true,
+      "reason": "Feasible on boundary: Faculty load exactly equals max_weekly_load_hours (12.0h), max_courses (3), and max_preparations (2) with zero slack."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-exact-1",
+          "name": "Dr. Precision",
+          "email": "exact@univ.edu",
+          "rank": "Professor",
+          "expertise": [
+            {
+              "tag": "Algorithms",
+              "proficiency": 5
+            }
+          ],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 3,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-exact-1",
+          "code": "CS101",
+          "title": "Exact CS1",
+          "description": "",
+          "credits": 4,
+          "contact_hours": 4.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Algorithms"
+          ],
+          "min_proficiency": 3,
+          "is_lab": false,
+          "required_resource_ids": []
+        },
+        {
+          "id": "c-exact-2",
+          "code": "CS102",
+          "title": "Exact CS2",
+          "description": "",
+          "credits": 4,
+          "contact_hours": 4.0,
+          "level": "undergraduate",
+          "required_tags": [
+            "Algorithms"
+          ],
+          "min_proficiency": 3,
+          "is_lab": false,
+          "required_resource_ids": []
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-exact-1",
+          "course_id": "c-exact-1",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-exact-2",
+          "course_id": "c-exact-1",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": null
+        },
+        {
+          "id": "s-exact-3",
+          "course_id": "c-exact-2",
+          "term": "Fall 2026",
+          "section_cap": 40,
+          "expected_size": 30,
+          "size_p10": 20,
+          "size_p50": 30,
+          "size_p90": 35,
+          "time_slot_id": null
+        }
+      ],
+      "resources": [],
+      "timeslots": [],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-exact-1",
+        "section_id": "s-exact-1",
+        "faculty_id": "f-exact-1",
+        "source": "solver",
+        "fit_score": 1.0,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-exact",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-exact-2",
+        "section_id": "s-exact-2",
+        "faculty_id": "f-exact-1",
+        "source": "solver",
+        "fit_score": 1.0,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-exact",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      },
+      {
+        "id": "a-exact-3",
+        "section_id": "s-exact-3",
+        "faculty_id": "f-exact-1",
+        "source": "solver",
+        "fit_score": 1.0,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-exact",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  },
+  "boundary_zero_capacity": {
+    "name": "boundary_zero_capacity",
+    "expected_outcome": {
+      "feasible": false,
+      "reason": "Infeasible due to HC-07: Resource has capacity (1) that fails to accommodate section expected enrollment (25), alongside empty term verification."
+    },
+    "scenario": {
+      "faculty": [
+        {
+          "id": "f-zero",
+          "name": "Dr. Zero",
+          "email": "zero@univ.edu",
+          "rank": "Professor",
+          "expertise": [],
+          "max_weekly_load_hours": 12.0,
+          "max_courses": 3,
+          "min_courses": 1,
+          "max_preparations": 2,
+          "unavailable_slots": [],
+          "leave_terms": [],
+          "preferred_course_ids": []
+        }
+      ],
+      "courses": [
+        {
+          "id": "c-zero",
+          "code": "CS999",
+          "title": "Zero Cap Test",
+          "description": "",
+          "credits": 3,
+          "contact_hours": 3.0,
+          "level": "undergraduate",
+          "required_tags": [],
+          "min_proficiency": 1,
+          "is_lab": false,
+          "required_resource_ids": [
+            "ROOM-ZERO"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "s-zero-1",
+          "course_id": "c-zero",
+          "term": "Fall 2026",
+          "section_cap": 30,
+          "expected_size": 25,
+          "size_p10": 15,
+          "size_p50": 25,
+          "size_p90": 30,
+          "time_slot_id": null
+        }
+      ],
+      "resources": [
+        {
+          "id": "ROOM-ZERO",
+          "type": "room",
+          "capacity": 1,
+          "unavailable_slots": []
+        }
+      ],
+      "timeslots": [],
+      "previous_assignments": []
+    },
+    "assignments": [
+      {
+        "id": "a-zero-1",
+        "section_id": "s-zero-1",
+        "faculty_id": "f-zero",
+        "source": "solver",
+        "fit_score": 0.9,
+        "fit_breakdown": {},
+        "rule_ids_satisfied": [],
+        "rule_ids_violated": [],
+        "run_id": "run-zero",
+        "created_at": "2026-10-30T11:03:07.970174Z"
+      }
+    ]
+  }
+}

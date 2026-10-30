@@ -1,1 +1,1113 @@
-[] /* Seed faculty records with rank, target teaching loads, and expertise tags */
+[
+  {
+    "id": "f-01",
+    "name": "Dr. Alan Turing",
+    "email": "alan.turing@university.edu",
+    "rank": "Professor",
+    "expertise": [
+      {
+        "tag": "Algorithms",
+        "proficiency": 4
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 4
+      },
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 5
+      },
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 2
+      },
+      {
+        "tag": "Robotics",
+        "proficiency": 2
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 3
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 5
+      }
+    ],
+    "max_weekly_load_hours": 9.0,
+    "max_courses": 3,
+    "min_courses": 1,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1300"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs102",
+      "c-cs201"
+    ]
+  },
+  {
+    "id": "f-02",
+    "name": "Dr. Ada Lovelace",
+    "email": "ada.lovelace@university.edu",
+    "rank": "Professor",
+    "expertise": [
+      {
+        "tag": "Algorithms",
+        "proficiency": 4
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 5
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 4
+      },
+      {
+        "tag": "Distributed Systems",
+        "proficiency": 2
+      },
+      {
+        "tag": "Software Engineering",
+        "proficiency": 2
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 9.0,
+    "max_courses": 3,
+    "min_courses": 1,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs340",
+      "c-cs240",
+      "c-cs310"
+    ]
+  },
+  {
+    "id": "f-03",
+    "name": "Dr. Grace Hopper",
+    "email": "grace.hopper@university.edu",
+    "rank": "Professor",
+    "expertise": [
+      {
+        "tag": "Programming Languages",
+        "proficiency": 5
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Software Engineering",
+        "proficiency": 4
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 3
+      },
+      {
+        "tag": "Database Systems",
+        "proficiency": 3
+      },
+      {
+        "tag": "Machine Learning",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 9.0,
+    "max_courses": 3,
+    "min_courses": 1,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1430"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs570",
+      "c-ds301",
+      "c-cs220",
+      "c-cs520"
+    ]
+  },
+  {
+    "id": "f-04",
+    "name": "Dr. Donald Knuth",
+    "email": "donald.knuth@university.edu",
+    "rank": "Professor",
+    "expertise": [
+      {
+        "tag": "Algorithms",
+        "proficiency": 5
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 4
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 4
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 3
+      },
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 2
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 2
+      },
+      {
+        "tag": "Web Development",
+        "proficiency": 5
+      }
+    ],
+    "max_weekly_load_hours": 9.0,
+    "max_courses": 3,
+    "min_courses": 1,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs520",
+      "c-cs340"
+    ]
+  },
+  {
+    "id": "f-05",
+    "name": "Dr. Barbara Liskov",
+    "email": "barbara.liskov@university.edu",
+    "rank": "Professor",
+    "expertise": [
+      {
+        "tag": "Distributed Systems",
+        "proficiency": 5
+      },
+      {
+        "tag": "Software Engineering",
+        "proficiency": 4
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 5
+      },
+      {
+        "tag": "Computer Architecture",
+        "proficiency": 3
+      },
+      {
+        "tag": "Deep Learning",
+        "proficiency": 2
+      },
+      {
+        "tag": "Cloud Computing",
+        "proficiency": 2
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 5
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 5
+      }
+    ],
+    "max_weekly_load_hours": 9.0,
+    "max_courses": 3,
+    "min_courses": 1,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1300"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs320",
+      "c-cs250",
+      "c-cs570",
+      "c-cs520"
+    ]
+  },
+  {
+    "id": "f-06",
+    "name": "Dr. Edsger Dijkstra",
+    "email": "edsger.dijkstra@university.edu",
+    "rank": "Professor",
+    "expertise": [
+      {
+        "tag": "Algorithms",
+        "proficiency": 5
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 4
+      },
+      {
+        "tag": "Computer Systems",
+        "proficiency": 3
+      },
+      {
+        "tag": "Cloud Computing",
+        "proficiency": 2
+      },
+      {
+        "tag": "Computer Networks",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 9.0,
+    "max_courses": 3,
+    "min_courses": 1,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [
+      "Spring 2027"
+    ],
+    "preferred_course_ids": [
+      "c-cs370",
+      "c-cs310",
+      "c-cs590",
+      "c-cs530"
+    ]
+  },
+  {
+    "id": "f-07",
+    "name": "Dr. Shafi Goldwasser",
+    "email": "shafi.goldwasser@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 5
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 4
+      },
+      {
+        "tag": "Algorithms",
+        "proficiency": 5
+      },
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 3
+      },
+      {
+        "tag": "Computer Networks",
+        "proficiency": 3
+      },
+      {
+        "tag": "Computer Architecture",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs315",
+      "c-cs230",
+      "c-ds101"
+    ]
+  },
+  {
+    "id": "f-08",
+    "name": "Dr. Leslie Lamport",
+    "email": "leslie.lamport@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Distributed Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Algorithms",
+        "proficiency": 4
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Deep Learning",
+        "proficiency": 2
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 3
+      },
+      {
+        "tag": "Web Development",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs570",
+      "c-ds201",
+      "c-cs330",
+      "c-ds501"
+    ]
+  },
+  {
+    "id": "f-09",
+    "name": "Dr. Judea Pearl",
+    "email": "judea.pearl@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 4
+      },
+      {
+        "tag": "Machine Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 5
+      },
+      {
+        "tag": "Cloud Computing",
+        "proficiency": 3
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 2
+      },
+      {
+        "tag": "Database Systems",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs330",
+      "c-ds101"
+    ]
+  },
+  {
+    "id": "f-10",
+    "name": "Dr. Geoffrey Hinton",
+    "email": "geoffrey.hinton@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Deep Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Machine Learning",
+        "proficiency": 5
+      },
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 4
+      },
+      {
+        "tag": "Database Systems",
+        "proficiency": 2
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 2
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs102",
+      "c-cs220",
+      "c-cs510"
+    ]
+  },
+  {
+    "id": "f-11",
+    "name": "Dr. Yann LeCun",
+    "email": "yann.lecun@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Deep Learning",
+        "proficiency": 5
+      },
+      {
+        "tag": "Computer Vision",
+        "proficiency": 4
+      },
+      {
+        "tag": "Machine Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 3
+      },
+      {
+        "tag": "Computer Systems",
+        "proficiency": 2
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1430"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs580",
+      "c-ds501"
+    ]
+  },
+  {
+    "id": "f-12",
+    "name": "Dr. Fei-Fei Li",
+    "email": "fei-fei.li@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Machine Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 4
+      },
+      {
+        "tag": "Computer Vision",
+        "proficiency": 5
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 3
+      },
+      {
+        "tag": "Computer Architecture",
+        "proficiency": 2
+      },
+      {
+        "tag": "Human-Computer Interaction",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1300"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs150",
+      "c-cs380"
+    ]
+  },
+  {
+    "id": "f-13",
+    "name": "Dr. Andrew Ng",
+    "email": "andrew.ng@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Machine Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Deep Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 4
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 2
+      },
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 3
+      },
+      {
+        "tag": "Robotics",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs320",
+      "c-cs340",
+      "c-cs590",
+      "c-cs310"
+    ]
+  },
+  {
+    "id": "f-14",
+    "name": "Dr. Timnit Gebru",
+    "email": "timnit.gebru@university.edu",
+    "rank": "Associate Professor",
+    "expertise": [
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 5
+      },
+      {
+        "tag": "Human-Computer Interaction",
+        "proficiency": 4
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 5
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 2
+      },
+      {
+        "tag": "Deep Learning",
+        "proficiency": 3
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs540",
+      "c-cs570",
+      "c-cs108"
+    ]
+  },
+  {
+    "id": "f-15",
+    "name": "Dr. Yoshua Bengio",
+    "email": "yoshua.bengio@university.edu",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Deep Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Machine Learning",
+        "proficiency": 4
+      },
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 5
+      },
+      {
+        "tag": "Computer Architecture",
+        "proficiency": 2
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 2
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1300"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs550",
+      "c-cs260"
+    ]
+  },
+  {
+    "id": "f-16",
+    "name": "Dr. Silvio Micali",
+    "email": "silvio.micali@university.edu",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 4
+      },
+      {
+        "tag": "Algorithms",
+        "proficiency": 5
+      },
+      {
+        "tag": "Theory of Computation",
+        "proficiency": 4
+      },
+      {
+        "tag": "Computer Systems",
+        "proficiency": 2
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 2
+      },
+      {
+        "tag": "Robotics",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs580",
+      "c-cs310",
+      "c-cs530"
+    ]
+  },
+  {
+    "id": "f-17",
+    "name": "Dr. Radia Perlman",
+    "email": "radia.perlman@university.edu",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Computer Networks",
+        "proficiency": 4
+      },
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 5
+      },
+      {
+        "tag": "Distributed Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 3
+      },
+      {
+        "tag": "Software Engineering",
+        "proficiency": 3
+      },
+      {
+        "tag": "Human-Computer Interaction",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1300"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-ds501",
+      "c-cs590",
+      "c-cs240",
+      "c-cs301"
+    ]
+  },
+  {
+    "id": "f-18",
+    "name": "Dr. Ken Thompson",
+    "email": "ken.thompson@university.edu",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Operating Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Computer Systems",
+        "proficiency": 5
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 4
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 2
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 2
+      },
+      {
+        "tag": "Software Engineering",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1300"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs150",
+      "c-se301"
+    ]
+  },
+  {
+    "id": "f-19",
+    "name": "Dr. Dennis Ritchie",
+    "email": "dennis.ritchie@university.edu",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Computer Systems",
+        "proficiency": 5
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Programming Languages",
+        "proficiency": 4
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 3
+      },
+      {
+        "tag": "Database Systems",
+        "proficiency": 3
+      },
+      {
+        "tag": "Computer Networks",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [
+      "TS-FRI-1430"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs370",
+      "c-cs320",
+      "c-cs330",
+      "c-cs530"
+    ]
+  },
+  {
+    "id": "f-20",
+    "name": "Dr. Frances Allen",
+    "email": "frances.allen@university.edu",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Programming Languages",
+        "proficiency": 5
+      },
+      {
+        "tag": "Computer Architecture",
+        "proficiency": 5
+      },
+      {
+        "tag": "Compilers",
+        "proficiency": 4
+      },
+      {
+        "tag": "Algorithms",
+        "proficiency": 2
+      },
+      {
+        "tag": "Human-Computer Interaction",
+        "proficiency": 2
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs501",
+      "c-cs150"
+    ]
+  },
+  {
+    "id": "f-21",
+    "name": "Dr. Margaret Hamilton",
+    "email": "margaret.hamilton@university.edu",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Software Engineering",
+        "proficiency": 5
+      },
+      {
+        "tag": "Distributed Systems",
+        "proficiency": 5
+      },
+      {
+        "tag": "Computer Systems",
+        "proficiency": 4
+      },
+      {
+        "tag": "Human-Computer Interaction",
+        "proficiency": 2
+      },
+      {
+        "tag": "Web Development",
+        "proficiency": 3
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 2,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs330",
+      "c-cs220"
+    ]
+  },
+  {
+    "id": "f-22",
+    "name": "Dr. Vint Cerf",
+    "email": "vint.cerf@university.edu",
+    "rank": "Lecturer",
+    "expertise": [
+      {
+        "tag": "Computer Networks",
+        "proficiency": 4
+      },
+      {
+        "tag": "Web Development",
+        "proficiency": 5
+      },
+      {
+        "tag": "Cloud Computing",
+        "proficiency": 5
+      },
+      {
+        "tag": "Machine Learning",
+        "proficiency": 3
+      },
+      {
+        "tag": "Computer Architecture",
+        "proficiency": 3
+      },
+      {
+        "tag": "Operating Systems",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 4,
+    "min_courses": 3,
+    "max_preparations": 3,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs201",
+      "c-cs550"
+    ]
+  },
+  {
+    "id": "f-23",
+    "name": "Dr. Tim Berners-Lee",
+    "email": "tim.berners-lee@university.edu",
+    "rank": "Lecturer",
+    "expertise": [
+      {
+        "tag": "Web Development",
+        "proficiency": 4
+      },
+      {
+        "tag": "Computer Networks",
+        "proficiency": 4
+      },
+      {
+        "tag": "Database Systems",
+        "proficiency": 5
+      },
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 3
+      },
+      {
+        "tag": "Software Engineering",
+        "proficiency": 3
+      },
+      {
+        "tag": "Computer Systems",
+        "proficiency": 2
+      }
+    ],
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 4,
+    "min_courses": 3,
+    "max_preparations": 3,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs150",
+      "c-cs240"
+    ]
+  },
+  {
+    "id": "f-24",
+    "name": "Dr. John McCarthy",
+    "email": "john.mccarthy@university.edu",
+    "rank": "Lecturer",
+    "expertise": [
+      {
+        "tag": "Programming Languages",
+        "proficiency": 5
+      },
+      {
+        "tag": "Artificial Intelligence",
+        "proficiency": 4
+      },
+      {
+        "tag": "Robotics",
+        "proficiency": 5
+      },
+      {
+        "tag": "Database Systems",
+        "proficiency": 3
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 2
+      },
+      {
+        "tag": "Data Science",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 4,
+    "min_courses": 3,
+    "max_preparations": 3,
+    "unavailable_slots": [
+      "TS-FRI-1430"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs320",
+      "c-cs210"
+    ]
+  },
+  {
+    "id": "f-25",
+    "name": "Dr. Claude Shannon",
+    "email": "claude.shannon@university.edu",
+    "rank": "Lecturer",
+    "expertise": [
+      {
+        "tag": "Computer Networks",
+        "proficiency": 4
+      },
+      {
+        "tag": "Algorithms",
+        "proficiency": 4
+      },
+      {
+        "tag": "Cybersecurity",
+        "proficiency": 4
+      },
+      {
+        "tag": "Machine Learning",
+        "proficiency": 2
+      },
+      {
+        "tag": "Human-Computer Interaction",
+        "proficiency": 3
+      },
+      {
+        "tag": "Data Structures",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 4,
+    "min_courses": 3,
+    "max_preparations": 3,
+    "unavailable_slots": [
+      "TS-FRI-1300"
+    ],
+    "leave_terms": [],
+    "preferred_course_ids": [
+      "c-cs320",
+      "c-cs340",
+      "c-cs250",
+      "c-cs210"
+    ]
+  }
+]

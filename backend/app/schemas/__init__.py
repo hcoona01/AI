@@ -1,5 +1,13 @@
 from app.schemas.assignment import Assignment
 from app.schemas.audit import AuditLogEntry
+from app.schemas.auth import (
+    MessageResponse,
+    OTPRequest,
+    OTPResponse,
+    OTPVerifyRequest,
+    RefreshTokenRequest,
+    TokenResponse,
+)
 from app.schemas.common import (
     AssignmentSource,
     CourseLevel,
@@ -38,12 +46,18 @@ __all__ = [
     "Faculty",
     "FacultyExpertise",
     "FacultyRank",
+    "MessageResponse",
+    "OTPRequest",
+    "OTPResponse",
+    "OTPVerifyRequest",
     "Override",
+    "RefreshTokenRequest",
     "Resource",
     "ResourceType",
     "RuleType",
     "Section",
     "TimeSlot",
+    "TokenResponse",
     "User",
     "UserRole",
     "ValidationRequest",

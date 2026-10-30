@@ -21,9 +21,10 @@ class Settings(BaseSettings):
 
     # Security & Auth
     JWT_SECRET: str = "super-secret-development-key-change-in-production-min32chars"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 480
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 15
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     OTP_DEV_MODE: bool = True
-    OTP_CODE_TTL_MINUTES: int = 10
+    OTP_CODE_TTL_MINUTES: int = 5
 
     # Email / SMTP
     SMTP_HOST: str = "localhost"

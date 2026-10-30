@@ -5,7 +5,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.v1 import api_router
+from app.api.v1 import api_router, auth, me
 from app.core.config import settings
 from app.core.errors import register_error_handlers
 from app.core.logging import setup_logging
@@ -54,6 +54,10 @@ register_error_handlers(app)
 
 # Include API v1 router
 app.include_router(api_router, prefix=settings.API_V1_STR)
+
+# Also expose auth and me directly at root level (/auth/..., /me)
+app.include_router(auth.router)
+app.include_router(me.router)
 
 
 @app.get("/", tags=["Root"])

@@ -486,5 +486,719 @@
       }
     },
     "timestamp": "2026-10-30T11:25:10.365217Z"
+  },
+  {
+    "id": "audit-8f6e175ea190",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T14:28:33.352832Z"
+  },
+  {
+    "id": "audit-f35c63e6fa45",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T14:28:33.370456Z"
+  },
+  {
+    "id": "audit-60ac1f544542",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T14:28:33.401241Z"
+  },
+  {
+    "id": "audit-b07affcc1a7e",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T14:28:33.700918Z"
+  },
+  {
+    "id": "audit-48ec3c16daea",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T14:28:52.814229Z"
+  },
+  {
+    "id": "audit-23392f38f6b4",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T14:28:52.828999Z"
+  },
+  {
+    "id": "audit-3ee3558469c3",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T14:28:52.843419Z"
+  },
+  {
+    "id": "audit-422c30cc7170",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T14:28:52.928796Z"
+  },
+  {
+    "id": "audit-9a5328cae47d",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T14:28:53.122635Z"
+  },
+  {
+    "id": "audit-1d9d80fc9635",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T14:29:07.856212Z"
+  },
+  {
+    "id": "audit-5c0572527b25",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T14:29:24.529235Z"
+  },
+  {
+    "id": "audit-6c07dda32681",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T14:29:24.542033Z"
+  },
+  {
+    "id": "audit-99a4452f5b2e",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T14:29:24.550898Z"
+  },
+  {
+    "id": "audit-18aed6050c31",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T14:29:24.650653Z"
+  },
+  {
+    "id": "audit-fa668820dc3f",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T14:29:24.717924Z"
+  },
+  {
+    "id": "audit-6adb17b11ddd",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T14:37:25.421644Z"
+  },
+  {
+    "id": "audit-eee9733b94a2",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T14:37:25.449259Z"
+  },
+  {
+    "id": "audit-81755afff5fa",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T14:37:25.453804Z"
+  },
+  {
+    "id": "audit-33fb2ef62e37",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T14:37:25.621125Z"
+  },
+  {
+    "id": "audit-f0070b85162e",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T14:37:25.973151Z"
+  },
+  {
+    "id": "audit-550e372507aa",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T14:39:04.494175Z"
+  },
+  {
+    "id": "audit-8f67e02f9fab",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T14:39:04.553943Z"
+  },
+  {
+    "id": "audit-da0421c44a4c",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T14:39:04.595308Z"
+  },
+  {
+    "id": "audit-cb2f591ff0bd",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T14:39:05.371658Z"
+  },
+  {
+    "id": "audit-88b14c7e193f",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T14:39:05.462614Z"
+  },
+  {
+    "id": "audit-088faec1e633",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T14:40:03.361196Z"
+  },
+  {
+    "id": "audit-18d60019cd5d",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T14:40:03.377901Z"
+  },
+  {
+    "id": "audit-b053a21fb59b",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T14:40:03.393023Z"
+  },
+  {
+    "id": "audit-2e0d791575c1",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T14:40:03.478015Z"
+  },
+  {
+    "id": "audit-e9e51f7b8636",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T14:40:03.550436Z"
+  },
+  {
+    "id": "audit-e2ef4792724c",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-30T14:41:43.862240Z"
+  },
+  {
+    "id": "audit-86712e8b552b",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-30T14:41:43.949978Z"
+  },
+  {
+    "id": "audit-82cd66dd643f",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-30T14:41:43.978213Z"
+  },
+  {
+    "id": "audit-7ce921e90e66",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-30T14:41:44.149677Z"
+  },
+  {
+    "id": "audit-9ebc87d56c4a",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-30T14:41:44.665106Z"
   }
 ]

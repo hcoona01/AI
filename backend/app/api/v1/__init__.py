@@ -4,10 +4,12 @@ from fastapi import APIRouter
 
 from app.api.v1 import (
     audit,
+    auth,
     constraints,
     courses,
     faculty,
     health,
+    me,
     resources,
     scenarios,
     sections,
@@ -17,6 +19,8 @@ from app.api.v1 import (
 api_router = APIRouter()
 
 # Register domain subrouters
+api_router.include_router(auth.router)
+api_router.include_router(me.router)
 api_router.include_router(health.router)
 api_router.include_router(constraints.router)
 api_router.include_router(faculty.router)

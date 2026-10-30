@@ -202,3 +202,49 @@
   - Build frontend pages connecting to the new CRUD APIs.
 
 
+
+## 2026-10-30: Passwordless Email OTP Authentication & Session Lifecycle
+- **Task Objective**: Implement secure passwordless Email OTP authentication, in-memory salted-hash persistence with attempt tracking, rate-limiting, JWT session lifecycle (15-min access token + httpOnly refresh cookie), profile endpoint, RBAC dependencies, and test suite.
+- **Changes Implemented**:
+  - Auth Schemas in [`backend/app/schemas/auth.py`](file:///e:/AI%20project/backend/app/schemas/auth.py):
+    - `OTPRequest`, `OTPVerifyRequest` (strict 6-digit regex), `OTPResponse`, `TokenResponse`, `RefreshTokenRequest`, `MessageResponse`.
+  - In-Memory OTP Service in [`backend/app/services/otp_service.py`](file:///e:/AI%20project/backend/app/services/otp_service.py):
+    - Generates 6-digit OTP using Python `secrets`.
+    - Persists ONLY a 16-byte random salt and SHA-256 salted hash with a 5-minute TTL in an in-memory dictionary (never in Gist or disk).
+    - Max 5 verification attempts per code; constant-time hash comparison via `secrets.compare_digest`.
+    - Strictly single-use (record purged immediately upon successful verification).
+    - Account lockout upon 5 wrong attempts (record purged).
+    - Rate limiting: max 3 requests per email and per client IP per 10 minutes (returns HTTP 429).
+    - Console logging dispatch in `OTP_DEV_MODE=True`, SMTP dispatch via `smtplib` in production mode.
+  - Auth Service in [`backend/app/services/auth_service.py`](file:///e:/AI%20project/backend/app/services/auth_service.py):
+    - `request_otp`: Validates rate limits and generates OTP only if user exists, returning identical generic response to prevent account enumeration.
+    - `verify_otp`: Verifies OTP, looks up user, and generates 15-minute access token and 7-day refresh token.
+    - `refresh_session`: Validates refresh token JWT claim and issues renewed token pair.
+  - Security Dependencies & Token Helpers in [`backend/app/core/security.py`](file:///e:/AI%20project/backend/app/core/security.py):
+    - `create_access_token` (15-minute default) and `create_refresh_token` (7-day default) with token type claims.
+    - `get_current_user` validating Bearer access tokens (rejecting refresh tokens) or testing headers, raising 401 Unauthorized for unauthenticated requests.
+    - RBAC guards `require_admin`, `require_faculty`, and privacy helper `verify_faculty_access` (ensuring faculty can only access their own `faculty_id`).
+  - Auth & Profile Routers:
+    - [`backend/app/api/v1/auth.py`](file:///e:/AI%20project/backend/app/api/v1/auth.py): `POST /auth/request-otp`, `POST /auth/verify-otp`, `POST /auth/refresh`, `POST /auth/logout` (with httpOnly, SameSite cookie handling).
+    - [`backend/app/api/v1/me.py`](file:///e:/AI%20project/backend/app/api/v1/me.py): `GET /me` returning current user profile.
+    - Mounted in [`backend/app/api/v1/__init__.py`](file:///e:/AI%20project/backend/app/api/v1/__init__.py) and [`backend/app/main.py`](file:///e:/AI%20project/backend/app/main.py) to support both `/api/v1/auth/*` and `/auth/*` as well as `/me` and `/api/v1/me`.
+  - Config & Environment:
+    - Updated `ACCESS_TOKEN_EXPIRE_MINUTES=15`, `OTP_CODE_TTL_MINUTES=5`, and `REFRESH_TOKEN_EXPIRE_DAYS=7` in [`backend/app/core/config.py`](file:///e:/AI%20project/backend/app/core/config.py), [`.env.example`](file:///e:/AI%20project/.env.example), and [`.env`](file:///e:/AI%20project/.env).
+    - Seeded user store contains 1 admin, 1 department chair, and 25 faculty users matching faculty dataset.
+  - Comprehensive Test Suite in [`backend/tests/test_auth.py`](file:///e:/AI%20project/backend/tests/test_auth.py):
+    - Verified generic response preventing account enumeration.
+    - Verified rate limits (429 on 4th request within 10m for email and IP).
+    - Verified successful verification, 15-minute token, and httpOnly refresh cookie.
+    - Verified single-use rejection on immediate reuse.
+    - Verified rejection of expired OTP codes.
+    - Verified lockout and record purge after 5 failed attempts.
+    - Verified session refresh and cookie clearing on logout.
+    - Verified `GET /me` (401 unauth, 200 for faculty and admin).
+    - Verified 403 Forbidden for faculty JWT on admin routes.
+    - Verified `verify_faculty_access` helper behavior.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests`: 113 passed in 13.62s.
+  - `ruff` & `black`: 100% compliant across backend codebase.
+- **Next Steps / Backlog Items**:
+  - Wire frontend auth flow (`LoginPage`, `OtpStep`) to `/auth/request-otp` and `/auth/verify-otp`.
+  - Implement ML demand forecasting and OR-Tools optimization engine.

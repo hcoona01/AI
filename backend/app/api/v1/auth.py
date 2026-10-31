@@ -94,7 +94,7 @@ async def verify_otp(
         httponly=True,
         samesite="lax",
         max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
-        secure=(settings.ENVIRONMENT != "development"),
+        secure=(settings.ENVIRONMENT in ("production", "staging")),
         path="/",
     )
 
@@ -134,7 +134,7 @@ async def refresh_token(
         httponly=True,
         samesite="lax",
         max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
-        secure=(settings.ENVIRONMENT != "development"),
+        secure=(settings.ENVIRONMENT in ("production", "staging")),
         path="/",
     )
 

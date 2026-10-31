@@ -770,3 +770,53 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - Optionally add `make e2e` to local developer flow after backend/frontend start.
   - Push to GitHub to trigger CI and verify the `workflow_dispatch` full benchmark upload.
   - Consider adding `--timid` or branch coverage to catch missed branches in `local_store.py` (currently 81%).
+
+
+## 2026-11-01: Production Packaging, Hardening, Deployment & Documentation Finalization
+
+- **Task Objective**: Deliver production containerization (Dockerfile within 512MB RAM), static frontend deployment for Vercel/Netlify, security hardening (strict CORS, security headers, secure cookies, rate limiting, dual-mount `/health`), complete deployment guide, offline model refresh runbook, comprehensive technical documentation (limitations, user guides), and README demo walkthrough script.
+
+- **Changes Implemented**:
+
+  ### 1. Backend Production Containerization (`backend/Dockerfile`, root `Dockerfile`, `.dockerignore`)
+  - Authored minimal `python:3.11-slim` container installing only runtime requirements from `backend/requirements.txt` (excluding dev tools like pytest, playwright, black, ruff).
+  - Explicit single-worker execution (`--workers 1`) to preserve GitHub Gist single-writer integrity and keep RAM strictly $\le 512\text{ MB}$.
+  - Added non-privileged user `appuser` (UID 1001) for container security.
+  - Added native Docker `HEALTHCHECK` directive monitoring `http://localhost:8000/health`.
+  - Documented how `FORECAST_MODE=precomputed` drops LightGBM from process memory, saving 80–120MB RSS.
+
+  ### 2. Frontend Static Build Configurations (`frontend/vercel.json`, `frontend/netlify.toml`, root `netlify.toml`)
+  - Configured Vercel build settings with Vite SPA rewrites (`/(.*)` $\rightarrow$ `/index.html`) and security headers.
+  - Configured Netlify build settings with 200 rewrite rule (`/*` $\rightarrow$ `/index.html`) and security headers.
+  - Verified clean static compilation via `npm run build` (`dist/` generated with zero type errors).
+
+  ### 3. Production Security Hardening
+  - **Security Headers Middleware (`backend/app/core/middleware.py`)**: Enforces `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `X-XSS-Protection: 1; mode=block`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy`, and `Strict-Transport-Security` (production/staging).
+  - **Lightweight Sliding-Window Rate Limiting (`RateLimitMiddleware`)**: Limits client IPs to 180 requests/minute to protect CPU budget, returning HTTP 429 Too Many Requests when exceeded while exempting health checks and OpenAPI docs.
+  - **Secure Cookies (`backend/app/api/v1/auth.py`)**: HTTP-only refresh token cookies with `SameSite=lax` and `secure=True` in production/staging environments.
+  - **Dual Health Checks (`backend/app/main.py`, `backend/app/api/v1/health.py`)**: Root `/health` (cloud load balancers) and `/api/v1/health` (application API) reporting live service status, memory footprint, store backend, and forecast mode.
+
+  ### 4. Deployment Guide (`docs/deployment_guide.md`)
+  - Complete, step-by-step setup guides for Render and Railway (Backend container) and Vercel and Netlify (Frontend CDN).
+  - Comprehensive reference table documenting every environment variable: `GIST_TOKEN`, `GIST_ID`, `JWT_SECRET`, `STORE_BACKEND`, `OTP_DEV_MODE`, `FORECAST_MODE`, `ALLOWED_ORIGINS`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `SMTP_FROM`, `SMTP_TLS`, `ENVIRONMENT`, `PORT`, `LOG_LEVEL`, `RATE_LIMIT_PER_MINUTE`, and `VITE_API_URL`.
+  - Architectural explanation of Gist single-writer invariants.
+
+  ### 5. Model Refresh Runbook (`docs/model_refresh_runbook.md`)
+  - Step-by-step SOP for updating enrollment history (`data/seed/enrollment_history.json`), running offline training (`make train`), verifying artifact constraints (< 5MB, `model.txt`, no pickle/joblib), running quick verification (`make test`), and redeploying.
+  - Explicit mandate: **Zero model retraining on the production server**.
+
+  ### 6. Documentation Completion (`docs/limitations.md`, `docs/user_guide_admin.md`, `docs/user_guide_faculty.md`, `README.md`)
+  - `docs/limitations.md`: Comprehensive coverage of GitHub Gist rate limits (5,000 req/hr), single-writer constraint, forecast uncertainty bands ($P_{10}$ vs $P_{90}$), multi-objective weight sensitivity ($w_1$ fit vs $w_2$ fairness), training dataset size (360 rows), and 512 MB RAM / CPU-only budget.
+  - `docs/user_guide_admin.md`: Full manual covering Overview, Load View, Forecasts, Assignments, Optimizer cockpit, Conflicts, Automated Repairs, Manual Overrides with risk acknowledgment, and Audit Trail.
+  - `docs/user_guide_faculty.md`: Full manual covering My Load, Timetable, "Why I Was Assigned", Anonymized Peer benchmark, Blackout/Leave preferences, and Change Requests with RBAC privacy isolation.
+  - `README.md`: Added interactive Demo Walkthrough Script with 5 targeted scenarios:
+    1. Feasible Allocation & CP-SAT vs Greedy Fairness (`balanced_baseline`).
+    2. Pre-filter Pruning on Infeasible Scenarios (`infeasible_expertise`).
+    3. Conflicts & Automated Schedule Repairs (`time_clash_dense`).
+    4. Controlled Override with Invariant Acknowledgement.
+    5. Faculty Self-Service & Privacy Boundary.
+
+- **Test Results & Verification Status**:
+  - ✅ **233 unit/integration tests passing in 60.66s** (0 failed).
+  - ✅ **Coverage >= 80% on all target modules**: `constraint_engine` 95%, `security` 97%, `auth` 92%, `repositories` 81–96% (Total: **91%**).
+  - ✅ **Frontend build verified**: `npm run build` succeeds cleanly in 11.17s.

@@ -12,7 +12,7 @@
     "created_at": "2026-10-30T11:22:34.427968Z"
   },
   {
-    "id": "asgn-job-1388b304bc-0",
+    "id": "asgn-job-d87c8fc08a-0",
     "section_id": "s-test-greedy-1",
     "faculty_id": "f-16",
     "source": "baseline",
@@ -40,8 +40,8 @@
     "rule_ids_violated": [
       "SC-03"
     ],
-    "run_id": "job-1388b304bc",
-    "created_at": "2026-10-31T20:13:31.784401Z"
+    "run_id": "job-d87c8fc08a",
+    "created_at": "2026-10-31T20:27:19.343935Z"
   },
   {
     "id": "asgn-test-explain",
@@ -61,7 +61,7 @@
     ],
     "rule_ids_violated": [],
     "run_id": "run-test",
-    "created_at": "2026-10-31T20:13:32.590977Z"
+    "created_at": "2026-10-31T20:27:20.182452Z"
   },
   {
     "id": "asgn-f01-list-test",
@@ -73,7 +73,7 @@
     "rule_ids_satisfied": [],
     "rule_ids_violated": [],
     "run_id": "run-1",
-    "created_at": "2026-10-31T20:13:32.987454Z"
+    "created_at": "2026-10-31T20:27:20.534107Z"
   },
   {
     "id": "asgn-f02-list-test",
@@ -85,7 +85,7 @@
     "rule_ids_satisfied": [],
     "rule_ids_violated": [],
     "run_id": "run-1",
-    "created_at": "2026-10-31T20:13:32.987454Z"
+    "created_at": "2026-10-31T20:27:20.534107Z"
   },
   {
     "id": "asgn-override-flow-test",
@@ -107,10 +107,10 @@
     "rule_ids_satisfied": [],
     "rule_ids_violated": [
       "HC-07",
-      "HC-03",
-      "HC-06"
+      "HC-06",
+      "HC-03"
     ],
     "run_id": "run-flow",
-    "created_at": "2026-10-31T20:13:33.398681Z"
+    "created_at": "2026-10-31T20:27:21.640625Z"
   }
 ]

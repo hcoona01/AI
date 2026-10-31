@@ -5,10 +5,11 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.v1 import api_router, auth, me
+from app.api.v1 import api_router, auth, health, me
 from app.core.config import settings
 from app.core.errors import register_error_handlers
 from app.core.logging import setup_logging
+from app.core.middleware import RateLimitMiddleware, SecurityHeadersMiddleware
 
 logger = logging.getLogger("app.main")
 
@@ -49,6 +50,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Production security headers & rate-limiting middlewares
+app.add_middleware(SecurityHeadersMiddleware)
+if settings.RATE_LIMIT_PER_MINUTE > 0:
+    app.add_middleware(RateLimitMiddleware, requests_per_minute=settings.RATE_LIMIT_PER_MINUTE)
+
 # Register global error handlers
 register_error_handlers(app)
 
@@ -60,6 +66,12 @@ app.include_router(auth.router)
 app.include_router(me.router)
 
 
+@app.get("/health", tags=["Health"])
+async def root_health():
+    """Root health endpoint for cloud platform health checkers (Render, Railway, ALB)."""
+    return await health.get_health()
+
+
 @app.get("/", tags=["Root"])
 async def root():
     return {
@@ -67,4 +79,5 @@ async def root():
         "version": settings.VERSION,
         "docs": f"{settings.API_V1_STR}/docs",
         "health": f"{settings.API_V1_STR}/health",
+        "root_health": "/health",
     }

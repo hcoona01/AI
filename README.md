@@ -127,8 +127,79 @@ make dev-frontend
 
 ---
 
-## 7. Key Architecture & Constraints
+## 7. Interactive Demo Walkthrough Script
+
+Follow these steps to demonstrate each core capability and outcome of the system:
+
+### Demo 1: Feasible Allocation & CP-SAT vs. Greedy Fairness
+1. **Sign in**: Visit `http://localhost:5173/login`, enter `admin@university.edu`, and log in with the dev passcode (`000000` or from `/api/v1/auth/dev-otp?email=admin@university.edu`).
+2. **Load Scenario**: On `/admin`, use the **Scenario Loader** dropdown to select **`balanced_baseline`**.
+3. **Run Optimizer**:
+   - Click the **⚡ Optimizer** tab.
+   - Select **Method: CP-SAT Solver**, **Forecast Mode: P50**, and click **Execute CP-SAT Solver**.
+4. **Observe Outcome**:
+   - Status transitions to **COMPLETED (Feasible)**.
+   - Hard Violations: **0**.
+   - Notice the **Comparison Card**: CP-SAT achieves a **Load Gini of ~0.07** vs. Greedy's **~0.49**, dramatically evening out workload across faculty.
+   - Switch to **📈 Load View** to view the green balanced teaching bars.
+
+---
+
+### Demo 2: Instant Pre-Filter Pruning on Infeasible Scenarios
+1. **Load Scenario**: From the scenario selector on `/admin`, choose **`infeasible_expertise`**.
+2. **Execute Solver**: Go to **⚡ Optimizer** and click **Execute CP-SAT Solver**.
+3. **Observe Outcome**:
+   - The engine returns an **immediate infeasibility result in < 10ms** without wasting CPU cycles.
+   - Displays the exact blocking rule: **`HC-01: Minimum Proficiency Deficit`** and the unstaffable section.
+   - Variable count is pruned to 0, demonstrating Step 1 domain pre-filtering.
+
+---
+
+### Demo 3: Schedule Conflicts & Automated Remediation
+1. **Load Scenario**: From the scenario dropdown, select **`time_clash_dense`** or **`tight_capacity`**.
+2. **Inspect Violations**:
+   - Navigate to the **⚠️ Conflicts** tab.
+   - Review the violation cards tagged with **`Hard Invariant (Blocking)`**, citing `HC-03` (Time Slot Overlap) and `HC-02` (Max Load).
+3. **Synthesize Repairs**:
+   - Click the purple **🛠️ Synthesize Repairs** button.
+   - The modal displays 3 automated alternatives with predicted impact:
+     - *Relax HC-05 (Increase Course Preparations)*
+     - *Inject Adjunct Teaching Capacity*
+     - *Reschedule Overlapping Section Timeslot*
+   - Click **Apply** on an alternative: the schedule is updated and re-optimization is triggered automatically.
+
+---
+
+### Demo 4: Controlled Human Override with Invariant Acknowledgement
+1. **Open Assignments**: On `/admin`, click the **📋 Assignments** tab.
+2. **Select Assignment**: Locate any assigned course section and click **Override**.
+3. **Choose Replacement Faculty**: Select another instructor from the dropdown.
+4. **Observe Live Invariant Check**:
+   - If the new instructor exceeds contractual hours or has a schedule clash, a **red warning banner** immediately appears citing the exact rule (e.g., `HC-02: 15.0h exceeds 12.0h limit`).
+5. **Complete Override**:
+   - Enter an Administrative Justification: *"Chair-approved emergency sabbatical coverage"*.
+   - Check the mandatory risk box: `[✓] I acknowledge these violations and force this override`.
+   - Click **Apply Override**.
+   - The row receives a prominent **Overridden** badge, and the event is permanently recorded in the **📜 Audit Trail**.
+
+---
+
+### Demo 5: Faculty Self-Service & Privacy Boundary
+1. **Sign in as Faculty**: Log out and log back in as `ada.lovelace@university.edu`.
+2. **Inspect Schedule**:
+   - On `/faculty`, view your personal **Weekly Timetable Grid** and assigned contact hours.
+   - View the **"Why I Was Assigned"** card showing the 60%/25%/15% fit score breakdown and satisfied rules (`✓ HC-01`, `✓ HC-02`).
+3. **Verify Anonymization**:
+   - Scroll to the **Department Load Comparison** chart. Confirm your bar is marked **"You"** and all other colleagues are strictly labeled **`Peer 1 (Professor)`**, with zero peer names or emails exposed.
+4. **Verify RBAC Protection**:
+   - Manually type `http://localhost:5173/admin` into the browser URL bar.
+   - Observe immediate block: **`403 Access Forbidden: Administrator access required`**.
+
+---
+
+## 8. Key Architecture & Constraints
 
 - **Explainability**: Every assignment constraint has a unique identifier (e.g., `HC-01_MAX_LOAD`, `SC-01_EXPERTISE_MATCH`). Solver outcomes cite these rule IDs directly.
 - **Fairness Metrics**: Load distributions are mathematically evaluated via the **Gini Coefficient**, standard deviation of teaching hours, and max-min section gap.
 - **Decoupled Training**: The backend **never** trains ML models. Training runs offline via `make train`, and the backend loads serialized, portable text models (`model.txt`, `< 5 MB`) at startup.
+- **Single-Writer Persistence**: State is stored in a private GitHub Gist with optimistic concurrency checks, running in a single-worker container within a 512 MB RAM footprint.

@@ -31,6 +31,12 @@ class Settings(BaseSettings):
     SMTP_PORT: int = 1025
     SMTP_USER: str = ""
     SMTP_PASS: str = ""
+    SMTP_PASSWORD: str = ""
+    SMTP_FROM: str = "noreply@university.edu"
+    SMTP_TLS: bool = True
+
+    # Rate Limiting
+    RATE_LIMIT_PER_MINUTE: int = 180
 
     # CORS
     ALLOWED_ORIGINS: list[str] | str = [

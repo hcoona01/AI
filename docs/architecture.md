@@ -153,3 +153,25 @@ To enable clean imports between `backend` and `ml` without cross-contamination:
 3. **Dependency Boundary**:
    - `backend/requirements.txt` contains only runtime dependencies (`fastapi`, `uvicorn`, `pydantic`, `httpx`, `ortools`, `lightgbm`, `numpy`). It explicitly excludes `pandas`, `matplotlib`, and heavy data-generation packages.
    - `ml/requirements-train.txt` contains offline training dependencies (`pandas`, `scikit-learn`, `matplotlib`, `pytest`).
+
+---
+
+## 5. Production Topology & Security Hardening
+
+### 5.1 Deployment Model (Edge CDN + Single-Worker Container)
+- **Frontend Client**: Static React SPA hosted on Vercel or Netlify Edge CDN. Routes are redirected to `/index.html` (SPA fallback), and assets are cached across global POPs.
+- **Backend Server**: Single container instance on Render or Railway running `python:3.11-slim` with Uvicorn.
+- **Single-Writer Guarantee**: To protect GitHub Gist optimistic concurrency without distributed locks, the container runs strictly with `--workers 1`.
+- **Memory Budget (<= 512 MB RAM)**: Running with `FORECAST_MODE=precomputed` bypasses loading LightGBM booster models, consuming $< 95\text{ MB}$ RSS and leaving maximal headroom for the Google OR-Tools CP-SAT integer programming solver.
+
+### 5.2 Defense-in-Depth Security Controls
+1. **Strict CORS**: Origins are strictly validated against `ALLOWED_ORIGINS` (no wildcards allowed when `allow_credentials=True`).
+2. **HTTP Security Headers**: Injected across all responses:
+   - `X-Content-Type-Options: nosniff`
+   - `X-Frame-Options: DENY`
+   - `X-XSS-Protection: 1; mode=block`
+   - `Referrer-Policy: strict-origin-when-cross-origin`
+   - `Strict-Transport-Security: max-age=31536000; includeSubDomains` (production/staging)
+3. **Secure Cookies**: Refresh token cookies are issued with `httpOnly=True`, `SameSite=lax`, and `secure=True` in production.
+4. **IP Rate Limiting**: Global sliding-window rate limiting (180 requests/minute per client IP) defends CPU resources against traffic surges, returning HTTP 429 when exceeded.
+5. **Dual Health Monitoring**: Both `/health` (cloud platform load balancers) and `/api/v1/health` (application health) report live status, environment mode, and compute budget headroom.

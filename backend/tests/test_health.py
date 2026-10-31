@@ -19,6 +19,26 @@ def test_health_check_returns_200():
     assert "timestamp" in data
 
 
+def test_root_health_check_returns_200():
+    """Verify root /health endpoint used by cloud health checkers responds with 200 OK."""
+    response = client.get("/health")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "healthy"
+    assert data["service"] == "Faculty Workload Balancing API"
+
+
+def test_security_headers_present():
+    """Verify production security headers are attached across responses."""
+    response = client.get("/health")
+    assert response.status_code == 200
+    headers = response.headers
+    assert headers.get("x-content-type-options") == "nosniff"
+    assert headers.get("x-frame-options") == "DENY"
+    assert headers.get("x-xss-protection") == "1; mode=block"
+    assert headers.get("referrer-policy") == "strict-origin-when-cross-origin"
+
+
 def test_root_endpoint_returns_200():
     """Verify root endpoint provides links to docs and health."""
     response = client.get("/")

@@ -2,7 +2,19 @@
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiClient } from '../../lib/apiClient';
-import type { Assignment, Faculty, Course, Section } from '../../types';
+import type {
+  Assignment,
+  Faculty,
+  Course,
+  Section,
+  ConstraintRule,
+  ValidationRequest,
+  ValidationResponse,
+  Override,
+  AuditLogEntry,
+  Resource,
+  TimeSlot,
+} from '../../types';
 
 export interface FairnessSummary {
   term: string;
@@ -332,3 +344,83 @@ export const useLoadScenario = () => {
     },
   });
 };
+
+export const useAuditLogs = (params?: { entity?: string; actor_id?: string; action?: string; limit?: number }) => {
+  return useQuery<AuditLogEntry[]>({
+    queryKey: ['auditLogs', params],
+    queryFn: async () => {
+      const queryParts: string[] = [];
+      if (params?.entity) queryParts.push(`entity=${encodeURIComponent(params.entity)}`);
+      if (params?.actor_id) queryParts.push(`actor_id=${encodeURIComponent(params.actor_id)}`);
+      if (params?.action) queryParts.push(`action=${encodeURIComponent(params.action)}`);
+      if (params?.limit) queryParts.push(`limit=${params.limit}`);
+      const qs = queryParts.length > 0 ? `?${queryParts.join('&')}` : '';
+      const resp = await apiClient.get<AuditLogEntry[]>(`/audit${qs}`);
+      return resp.data;
+    },
+  });
+};
+
+export const useOverrides = (assignmentId?: string) => {
+  return useQuery<Override[]>({
+    queryKey: ['overrides', assignmentId],
+    queryFn: async () => {
+      const qs = assignmentId ? `?assignment_id=${encodeURIComponent(assignmentId)}` : '';
+      const resp = await apiClient.get<Override[]>(`/overrides${qs}`);
+      return resp.data;
+    },
+  });
+};
+
+export const useConstraints = () => {
+  return useQuery<ConstraintRule[]>({
+    queryKey: ['constraints'],
+    queryFn: async () => {
+      const resp = await apiClient.get<ConstraintRule[]>('/constraints');
+      return resp.data;
+    },
+  });
+};
+
+export const useUpdateConstraints = () => {
+  const queryClient = useQueryClient();
+  return useMutation<ConstraintRule[], Error, { rules: ConstraintRule[] }>({
+    mutationFn: async ({ rules }) => {
+      const resp = await apiClient.put<ConstraintRule[]>('/constraints', { rules });
+      return resp.data;
+    },
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['constraints'] });
+    },
+  });
+};
+
+export const useValidateAssignments = () => {
+  return useMutation<ValidationResponse, Error, ValidationRequest>({
+    mutationFn: async (payload) => {
+      const resp = await apiClient.post<ValidationResponse>('/constraints/validate', payload);
+      return resp.data;
+    },
+  });
+};
+
+export const useResourcesList = () => {
+  return useQuery<Resource[]>({
+    queryKey: ['resources'],
+    queryFn: async () => {
+      const resp = await apiClient.get<Resource[]>('/resources');
+      return resp.data;
+    },
+  });
+};
+
+export const useTimeslotsList = () => {
+  return useQuery<TimeSlot[]>({
+    queryKey: ['timeslots'],
+    queryFn: async () => {
+      const resp = await apiClient.get<TimeSlot[]>('/timeslots');
+      return resp.data;
+    },
+  });
+};
+

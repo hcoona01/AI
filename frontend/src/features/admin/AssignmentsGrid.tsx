@@ -4,11 +4,11 @@ import {
   useSectionsList,
   useFacultyList,
   useCoursesList,
-  useExplainAssignment,
   useExecuteOverride,
   type OverrideResponse,
 } from './api';
 import type { Assignment, Faculty, Course } from '../../types';
+import { AssignmentDetailDrawer } from './assignments/AssignmentDetailDrawer';
 
 interface AssignmentsGridProps {
   currentTerm: string;
@@ -267,7 +267,14 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
                       <td className="py-3.5 px-4">
                         {faculty ? (
                           <div>
-                            <div className="font-semibold text-white text-xs">{faculty.name}</div>
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className="font-semibold text-white text-xs">{faculty.name}</span>
+                              {assignment?.source === 'override' && (
+                                <span className="text-[9px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/15 px-1.5 py-0.5 rounded border border-amber-500/30">
+                                  Overridden
+                                </span>
+                              )}
+                            </div>
                             <div className="text-slate-400 text-[10px]">{faculty.rank}</div>
                             <div className="text-slate-500 font-mono text-[10px]">{faculty.id}</div>
                           </div>
@@ -403,9 +410,9 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
         </div>
       </div>
 
-      {/* Explain Assignment Modal */}
+      {/* Assignment Detail Drawer with Explainability & Override Flow */}
       {explainAssignmentId && (
-        <ExplainModal
+        <AssignmentDetailDrawer
           assignmentId={explainAssignmentId}
           onClose={() => setExplainAssignmentId(null)}
         />
@@ -419,203 +426,6 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
           onClose={() => setOverrideAssignment(null)}
         />
       )}
-    </div>
-  );
-};
-
-// ----------------------------------------------------------------------
-// Explain Modal Sub-Component
-// ----------------------------------------------------------------------
-interface ExplainModalProps {
-  assignmentId: string;
-  onClose: () => void;
-}
-
-const ExplainModal: React.FC<ExplainModalProps> = ({ assignmentId, onClose }) => {
-  const { data: explanation, isLoading, isError, error } = useExplainAssignment(assignmentId);
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs">
-      <div className="bg-slate-900 border border-slate-800 rounded-xl max-w-2xl w-full p-6 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-start justify-between border-b border-slate-800 pb-4">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">
-              Assignment Explanation
-            </span>
-            <h3 className="text-lg font-bold text-white mt-1">
-              {explanation?.course_code}: {explanation?.course_title}
-            </h3>
-            <p className="text-xs text-slate-400">Section ID: {explanation?.section_id}</p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-slate-400 hover:text-white p-1"
-            aria-label="Close"
-          >
-            ✕
-          </button>
-        </div>
-
-        {isLoading && (
-          <div className="text-center py-10 text-slate-400 animate-pulse text-sm">
-            Evaluating candidate alternatives and fit breakdown...
-          </div>
-        )}
-
-        {isError && (
-          <div className="bg-rose-950/40 border border-rose-800/60 rounded-lg p-4 text-rose-300 text-xs">
-            Failed to explain assignment: {(error as Error)?.message}
-          </div>
-        )}
-
-        {explanation && (
-          <div className="space-y-5">
-            {/* Chosen Faculty Card */}
-            <div className="bg-slate-950/70 border border-emerald-500/30 rounded-xl p-4 space-y-3">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
-                    Recommended Faculty
-                  </span>
-                  <div className="text-base font-bold text-white">
-                    {explanation.chosen_faculty.name}
-                  </div>
-                  <div className="text-xs text-slate-400 font-mono">
-                    ID: {explanation.chosen_faculty.faculty_id}
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="text-2xl font-bold text-emerald-400">
-                    {Math.round(explanation.chosen_faculty.fit_score * 100)}%
-                  </div>
-                  <div className="text-[10px] text-slate-400 uppercase">Composite Fit</div>
-                </div>
-              </div>
-
-              {/* Fit Breakdown Progress Bars */}
-              <div className="space-y-2 pt-2 border-t border-slate-800">
-                <div className="text-xs font-semibold text-slate-300">Fit Component Breakdown:</div>
-
-                <div>
-                  <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                    <span>Expertise Tag Match (60% weight)</span>
-                    <span className="font-mono text-slate-200">
-                      {Math.round((explanation.chosen_faculty.fit_breakdown?.tag_match ?? 0) * 100)}%
-                    </span>
-                  </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div
-                      className="bg-blue-500 h-1.5 rounded-full"
-                      style={{
-                        width: `${Math.round((explanation.chosen_faculty.fit_breakdown?.tag_match ?? 0) * 100)}%`,
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                    <span>TF-IDF Syllabus Cosine Similarity (25% weight)</span>
-                    <span className="font-mono text-slate-200">
-                      {Math.round((explanation.chosen_faculty.fit_breakdown?.tfidf_similarity ?? 0) * 100)}%
-                    </span>
-                  </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div
-                      className="bg-purple-500 h-1.5 rounded-full"
-                      style={{
-                        width: `${Math.round((explanation.chosen_faculty.fit_breakdown?.tfidf_similarity ?? 0) * 100)}%`,
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                    <span>Past-Teaching Continuity Bonus (15% weight)</span>
-                    <span className="font-mono text-slate-200">
-                      {Math.round((explanation.chosen_faculty.fit_breakdown?.past_bonus ?? 0) * 100)}%
-                    </span>
-                  </div>
-                  <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-                    <div
-                      className="bg-emerald-500 h-1.5 rounded-full"
-                      style={{
-                        width: `${Math.round((explanation.chosen_faculty.fit_breakdown?.past_bonus ?? 0) * 100)}%`,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Plain Rationale */}
-              <div className="text-xs text-slate-300 bg-slate-900/90 rounded-lg p-2.5 border border-slate-800">
-                <span className="font-semibold text-white">Rationale: </span>
-                {explanation.chosen_faculty.rationale}
-              </div>
-            </div>
-
-            {/* Top Alternatives Evaluated */}
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-                Top Alternative Faculty Evaluated ({explanation.top_alternatives.length} of{' '}
-                {explanation.total_candidates_evaluated})
-              </h4>
-              <div className="space-y-2">
-                {explanation.top_alternatives.map((alt) => (
-                  <div
-                    key={alt.faculty_id}
-                    className="bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs flex flex-col md:flex-row md:items-center justify-between gap-2"
-                  >
-                    <div>
-                      <div className="font-semibold text-white">
-                        {alt.name} <span className="text-slate-400 font-normal">({alt.rank})</span>
-                      </div>
-                      <div className="text-[11px] text-slate-500 font-mono">{alt.faculty_id}</div>
-                      {alt.blocked_reasons && alt.blocked_reasons.length > 0 && (
-                        <div className="mt-1 space-y-0.5">
-                          {alt.blocked_reasons.map((reason, idx) => (
-                            <div key={idx} className="text-rose-400 text-[11px] flex items-center gap-1">
-                              <span>&bull;</span>
-                              <span>{reason}</span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="text-right flex items-center md:flex-col justify-between md:justify-center">
-                      <div className="font-mono font-bold text-slate-200">
-                        {Math.round(alt.fit_score * 100)}% Fit
-                      </div>
-                      <span
-                        className={`text-[10px] uppercase font-bold px-1.5 py-0.5 rounded ${
-                          alt.is_eligible
-                            ? 'bg-slate-800 text-slate-300'
-                            : 'bg-rose-500/10 text-rose-400 border border-rose-500/30'
-                        }`}
-                      >
-                        {alt.is_eligible ? 'Eligible' : 'Blocked'}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className="pt-3 border-t border-slate-800 text-right">
-          <button
-            type="button"
-            onClick={onClose}
-            className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-medium rounded-lg transition"
-          >
-            Close
-          </button>
-        </div>
-      </div>
     </div>
   );
 };

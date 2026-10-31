@@ -4,6 +4,10 @@ import { AdminOverviewPage } from '../features/admin/overview/AdminOverviewPage'
 import { AssignmentsPage } from '../features/admin/assignments/AssignmentsPage';
 import { ForecastPage } from '../features/admin/forecast/ForecastPage';
 import { LoadBalancePage } from '../features/admin/load/LoadBalancePage';
+import { ConflictsPage } from '../features/admin/conflicts/ConflictsPage';
+import { RulesCatalogPage } from '../features/admin/rules/RulesCatalogPage';
+import { AuditTrailPage } from '../features/admin/audit/AuditTrailPage';
+import { OverridesPage } from '../features/admin/overrides/OverridesPage';
 import { MyLoadPage } from '../features/faculty/myload/MyLoadPage';
 import { LandingPage } from '../features/home/LandingPage';
 import { ProtectedRoute } from '../components/layout/ProtectedRoute';
@@ -73,15 +77,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: 'conflicts',
+        element: <ConflictsPage />,
+      },
+      {
         path: 'constraints',
-        element: (
-          <FeaturePlaceholderPage
-            title="Constraint Rules Engine"
-            category="Solver Rules"
-            description="Hard and soft constraint parameterization (HC-01 through SC-03) and weights."
-            backLink="/admin"
-          />
-        ),
+        element: <RulesCatalogPage />,
+      },
+      {
+        path: 'overrides',
+        element: <OverridesPage />,
       },
       {
         path: 'scenarios',
@@ -96,14 +101,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'audit',
-        element: (
-          <FeaturePlaceholderPage
-            title="Audit Trail"
-            category="Compliance"
-            description="Immutable record of administrative actions, overrides, and schedule modifications."
-            backLink="/admin"
-          />
-        ),
+        element: <AuditTrailPage />,
       },
     ],
   },

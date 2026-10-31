@@ -12,6 +12,8 @@ interface NavItem {
 const adminNavItems: NavItem[] = [
   { name: 'Overview & Metrics', path: '/admin', icon: '📊', end: true },
   { name: 'Course Assignments', path: '/admin/assignments', icon: '📋' },
+  { name: 'Conflicts & Diagnostics', path: '/admin/conflicts', icon: '⚠️' },
+  { name: 'Manual Overrides', path: '/admin/overrides', icon: '✍️' },
   { name: 'Demand Forecasts', path: '/admin/forecasts', icon: '📈' },
   { name: 'Faculty Directory', path: '/admin/faculty', icon: '👨‍🏫' },
   { name: 'Courses & Syllabi', path: '/admin/courses', icon: '📚' },

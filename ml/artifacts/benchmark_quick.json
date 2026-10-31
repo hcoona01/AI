@@ -1,8 +1,8 @@
 {
   "metadata": {
     "profile": "quick",
-    "timestamp": "2026-10-31T19:19:48.064149+00:00",
-    "total_duration_seconds": 3.42,
+    "timestamp": "2026-10-31T19:34:56.356457+00:00",
+    "total_duration_seconds": 4.59,
     "fixtures_evaluated": [
       "balanced_baseline",
       "tight_capacity",
@@ -35,7 +35,7 @@
       "std_dev": 0.5477,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 1.3831,
+      "solve_time_seconds": 3.7475,
       "variable_count": 11,
       "variables_avoided": 14,
       "peak_memory_mb": 0.09,
@@ -58,7 +58,7 @@
       "std_dev": 3.5071,
       "max_min_gap": 7.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.2534,
+      "solve_time_seconds": 0.0896,
       "variable_count": 11,
       "variables_avoided": 14,
       "peak_memory_mb": 0.05,
@@ -81,7 +81,7 @@
       "std_dev": 0.5774,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.9974,
+      "solve_time_seconds": 0.3693,
       "variable_count": 27,
       "variables_avoided": 0,
       "peak_memory_mb": 0.1,
@@ -104,10 +104,10 @@
       "std_dev": 0.5774,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.6053,
+      "solve_time_seconds": 0.2638,
       "variable_count": 27,
       "variables_avoided": 0,
-      "peak_memory_mb": 0.06,
+      "peak_memory_mb": 0.07,
       "assigned_sections_count": 9
     },
     {
@@ -127,10 +127,10 @@
       "std_dev": 0.0,
       "max_min_gap": 0.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.079,
+      "solve_time_seconds": 0.0586,
       "variable_count": 5,
       "variables_avoided": 0,
-      "peak_memory_mb": 0.05,
+      "peak_memory_mb": 0.06,
       "assigned_sections_count": 0
     },
     {
@@ -150,7 +150,7 @@
       "std_dev": 0.0,
       "max_min_gap": 0.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.03,
+      "solve_time_seconds": 0.0229,
       "variable_count": 5,
       "variables_avoided": 0,
       "peak_memory_mb": 0.02,

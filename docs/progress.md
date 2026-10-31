@@ -575,3 +575,60 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
 ### Next Steps / Backlog Items
 - Build the faculty self-service portal (`/faculty/schedule`, `/faculty/preferences`, `/faculty/expertise`).
 - Add CSV / Excel export for final administrative schedules.
+
+## 2026-11-01: Admin Explainability, Control, Repairs, Overrides, and Audit Suite
+
+- **Task Objective**: Add complete explainability and administrative control features to the admin UI: Conflicts panel with linking, Assignment detail drawer with fit breakdown and blocking reasons, Repair modal with predicted impacts, Override flow with live constraint validation and required violation acknowledgement, Audit trail page, and Rules parameterization page with simulated impact preview.
+
+### Changes Implemented
+
+#### 1. Backend Overrides API (`backend/app/api/v1/overrides.py`, `backend/app/api/v1/__init__.py`)
+- Created `GET /api/v1/overrides` and `GET /api/v1/overrides/{id}` endpoints.
+- Registered the `overrides` router in `backend/app/api/v1/__init__.py` to allow querying stored override records and evidence snapshots.
+
+#### 2. Conflicts Panel & Repair Modal (`frontend/src/features/admin/conflicts/ConflictsPanel.tsx`, `RepairModal.tsx`, `ConflictsPage.tsx`)
+- **Conflicts Panel**:
+  - Displays detected violations with severity badges (`error` for hard invariants, `warning` for soft objectives), plain-language explanations, and `rule_id` badges (`HC-01`, `HC-02`, `HC-03`, etc.).
+  - Entity deep-linking: Clicking "Inspect Assignment" opens the Assignment Detail Drawer for the affected section or instructor.
+  - Multi-criteria filtering by severity (`All`, `Hard Only`, `Soft Only`) and real-time search.
+  - Feasibility status banner and counter cards.
+- **Repair Modal**:
+  - Surfaces 2–3 automated repair strategies (`relax_hc05` for limit relaxation, `add_adjunct` for adjunct capacity, `move_timeslot` for conflict resolution).
+  - Shows predicted impact metrics: Feasibility status, predicted workload Gini (fairness), mean fit score, and new/remaining violations.
+  - Includes "Apply This Repair" button calling `useApplyRepair()` with immediate background re-optimization dispatch and toast confirmation.
+
+#### 3. Assignment Detail Drawer (`frontend/src/features/admin/assignments/AssignmentDetailDrawer.tsx`)
+- Slide-over drawer accessible from any section assignment or conflict violation link.
+- **Fit-Score Breakdown**: Visual progress bars displaying weighted tag match (60%), TF-IDF syllabus similarity (25%), and past-teaching continuity bonus (15%).
+- **"Why This Faculty"**: Responsible justifying rule badges (`✓ HC-01`, `✓ HC-02`, etc.) and textual narrative rationale.
+- **Top Alternative Candidates**: Ranked candidate alternatives with fit scores, rank, and explicit blocking reasons (e.g. insufficient proficiency, scheduled leave, or timeslot clashes).
+- **Preserved Override Evidence**: If an assignment has been overridden, prominently displays an "Overridden" badge along with the original recommended instructor, previous fit score, and administrative justification snapshot.
+
+#### 4. Live Constraint Validation & Override Flow
+- Integrated into `AssignmentDetailDrawer` and `AssignmentsGrid`.
+- **Live Validation**: As candidate faculty members are selected in the override dropdown, immediate client-side and server-side constraint checks evaluate timeslot clashes (`HC-03`), sabbatical/leave terms (`HC-04`), required tag proficiencies (`HC-01`), and course preferences (`SC-03`).
+- **Required Justification**: Mandates input of administrative justification before enabling submission.
+- **Explicit Acknowledgement**: If hard constraint invariants would be broken, presents a warning banner and mandates an explicit checkbox acknowledgement (`acknowledge_violations=true`).
+- **Audit Persistence**: Persists an immutable `Override` record, writes an `ASSIGNMENT_OVERRIDE` event to the audit trail, and flags the assignment source as `override`.
+
+#### 5. Audit Trail Page (`frontend/src/features/admin/audit/AuditTrailPage.tsx`)
+- Chronological, filterable log consuming `GET /api/v1/audit`.
+- Filters by category: Solver Runs (`OPTIMIZE_*`), Overrides (`ASSIGNMENT_OVERRIDE`), Rule Changes (`CONSTRAINT_*`), and Repairs (`REPAIR_*`).
+- Entity domain and free-text search filters.
+- JSON snapshot viewer modal to inspect payloads, evidence snapshots, and before/after parameters.
+
+#### 6. Rules Catalog & Impact Simulation (`frontend/src/features/admin/rules/RulesCatalogPage.tsx`)
+- Catalog of all Hard Constraints (HC-01 to HC-07) and Soft Objectives (SC-01 to SC-04).
+- Toggles to enable/disable rules and weight sliders for soft penalties/bonuses.
+- **Preview Impact Simulation**: "Preview Impact" button executes simulated constraint validation via `POST /api/v1/constraints/validate` on the active schedule with candidate rule overrides, displaying live counts of resulting hard violations, soft flags, and specific failure reasons before committing changes.
+- Batch update mutation saving changes via `PUT /api/v1/constraints`.
+
+#### 7. Navigation & Router Integration (`frontend/src/app/router.tsx`, `AdminOverviewPage.tsx`, `AdminLayout.tsx`)
+- Mounted routes in `router.tsx`: `/admin/conflicts`, `/admin/constraints`, `/admin/overrides`, `/admin/audit`.
+- Updated `AdminLayout.tsx` sidebar with direct navigation items.
+- Updated `AdminOverviewPage.tsx` with top tab bar switching seamlessly between Overview, Optimizer, Workload, Assignments, Conflicts & Repairs, Forecasts, Rules Catalog, and Audit Trail.
+
+### Test Results & Verification Status
+- **TypeScript & Vite Production Build**: `npm run build` executed cleanly (`tsc && vite build`, 768 modules transformed, 0 type errors, exit code 0).
+- **Backend & ML Pytest Suite**: 216/216 passed in 75.54s (0 failed, exit code 0).
+- Strict mode compliance (`strict: true`, zero `any` types).

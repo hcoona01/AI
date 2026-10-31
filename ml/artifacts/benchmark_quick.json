@@ -1,8 +1,8 @@
 {
   "metadata": {
     "profile": "quick",
-    "timestamp": "2026-10-31T19:48:58.552864+00:00",
-    "total_duration_seconds": 2.52,
+    "timestamp": "2026-10-31T20:13:50.178526+00:00",
+    "total_duration_seconds": 2.66,
     "fixtures_evaluated": [
       "balanced_baseline",
       "tight_capacity",
@@ -35,10 +35,10 @@
       "std_dev": 0.5477,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 1.7326,
+      "solve_time_seconds": 0.1814,
       "variable_count": 11,
       "variables_avoided": 14,
-      "peak_memory_mb": 0.09,
+      "peak_memory_mb": 0.1,
       "assigned_sections_count": 5
     },
     {
@@ -58,7 +58,7 @@
       "std_dev": 3.5071,
       "max_min_gap": 7.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.0851,
+      "solve_time_seconds": 0.1198,
       "variable_count": 11,
       "variables_avoided": 14,
       "peak_memory_mb": 0.05,
@@ -81,10 +81,10 @@
       "std_dev": 0.5774,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.3639,
+      "solve_time_seconds": 0.4389,
       "variable_count": 27,
       "variables_avoided": 0,
-      "peak_memory_mb": 0.1,
+      "peak_memory_mb": 0.11,
       "assigned_sections_count": 9
     },
     {
@@ -104,7 +104,7 @@
       "std_dev": 0.5774,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.2457,
+      "solve_time_seconds": 0.3107,
       "variable_count": 27,
       "variables_avoided": 0,
       "peak_memory_mb": 0.07,
@@ -127,7 +127,7 @@
       "std_dev": 0.0,
       "max_min_gap": 0.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.0588,
+      "solve_time_seconds": 0.0599,
       "variable_count": 5,
       "variables_avoided": 0,
       "peak_memory_mb": 0.06,
@@ -150,10 +150,10 @@
       "std_dev": 0.0,
       "max_min_gap": 0.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.0199,
+      "solve_time_seconds": 0.0275,
       "variable_count": 5,
       "variables_avoided": 0,
-      "peak_memory_mb": 0.02,
+      "peak_memory_mb": 0.03,
       "assigned_sections_count": 0
     }
   ]

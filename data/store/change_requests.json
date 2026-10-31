@@ -22,5 +22,89 @@
     "admin_response": "Approved by dept chair.",
     "created_at": "2026-10-31T19:48:53.109627Z",
     "updated_at": "2026-10-31T19:48:53.137746Z"
+  },
+  {
+    "id": "cr-3fcc9132",
+    "assignment_id": "asgn-test-explain",
+    "faculty_id": "f-01",
+    "section_id": "SEC-FA26-CS580-01",
+    "course_code": "CS101",
+    "comment": "Requesting to swap section due to graduate research conflict on Fridays.",
+    "status": "approved",
+    "admin_response": "Approved by dept chair.",
+    "created_at": "2026-10-31T19:54:05.314757Z",
+    "updated_at": "2026-10-31T19:54:05.378315Z"
+  },
+  {
+    "id": "cr-d7f0097b",
+    "assignment_id": "asgn-test-explain",
+    "faculty_id": "f-01",
+    "section_id": "SEC-FA26-CS580-01",
+    "course_code": "CS101",
+    "comment": "Requesting to swap section due to graduate research conflict on Fridays.",
+    "status": "approved",
+    "admin_response": "Approved by dept chair.",
+    "created_at": "2026-10-31T19:55:36.404105Z",
+    "updated_at": "2026-10-31T19:55:36.494313Z"
+  },
+  {
+    "id": "cr-8e39f641",
+    "assignment_id": "asgn-test-explain",
+    "faculty_id": "f-01",
+    "section_id": "SEC-FA26-CS580-01",
+    "course_code": "CS101",
+    "comment": "Requesting to swap section due to graduate research conflict on Fridays.",
+    "status": "approved",
+    "admin_response": "Approved by dept chair.",
+    "created_at": "2026-10-31T19:58:02.235933Z",
+    "updated_at": "2026-10-31T19:58:02.308752Z"
+  },
+  {
+    "id": "cr-4ddc3e19",
+    "assignment_id": "asgn-test-explain",
+    "faculty_id": "f-01",
+    "section_id": "SEC-FA26-CS580-01",
+    "course_code": "CS101",
+    "comment": "Requesting to swap section due to graduate research conflict on Fridays.",
+    "status": "approved",
+    "admin_response": "Approved by dept chair.",
+    "created_at": "2026-10-31T19:58:38.293700Z",
+    "updated_at": "2026-10-31T19:58:38.372602Z"
+  },
+  {
+    "id": "cr-f41c51a4",
+    "assignment_id": "asgn-test-explain",
+    "faculty_id": "f-01",
+    "section_id": "SEC-FA26-CS580-01",
+    "course_code": "CS101",
+    "comment": "Requesting to swap section due to graduate research conflict on Fridays.",
+    "status": "approved",
+    "admin_response": "Approved by dept chair.",
+    "created_at": "2026-10-31T19:59:08.122851Z",
+    "updated_at": "2026-10-31T19:59:08.182265Z"
+  },
+  {
+    "id": "cr-da5e4414",
+    "assignment_id": "asgn-test-explain",
+    "faculty_id": "f-01",
+    "section_id": "SEC-FA26-CS580-01",
+    "course_code": "CS101",
+    "comment": "Requesting to swap section due to graduate research conflict on Fridays.",
+    "status": "approved",
+    "admin_response": "Approved by dept chair.",
+    "created_at": "2026-10-31T20:10:50.987002Z",
+    "updated_at": "2026-10-31T20:10:51.096646Z"
+  },
+  {
+    "id": "cr-67835c03",
+    "assignment_id": "asgn-test-explain",
+    "faculty_id": "f-01",
+    "section_id": "SEC-FA26-CS580-01",
+    "course_code": "CS101",
+    "comment": "Requesting to swap section due to graduate research conflict on Fridays.",
+    "status": "approved",
+    "admin_response": "Approved by dept chair.",
+    "created_at": "2026-10-31T20:13:35.729481Z",
+    "updated_at": "2026-10-31T20:13:35.860451Z"
   }
 ]

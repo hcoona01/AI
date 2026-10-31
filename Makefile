@@ -55,13 +55,17 @@ lint:
 	$(BLACK) --check backend ml || true
 
 test:
-	$(SET_ENV) $(PYTEST) backend/tests ml/tests -q -m "not slow"
+	$(SET_ENV) $(PYTHON) -m coverage run -m pytest backend/tests ml/tests -q -m "not e2e and not slow"
+	$(PYTHON) -m coverage report --include="backend/app/services/constraint_engine.py,backend/app/repositories/*,backend/app/api/v1/auth.py,backend/app/core/security.py" --fail-under=80
 
 train:
 	$(SET_ENV) $(PYTHON) ml/scripts/train.py
 
 benchmark-quick:
-	$(SET_ENV) $(PYTHON) ml/benchmark/run_benchmark.py --quick
+	$(SET_ENV) $(PYTHON) ml/benchmark/run_benchmark.py --profile quick
+
+benchmark-full:
+	$(SET_ENV) $(PYTHON) ml/benchmark/run_benchmark.py --profile full
 
 e2e:
-	cd frontend && npm run build
+	$(SET_ENV) $(PYTEST) tests/e2e -m e2e -v

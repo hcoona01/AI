@@ -61,6 +61,17 @@ async def request_otp(
     return OTPResponse(message=result["message"], status=result["status"])
 
 
+@router.get("/dev-otp")
+async def get_dev_otp(
+    email: str,
+    otp_service: Annotated[OTPService, Depends(get_otp_service)],
+) -> dict[str, str | None]:
+    """Retrieve in-memory dev OTP for automated testing in non-production environments."""
+    if not settings.OTP_DEV_MODE:
+        return {"email": email, "otp": None}
+    return {"email": email, "otp": otp_service.get_dev_otp(email)}
+
+
 @router.post(
     "/verify-otp",
     response_model=TokenResponse,

@@ -3084,5 +3084,2238 @@
       "sections_updated": 25
     },
     "timestamp": "2026-10-31T19:48:55.453762Z"
+  },
+  {
+    "id": "audit-665556523064",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-31T19:54:00.914347Z"
+  },
+  {
+    "id": "audit-f158dffb1f03",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-31T19:54:00.953668Z"
+  },
+  {
+    "id": "audit-1df47f1a6d7c",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-31T19:54:00.970485Z"
+  },
+  {
+    "id": "audit-c0003b20ef56",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-31T19:54:01.099171Z"
+  },
+  {
+    "id": "audit-d23fe2d7a926",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-31T19:54:01.223101Z"
+  },
+  {
+    "id": "audit-a330d9faa8c0",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-28ca2d7228",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:54:01.303425Z"
+  },
+  {
+    "id": "audit-1736c1fabfee",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-28ca2d7228",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:54:01.370073Z"
+  },
+  {
+    "id": "audit-4cf0fa809dad",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-66aeb18322",
+      "term": "TermGreedyFeasible",
+      "method": "greedy",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:54:01.416869Z"
+  },
+  {
+    "id": "audit-02707fc92a56",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-66aeb18322",
+      "feasible": true,
+      "count": 1
+    },
+    "timestamp": "2026-10-31T19:54:01.767823Z"
+  },
+  {
+    "id": "audit-e10d40d5acd6",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-478cf18788",
+      "term": "ImpossibleTerm",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:54:02.118269Z"
+  },
+  {
+    "id": "audit-94789bcb443e",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-478cf18788",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:54:02.136863Z"
+  },
+  {
+    "id": "audit-bca4966eecc5",
+    "actor_id": "u-admin-test",
+    "action": "ASSIGNMENT_OVERRIDE",
+    "entity": "assignment",
+    "payload": {
+      "override_id": "ovr-e2e66d7093",
+      "assignment_id": "asgn-override-flow-test",
+      "section_id": "SEC-FA26-CS580-01",
+      "previous_faculty_id": "f-01",
+      "new_faculty_id": "f-20",
+      "reason": "Department chair urgent staffing override",
+      "acknowledged_violations": [
+        "HC-07",
+        "HC-03",
+        "HC-06"
+      ]
+    },
+    "timestamp": "2026-10-31T19:54:03.119168Z"
+  },
+  {
+    "id": "audit-eda27d08c0c9",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-032168687a",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:54:03.420052Z"
+  },
+  {
+    "id": "audit-6437c5233535",
+    "actor_id": "u-admin-test",
+    "action": "REPAIR_APPLY",
+    "entity": "assignment",
+    "payload": {
+      "repair_type": "relax_hc05",
+      "term": "Fall 2026",
+      "changes": [
+        "Increased max preparations and course limits for departmental faculty by +2."
+      ],
+      "triggered_job_id": "job-032168687a"
+    },
+    "timestamp": "2026-10-31T19:54:03.432807Z"
+  },
+  {
+    "id": "audit-fc1e0f6fd2c0",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-032168687a",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:54:03.503061Z"
+  },
+  {
+    "id": "audit-112af178eb48",
+    "actor_id": "u-faculty-test-1",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-01",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:54:05.227628Z"
+  },
+  {
+    "id": "audit-af7fcb09bb9d",
+    "actor_id": "u-admin-test",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-02",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:54:05.269646Z"
+  },
+  {
+    "id": "audit-a59660eaec80",
+    "actor_id": "u-faculty-test-1",
+    "action": "CHANGE_REQUEST_CREATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-3fcc9132",
+      "assignment_id": "asgn-test-explain",
+      "faculty_id": "f-01",
+      "section_id": "SEC-FA26-CS580-01",
+      "course_code": "CS101",
+      "comment": "Requesting to swap section due to graduate research conflict on Fridays."
+    },
+    "timestamp": "2026-10-31T19:54:05.346016Z"
+  },
+  {
+    "id": "audit-7ad45844df10",
+    "actor_id": "u-admin-test",
+    "action": "CHANGE_REQUEST_STATUS_UPDATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-3fcc9132",
+      "new_status": "approved",
+      "admin_response": "Approved by dept chair."
+    },
+    "timestamp": "2026-10-31T19:54:05.378315Z"
+  },
+  {
+    "id": "audit-5e80d61fecb7",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-31T19:54:06.902749Z"
+  },
+  {
+    "id": "audit-45147ae4bb88",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-31T19:55:32.372200Z"
+  },
+  {
+    "id": "audit-4bc183da9121",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-31T19:55:32.412152Z"
+  },
+  {
+    "id": "audit-4725ec2fb1c3",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-31T19:55:32.452770Z"
+  },
+  {
+    "id": "audit-ccccdbc4ade8",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-31T19:55:32.604442Z"
+  },
+  {
+    "id": "audit-42c94b38cb07",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-31T19:55:32.703629Z"
+  },
+  {
+    "id": "audit-4d4160d67419",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-594b40c58d",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:55:32.836146Z"
+  },
+  {
+    "id": "audit-9cf902609d66",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-594b40c58d",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:55:32.936595Z"
+  },
+  {
+    "id": "audit-63c79dd21d90",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-1f4b5e6d57",
+      "term": "TermGreedyFeasible",
+      "method": "greedy",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:55:33.077103Z"
+  },
+  {
+    "id": "audit-6178c1a32227",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-1f4b5e6d57",
+      "feasible": true,
+      "count": 1
+    },
+    "timestamp": "2026-10-31T19:55:33.237194Z"
+  },
+  {
+    "id": "audit-e132d6e75044",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-bf7485f59b",
+      "term": "ImpossibleTerm",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:55:33.637230Z"
+  },
+  {
+    "id": "audit-37f4c7c43628",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-bf7485f59b",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:55:33.672273Z"
+  },
+  {
+    "id": "audit-b51d10816036",
+    "actor_id": "u-admin-test",
+    "action": "ASSIGNMENT_OVERRIDE",
+    "entity": "assignment",
+    "payload": {
+      "override_id": "ovr-0bf0cc69ed",
+      "assignment_id": "asgn-override-flow-test",
+      "section_id": "SEC-FA26-CS580-01",
+      "previous_faculty_id": "f-01",
+      "new_faculty_id": "f-20",
+      "reason": "Department chair urgent staffing override",
+      "acknowledged_violations": [
+        "HC-07",
+        "HC-06",
+        "HC-03"
+      ]
+    },
+    "timestamp": "2026-10-31T19:55:34.876402Z"
+  },
+  {
+    "id": "audit-c012899f6154",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-28fa7d22a4",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:55:35.116121Z"
+  },
+  {
+    "id": "audit-e89f51a54121",
+    "actor_id": "u-admin-test",
+    "action": "REPAIR_APPLY",
+    "entity": "assignment",
+    "payload": {
+      "repair_type": "relax_hc05",
+      "term": "Fall 2026",
+      "changes": [
+        "Increased max preparations and course limits for departmental faculty by +2."
+      ],
+      "triggered_job_id": "job-28fa7d22a4"
+    },
+    "timestamp": "2026-10-31T19:55:35.136079Z"
+  },
+  {
+    "id": "audit-577152bc7f21",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-28fa7d22a4",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:55:35.218399Z"
+  },
+  {
+    "id": "audit-444e71e1754f",
+    "actor_id": "u-faculty-test-1",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-01",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:55:36.217005Z"
+  },
+  {
+    "id": "audit-8c70ac3de384",
+    "actor_id": "u-admin-test",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-02",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:55:36.294370Z"
+  },
+  {
+    "id": "audit-abbc9549aef9",
+    "actor_id": "u-faculty-test-1",
+    "action": "CHANGE_REQUEST_CREATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-d7f0097b",
+      "assignment_id": "asgn-test-explain",
+      "faculty_id": "f-01",
+      "section_id": "SEC-FA26-CS580-01",
+      "course_code": "CS101",
+      "comment": "Requesting to swap section due to graduate research conflict on Fridays."
+    },
+    "timestamp": "2026-10-31T19:55:36.414127Z"
+  },
+  {
+    "id": "audit-f2226a6de1aa",
+    "actor_id": "u-admin-test",
+    "action": "CHANGE_REQUEST_STATUS_UPDATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-d7f0097b",
+      "new_status": "approved",
+      "admin_response": "Approved by dept chair."
+    },
+    "timestamp": "2026-10-31T19:55:36.502838Z"
+  },
+  {
+    "id": "audit-1f2acba5dacb",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-31T19:55:36.876437Z"
+  },
+  {
+    "id": "audit-eafeca2cdd48",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-31T19:57:58.140537Z"
+  },
+  {
+    "id": "audit-86464b4ba267",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-31T19:57:58.173514Z"
+  },
+  {
+    "id": "audit-4ae7a6211a44",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-31T19:57:58.219558Z"
+  },
+  {
+    "id": "audit-79c0c0d00c12",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-31T19:57:58.364056Z"
+  },
+  {
+    "id": "audit-fc78f47a7e67",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-31T19:57:58.440380Z"
+  },
+  {
+    "id": "audit-17b7edf5bb3c",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-2a8837ec41",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:57:58.556688Z"
+  },
+  {
+    "id": "audit-4a0c97dd94ae",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-2a8837ec41",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:57:58.640149Z"
+  },
+  {
+    "id": "audit-6d64212821bf",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-d5de995462",
+      "term": "TermGreedyFeasible",
+      "method": "greedy",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:57:58.722425Z"
+  },
+  {
+    "id": "audit-4bb0f8d5142f",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-d5de995462",
+      "feasible": true,
+      "count": 1
+    },
+    "timestamp": "2026-10-31T19:57:58.889938Z"
+  },
+  {
+    "id": "audit-52fb67d865f0",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-a06b19444f",
+      "term": "ImpossibleTerm",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:57:59.335893Z"
+  },
+  {
+    "id": "audit-54c3c24347e0",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-a06b19444f",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:57:59.369312Z"
+  },
+  {
+    "id": "audit-6531ed8430c1",
+    "actor_id": "u-admin-test",
+    "action": "ASSIGNMENT_OVERRIDE",
+    "entity": "assignment",
+    "payload": {
+      "override_id": "ovr-845f9698c3",
+      "assignment_id": "asgn-override-flow-test",
+      "section_id": "SEC-FA26-CS580-01",
+      "previous_faculty_id": "f-01",
+      "new_faculty_id": "f-20",
+      "reason": "Department chair urgent staffing override",
+      "acknowledged_violations": [
+        "HC-06",
+        "HC-07",
+        "HC-03"
+      ]
+    },
+    "timestamp": "2026-10-31T19:58:00.636611Z"
+  },
+  {
+    "id": "audit-c82af55a132a",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-c1d18e75c2",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:58:00.952649Z"
+  },
+  {
+    "id": "audit-139bc4a7bb04",
+    "actor_id": "u-admin-test",
+    "action": "REPAIR_APPLY",
+    "entity": "assignment",
+    "payload": {
+      "repair_type": "relax_hc05",
+      "term": "Fall 2026",
+      "changes": [
+        "Increased max preparations and course limits for departmental faculty by +2."
+      ],
+      "triggered_job_id": "job-c1d18e75c2"
+    },
+    "timestamp": "2026-10-31T19:58:00.972605Z"
+  },
+  {
+    "id": "audit-69b4847f16d2",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-c1d18e75c2",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:58:01.084257Z"
+  },
+  {
+    "id": "audit-3e99816db60b",
+    "actor_id": "u-faculty-test-1",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-01",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:58:02.069225Z"
+  },
+  {
+    "id": "audit-727447ad28b0",
+    "actor_id": "u-admin-test",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-02",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:58:02.135416Z"
+  },
+  {
+    "id": "audit-728b0d6f770c",
+    "actor_id": "u-faculty-test-1",
+    "action": "CHANGE_REQUEST_CREATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-8e39f641",
+      "assignment_id": "asgn-test-explain",
+      "faculty_id": "f-01",
+      "section_id": "SEC-FA26-CS580-01",
+      "course_code": "CS101",
+      "comment": "Requesting to swap section due to graduate research conflict on Fridays."
+    },
+    "timestamp": "2026-10-31T19:58:02.235933Z"
+  },
+  {
+    "id": "audit-97ac1d9c204f",
+    "actor_id": "u-admin-test",
+    "action": "CHANGE_REQUEST_STATUS_UPDATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-8e39f641",
+      "new_status": "approved",
+      "admin_response": "Approved by dept chair."
+    },
+    "timestamp": "2026-10-31T19:58:02.310844Z"
+  },
+  {
+    "id": "audit-45ff13c0ba0d",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-31T19:58:02.619091Z"
+  },
+  {
+    "id": "audit-9dd1490c7fa6",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-31T19:58:34.228214Z"
+  },
+  {
+    "id": "audit-050c56dd8845",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-31T19:58:34.263886Z"
+  },
+  {
+    "id": "audit-71fc2f010181",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-31T19:58:34.308995Z"
+  },
+  {
+    "id": "audit-f233270f6afb",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-31T19:58:34.478450Z"
+  },
+  {
+    "id": "audit-12ca362dd4b5",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-31T19:58:34.595283Z"
+  },
+  {
+    "id": "audit-6bec40fc716b",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-da5cff1802",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:58:34.711478Z"
+  },
+  {
+    "id": "audit-9fc261fe156d",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-da5cff1802",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:58:34.794819Z"
+  },
+  {
+    "id": "audit-4756ddbacc38",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-2d9162e06a",
+      "term": "TermGreedyFeasible",
+      "method": "greedy",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:58:34.878128Z"
+  },
+  {
+    "id": "audit-e6eb84eaf050",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-2d9162e06a",
+      "feasible": true,
+      "count": 1
+    },
+    "timestamp": "2026-10-31T19:58:35.061794Z"
+  },
+  {
+    "id": "audit-75f32844af70",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-0eb4d562a8",
+      "term": "ImpossibleTerm",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:58:35.472643Z"
+  },
+  {
+    "id": "audit-2f112e34f51c",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-0eb4d562a8",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:58:35.507429Z"
+  },
+  {
+    "id": "audit-f131d989b9bf",
+    "actor_id": "u-admin-test",
+    "action": "ASSIGNMENT_OVERRIDE",
+    "entity": "assignment",
+    "payload": {
+      "override_id": "ovr-60c778f0b2",
+      "assignment_id": "asgn-override-flow-test",
+      "section_id": "SEC-FA26-CS580-01",
+      "previous_faculty_id": "f-01",
+      "new_faculty_id": "f-20",
+      "reason": "Department chair urgent staffing override",
+      "acknowledged_violations": [
+        "HC-07",
+        "HC-03",
+        "HC-06"
+      ]
+    },
+    "timestamp": "2026-10-31T19:58:36.806898Z"
+  },
+  {
+    "id": "audit-4fd7e021ab3b",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-a6265ab6d0",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:58:37.112984Z"
+  },
+  {
+    "id": "audit-f0256fde3224",
+    "actor_id": "u-admin-test",
+    "action": "REPAIR_APPLY",
+    "entity": "assignment",
+    "payload": {
+      "repair_type": "relax_hc05",
+      "term": "Fall 2026",
+      "changes": [
+        "Increased max preparations and course limits for departmental faculty by +2."
+      ],
+      "triggered_job_id": "job-a6265ab6d0"
+    },
+    "timestamp": "2026-10-31T19:58:37.128613Z"
+  },
+  {
+    "id": "audit-1a89274cd77b",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-a6265ab6d0",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:58:37.220617Z"
+  },
+  {
+    "id": "audit-720a3709d1f0",
+    "actor_id": "u-faculty-test-1",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-01",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:58:38.143557Z"
+  },
+  {
+    "id": "audit-4f5b37d51905",
+    "actor_id": "u-admin-test",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-02",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:58:38.207952Z"
+  },
+  {
+    "id": "audit-75dce468db45",
+    "actor_id": "u-faculty-test-1",
+    "action": "CHANGE_REQUEST_CREATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-4ddc3e19",
+      "assignment_id": "asgn-test-explain",
+      "faculty_id": "f-01",
+      "section_id": "SEC-FA26-CS580-01",
+      "course_code": "CS101",
+      "comment": "Requesting to swap section due to graduate research conflict on Fridays."
+    },
+    "timestamp": "2026-10-31T19:58:38.302743Z"
+  },
+  {
+    "id": "audit-7046690f3aec",
+    "actor_id": "u-admin-test",
+    "action": "CHANGE_REQUEST_STATUS_UPDATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-4ddc3e19",
+      "new_status": "approved",
+      "admin_response": "Approved by dept chair."
+    },
+    "timestamp": "2026-10-31T19:58:38.375592Z"
+  },
+  {
+    "id": "audit-11e3726d179e",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-31T19:58:38.696887Z"
+  },
+  {
+    "id": "audit-1238e3b34e34",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-31T19:59:04.102823Z"
+  },
+  {
+    "id": "audit-07266248d9f1",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-31T19:59:04.139615Z"
+  },
+  {
+    "id": "audit-9b4044b615f5",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-31T19:59:04.172448Z"
+  },
+  {
+    "id": "audit-b200cf696907",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-31T19:59:04.302675Z"
+  },
+  {
+    "id": "audit-0c3c7e5bbe8f",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-31T19:59:04.393949Z"
+  },
+  {
+    "id": "audit-cadbeac9b524",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-cb06c026e4",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:59:04.502644Z"
+  },
+  {
+    "id": "audit-e003ca1717e1",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-cb06c026e4",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:59:04.586332Z"
+  },
+  {
+    "id": "audit-cc6fc0cf2d94",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-749a8ea7ad",
+      "term": "TermGreedyFeasible",
+      "method": "greedy",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:59:04.673832Z"
+  },
+  {
+    "id": "audit-acbe6e080790",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-749a8ea7ad",
+      "feasible": true,
+      "count": 1
+    },
+    "timestamp": "2026-10-31T19:59:04.864989Z"
+  },
+  {
+    "id": "audit-1bee055ecfb8",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-d8005c9d85",
+      "term": "ImpossibleTerm",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:59:05.252852Z"
+  },
+  {
+    "id": "audit-88ebb888fb99",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-d8005c9d85",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:59:05.285486Z"
+  },
+  {
+    "id": "audit-0943e3ff4b6a",
+    "actor_id": "u-admin-test",
+    "action": "ASSIGNMENT_OVERRIDE",
+    "entity": "assignment",
+    "payload": {
+      "override_id": "ovr-7d72016995",
+      "assignment_id": "asgn-override-flow-test",
+      "section_id": "SEC-FA26-CS580-01",
+      "previous_faculty_id": "f-01",
+      "new_faculty_id": "f-20",
+      "reason": "Department chair urgent staffing override",
+      "acknowledged_violations": [
+        "HC-06",
+        "HC-07",
+        "HC-03"
+      ]
+    },
+    "timestamp": "2026-10-31T19:59:06.518051Z"
+  },
+  {
+    "id": "audit-5d6cdc222249",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-8e90b4e747",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T19:59:06.831050Z"
+  },
+  {
+    "id": "audit-4193e6eed12d",
+    "actor_id": "u-admin-test",
+    "action": "REPAIR_APPLY",
+    "entity": "assignment",
+    "payload": {
+      "repair_type": "relax_hc05",
+      "term": "Fall 2026",
+      "changes": [
+        "Increased max preparations and course limits for departmental faculty by +2."
+      ],
+      "triggered_job_id": "job-8e90b4e747"
+    },
+    "timestamp": "2026-10-31T19:59:06.872917Z"
+  },
+  {
+    "id": "audit-c37201895edf",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-8e90b4e747",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T19:59:06.979942Z"
+  },
+  {
+    "id": "audit-0dd5d809ae01",
+    "actor_id": "u-faculty-test-1",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-01",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:59:07.981311Z"
+  },
+  {
+    "id": "audit-e16e7ac65e0d",
+    "actor_id": "u-admin-test",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-02",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T19:59:08.030905Z"
+  },
+  {
+    "id": "audit-5e5945de4067",
+    "actor_id": "u-faculty-test-1",
+    "action": "CHANGE_REQUEST_CREATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-f41c51a4",
+      "assignment_id": "asgn-test-explain",
+      "faculty_id": "f-01",
+      "section_id": "SEC-FA26-CS580-01",
+      "course_code": "CS101",
+      "comment": "Requesting to swap section due to graduate research conflict on Fridays."
+    },
+    "timestamp": "2026-10-31T19:59:08.122851Z"
+  },
+  {
+    "id": "audit-c0745954d1b4",
+    "actor_id": "u-admin-test",
+    "action": "CHANGE_REQUEST_STATUS_UPDATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-f41c51a4",
+      "new_status": "approved",
+      "admin_response": "Approved by dept chair."
+    },
+    "timestamp": "2026-10-31T19:59:08.182265Z"
+  },
+  {
+    "id": "audit-cabc9964f42d",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-31T19:59:08.496653Z"
+  },
+  {
+    "id": "audit-0d9babb420c2",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-31T20:10:45.302923Z"
+  },
+  {
+    "id": "audit-b61a27176d19",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-31T20:10:45.352749Z"
+  },
+  {
+    "id": "audit-3b94eb13136e",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-31T20:10:45.428619Z"
+  },
+  {
+    "id": "audit-83fb9945ab7d",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-31T20:10:45.703004Z"
+  },
+  {
+    "id": "audit-d1f1fbc7acbd",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-31T20:10:45.825986Z"
+  },
+  {
+    "id": "audit-363dc306b264",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-64c544d383",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:10:46.026569Z"
+  },
+  {
+    "id": "audit-3a245e1afcc3",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-64c544d383",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T20:10:46.144187Z"
+  },
+  {
+    "id": "audit-0fe72e90a39f",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-bd47eec434",
+      "term": "TermGreedyFeasible",
+      "method": "greedy",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:10:46.222219Z"
+  },
+  {
+    "id": "audit-8b2e78f16fb8",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-bd47eec434",
+      "feasible": true,
+      "count": 1
+    },
+    "timestamp": "2026-10-31T20:10:46.758501Z"
+  },
+  {
+    "id": "audit-c6c7827a6630",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-7c4d39fa74",
+      "term": "ImpossibleTerm",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:10:47.157106Z"
+  },
+  {
+    "id": "audit-8937d0531d7f",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-7c4d39fa74",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T20:10:47.192203Z"
+  },
+  {
+    "id": "audit-8cc2bc6ab9c6",
+    "actor_id": "u-admin-test",
+    "action": "ASSIGNMENT_OVERRIDE",
+    "entity": "assignment",
+    "payload": {
+      "override_id": "ovr-f9111c7828",
+      "assignment_id": "asgn-override-flow-test",
+      "section_id": "SEC-FA26-CS580-01",
+      "previous_faculty_id": "f-01",
+      "new_faculty_id": "f-20",
+      "reason": "Department chair urgent staffing override",
+      "acknowledged_violations": [
+        "HC-06",
+        "HC-03",
+        "HC-07"
+      ]
+    },
+    "timestamp": "2026-10-31T20:10:48.444448Z"
+  },
+  {
+    "id": "audit-029cb51e4f38",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-9b3360cd08",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:10:48.702925Z"
+  },
+  {
+    "id": "audit-85fd40e03c68",
+    "actor_id": "u-admin-test",
+    "action": "REPAIR_APPLY",
+    "entity": "assignment",
+    "payload": {
+      "repair_type": "relax_hc05",
+      "term": "Fall 2026",
+      "changes": [
+        "Increased max preparations and course limits for departmental faculty by +2."
+      ],
+      "triggered_job_id": "job-9b3360cd08"
+    },
+    "timestamp": "2026-10-31T20:10:48.728656Z"
+  },
+  {
+    "id": "audit-f71a367d6cc9",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-9b3360cd08",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T20:10:48.809739Z"
+  },
+  {
+    "id": "audit-82f9d6d832d6",
+    "actor_id": "u-faculty-test-1",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-01",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T20:10:50.835504Z"
+  },
+  {
+    "id": "audit-05de33d206b1",
+    "actor_id": "u-admin-test",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-02",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T20:10:50.902765Z"
+  },
+  {
+    "id": "audit-fe0b0bc2c4ce",
+    "actor_id": "u-faculty-test-1",
+    "action": "CHANGE_REQUEST_CREATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-da5e4414",
+      "assignment_id": "asgn-test-explain",
+      "faculty_id": "f-01",
+      "section_id": "SEC-FA26-CS580-01",
+      "course_code": "CS101",
+      "comment": "Requesting to swap section due to graduate research conflict on Fridays."
+    },
+    "timestamp": "2026-10-31T20:10:51.012556Z"
+  },
+  {
+    "id": "audit-3965504b974e",
+    "actor_id": "u-admin-test",
+    "action": "CHANGE_REQUEST_STATUS_UPDATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-da5e4414",
+      "new_status": "approved",
+      "admin_response": "Approved by dept chair."
+    },
+    "timestamp": "2026-10-31T20:10:51.096646Z"
+  },
+  {
+    "id": "audit-63a866d376ee",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-31T20:10:55.515945Z"
+  },
+  {
+    "id": "audit-5c1fdb490ee3",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_CREATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999",
+      "title": "Advanced Experimental Testing",
+      "description": "Testing CRUD and audit trail",
+      "credits": 4,
+      "contact_hours": 4.0,
+      "level": "graduate",
+      "required_tags": [
+        "Algorithms"
+      ],
+      "min_proficiency": 4,
+      "is_lab": false,
+      "required_resource_ids": [
+        "ROOM-101"
+      ]
+    },
+    "timestamp": "2026-10-31T20:13:30.862328Z"
+  },
+  {
+    "id": "audit-6578ce7ef673",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_UPDATED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "updated": {
+        "id": "c-cs999",
+        "code": "CS999",
+        "title": "Updated Experimental Testing Title",
+        "description": "Testing CRUD and audit trail",
+        "credits": 4,
+        "contact_hours": 4.0,
+        "level": "graduate",
+        "required_tags": [
+          "Algorithms"
+        ],
+        "min_proficiency": 4,
+        "is_lab": false,
+        "required_resource_ids": [
+          "ROOM-101"
+        ]
+      }
+    },
+    "timestamp": "2026-10-31T20:13:30.902787Z"
+  },
+  {
+    "id": "audit-fd0c00939f09",
+    "actor_id": "u-admin-test",
+    "action": "COURSE_DELETED",
+    "entity": "course",
+    "payload": {
+      "id": "c-cs999",
+      "code": "CS999"
+    },
+    "timestamp": "2026-10-31T20:13:30.945754Z"
+  },
+  {
+    "id": "audit-f16757a3d0f3",
+    "actor_id": "u-admin-test",
+    "action": "SCENARIO_LOADED",
+    "entity": "scenario",
+    "payload": {
+      "scenario_name": "infeasible_expertise",
+      "feasible": false,
+      "reason": "Infeasible due to HC-01: Course requires Quantum Algorithms proficiency >= 5, which no available faculty member possesses.",
+      "counts": {
+        "faculty": 1,
+        "courses": 1,
+        "sections": 1,
+        "resources": 0,
+        "timeslots": 0,
+        "assignments": 1
+      }
+    },
+    "timestamp": "2026-10-31T20:13:31.085689Z"
+  },
+  {
+    "id": "audit-e3669741457b",
+    "actor_id": "script:seed_store",
+    "action": "STORE_SEEDED",
+    "entity": "system",
+    "payload": {
+      "reset": true,
+      "backend": "local",
+      "counts": {
+        "users.json": 27,
+        "faculty.json": 25,
+        "courses.json": 40,
+        "sections.json": 60,
+        "resources.json": 10,
+        "timeslots.json": 20,
+        "constraints.json": 12
+      }
+    },
+    "timestamp": "2026-10-31T20:13:31.204307Z"
+  },
+  {
+    "id": "audit-f53b4284a27d",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-2e290cee8e",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:13:31.321625Z"
+  },
+  {
+    "id": "audit-9170caca525c",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-2e290cee8e",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T20:13:31.410850Z"
+  },
+  {
+    "id": "audit-82786f61c3a1",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-1388b304bc",
+      "term": "TermGreedyFeasible",
+      "method": "greedy",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:13:31.573614Z"
+  },
+  {
+    "id": "audit-c04b958522df",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-1388b304bc",
+      "feasible": true,
+      "count": 1
+    },
+    "timestamp": "2026-10-31T20:13:31.791522Z"
+  },
+  {
+    "id": "audit-3dba20ec7857",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-e7196cbf5b",
+      "term": "ImpossibleTerm",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:13:32.202164Z"
+  },
+  {
+    "id": "audit-422cd75894e6",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-e7196cbf5b",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T20:13:32.240491Z"
+  },
+  {
+    "id": "audit-4d8e92e67691",
+    "actor_id": "u-admin-test",
+    "action": "ASSIGNMENT_OVERRIDE",
+    "entity": "assignment",
+    "payload": {
+      "override_id": "ovr-0be2cb254a",
+      "assignment_id": "asgn-override-flow-test",
+      "section_id": "SEC-FA26-CS580-01",
+      "previous_faculty_id": "f-01",
+      "new_faculty_id": "f-20",
+      "reason": "Department chair urgent staffing override",
+      "acknowledged_violations": [
+        "HC-07",
+        "HC-03",
+        "HC-06"
+      ]
+    },
+    "timestamp": "2026-10-31T20:13:33.515769Z"
+  },
+  {
+    "id": "audit-cd498aae38ec",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_START",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-a277de7731",
+      "term": "Fall 2026",
+      "method": "cpsat",
+      "forecast_mode": "p50"
+    },
+    "timestamp": "2026-10-31T20:13:33.770667Z"
+  },
+  {
+    "id": "audit-950feb8bf92a",
+    "actor_id": "u-admin-test",
+    "action": "REPAIR_APPLY",
+    "entity": "assignment",
+    "payload": {
+      "repair_type": "relax_hc05",
+      "term": "Fall 2026",
+      "changes": [
+        "Increased max preparations and course limits for departmental faculty by +2."
+      ],
+      "triggered_job_id": "job-a277de7731"
+    },
+    "timestamp": "2026-10-31T20:13:33.785695Z"
+  },
+  {
+    "id": "audit-e54a032cdabc",
+    "actor_id": "u-admin-test",
+    "action": "OPTIMIZE_JOB_COMPLETE",
+    "entity": "assignment",
+    "payload": {
+      "job_id": "job-a277de7731",
+      "feasible": false,
+      "count": 0
+    },
+    "timestamp": "2026-10-31T20:13:33.890926Z"
+  },
+  {
+    "id": "audit-8f4c49aa622a",
+    "actor_id": "u-faculty-test-1",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-01",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T20:13:35.552956Z"
+  },
+  {
+    "id": "audit-26378c1502b4",
+    "actor_id": "u-admin-test",
+    "action": "FACULTY_PREFERENCES_UPDATE",
+    "entity": "faculty",
+    "payload": {
+      "faculty_id": "f-02",
+      "unavailable_slots": [
+        "ts-01",
+        "ts-03"
+      ],
+      "leave_terms": [
+        "Summer 2027"
+      ],
+      "preferred_course_ids": [
+        "c-01",
+        "c-02"
+      ]
+    },
+    "timestamp": "2026-10-31T20:13:35.631370Z"
+  },
+  {
+    "id": "audit-78d415769c8b",
+    "actor_id": "u-faculty-test-1",
+    "action": "CHANGE_REQUEST_CREATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-67835c03",
+      "assignment_id": "asgn-test-explain",
+      "faculty_id": "f-01",
+      "section_id": "SEC-FA26-CS580-01",
+      "course_code": "CS101",
+      "comment": "Requesting to swap section due to graduate research conflict on Fridays."
+    },
+    "timestamp": "2026-10-31T20:13:35.754262Z"
+  },
+  {
+    "id": "audit-cb8079fbe5b4",
+    "actor_id": "u-admin-test",
+    "action": "CHANGE_REQUEST_STATUS_UPDATED",
+    "entity": "change_request",
+    "payload": {
+      "change_request_id": "cr-67835c03",
+      "new_status": "approved",
+      "admin_response": "Approved by dept chair."
+    },
+    "timestamp": "2026-10-31T20:13:35.863453Z"
+  },
+  {
+    "id": "audit-0072d3e0ff46",
+    "actor_id": "u-admin-test",
+    "action": "FORECAST_RUN",
+    "entity": "forecast",
+    "payload": {
+      "mode": "model",
+      "term": "Fall 2026",
+      "forecasts_generated": 40,
+      "sections_updated": 25
+    },
+    "timestamp": "2026-10-31T20:13:44.658591Z"
   }
 ]

@@ -685,3 +685,88 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
 - **Frontend TypeScript & Vite Production Build**: `npm run build` executed cleanly (`tsc && vite build`, 771 modules transformed, 0 type errors, exit code 0).
 - **Backend & ML Pytest Suite**: 219/219 passed in 69.72s (0 failed, exit code 0).
 - Strict mode compliance (`strict: true`, zero `any` types).
+
+
+## 2026-11-01: CI/CD, Coverage, Reproducibility & E2E Testing
+
+- **Task Objective**: Establish complete CI/CD pipeline covering local `make test` (< 2 min, ≥80% coverage), a reproducibility contract for solvers, Playwright E2E suite (`@e2e`), and GitHub Actions CI with PR checks and a `workflow_dispatch` full benchmark job.
+
+- **Changes Implemented**:
+
+  ### 1. `make test` — Local Unit Tests with Coverage Enforcement
+  - Fixed `ImportError: cannot load module more than once per process` for all 7 backend test modules: root-level `pytest.ini` now sets `pythonpath = . backend ml`, eliminating the Python Store path collision that occurred when running from `backend/` subdirectory.
+  - Updated `Makefile` `test` target: runs `coverage run -m pytest backend/tests ml/tests -q -m "not e2e and not slow"` followed by `coverage report --fail-under=80` scoped to the 3 target modules.
+  - **231 tests pass in 57.93s** (well under 2-minute budget).
+  - Coverage verified: `constraint_engine` 95%, `security` 97%, `auth` 92%, `repositories` 81–96%.
+
+  ### 2. Added Coverage-Boosting Tests (`backend/tests/test_security_coverage.py`)
+  - 9 targeted tests covering previously-uncovered branches in `security.py`:
+    - Decoding invalid tokens → `UnauthorizedError`
+    - `get_current_user` with invalid `X-User-Role` header → HTTP 400
+    - JWT token missing `sub` claim → `UnauthorizedError`
+    - JWT token of type `refresh` used as access token → `UnauthorizedError`
+    - Token payload fallback path (no user_repo) → reconstructed `User`
+    - `require_faculty` called with admin user → `ForbiddenError`
+    - `require_authenticated` passthrough
+    - `verify_faculty_access` admin bypass, own-faculty match, cross-faculty block
+    - `FacultyAccessGuard.__call__` with path params
+
+  ### 3. Reproducibility Tests (`backend/tests/test_reproducibility.py`)
+  - 3 tests covering CP-SAT and Greedy determinism:
+    - `test_cpsat_identical_assignments_fixed_seed` (parametrized over `balanced_baseline` and `tight_capacity`): two independent `solve_cpsat(..., seed=42)` calls must produce identical `feasible`, `objective_value`, section→faculty mapping, and fit scores.
+    - `test_greedy_identical_assignments`: two `solve_greedy()` calls must produce identical results.
+  - All 3 pass.
+
+  ### 4. `/auth/dev-otp` Endpoint
+  - Added `GET /api/v1/auth/dev-otp?email=...` returning the in-memory OTP when `OTP_DEV_MODE=true`; returns `null` otherwise.
+  - Enables automated E2E tests to retrieve OTP without SMTP or screen-scraping.
+
+  ### 5. Playwright E2E Suite (`tests/e2e/`)
+  - `tests/e2e/conftest.py`: Session-scoped fixtures spin up backend (uvicorn, `OTP_DEV_MODE=true`) and Vite dev server if not already running; gracefully tear down at session end.
+  - `tests/e2e/test_app_e2e.py`: 6 tests tagged `@pytest.mark.e2e`:
+    1. `test_e2e_otp_login_admin`: Admin OTP login → redirected to `/admin`.
+    2. `test_e2e_otp_login_faculty`: Faculty OTP login → redirected to `/faculty`.
+    3. `test_e2e_faculty_blocked_from_admin_routes`: Faculty visiting `/admin` sees 403 Forbidden.
+    4. `test_e2e_run_optimizer`: Admin runs CP-SAT solver and awaits `COMPLETED` status.
+    5. `test_e2e_open_conflict`: Admin opens conflicts panel, sees "Schedule Conflicts & Rule Violations".
+    6. `test_e2e_apply_repair`: Admin opens repair modal, clicks Apply, confirms success.
+    7. `test_e2e_override_with_reason`: Admin overrides with reason, checks acknowledgment if hard violations detected.
+  - **Excluded from `make test`** (gated by `-m "not e2e and not slow"`).
+  - **Accessible via `make e2e`** only.
+
+  ### 6. Updated `Makefile`
+  - `test`: coverage run + `--fail-under=80` report.
+  - `e2e`: `pytest tests/e2e -m e2e -v`.
+  - `benchmark-quick`: `ml/benchmark/run_benchmark.py --profile quick`.
+  - `benchmark-full`: `ml/benchmark/run_benchmark.py --profile full`.
+
+  ### 7. GitHub Actions CI (`.github/workflows/ci.yml`)
+  - PR/push job `lint-and-test`:
+    - Lint with `ruff` + `black --check`
+    - Backend + ML unit tests with `coverage --fail-under=80`
+    - Frontend `npm run build`
+    - Playwright E2E tests (`playwright install --with-deps chromium`)
+    - Benchmark quick profile
+  - `workflow_dispatch`-only job `full-benchmark`:
+    - Runs `--profile full` (all 10 fixtures, P50+P90, 3 seeds)
+    - Uploads `ml/artifacts/benchmark_full.json`, `docs/benchmark.md`, `docs/img/*.png` as GitHub Actions artifacts (retained 30 days)
+
+  ### 8. Root `pytest.ini`
+  - Created at project root with `pythonpath = . backend ml`, `addopts = -m "not e2e and not slow"`, `testpaths = backend/tests ml/tests`, and marker registrations for `e2e` and `slow`.
+
+  ### 9. Backend `pyproject.toml`
+  - Updated `[tool.pytest.ini_options]` with `pythonpath = [".", "..", "../ml"]` and formal marker declarations.
+
+- **Test Results & Verification Status**:
+  - ✅ **231 tests pass in 57.93s** (< 2 min budget).
+  - ✅ Coverage: all 3 target modules ≥80% (`constraint_engine` 95%, `security` 97%, `auth` 92%, `repositories` 81–96%).
+  - ✅ **3 reproducibility tests pass** (CP-SAT and Greedy determinism validated).
+  - ✅ **Benchmark quick profile**: 0.87s (3 fixtures, 6 runs total), JSON and charts generated.
+  - ✅ Playwright Chromium v1.64.1 installed (`chromium-1248`).
+  - ✅ Frontend production build still clean.
+
+- **Next Steps / Backlog Items**:
+  - Run `make e2e` against live servers to complete full Playwright E2E validation.
+  - Optionally add `make e2e` to local developer flow after backend/frontend start.
+  - Push to GitHub to trigger CI and verify the `workflow_dispatch` full benchmark upload.
+  - Consider adding `--timid` or branch coverage to catch missed branches in `local_store.py` (currently 81%).

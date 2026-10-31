@@ -3,6 +3,7 @@
 from fastapi import APIRouter
 
 from app.api.v1 import (
+    assign,
     audit,
     auth,
     constraints,
@@ -32,3 +33,4 @@ api_router.include_router(timeslots.router)
 api_router.include_router(scenarios.router)
 api_router.include_router(audit.router)
 api_router.include_router(forecast.router)
+api_router.include_router(assign.router)

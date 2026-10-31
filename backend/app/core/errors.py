@@ -41,6 +41,15 @@ class ConflictError(AppException):
         )
 
 
+class ValidationError(AppException):
+    def __init__(
+        self, message: str = "Validation failed", rule_id: str | None = None
+    ):
+        super().__init__(
+            message=message, status_code=status.HTTP_400_BAD_REQUEST, rule_id=rule_id
+        )
+
+
 class UnauthorizedError(AppException):
     def __init__(self, message: str = "Unauthorized access"):
         super().__init__(message=message, status_code=status.HTTP_401_UNAUTHORIZED)

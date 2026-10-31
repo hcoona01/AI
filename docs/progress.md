@@ -468,3 +468,52 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
 ### Next Steps / Backlog Items
 - Wire the benchmark results and optimizer routines into the backend FastAPI service (`POST /api/v1/optimize`).
 - Connect frontend dashboard to visualize solver trade-offs and repair options.
+
+## 2026-11-01: Backend Optimization Service, Endpoints & Override Management
+
+- **Task Objective**: Expose the CP-SAT/Greedy optimizer through backend REST endpoints with asynchronous background execution, single-active-job RAM guard, explainability, fairness calculations, conflict diagnosis, repair application, and auditable human overrides.
+
+### Changes Implemented
+
+#### `backend/app/services/assignment_service.py`
+- Built `AssignmentService` managing:
+  - `start_optimization_job`: Asynchronously triggers CP-SAT or Greedy allocation in a background worker thread (`asyncio.to_thread`), enforcing strict single-active-job protection (raises `409 Conflict` if another job is running).
+  - `get_job`: In-memory status polling for job progress, durations, objective values, fairness summary, and error tracking.
+  - Assignment persistence: Validates solver outputs against `ConstraintEngine`, stamps `rule_ids_satisfied` and `rule_ids_violated`, and saves to `assignments.json`.
+  - `explain_assignment`: Diagnoses responsible rules, computes top-3 faculty alternatives with fit breakdown and eligibility blocking reasons, and formulates audit explanations.
+  - `get_fairness_metrics`: Calculates overall departmental Gini, standard deviation, max-min gap, and individual load breakdown for a given term.
+  - `get_conflicts_and_repairs`: Runs validation scenario across term assignments, returns categorized hard/soft violations, and invokes `generate_repairs` for automated remediation strategies.
+  - `apply_repair`: Applies chosen structural repairs (`relax_hc05`, `add_adjunct`, `move_timeslot`, `expand_facility`) and automatically kicks off a re-optimization job.
+  - `execute_override`: Handles administrative human reassignments with full `ConstraintEngine` re-validation. Preserves the original solver recommendation and fit metrics in an immutable snapshot (`Override` record), blocks unacknowledged hard violations (`acknowledge_violations=False`), and updates the assignment if confirmed.
+  - Complete integration with `AuditService` logging every event (`OPTIMIZE_JOB_START`, `OPTIMIZE_JOB_COMPLETE`, `OPTIMIZE_JOB_FAIL`, `ASSIGNMENT_OVERRIDE`, `REPAIR_APPLY`).
+
+#### `backend/app/api/v1/assign.py`
+- Implemented and mounted the `/api/v1/assign` router:
+  - `POST /assign/run`: Admin-only trigger returning HTTP 202 with job ID.
+  - `GET /assign/jobs/{id}`: Polls job status and execution payload.
+  - `GET /assign`: Fetches assignments with strict RBAC (faculty restricted strictly to their own assigned records).
+  - `GET /assign/explain/{id}`: Deep dive into assignment rationale and top-3 alternatives (faculty restricted to their own assignments).
+  - `GET /assign/fairness?term=...`: Workload distribution statistics.
+  - `GET /assign/conflicts?term=...`: Violation audit and repair alternatives.
+  - `POST /assign/repair/apply`: Admin-only repair execution.
+  - `POST /assign/override`: Admin-only human override.
+
+#### `backend/tests/test_assign_api.py`
+- Implemented comprehensive integration test suite covering:
+  - `test_single_active_job_enforcement`: 409 Conflict when a job is already in progress.
+  - `test_greedy_job_run_and_status`: Background completion and status transition.
+  - `test_infeasible_path`: Zero-eligible detection returning blocking rules and explanation.
+  - `test_explain_assignment_and_faculty_isolation`: Explanation structure and 403 enforcement when faculty queries another instructor's assignment.
+  - `test_faculty_assignment_listing_restricted`: Strict filtering to own faculty ID.
+  - `test_fairness_and_conflicts_endpoints`: Metric payloads and violation structures.
+  - `test_override_flow_with_and_without_hard_violations`: 400 on duplicate faculty, acknowledgement requirement on hard violations, snapshot preservation, and audit logging.
+  - `test_repair_apply_endpoint`: Admin authorization and triggered job dispatch.
+
+### Test Results & Verification Status
+- `backend/tests/test_assign_api.py`: 8/8 passed.
+- Entire backend test suite (`backend/tests/`): **126 passed in 5.96s** (0 failed).
+- Entire ML test suite (`ml/tests/`): **90 passed in 13.35s** (0 failed).
+
+### Next Steps / Backlog Items
+- Wire the frontend `/admin/assignments`, `/admin/optimize`, and `/faculty/schedule` routes to consume these `/api/v1/assign` endpoints.
+- Build UI dialog for administrative override with violation warnings and acknowledgement checkbox.

@@ -9,6 +9,8 @@ import { RulesCatalogPage } from '../features/admin/rules/RulesCatalogPage';
 import { AuditTrailPage } from '../features/admin/audit/AuditTrailPage';
 import { OverridesPage } from '../features/admin/overrides/OverridesPage';
 import { MyLoadPage } from '../features/faculty/myload/MyLoadPage';
+import { AvailabilityPage } from '../features/faculty/availability/AvailabilityPage';
+import { RequestsPage } from '../features/faculty/requests/RequestsPage';
 import { LandingPage } from '../features/home/LandingPage';
 import { ProtectedRoute } from '../components/layout/ProtectedRoute';
 import { AdminLayout } from '../components/layout/AdminLayout';
@@ -119,14 +121,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'preferences',
-        element: (
-          <FeaturePlaceholderPage
-            title="Availability & Blackout Preferences"
-            category="Faculty Input"
-            description="Submit unavailable timeslots, leave semesters, and preferred courses."
-            backLink="/faculty"
-          />
-        ),
+        element: <AvailabilityPage />,
+      },
+      {
+        path: 'requests',
+        element: <RequestsPage />,
       },
       {
         path: 'expertise',

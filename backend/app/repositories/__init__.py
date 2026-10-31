@@ -15,6 +15,7 @@ from app.repositories.gist_store import GistStore
 from app.repositories.local_store import LocalStore
 from app.schemas.assignment import Assignment
 from app.schemas.audit import AuditLogEntry
+from app.schemas.change_request import ChangeRequest
 from app.schemas.constraint import ConstraintRule
 from app.schemas.course import Course
 from app.schemas.faculty import Faculty
@@ -106,6 +107,14 @@ def get_forecast_repository(
     )
 
 
+def get_change_request_repository(
+    store: Annotated[BaseStore, Depends(get_store)] = None,  # type: ignore[assignment]
+) -> Repository[ChangeRequest]:
+    return Repository(
+        store or get_store(), "change_requests.json", ChangeRequest, id_field="id"
+    )
+
+
 __all__ = [
     "BaseStore",
     "GistStore",
@@ -113,6 +122,7 @@ __all__ = [
     "Repository",
     "get_assignment_repository",
     "get_audit_repository",
+    "get_change_request_repository",
     "get_constraint_repository",
     "get_course_repository",
     "get_faculty_repository",

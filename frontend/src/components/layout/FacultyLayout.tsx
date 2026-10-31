@@ -12,6 +12,7 @@ interface NavItem {
 const facultyNavItems: NavItem[] = [
   { name: 'My Schedule & Load', path: '/faculty', icon: '📅', end: true },
   { name: 'Availability & Blackouts', path: '/faculty/preferences', icon: '⏱️' },
+  { name: 'Change Requests', path: '/faculty/requests', icon: '📝' },
   { name: 'Expertise & Syllabi Fit', path: '/faculty/expertise', icon: '🎯' },
   { name: 'Course Sections', path: '/faculty/courses', icon: '📖' },
 ];

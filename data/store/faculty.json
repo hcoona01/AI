@@ -39,12 +39,15 @@
     "min_courses": 1,
     "max_preparations": 4,
     "unavailable_slots": [
-      "TS-FRI-1300"
+      "ts-01",
+      "ts-03"
     ],
-    "leave_terms": [],
+    "leave_terms": [
+      "Summer 2027"
+    ],
     "preferred_course_ids": [
-      "c-cs102",
-      "c-cs201"
+      "c-01",
+      "c-02"
     ]
   },
   {
@@ -82,12 +85,16 @@
     "max_courses": 5,
     "min_courses": 1,
     "max_preparations": 4,
-    "unavailable_slots": [],
-    "leave_terms": [],
+    "unavailable_slots": [
+      "ts-01",
+      "ts-03"
+    ],
+    "leave_terms": [
+      "Summer 2027"
+    ],
     "preferred_course_ids": [
-      "c-cs340",
-      "c-cs240",
-      "c-cs310"
+      "c-01",
+      "c-02"
     ]
   },
   {

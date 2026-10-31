@@ -632,3 +632,56 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
 - **TypeScript & Vite Production Build**: `npm run build` executed cleanly (`tsc && vite build`, 768 modules transformed, 0 type errors, exit code 0).
 - **Backend & ML Pytest Suite**: 216/216 passed in 75.54s (0 failed, exit code 0).
 - Strict mode compliance (`strict: true`, zero `any` types).
+
+## 2026-11-01: Faculty Portal, Load Benchmarking, Availability Preferences & Change Requests
+
+- **Task Objective**: Build the faculty self-service portal in `/frontend/src/features/faculty` and add supporting backend endpoints enforcing strict RBAC isolation (faculty can neither read nor modify other faculty records): My Assignments with weekly hours and timetable, Why I Was Assigned with fit breakdown and strictly anonymized peer department load comparisons, Availability & Preferences form with pending re-optimization status tracking, and Change Request submission with administrative notification.
+
+### Changes Implemented
+
+#### 1. Backend Schema & Endpoints (`backend/app/schemas/change_request.py`, `backend/app/api/v1/faculty.py`, `backend/app/services/faculty_service.py`)
+- Created `ChangeRequest` and `ChangeRequestCreate` schemas in `backend/app/schemas/change_request.py`.
+- Added repository provider `get_change_request_repository` in `backend/app/repositories/__init__.py` backed by `data/store/change_requests.json`.
+- Implemented `PUT /api/v1/faculty/{faculty_id}/preferences`:
+  - Updates `unavailable_slots`, `leave_terms`, and `preferred_course_ids`.
+  - Strictly restricted: raises `403 Forbidden` if a faculty user attempts to modify another faculty member's preferences.
+  - Returns `pending_optimization: True` and records audit event `FACULTY_PREFERENCES_UPDATE`.
+- Implemented `GET /api/v1/faculty/{faculty_id}/load-comparison?term=...`:
+  - Returns the authenticated faculty member's teaching load alongside department mean, median, and load ratio.
+  - Strictly restricted: raises `403 Forbidden` if a faculty user attempts to query another faculty member's comparison.
+  - Peer privacy enforcement: peer faculty are labeled `"Peer X (Rank)"` with contact hours and load ratios—never real names, emails, or real IDs. The current user is labeled `"You (Your Load)"`.
+- Implemented Change Request lifecycle:
+  - `POST /api/v1/faculty/change-requests`: Faculty submits a comment/request on their assigned section (raises `403 Forbidden` if section is not assigned to caller).
+  - `GET /api/v1/faculty/change-requests`: Faculty retrieves only their own requests; admins view all.
+  - `PUT /api/v1/faculty/change-requests/{request_id}/status`: Admin-only approval or rejection with audit logging.
+
+#### 2. Faculty RBAC Test Suite (`backend/tests/test_faculty_features.py`)
+- `test_faculty_preferences_update_and_rbac`: Proves faculty user `f-01` can update their own preferences with `pending_optimization=True`, while modifying `f-02` returns `403 Forbidden`.
+- `test_anonymized_load_comparison_and_privacy`: Proves load comparison strictly anonymizes peers (no names/emails/IDs) with current user labeled "You", and querying another faculty ID returns `403 Forbidden`.
+- `test_change_request_lifecycle_and_isolation`: Proves faculty can create change requests for own assignments, cannot create requests for others' assignments, cannot view others' change requests, cannot self-approve, and admin can approve/reject.
+
+#### 3. Faculty Portal Frontend (`frontend/src/features/faculty`)
+- **API Client & Query Hooks (`frontend/src/features/faculty/api.ts`)**:
+  - `useMyFacultyProfile`, `useMyAssignments`, `useFacultyCourses`, `useFacultySections`, `useFacultyTimeslots`, `useAssignmentExplanation`, `useAnonymizedLoadComparison`, `useMyChangeRequests`, `useUpdateFacultyPreferences`, `useCreateChangeRequest`.
+- **My Schedule & Workload Page (`frontend/src/features/faculty/myload/MyLoadPage.tsx`)**:
+  - KPI Cards: Contact hours vs. contractual max limit with visual progress bar, assigned sections count, and department median comparison.
+  - **Weekly Timetable Grid**: Monday through Friday class meeting visual blocks with course codes, start/end times, and section tags.
+  - **Why I Was Assigned**: Detailed fit breakdown bars (Tag match 60%, TF-IDF 25%, Continuity 15%), justifying satisfied invariants (`✓ HC-01`, `✓ HC-02`, etc.), and plain-language rationale.
+  - **Anonymized Peer Benchmark Chart**: Recharts bar chart showing personal load against anonymized peers (`Peer 1 (Professor)`, `Peer 2 (Lecturer)`) with reference line for Department Median Load.
+- **Availability & Preferences Page (`frontend/src/features/faculty/availability/AvailabilityPage.tsx`)**:
+  - Timetable blackout selector: Interactive Monday–Friday timeslot grid to toggle unavailable hours.
+  - Sabbatical & Leave semester selector: Checkbox cards for approved leave terms.
+  - Preferred courses selector: Searchable catalog multi-select.
+  - **Pending Optimization Status**: Displays prominent banner marking saved changes as "Pending Re-Optimization" until the next solver execution.
+- **Change Requests Page (`frontend/src/features/faculty/requests/RequestsPage.tsx`)**:
+  - Section modification submission form linked to active assignments.
+  - Chronological request history table displaying status badges (`Pending`, `Approved`, `Rejected`), comment text, and administrative response notes.
+
+#### 4. Navigation & Router Integration (`frontend/src/app/router.tsx`, `FacultyLayout.tsx`)
+- Connected routes: `/faculty` (Schedule & Load), `/faculty/preferences` (Availability & Blackouts), `/faculty/requests` (Change Requests).
+- Updated `FacultyLayout.tsx` navigation sidebar with Change Requests item.
+
+### Test Results & Verification Status
+- **Frontend TypeScript & Vite Production Build**: `npm run build` executed cleanly (`tsc && vite build`, 771 modules transformed, 0 type errors, exit code 0).
+- **Backend & ML Pytest Suite**: 219/219 passed in 69.72s (0 failed, exit code 0).
+- Strict mode compliance (`strict: true`, zero `any` types).

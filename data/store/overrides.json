@@ -72,5 +72,42 @@
       "HC-06"
     ],
     "timestamp": "2026-10-31T19:34:47.052674Z"
+  },
+  {
+    "id": "ovr-58508212a8",
+    "assignment_id": "asgn-override-flow-test",
+    "admin_id": "u-admin-test",
+    "reason": "Department chair urgent staffing override",
+    "previous_faculty_id": "f-01",
+    "new_faculty_id": "f-20",
+    "constraint_evidence_snapshot": {
+      "previous_faculty_id": "f-01",
+      "previous_fit_score": 0.92,
+      "previous_source": "solver",
+      "previous_fit_breakdown": {},
+      "new_fit_score": 0.4809,
+      "new_fit_breakdown": {
+        "tag_score": 0.7,
+        "tfidf_score": 0.2437,
+        "past_teaching_score": 0.0,
+        "tag_weighted": 0.42,
+        "tfidf_weighted": 0.0609,
+        "past_teaching_weighted": 0.0,
+        "total_score": 0.4809,
+        "hc01_eligible": 1.0,
+        "times_taught": 0.0
+      },
+      "evaluated_hard_violations": [
+        "HC-06",
+        "HC-03",
+        "HC-07"
+      ]
+    },
+    "acknowledged_violations": [
+      "HC-06",
+      "HC-03",
+      "HC-07"
+    ],
+    "timestamp": "2026-10-31T19:48:51.853032Z"
   }
 ]

@@ -432,3 +432,39 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
 - Wire `generate_explanation` and `generate_repairs` into the API response so the frontend can render conflict narratives and repair options.
 - Frontend: Build the assignment dashboard pages (`/admin/optimize`, `/admin/assignments`) consuming the optimizer endpoints.
 - Benchmark table: Record solve time and memory for all 10 fixtures at default 20s limit.
+
+## 2026-11-01: Solver Benchmarking Suite & Trade-Off Documentation
+
+- **Task Objective**: Implement `/ml/benchmark/run_benchmark.py` with `--profile` (`quick` vs `full`), record performance metrics across CP-SAT and greedy baseline, render `/docs/benchmark.md` and comparison charts in `/docs/img/`, and validate execution speed (< 2 minutes) and schema integrity.
+
+### Changes Implemented
+
+#### `ml/benchmark/run_benchmark.py`
+- Built benchmarking CLI with `--profile` argument (`quick` default, `full` optional).
+  - **`quick`**: 3 representative fixtures (`balanced_baseline`, `tight_capacity`, `single_expert_bottleneck`), P50 only, 1 seed (42), 10s time limit. Runs in ~1 second.
+  - **`full`**: All 10 fixtures, P50 and P90 demand profiles, 3 seeds (42, 123, 999), 30s time limit.
+- Metrics recorded per run: feasibility, status, objective value, mean/min/max fit score, workload Gini coefficient, load standard deviation, max-min workload gap, number of hard constraint violations (via `ConstraintEngine`), solve time (seconds), variable count, variables avoided by pre-filter, and peak memory in MB (via `tracemalloc`).
+- Serializes complete benchmark report to `/ml/artifacts/benchmark_<profile>.json`.
+- Generates 3 visualization figures under `/docs/img/`:
+  - `benchmark_solve_time.png`: Execution time comparison (log scale).
+  - `benchmark_tradeoffs.png`: Dual plot of Expertise Fit score vs. Workload Fairness (Gini index).
+  - `benchmark_memory.png`: Peak memory footprint vs. 512 MB memory ceiling.
+- Renders `/docs/benchmark.md` with:
+  - Markdown comparison table across scenarios.
+  - Trade-off analysis detailing strengths and weaknesses of each solver.
+  - Computational effort summary confirming CPU-only and < 512 MB compliance.
+  - "Selected approach and rationale" section documenting when CP-SAT is mandatory (fairness, feasibility guarantees) and where Greedy is competitive (instant UI feedback, tight uniform capacity).
+
+#### `ml/tests/test_benchmark.py`
+- Added 3 unit tests verifying:
+  - `test_quick_benchmark_finishes_under_two_minutes`: Asserts complete run completes in < 120s (actual: ~1.1s).
+  - `test_benchmark_json_schema`: Validates metadata and runs schema, required fields, and boundary invariants.
+  - `test_benchmark_docs_and_images_generated`: Validates generated markdown sections and non-empty PNG charts.
+
+### Test Results & Verification Status
+- `ml/tests/test_benchmark.py`: 3/3 passed.
+- Entire ML test suite (`ml/tests/`): **90 passed in 10.76s** (0 failed).
+
+### Next Steps / Backlog Items
+- Wire the benchmark results and optimizer routines into the backend FastAPI service (`POST /api/v1/optimize`).
+- Connect frontend dashboard to visualize solver trade-offs and repair options.

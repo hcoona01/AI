@@ -360,3 +360,75 @@
   - `pytest ml/tests backend/tests`: 159 passed in 6.56s (100% pass rate).
 - **Next Steps / Backlog Items**:
   - Implement Google OR-Tools CP-SAT multi-objective optimization assignment solver integrating demand quantiles, expertise fit matrix, and hard/soft constraints.
+
+## 2026-11-01: Optimizer Suite — Tests, Fixes & Validation
+
+- **Task Objective**: Implement and fully validate the `/ml/optimizer` package — CP-SAT solver, greedy baseline, fairness metrics, infeasibility explanation, repair alternatives — with a comprehensive pytest suite covering all 10 evaluation fixtures.
+
+### Changes Implemented
+
+#### `ml/optimizer/cpsat.py`
+- **STEP 1 pre-filtering** (`prefilter_eligible_pairs`): Builds eligible set E of `(faculty, section)` pairs by removing HC-01 (proficiency), HC-04 (leave/unavailability), and HC-07 (resource) violations before model creation. Logs avoided variable count.
+- **STEP 2 short-circuit**: If any section has zero eligible faculty, returns immediate `INFEASIBLE` `SolveResult` naming the section and blocking rule IDs.
+- **CP-SAT constraints**: HC-02 (load hours + max courses), HC-03 (time clash grouped by slot), HC-05 (max distinct preparations via auxiliary y-vars), HC-06 (exactly one faculty per section). All enforced via assumption literals for minimal conflict core extraction.
+- **Objective**: `w1*sum(fit*x) - w2*fairness_gap - w3*pref_miss + w4*continuity` with integer-scaled coefficients (`SCALE_FACTOR=1000`). Weights from `rule_weights` dict (overridable).
+- **Solver config**: `num_workers=1`, configurable time limit (default 20s), configurable `random_seed`.
+- **Benchmark fields returned**: `solve_time_seconds`, `status`, `objective_value`, `objective_bound`, `variable_count`, `variables_avoided`, `peak_memory_mb` (via `tracemalloc`).
+- **P50/P90 demand profiles**: `demand_profile` parameter selects `size_p50` or `size_p90` for HC-07 capacity checks.
+
+#### `ml/optimizer/greedy.py`
+- Same interface as CP-SAT. Pre-filters identically (HC-01, HC-04, HC-07).
+- Orders sections by most-constrained first (fewest eligible candidates, then contact hours descending).
+- Selects highest fit + spare capacity candidate respecting dynamic HC-02, HC-03, HC-05 checks.
+
+#### `ml/optimizer/fairness.py`
+- `compute_gini`: Vectorised Gini coefficient via sorted rank formula.
+- `compute_standard_deviation`: Sample std-dev (`ddof=1`).
+- `compute_max_min_gap`: `max - min` of loads.
+- `compute_fairness_summary`: Overall + per-rank breakdown dict.
+
+#### `ml/optimizer/explain.py`
+- `generate_explanation(solve_result, faculty, courses, sections, ...)` → `ExplanationResult`.
+- For feasible results: trivial pass-through.
+- For infeasible: re-runs `prefilter_eligible_pairs`, maps per-section zero-eligible counts to rule IDs, combines with assumption-literal conflict core, generates per-rule narrative paragraphs and suggested repair actions.
+- Signature now accepts `previous_assignments` (ignored) for interface consistency.
+
+#### `ml/optimizer/repair.py`
+- `generate_repairs(...)` → `list[RepairAlternative]` (up to `max_repairs=3`).
+- Four repair strategies: `relax_hc05` (increase prep limits), `add_adjunct` (inject a new faculty member with full expertise), `move_timeslot` (shift colliding section), `expand_facility` (upgrade resource capacity; only generated when HC-07 is blocking).
+- Each is re-solved with a 5s CP-SAT limit. Results ranked by (feasibility restored, mean fit, -Gini).
+
+#### `ml/optimizer/__init__.py`
+- Exports all public symbols.
+
+#### `ml/tests/test_optimizer.py` *(new, 46 tests)*
+- **Fixture feasibility (CP-SAT)**: 10 parametrised cases covering all fixtures. `leave_heavy` correctly marked FEASIBLE by optimizer (7/10 faculty are available; the fixture's "infeasibility" in `test_datagen.py` is about the *pre-supplied* on-leave assignments tested by `ConstraintEngine`, not the optimizer's search).
+- **Fixture feasibility (Greedy)**: Same 10 cases.
+- **Reproducibility**: Two identical `seed=42` runs on `balanced_baseline` produce identical `objective_value` and `mean_fit`.
+- **Pre-filter variable reduction**: Verified on `balanced_baseline` (14 of 25 pairs pruned via HC-01). `leave_heavy` prunes exactly 9 pairs (3 on-leave × 3 sections). `tight_capacity` correctly avoids 0 pairs (all eligible).
+- **Fairness metrics**: Unit tests for Gini (equality=0, extreme inequality>0.5, empty, single), std-dev (homogeneous=0, known sample), max-min gap (zero, known value, empty).
+- **Fairness in result**: CP-SAT `SolveResult.fairness` carries all required keys with Gini ∈ [0,1].
+- **Explanation**: Feasible → trivial result; infeasible HC-01 → `HC-01` in `primary_rule_ids`; infeasible HC-07 → `HC-07` in `primary_rule_ids`.
+- **Repair**: Feasible → empty list; infeasible → ≥1 `RepairAlternative`; HC-07 → `expand_facility` present; `max_repairs` respected.
+- **Benchmark fields**: All mandatory fields present and non-negative; feasible result has non-None `objective_value` and `objective_bound`.
+- **P50/P90 profiles**: Both run without error on `leave_heavy` (resource-free fixture).
+- **Infeasible result diagnostics**: At least one of `blocking_rule_ids` or `conflicts` is non-empty.
+
+### Test Results & Verification Status
+
+```
+ml/tests/test_artifacts.py    18 passed
+ml/tests/test_datagen.py      14 passed
+ml/tests/test_fit_scoring.py   9 passed
+ml/tests/test_optimizer.py    46 passed
+─────────────────────────────────────
+Total                          87 passed  in 11.20s  (0 failed)
+```
+
+All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local budget.
+
+### Next Steps / Backlog Items
+- Add backend API endpoint `/api/v1/optimize` (POST) that invokes `solve_cpsat` or `solve_greedy` based on a query parameter, serialises `SolveResult` to JSON, and guards with `require_admin`.
+- Wire `generate_explanation` and `generate_repairs` into the API response so the frontend can render conflict narratives and repair options.
+- Frontend: Build the assignment dashboard pages (`/admin/optimize`, `/admin/assignments`) consuming the optimizer endpoints.
+- Benchmark table: Record solve time and memory for all 10 fixtures at default 20s limit.

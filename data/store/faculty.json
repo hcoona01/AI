@@ -34,10 +34,10 @@
         "proficiency": 5
       }
     ],
-    "max_weekly_load_hours": 9.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 5,
     "min_courses": 1,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1300"
     ],
@@ -78,10 +78,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 9.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 5,
     "min_courses": 1,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -121,10 +121,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 9.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 5,
     "min_courses": 1,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1430"
     ],
@@ -171,10 +171,10 @@
         "proficiency": 5
       }
     ],
-    "max_weekly_load_hours": 9.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 5,
     "min_courses": 1,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -221,10 +221,10 @@
         "proficiency": 5
       }
     ],
-    "max_weekly_load_hours": 9.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 5,
     "min_courses": 1,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1300"
     ],
@@ -267,10 +267,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 9.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 15.0,
+    "max_courses": 5,
     "min_courses": 1,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [
       "Spring 2027"
@@ -313,10 +313,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -356,10 +356,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -400,10 +400,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -442,10 +442,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -485,10 +485,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1430"
     ],
@@ -529,10 +529,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1300"
     ],
@@ -573,10 +573,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -617,10 +617,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -660,10 +660,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1300"
     ],
@@ -704,10 +704,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -747,10 +747,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1300"
     ],
@@ -793,10 +793,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1300"
     ],
@@ -837,10 +837,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [
       "TS-FRI-1430"
     ],
@@ -883,10 +883,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -925,10 +925,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 12.0,
-    "max_courses": 3,
+    "max_weekly_load_hours": 18.0,
+    "max_courses": 5,
     "min_courses": 2,
-    "max_preparations": 2,
+    "max_preparations": 4,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -967,10 +967,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 15.0,
-    "max_courses": 4,
+    "max_weekly_load_hours": 21.0,
+    "max_courses": 6,
     "min_courses": 3,
-    "max_preparations": 3,
+    "max_preparations": 5,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -1009,10 +1009,10 @@
         "proficiency": 2
       }
     ],
-    "max_weekly_load_hours": 15.0,
-    "max_courses": 4,
+    "max_weekly_load_hours": 21.0,
+    "max_courses": 6,
     "min_courses": 3,
-    "max_preparations": 3,
+    "max_preparations": 5,
     "unavailable_slots": [],
     "leave_terms": [],
     "preferred_course_ids": [
@@ -1051,10 +1051,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 15.0,
-    "max_courses": 4,
+    "max_weekly_load_hours": 21.0,
+    "max_courses": 6,
     "min_courses": 3,
-    "max_preparations": 3,
+    "max_preparations": 5,
     "unavailable_slots": [
       "TS-FRI-1430"
     ],
@@ -1095,10 +1095,10 @@
         "proficiency": 3
       }
     ],
-    "max_weekly_load_hours": 15.0,
-    "max_courses": 4,
+    "max_weekly_load_hours": 21.0,
+    "max_courses": 6,
     "min_courses": 3,
-    "max_preparations": 3,
+    "max_preparations": 5,
     "unavailable_slots": [
       "TS-FRI-1300"
     ],

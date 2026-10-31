@@ -658,5 +658,27 @@
     "size_p50": 67,
     "size_p90": 83,
     "time_slot_id": "TS-THU-1030"
+  },
+  {
+    "id": "s-test-greedy-1",
+    "course_id": "c-test-greedy",
+    "term": "TermGreedyFeasible",
+    "section_cap": 30,
+    "expected_size": 20,
+    "size_p10": 15,
+    "size_p50": 20,
+    "size_p90": 25,
+    "time_slot_id": null
+  },
+  {
+    "id": "s-impossible-1",
+    "course_id": "c-impossible",
+    "term": "ImpossibleTerm",
+    "section_cap": 30,
+    "expected_size": 25,
+    "size_p10": 20,
+    "size_p50": 25,
+    "size_p90": 30,
+    "time_slot_id": null
   }
 ]

@@ -707,5 +707,35 @@
     "required_resource_ids": [
       "ROOM-201"
     ]
+  },
+  {
+    "id": "c-test-greedy",
+    "code": "TG101",
+    "title": "Test Greedy Course",
+    "description": "",
+    "credits": 3,
+    "contact_hours": 3.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "Algorithms"
+    ],
+    "min_proficiency": 2,
+    "is_lab": false,
+    "required_resource_ids": []
+  },
+  {
+    "id": "c-impossible",
+    "code": "IMP999",
+    "title": "Quantum Impossible",
+    "description": "",
+    "credits": 4,
+    "contact_hours": 4.0,
+    "level": "undergraduate",
+    "required_tags": [
+      "AlienTechSuperSpecialty"
+    ],
+    "min_proficiency": 5,
+    "is_lab": false,
+    "required_resource_ids": []
   }
 ]

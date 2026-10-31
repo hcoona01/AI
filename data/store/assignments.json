@@ -10,5 +10,107 @@
     "rule_ids_violated": [],
     "run_id": "run-quantum",
     "created_at": "2026-10-30T11:22:34.427968Z"
+  },
+  {
+    "id": "asgn-job-c5f8b7e981-0",
+    "section_id": "s-test-greedy-1",
+    "faculty_id": "f-16",
+    "source": "baseline",
+    "fit_score": 0.6162,
+    "fit_breakdown": {
+      "tag_score": 1.0,
+      "tfidf_score": 0.0649,
+      "past_teaching_score": 0.0,
+      "tag_weighted": 0.6,
+      "tfidf_weighted": 0.0162,
+      "past_teaching_weighted": 0.0,
+      "total_score": 0.6162,
+      "hc01_eligible": 1.0,
+      "times_taught": 0.0
+    },
+    "rule_ids_satisfied": [
+      "HC-01",
+      "HC-02",
+      "HC-03",
+      "HC-04",
+      "HC-05",
+      "HC-06",
+      "HC-07"
+    ],
+    "rule_ids_violated": [
+      "SC-03"
+    ],
+    "run_id": "job-c5f8b7e981",
+    "created_at": "2026-10-31T19:19:39.886287Z"
+  },
+  {
+    "id": "asgn-test-explain",
+    "section_id": "SEC-FA26-CS580-01",
+    "faculty_id": "f-01",
+    "source": "solver",
+    "fit_score": 0.85,
+    "fit_breakdown": {
+      "tag_overlap": 0.9,
+      "tfidf_syllabus": 0.8
+    },
+    "rule_ids_satisfied": [
+      "HC-01",
+      "HC-02",
+      "HC-03",
+      "HC-06"
+    ],
+    "rule_ids_violated": [],
+    "run_id": "run-test",
+    "created_at": "2026-10-31T19:19:40.664997Z"
+  },
+  {
+    "id": "asgn-f01-list-test",
+    "section_id": "SEC-FA26-CS580-01",
+    "faculty_id": "f-01",
+    "source": "solver",
+    "fit_score": 0.9,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-1",
+    "created_at": "2026-10-31T19:19:40.847345Z"
+  },
+  {
+    "id": "asgn-f02-list-test",
+    "section_id": "SEC-FA26-CS580-01",
+    "faculty_id": "f-02",
+    "source": "solver",
+    "fit_score": 0.85,
+    "fit_breakdown": {},
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [],
+    "run_id": "run-1",
+    "created_at": "2026-10-31T19:19:40.847345Z"
+  },
+  {
+    "id": "asgn-override-flow-test",
+    "section_id": "SEC-FA26-CS580-01",
+    "faculty_id": "f-20",
+    "source": "override",
+    "fit_score": 0.4809,
+    "fit_breakdown": {
+      "tag_score": 0.7,
+      "tfidf_score": 0.2437,
+      "past_teaching_score": 0.0,
+      "tag_weighted": 0.42,
+      "tfidf_weighted": 0.0609,
+      "past_teaching_weighted": 0.0,
+      "total_score": 0.4809,
+      "hc01_eligible": 1.0,
+      "times_taught": 0.0
+    },
+    "rule_ids_satisfied": [],
+    "rule_ids_violated": [
+      "HC-06",
+      "HC-07",
+      "HC-03"
+    ],
+    "run_id": "run-flow",
+    "created_at": "2026-10-31T19:19:41.157300Z"
   }
 ]

@@ -1,62 +1,143 @@
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { OverviewPanel } from '../OverviewPanel';
+import { LoadViewPanel } from '../LoadViewPanel';
+import { ForecastPanel } from '../ForecastPanel';
+import { AssignmentsGrid } from '../AssignmentsGrid';
+import { OptimizerPanel } from '../OptimizerPanel';
 
-export const AdminOverviewPage = () => {
+type AdminTab = 'overview' | 'optimizer' | 'load' | 'assignments' | 'forecast';
+
+export const AdminOverviewPage: React.FC = () => {
+  const [currentTerm, setCurrentTerm] = useState<string>('Fall 2026');
+  const [activeTab, setActiveTab] = useState<AdminTab>('overview');
+
   return (
-    <div className="max-w-6xl mx-auto p-6 space-y-6">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-6">
+      {/* Top Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-md border border-blue-500/20">
-            Admin Workspace
-          </span>
-          <h1 className="text-3xl font-bold tracking-tight text-white mt-2">Department Planning & Workload Balancing</h1>
-          <p className="text-sm text-slate-400 mt-1">
-            Overview of course assignments, forecast quantiles, and workload fairness metrics.
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">
+              Department Planning Workspace
+            </span>
+            <span className="text-xs text-slate-400 font-mono">Term: {currentTerm}</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">
+            Faculty Workload Balancing & Assignment Cockpit
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            End-to-end curriculum planning: demand quantile forecasting, CP-SAT optimization, and fairness audit.
           </p>
         </div>
-        <Link
-          to="/"
-          className="self-start md:self-auto px-4 py-2 text-sm font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition"
+
+        {/* Global Term Selector */}
+        <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl self-start md:self-auto">
+          <label htmlFor="global-term-select" className="text-xs font-semibold text-slate-400 uppercase">
+            Term:
+          </label>
+          <select
+            id="global-term-select"
+            value={currentTerm}
+            onChange={(e) => setCurrentTerm(e.target.value)}
+            className="bg-slate-950 border border-slate-700 text-white text-xs font-medium rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          >
+            <option value="Fall 2026">Fall 2026</option>
+            <option value="Spring 2027">Spring 2027</option>
+            <option value="Summer 2027">Summer 2027</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Cockpit Navigation Tabs */}
+      <div className="flex border-b border-slate-800 space-x-1 sm:space-x-2 overflow-x-auto pb-1" aria-label="Planning Tabs">
+        <button
+          type="button"
+          onClick={() => setActiveTab('overview')}
+          className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
+            activeTab === 'overview'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+          }`}
         >
-          &larr; Landing Page
-        </Link>
+          <span>📊</span>
+          <span>Overview & KPIs</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('optimizer')}
+          className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
+            activeTab === 'optimizer'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+          }`}
+        >
+          <span>⚡</span>
+          <span>Run Optimizer</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('load')}
+          className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
+            activeTab === 'load'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+          }`}
+        >
+          <span>⚖️</span>
+          <span>Workload Balance</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('assignments')}
+          className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
+            activeTab === 'assignments'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+          }`}
+        >
+          <span>📋</span>
+          <span>Assignments Grid</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setActiveTab('forecast')}
+          className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
+            activeTab === 'forecast'
+              ? 'bg-blue-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+          }`}
+        >
+          <span>📈</span>
+          <span>Demand Forecasts</span>
+        </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-slate-900/80 border border-slate-800 p-6 rounded-xl">
-          <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">Target Course Sections</div>
-          <div className="text-3xl font-bold text-white mt-2">48</div>
-          <div className="text-xs text-emerald-400 mt-2 font-mono">P50 Expected Demand</div>
-        </div>
+      {/* Tab Panels */}
+      <div className="pt-2">
+        {activeTab === 'overview' && (
+          <OverviewPanel
+            currentTerm={currentTerm}
+            onTermChange={setCurrentTerm}
+            onOpenOptimizer={() => setActiveTab('optimizer')}
+          />
+        )}
 
-        <div className="bg-slate-900/80 border border-slate-800 p-6 rounded-xl">
-          <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">Fairness Index (Gini)</div>
-          <div className="text-3xl font-bold text-white mt-2">0.12</div>
-          <div className="text-xs text-blue-400 mt-2 font-mono">Target: &lt; 0.15 (Balanced)</div>
-        </div>
+        {activeTab === 'optimizer' && (
+          <OptimizerPanel
+            currentTerm={currentTerm}
+            onRunSuccess={() => setActiveTab('overview')}
+          />
+        )}
 
-        <div className="bg-slate-900/80 border border-slate-800 p-6 rounded-xl">
-          <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">Unassigned / Conflict Count</div>
-          <div className="text-3xl font-bold text-amber-400 mt-2">0</div>
-          <div className="text-xs text-slate-400 mt-2 font-mono">Hard Constraints (HC) 100% Met</div>
-        </div>
-      </div>
+        {activeTab === 'load' && <LoadViewPanel currentTerm={currentTerm} />}
 
-      <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-6">
-        <h2 className="text-lg font-semibold text-white mb-2">Solver Configuration & Fast Actions</h2>
-        <p className="text-sm text-slate-400 mb-4">
-          The CP-SAT multi-objective optimization engine balances expertise fit, time feasibility, and rank-adjusted teaching loads.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <button disabled className="px-4 py-2 bg-blue-600/50 text-blue-200 text-sm font-medium rounded-lg cursor-not-allowed">
-            Run CP-SAT Solver (P50)
-          </button>
-          <button disabled className="px-4 py-2 bg-slate-800 text-slate-400 text-sm font-medium rounded-lg cursor-not-allowed">
-            Run Greedy Baseline
-          </button>
-          <button disabled className="px-4 py-2 bg-slate-800 text-slate-400 text-sm font-medium rounded-lg cursor-not-allowed">
-            Audit Trail
-          </button>
-        </div>
+        {activeTab === 'assignments' && <AssignmentsGrid currentTerm={currentTerm} />}
+
+        {activeTab === 'forecast' && <ForecastPanel currentTerm={currentTerm} />}
       </div>
     </div>
   );

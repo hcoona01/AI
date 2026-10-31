@@ -1,6 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { LoginPage } from '../features/auth/LoginPage';
 import { AdminOverviewPage } from '../features/admin/overview/AdminOverviewPage';
+import { AssignmentsPage } from '../features/admin/assignments/AssignmentsPage';
+import { ForecastPage } from '../features/admin/forecast/ForecastPage';
+import { LoadBalancePage } from '../features/admin/load/LoadBalancePage';
 import { MyLoadPage } from '../features/faculty/myload/MyLoadPage';
 import { LandingPage } from '../features/home/LandingPage';
 import { ProtectedRoute } from '../components/layout/ProtectedRoute';
@@ -37,25 +40,15 @@ export const router = createBrowserRouter([
       },
       {
         path: 'assignments',
-        element: (
-          <FeaturePlaceholderPage
-            title="Course Assignments"
-            category="Workload Optimization"
-            description="CP-SAT optimizer recommendations, teaching loads, and section distributions."
-            backLink="/admin"
-          />
-        ),
+        element: <AssignmentsPage />,
       },
       {
         path: 'forecasts',
-        element: (
-          <FeaturePlaceholderPage
-            title="Demand Forecasts (ML Quantiles)"
-            category="Machine Learning"
-            description="P10, P50, and P90 section enrollment forecasts from LightGBM quantile regression."
-            backLink="/admin"
-          />
-        ),
+        element: <ForecastPage />,
+      },
+      {
+        path: 'load',
+        element: <LoadBalancePage />,
       },
       {
         path: 'faculty',

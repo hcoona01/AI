@@ -517,3 +517,61 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
 ### Next Steps / Backlog Items
 - Wire the frontend `/admin/assignments`, `/admin/optimize`, and `/faculty/schedule` routes to consume these `/api/v1/assign` endpoints.
 - Build UI dialog for administrative override with violation warnings and acknowledgement checkbox.
+
+## 2026-11-01: Admin Planning Tool Suite Implementation
+
+- **Task Objective**: Build the admin planning tool pages in `/frontend/src/features/admin` covering Overview KPIs, Workload Balance bar chart, Demand Forecasts quantile panel, Assignments Grid with rule badges, and Optimizer Configuration panel with real-time job tracking and CP-SAT vs. Greedy benchmarking.
+
+### Changes Implemented
+
+#### 1. Typed API Layer & TanStack Query Hooks (`frontend/src/features/admin/api.ts`)
+- Defined strict TypeScript interfaces matching backend domain schemas: `FairnessSummary`, `ConflictViolation`, `RepairAlternative`, `ConflictsResponse`, `ForecastRecord`, `OptimizationJob`, `OptimizationJobResult`, `RunOptimizationPayload`, `AssignmentExplanation`, `OverridePayload`, `OverrideResponse`.
+- Implemented query hooks with caching and invalidation: `useFairness`, `useConflicts`, `useForecasts`, `useAssignments`, `useFacultyList`, `useCoursesList`, `useSectionsList`, `useJobStatus` (with 1s polling interval during `RUNNING` status), `useExplainAssignment`.
+- Implemented mutation hooks: `useRunOptimization`, `useApplyRepair`, `useExecuteOverride`, `useLoadScenario`.
+
+#### 2. Overview Panel (`frontend/src/features/admin/OverviewPanel.tsx`)
+- 5 Core KPI cards: Feasibility badge (green/rose), Hard Violations counter, Workload Fairness Gini (color-coded for balanced <= 0.15), Mean Fit percentage, and Unassigned Sections count.
+- Academic Term selector (`Fall 2026`, `Spring 2027`, `Summer 2027`).
+- Benchmark scenario loader dropdown (`balanced_baseline`, `tight_capacity`, `infeasible_expertise`, `leave_heavy`, etc.) with instant feedback toast.
+- Quick action shortcuts to launch the optimizer engine or review conflicts.
+
+#### 3. Load View Panel (`frontend/src/features/admin/LoadViewPanel.tsx`)
+- Lightweight Recharts `BarChart` displaying assigned weekly contact hours against contractual limits per faculty member.
+- Dynamic color-coding: Emerald (`#10b981`) for balanced (60–100%), Rose (`#f43f5e`) for overloaded (>100% violating HC-02), and Sky (`#38bdf8`) for underloaded (<60% available slack).
+- Workload filter pills: `All`, `Overloaded`, `Balanced`, `Underloaded`.
+- Reference lines for institutional standard caps (12h) and descriptive legend summary.
+
+#### 4. Forecast Panel (`frontend/src/features/admin/ForecastPanel.tsx`)
+- P50 (Expected) vs. P90 (Surge Stress) scenario toggle.
+- Aggregate demand and capacity metrics: Total student enrollment, sections needed, surge capacity buffer (+sections), and volatile course count.
+- Uncertainty band chart using Recharts `ComposedChart` showing P10 floor, P50 median, and P90 surge distributions.
+- Course requirements table with search filtering, P90-P10 spread, sections needed, and volatility tags.
+
+#### 5. Assignments Grid (`frontend/src/features/admin/AssignmentsGrid.tsx`)
+- Interactive schedule grid listing course sections, schedule timeslots, assigned faculty, fit-score chips, and rule compliance badges.
+- Fit score chips color-coded by match level (Emerald >= 80%, Sky >= 60%, Amber < 60%) with click-to-explain.
+- Rule badges displaying satisfied hard/soft rules and highlighting violations (e.g. `HC-03`).
+- Paginated table (10, 20, 50 rows per page) with search and multi-criteria filters.
+- **Explain Assignment Modal**: Renders detailed fit breakdown (tag match, TF-IDF cosine similarity, continuity bonus), narrative rationale, and top-3 evaluated candidate alternatives with eligibility/blocking reasons.
+- **Administrative Override Dialog**: Allows replacing assigned faculty, entering institutional justifications, and warning/requiring acknowledgement when hard constraints are violated.
+
+#### 6. Optimizer Control Panel (`frontend/src/features/admin/OptimizerPanel.tsx`)
+- Method selector: Google OR-Tools CP-SAT (multi-objective MILP) vs. Greedy Baseline.
+- Demand mode toggle: P50 vs. P90.
+- Soft constraint weight sliders: `w1` (SC-01 Expertise Fit), `w2` (SC-02 Workload Fairness penalty), `w3` (SC-03 Preference Miss penalty), `w4` (SC-04 Continuity bonus).
+- Solver CPU time limit configuration (default 20s).
+- Live execution progress tracker: Polling `useJobStatus`, visual progress bar, and status phases (pre-filtering, formulation, integer solve, fairness evaluation).
+- Empirical benchmark comparison card: Side-by-side table comparing CP-SAT vs. Greedy on Gini fairness (0.071 vs 0.494), max-min gap (1 vs 7 sections), fit scores, constraint compliance, and RAM overhead (<0.2 MB).
+
+#### 7. Page & Router Integration (`frontend/src/features/admin/overview/AdminOverviewPage.tsx`, `router.tsx`)
+- Unified Planning Cockpit in `AdminOverviewPage.tsx` with top tab bar switching between Overview, Optimizer, Workload Balance, Assignments Grid, and Demand Forecasts.
+- Standalone routed pages connected in `router.tsx`: `/admin/assignments`, `/admin/forecasts`, `/admin/load`.
+
+### Test Results & Verification Status
+- **Frontend TypeScript & Vite Production Build**: `npm run build` executed and passed cleanly (`tsc && vite build`, 761 modules transformed, 0 TypeScript errors).
+- **Backend & ML Pytest Suite**: 216/216 tests passing in 50.13s (126 backend tests + 90 ML tests).
+- Strict mode compliance (`strict: true`, zero `any` types).
+
+### Next Steps / Backlog Items
+- Build the faculty self-service portal (`/faculty/schedule`, `/faculty/preferences`, `/faculty/expertise`).
+- Add CSV / Excel export for final administrative schedules.

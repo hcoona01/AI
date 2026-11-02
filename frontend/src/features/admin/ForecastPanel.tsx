@@ -235,17 +235,17 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
         <div className="h-72 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={chartData} margin={{ top: 10, right: 10, left: -10, bottom: 25 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.4} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e8ece0" opacity={0.9} />
               <XAxis
                 dataKey="courseCode"
-                tick={{ fill: '#94a3b8', fontSize: 11 }}
+                tick={{ fill: '#5c634c', fontSize: 11 }}
                 angle={-45}
                 textAnchor="end"
                 interval={0}
               />
               <YAxis
-                tick={{ fill: '#94a3b8', fontSize: 11 }}
-                label={{ value: 'Students', angle: -90, position: 'insideLeft', fill: '#64748b', fontSize: 11 }}
+                tick={{ fill: '#5c634c', fontSize: 11 }}
+                label={{ value: 'Students', angle: -90, position: 'insideLeft', fill: '#5c634c', fontSize: 11 }}
               />
               <Tooltip
                 content={({ active, payload }) => {
@@ -292,9 +292,9 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
                 align="right"
                 wrapperStyle={{ paddingBottom: '10px', fontSize: '11px' }}
               />
-              <Bar dataKey="p10" name="P10 (Floor)" fill="#475569" radius={[2, 2, 0, 0]} />
-              <Bar dataKey="p50" name="P50 (Median)" fill="#3b82f6" radius={[2, 2, 0, 0]} />
-              <Bar dataKey="p90" name="P90 (Surge)" fill="#f59e0b" radius={[2, 2, 0, 0]} />
+              <Bar dataKey="p10" name="P10 (Floor)" fill="#cfd6c0" radius={[2, 2, 0, 0]} />
+              <Bar dataKey="p50" name="P50 (Median)" fill="#4d6a10" radius={[2, 2, 0, 0]} />
+              <Bar dataKey="p90" name="P90 (Surge)" fill="#b4cd52" radius={[2, 2, 0, 0]} />
             </ComposedChart>
           </ResponsiveContainer>
         </div>

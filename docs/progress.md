@@ -820,3 +820,13 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - ✅ **233 unit/integration tests passing in 60.66s** (0 failed).
   - ✅ **Coverage >= 80% on all target modules**: `constraint_engine` 95%, `security` 97%, `auth` 92%, `repositories` 81–96% (Total: **91%**).
   - ✅ **Frontend build verified**: `npm run build` succeeds cleanly in 11.17s.
+## 2026-11-02: Dashboard glass-morphism visual refresh
+
+- **Task Objective**: Replace saturated dashboard controls with a clean glass treatment and carry a faded version of the landing-page animation into authenticated dashboard views, without backend changes.
+- **Changes Implemented**:
+  - Added a shared, decorative dashboard atmosphere using the landing hero video and drifting cloud assets at intentionally low opacity.
+  - Applied scoped translucent glass surfaces to dashboard cards, navigation, form controls, and buttons for both admin and faculty layouts.
+  - Replaced the opaque active-navigation fill with a neutral glass state and retained visible keyboard focus treatment.
+- **Test Results & Verification Status**: `npm run build` completed successfully (TypeScript check and Vite production build).
+- **Next Steps / Backlog Items**: Perform a visual pass in a browser across the admin and faculty dashboards.
+

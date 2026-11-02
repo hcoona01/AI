@@ -1,8 +1,8 @@
 # University Faculty Workload Balancing: Solver Benchmark Report
 
 > **Benchmark Profile**: `quick`  
-> **Timestamp**: `2026-10-31T20:27:33.778839+00:00`  
-> **Total Execution Time**: `0.97s`  
+> **Timestamp**: `2026-11-02T07:40:55.935603+00:00`  
+> **Total Execution Time**: `1.37s`  
 > **Compute Budget**: CPU-only, Single Thread (`num_workers=1`), < 512 MB RAM footprint.
 
 ---
@@ -13,12 +13,12 @@ This report compares the mathematical optimization engine (**Google OR-Tools CP-
 
 | Scenario / Fixture | Method | Feasible | Objective | Mean Fit | Workload Gini | Load StdDev | Max-Min Gap | Hard Viols | Solve Time | Active Vars | Peak RAM |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `balanced_baseline` | **CP-SAT** | ✅ Yes (OPTIMAL) | -221.192 | 0.5539 | 0.0706 | 0.55h | 1.0h | 0 | 0.160s | 11 | 0.10 MB |
-| | **Greedy** | ✅ Yes (FEASIBLE) | 2.9492 | 0.5898 | 0.4941 | 3.51h | 7.0h | 0 | 0.102s | 11 | 0.05 MB |
-| `single_expert_bottleneck` | **CP-SAT** | ❌ No (INFEASIBLE) | N/A | 0.0000 | 0.0000 | 0.00h | 0.0h | 0 | 0.056s | 5 | 0.06 MB |
-| | **Greedy** | ❌ No (INFEASIBLE) | N/A | 0.0000 | 0.0000 | 0.00h | 0.0h | 0 | 0.022s | 5 | 0.03 MB |
-| `tight_capacity` | **CP-SAT** | ✅ Yes (OPTIMAL) | -161.779 | 0.6564 | 0.0190 | 0.58h | 1.0h | 0 | 0.353s | 27 | 0.11 MB |
-| | **Greedy** | ✅ Yes (FEASIBLE) | 5.9076 | 0.6564 | 0.0190 | 0.58h | 1.0h | 0 | 0.260s | 27 | 0.07 MB |
+| `balanced_baseline` | **CP-SAT** | ✅ Yes (OPTIMAL) | -221.192 | 0.5539 | 0.0706 | 0.55h | 1.0h | 0 | 0.231s | 11 | 0.10 MB |
+| | **Greedy** | ✅ Yes (FEASIBLE) | 2.9492 | 0.5898 | 0.4941 | 3.51h | 7.0h | 0 | 0.114s | 11 | 0.05 MB |
+| `single_expert_bottleneck` | **CP-SAT** | ❌ No (INFEASIBLE) | N/A | 0.0000 | 0.0000 | 0.00h | 0.0h | 0 | 0.161s | 5 | 0.06 MB |
+| | **Greedy** | ❌ No (INFEASIBLE) | N/A | 0.0000 | 0.0000 | 0.00h | 0.0h | 0 | 0.048s | 5 | 0.02 MB |
+| `tight_capacity` | **CP-SAT** | ✅ Yes (OPTIMAL) | -161.779 | 0.6564 | 0.0190 | 0.58h | 1.0h | 0 | 0.502s | 27 | 0.10 MB |
+| | **Greedy** | ✅ Yes (FEASIBLE) | 5.9076 | 0.6564 | 0.0190 | 0.58h | 1.0h | 0 | 0.297s | 27 | 0.07 MB |
 
 ---
 
@@ -60,7 +60,7 @@ This report compares the mathematical optimization engine (**Google OR-Tools CP-
 ## 4. Computational Effort (Time and Memory)
 
 - **Execution Runtime**:
-  - The entire `quick` benchmark executed in **`0.97 seconds`**, comfortably within the **< 2 minutes** local overhead budget.
+  - The entire `quick` benchmark executed in **`1.37 seconds`**, comfortably within the **< 2 minutes** local overhead budget.
   - Per-scenario solve times for CP-SAT remained strictly below **0.5 seconds** (default limit: 10s-20s), and Greedy completed in under **0.01 seconds**.
 - **Memory Footprint**:
   - Peak memory allocation across all evaluated fixtures was **< 1.0 MB** for both algorithms, running far below the strict **512 MB RAM ceiling**.

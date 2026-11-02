@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../features/auth/AuthContext';
+import { BrandMark } from '../brand/BrandMark';
+import { DashboardAtmosphere } from './DashboardAtmosphere';
 
 interface NavItem {
   name: string;
@@ -33,33 +35,32 @@ export const AdminLayout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col md:flex-row text-slate-100">
-      {/* Sidebar - Desktop & Tablet */}
+    <div className="app-shell dashboard-shell min-h-screen flex flex-col md:flex-row">
+      <DashboardAtmosphere />
       <aside
-        className={`fixed md:sticky top-0 z-40 h-screen w-64 bg-slate-900 border-r border-slate-800 flex flex-col transition-transform duration-200 ease-in-out ${
+        className={`app-aside fixed md:sticky top-0 z-40 h-screen w-64 flex flex-col transition-transform duration-200 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
       >
-        {/* Brand / Header */}
         <div className="p-5 border-b border-slate-800">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
-              ADMIN CONSOLE
-            </span>
+            <span className="pill">Admin console</span>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="md:hidden text-slate-400 hover:text-white"
+              className="md:hidden text-slate-400 hover:text-slate-100"
               aria-label="Close navigation menu"
             >
               ✕
             </button>
           </div>
-          <h2 className="text-base font-bold text-white mt-2 leading-tight">Faculty Workload</h2>
-          <p className="text-xs text-slate-400 mt-0.5">Balancing & Assignment</p>
+          <Link to="/" className="brand mt-3" style={{ fontSize: 20 }}>
+            <BrandMark />
+            <span>workload</span>
+          </Link>
+          <p className="text-xs text-slate-400 mt-1">Balancing & assignment</p>
         </div>
 
-        {/* Navigation Links */}
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto" aria-label="Admin Navigation">
           {adminNavItems.map((item) => (
             <NavLink
@@ -70,8 +71,8 @@ export const AdminLayout: React.FC = () => {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    ? 'nav-active'
+                    : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/60'
                 }`
               }
             >
@@ -81,14 +82,12 @@ export const AdminLayout: React.FC = () => {
           ))}
         </nav>
 
-        {/* Sidebar Footer */}
-        <div className="p-3 border-t border-slate-800 bg-slate-950/40 text-[11px] text-slate-500 flex justify-between items-center">
+        <div className="p-3 border-t border-slate-800 text-[11px] text-slate-500 flex justify-between items-center">
           <span>v0.1.0 • Dev Mode</span>
           <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" title="Connected" />
         </div>
       </aside>
 
-      {/* Backdrop for mobile drawer */}
       {mobileMenuOpen && (
         <div
           className="fixed inset-0 bg-slate-950/80 backdrop-blur-xs z-30 md:hidden"
@@ -97,15 +96,13 @@ export const AdminLayout: React.FC = () => {
         />
       )}
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* Topbar */}
-        <header className="sticky top-0 z-20 h-16 bg-slate-900/90 border-b border-slate-800 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between">
+      <div className="dashboard-content flex-1 flex flex-col min-w-0">
+        <header className="app-topbar sticky top-0 z-20 h-16 px-4 sm:px-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition"
               aria-label="Open navigation menu"
             >
               ☰
@@ -115,7 +112,6 @@ export const AdminLayout: React.FC = () => {
             </div>
           </div>
 
-          {/* User Info & Logout */}
           <div className="flex items-center gap-3">
             <div className="text-right">
               <div className="text-xs font-mono font-medium text-slate-200">
@@ -134,16 +130,14 @@ export const AdminLayout: React.FC = () => {
             <button
               type="button"
               onClick={() => void handleLogout()}
-              className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-rose-950/50 hover:text-rose-300 border border-slate-700 hover:border-rose-800/60 text-xs font-medium text-slate-300 transition cursor-pointer flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-full bg-white hover:bg-rose-50 border border-slate-700 hover:border-rose-800/60 text-xs font-medium text-slate-300 transition cursor-pointer"
               title="Sign Out of Session"
             >
-              <span>Sign Out</span>
-              <span className="text-xs">🚪</span>
+              Sign Out
             </button>
           </div>
         </header>
 
-        {/* Content Outlet */}
         <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
           <Outlet />
         </main>
@@ -151,4 +145,3 @@ export const AdminLayout: React.FC = () => {
     </div>
   );
 };
-

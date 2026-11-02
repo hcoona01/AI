@@ -547,25 +547,26 @@ export const MyLoadPage: React.FC = () => {
                     >
                       <XAxis
                         dataKey="label"
-                        tick={{ fill: '#94a3b8', fontSize: 10 }}
+                        tick={{ fill: '#5c634c', fontSize: 10 }}
                         angle={-45}
                         textAnchor="end"
                         interval={0}
                       />
                       <YAxis
-                        tick={{ fill: '#94a3b8', fontSize: 10 }}
+                        tick={{ fill: '#5c634c', fontSize: 10 }}
                         label={{
                           value: 'Contact Hours / Wk',
                           angle: -90,
                           position: 'insideLeft',
-                          fill: '#64748b',
+                          fill: '#5c634c',
                           fontSize: 10,
                         }}
                       />
                       <Tooltip
                         contentStyle={{
-                          backgroundColor: '#020617',
-                          borderColor: '#334155',
+                          backgroundColor: '#ffffff',
+                          borderColor: '#e8ece0',
+                          color: '#121410',
                           borderRadius: '0.5rem',
                           fontSize: '0.75rem',
                         }}
@@ -576,11 +577,11 @@ export const MyLoadPage: React.FC = () => {
                       />
                       <ReferenceLine
                         y={loadComparison.department_median_load}
-                        stroke="#38bdf8"
+                        stroke="#4d6a10"
                         strokeDasharray="4 4"
                         label={{
                           value: `Median: ${loadComparison.department_median_load}h`,
-                          fill: '#38bdf8',
+                          fill: '#4d6a10',
                           fontSize: 10,
                           position: 'top',
                         }}
@@ -589,7 +590,7 @@ export const MyLoadPage: React.FC = () => {
                         {loadComparison.anonymized_peers.map((entry) => (
                           <Cell
                             key={entry.peer_id}
-                            fill={entry.is_current_user ? '#a855f7' : '#334155'}
+                            fill={entry.is_current_user ? '#4d6a10' : '#cfd6c0'}
                           />
                         ))}
                       </Bar>

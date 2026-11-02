@@ -19,7 +19,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   if (isLoading) {
     return (
       <div
-        className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4"
+            className="min-h-screen bg-[#f3f6ec] flex flex-col items-center justify-center p-4"
         role="status"
         aria-live="polite"
       >

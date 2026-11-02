@@ -22,12 +22,10 @@ export const AdminOverviewPage: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-800">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">
-              Department Planning Workspace
-            </span>
+            <span className="pill">Department planning workspace</span>
             <span className="text-xs text-slate-400 font-mono">Term: {currentTerm}</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">
+          <h1 className="text-2xl sm:text-3xl font-medium tracking-tight mt-1" style={{ letterSpacing: '-0.03em' }}>
             Faculty Workload Balancing & Assignment Cockpit
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">

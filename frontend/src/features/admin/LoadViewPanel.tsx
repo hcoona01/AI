@@ -70,9 +70,9 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
       case 'over':
         return '#f43f5e'; // rose-500 (Overloaded)
       case 'balanced':
-        return '#10b981'; // emerald-500 (Balanced)
+        return '#6f9a0c'; // olive green (Balanced)
       case 'under':
-        return '#38bdf8'; // sky-400 (Underloaded / Spare capacity)
+        return '#b4cd52'; // lime (Underloaded / Spare capacity)
     }
   };
 
@@ -174,7 +174,7 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
             >
               <XAxis
                 dataKey="name"
-                stroke="#64748b"
+                stroke="#8b9278"
                 fontSize={11}
                 tickLine={false}
                 interval={0}
@@ -183,18 +183,18 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
                 height={60}
               />
               <YAxis
-                stroke="#64748b"
+                stroke="#8b9278"
                 fontSize={11}
                 tickLine={false}
-                label={{ value: 'Contact Hours / Week', angle: -90, position: 'insideLeft', fill: '#94a3b8', fontSize: 11 }}
+                label={{ value: 'Contact Hours / Week', angle: -90, position: 'insideLeft', fill: '#5c634c', fontSize: 11 }}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#0f172a',
-                  borderColor: '#334155',
+                  backgroundColor: '#ffffff',
+                  borderColor: '#e8ece0',
+                  color: '#121410',
                   borderRadius: '0.5rem',
                   fontSize: '0.75rem',
-                  color: '#f8fafc',
                 }}
                 formatter={(value: unknown, name: unknown) => {
                   const val = typeof value === 'number' ? `${value} hrs` : String(value);
@@ -202,7 +202,7 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
                   return [val, lbl];
                 }}
               />
-              <ReferenceLine y={12} stroke="#475569" strokeDasharray="3 3" label={{ value: 'Standard Cap (12h)', fill: '#64748b', fontSize: 10 }} />
+              <ReferenceLine y={12} stroke="#8b9278" strokeDasharray="3 3" label={{ value: 'Standard Cap (12h)', fill: '#5c634c', fontSize: 10 }} />
               <Bar dataKey="assigned" radius={[4, 4, 0, 0]}>
                 {filteredData.map((entry: FacultyLoadChartItem) => (
                   <Cell key={`cell-${entry.id}`} fill={getColor(entry.status)} />

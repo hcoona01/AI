@@ -1,8 +1,8 @@
 {
   "metadata": {
     "profile": "quick",
-    "timestamp": "2026-10-31T20:27:33.778839+00:00",
-    "total_duration_seconds": 0.97,
+    "timestamp": "2026-11-02T07:40:55.935603+00:00",
+    "total_duration_seconds": 1.37,
     "fixtures_evaluated": [
       "balanced_baseline",
       "tight_capacity",
@@ -35,7 +35,7 @@
       "std_dev": 0.5477,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.1598,
+      "solve_time_seconds": 0.2307,
       "variable_count": 11,
       "variables_avoided": 14,
       "peak_memory_mb": 0.1,
@@ -58,7 +58,7 @@
       "std_dev": 3.5071,
       "max_min_gap": 7.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.1021,
+      "solve_time_seconds": 0.1142,
       "variable_count": 11,
       "variables_avoided": 14,
       "peak_memory_mb": 0.05,
@@ -81,10 +81,10 @@
       "std_dev": 0.5774,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.3527,
+      "solve_time_seconds": 0.5024,
       "variable_count": 27,
       "variables_avoided": 0,
-      "peak_memory_mb": 0.11,
+      "peak_memory_mb": 0.1,
       "assigned_sections_count": 9
     },
     {
@@ -104,7 +104,7 @@
       "std_dev": 0.5774,
       "max_min_gap": 1.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.2602,
+      "solve_time_seconds": 0.2967,
       "variable_count": 27,
       "variables_avoided": 0,
       "peak_memory_mb": 0.07,
@@ -127,7 +127,7 @@
       "std_dev": 0.0,
       "max_min_gap": 0.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.0558,
+      "solve_time_seconds": 0.1613,
       "variable_count": 5,
       "variables_avoided": 0,
       "peak_memory_mb": 0.06,
@@ -150,10 +150,10 @@
       "std_dev": 0.0,
       "max_min_gap": 0.0,
       "hard_violations": 0,
-      "solve_time_seconds": 0.0218,
+      "solve_time_seconds": 0.0477,
       "variable_count": 5,
       "variables_avoided": 0,
-      "peak_memory_mb": 0.03,
+      "peak_memory_mb": 0.02,
       "assigned_sections_count": 0
     }
   ]

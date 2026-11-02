@@ -94,10 +94,8 @@ export const OtpStep: React.FC<OtpStepProps> = ({
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="inline-flex p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-3 font-mono text-xs font-semibold uppercase tracking-wider">
-          Step 2 of 2: Security Verification
-        </div>
-        <h2 className="text-2xl font-bold tracking-tight text-white">Enter Verification Code</h2>
+        <div className="pill mb-3">Step 2 of 2 · verification</div>
+        <h2 className="text-2xl font-medium tracking-tight">Enter verification code</h2>
         <p className="text-sm text-slate-400 mt-2">
           We sent a 6-digit one-time passcode to{' '}
           <span className="text-slate-200 font-semibold">{email}</span>
@@ -105,21 +103,19 @@ export const OtpStep: React.FC<OtpStepProps> = ({
         <button
           type="button"
           onClick={onChangeEmail}
-          className="text-xs text-blue-400 hover:text-blue-300 underline underline-offset-4 mt-1 transition"
+          className="text-xs text-blue-400 hover:underline underline-offset-4 mt-1 transition"
         >
           Change email address
         </button>
       </div>
 
-      {/* Dev Mode Notification Banner */}
       <div
-        className="p-3.5 bg-blue-950/40 border border-blue-800/50 rounded-lg text-xs text-blue-300 flex items-start gap-2.5"
+        className="p-3.5 bg-[#e7efcf] border border-[#d5e0b0] rounded-2xl text-xs text-[#2c3a10] flex items-start gap-2.5"
         role="status"
       >
-        <span className="text-base leading-none">ℹ️</span>
         <div>
-          <strong className="font-semibold text-blue-200">Development Mode:</strong> The one-time
-          passcode is printed directly in your backend terminal console.
+          <strong className="font-semibold">Development mode:</strong> The one-time passcode is
+          printed directly in your backend terminal console.
         </div>
       </div>
 
@@ -153,10 +149,10 @@ export const OtpStep: React.FC<OtpStepProps> = ({
             aria-invalid={Boolean(displayError)}
             aria-describedby={displayError ? 'otp-error' : undefined}
             placeholder="······"
-            className={`w-full px-4 py-3 text-center text-3xl font-mono tracking-[0.5em] rounded-lg bg-slate-950 border ${
+            className={`w-full px-4 py-3 text-center text-3xl font-mono tracking-[0.5em] rounded-2xl bg-white border ${
               displayError
-                ? 'border-rose-500/80 text-rose-200 focus:border-rose-500'
-                : 'border-slate-700 text-white focus:border-blue-500'
+                ? 'border-rose-500/80 text-rose-700 focus:border-rose-500'
+                : 'border-slate-700 text-slate-100 focus:border-blue-500'
             } placeholder-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500 transition`}
           />
         </div>
@@ -165,7 +161,7 @@ export const OtpStep: React.FC<OtpStepProps> = ({
           <div
             id="otp-error"
             role="alert"
-            className="p-3 rounded-lg bg-rose-950/50 border border-rose-800/60 text-xs text-rose-300 flex items-start gap-2"
+            className="p-3 rounded-2xl bg-rose-50 border border-rose-200 text-xs text-rose-700 flex items-start gap-2"
           >
             <span className="text-base leading-none">⚠️</span>
             <span>{displayError}</span>
@@ -175,10 +171,8 @@ export const OtpStep: React.FC<OtpStepProps> = ({
         <button
           type="submit"
           disabled={isLoading || otp.length < 6}
-          className={`w-full py-3 px-4 rounded-lg font-medium text-sm transition flex items-center justify-center gap-2 ${
-            isLoading || otp.length < 6
-              ? 'bg-blue-600/50 text-blue-200 cursor-not-allowed'
-              : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/30 cursor-pointer'
+          className={`btn w-full ${
+            isLoading || otp.length < 6 ? 'opacity-50 cursor-not-allowed' : ''
           }`}
         >
           {isLoading ? (
@@ -223,7 +217,7 @@ export const OtpStep: React.FC<OtpStepProps> = ({
             type="button"
             onClick={() => void handleResend()}
             disabled={isResending}
-            className="text-xs text-blue-400 hover:text-blue-300 font-medium transition cursor-pointer"
+            className="text-xs text-blue-400 hover:underline font-medium transition cursor-pointer"
           >
             {isResending ? 'Sending new code...' : 'Resend One-Time Passcode'}
           </button>

@@ -856,3 +856,22 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - Real ping from PC1 to PC7 (`192.168.10.16`) succeeded: 4 sent, 4 received, 0% loss.
 - **Next Steps / Backlog Items**: None.
 
+
+## 2026-11-02: Fix Cross-Origin Session Persistence on Page Refresh
+- **Task Objective**: Fix session teardown on browser refresh when navigating between Vercel frontend (`pentalyx.vercel.app`) and Render backend (`faculty-workload-api-vidc.onrender.com`).
+- **Changes Implemented**:
+  - Identified cross-origin cookie limitation: modern browsers partition or reject `SameSite=Lax` cookies across distinct top-level domains.
+  - Updated backend `app.api.v1.auth` and `app.schemas.auth`:
+    - Updated `TokenResponse` to include optional `refresh_token` string for resilient cross-origin client persistence.
+    - Set cookie attributes to `SameSite=None; Secure=True` in production environments.
+  - Updated frontend `src/lib/apiClient.ts` and `src/features/auth/AuthContext.tsx`:
+    - Added storage helpers for resilient session caching (`workload_refresh_token`, `workload_user`).
+    - Enhanced `refreshSessionApi` to accept body payload fallback `{ refresh_token: token }` when third-party cookies are blocked by browser privacy policies.
+    - Initialized user state from stored profile and executed silent session refresh on mount, preventing premature redirects to `/login`.
+  - Corrected root `.gitignore` to whitelist `frontend/src/lib/` ensuring full version control of client API modules.
+  - Redeployed frontend to production on Vercel: `https://pentalyx.vercel.app`.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests/test_auth.py`: 11/11 passed (100%).
+  - `npm run build`: verified clean build with zero TypeScript or Vite errors.
+  - Live production endpoints verified: `https://pentalyx.vercel.app` (200 OK) and `https://faculty-workload-api-vidc.onrender.com/health` (200 OK).
+- **Next Steps / Backlog Items**: Test end-to-end admin session refresh directly in browser.

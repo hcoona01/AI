@@ -830,3 +830,29 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
 - **Test Results & Verification Status**: `npm run build` completed successfully (TypeScript check and Vite production build).
 - **Next Steps / Backlog Items**: Perform a visual pass in a browser across the admin and faculty dashboards.
 
+## 2026-11-02: Packet Tracer MCP setup
+
+- **Task Objective**: Install and configure Mats2208's Packet Tracer MCP for Codex on Windows.
+- **Changes Implemented**:
+  - Registered the global `packet-tracer` Codex MCP server with `uvx --from "packet-tracer-mcp[ui]" packet-tracer-mcp --stdio`.
+  - Installed the Packet Tracer agent skill at `C:\Users\omkan\.agents\skills\packet-tracer`.
+  - Downloaded the official v0.10.1 MCP Control Center extension to `C:\Users\omkan\Downloads\MCP-Control-Center.pts` after the repository's current `latest` release asset returned 404.
+- **Test Results & Verification Status**:
+  - `codex mcp get packet-tracer` confirms the enabled stdio registration and UI-enabled arguments.
+  - The skill directory and downloaded `.pts` extension file were verified present.
+  - The extension could not be copied into `C:\Program Files\Cisco Packet Tracer 9.0.1\extensions` because that protected directory requires an administrator-approved write; live bridge verification remains pending until the extension is imported/enabled in Packet Tracer.
+- **Next Steps / Backlog Items**: Import the downloaded extension in Packet Tracer (Extensions → Scripting → Configure PT Script Modules → Add…), enable it, restart Codex, then run `pt_bridge_status`.
+
+## 2026-11-02: Packet Tracer DHCP lab
+
+- **Task Objective**: Build a DHCP-server topology with one router, two switches, seven PCs, and one server.
+- **Changes Implemented**:
+  - Deployed a 2911 router (`192.168.10.1/24`), two 2960-24TT switches, seven PC-PT clients, and one Server-PT (`192.168.10.2/24`) in a single LAN.
+  - Connected the switches using a validated crossover uplink and configured `SRV1` with the `LAN-DHCP` pool (`192.168.10.10`–`192.168.10.16`), gateway `192.168.10.1`, and DNS `192.168.10.2`.
+  - Configured every PC for DHCP and saved the result as `C:\Users\omkan\Cisco Packet Tracer 9.0.1\saves\dhcp_server_1r_2s_7pc_1server.pkt`.
+- **Test Results & Verification Status**:
+  - Plan validation passed with no errors or warnings; deployment verified 11/11 devices and 10/10 links.
+  - All seven PCs obtained leases from `SRV1`; PC7's `ipconfig /all` confirmed DHCP server `192.168.10.2`.
+  - Real ping from PC1 to PC7 (`192.168.10.16`) succeeded: 4 sent, 4 received, 0% loss.
+- **Next Steps / Backlog Items**: None.
+

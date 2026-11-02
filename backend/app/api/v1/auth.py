@@ -87,14 +87,16 @@ async def verify_otp(
         email=payload.email, otp=payload.otp
     )
 
+    is_secure = settings.ENVIRONMENT in ("production", "staging")
+
     # Set refresh token in httpOnly, SameSite cookie
     response.set_cookie(
         key="refresh_token",
         value=refresh_token,
         httponly=True,
-        samesite="lax",
+        samesite="none" if is_secure else "lax",
         max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
-        secure=(settings.ENVIRONMENT in ("production", "staging")),
+        secure=is_secure,
         path="/",
     )
 
@@ -103,6 +105,7 @@ async def verify_otp(
         token_type="bearer",
         expires_in=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         user=user.model_dump(),
+        refresh_token=refresh_token,
     )
 
 
@@ -127,14 +130,16 @@ async def refresh_token(
         refresh_token=token_str
     )
 
+    is_secure = settings.ENVIRONMENT in ("production", "staging")
+
     # Rotate refresh token cookie
     response.set_cookie(
         key="refresh_token",
         value=new_refresh_token,
         httponly=True,
-        samesite="lax",
+        samesite="none" if is_secure else "lax",
         max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 3600,
-        secure=(settings.ENVIRONMENT in ("production", "staging")),
+        secure=is_secure,
         path="/",
     )
 
@@ -143,6 +148,7 @@ async def refresh_token(
         token_type="bearer",
         expires_in=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         user=user.model_dump(),
+        refresh_token=new_refresh_token,
     )
 
 
@@ -153,5 +159,11 @@ async def refresh_token(
 )
 async def logout(response: Response) -> MessageResponse:
     """Terminate session by clearing the httpOnly refresh token cookie."""
-    response.delete_cookie(key="refresh_token", path="/")
+    is_secure = settings.ENVIRONMENT in ("production", "staging")
+    response.delete_cookie(
+        key="refresh_token",
+        path="/",
+        secure=is_secure,
+        samesite="none" if is_secure else "lax",
+    )
     return MessageResponse(message="Successfully logged out")

@@ -38,6 +38,9 @@ class TokenResponse(BaseModel):
     user: dict[str, Any] | None = Field(
         default=None, description="Authenticated user profile summary"
     )
+    refresh_token: str | None = Field(
+        default=None, description="Rotated or issued refresh token payload"
+    )
 
 
 class RefreshTokenRequest(BaseModel):

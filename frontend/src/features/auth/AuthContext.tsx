@@ -7,6 +7,10 @@ import {
   verifyOtpApi,
   refreshSessionApi,
   logoutApi,
+  getStoredRefreshToken,
+  setStoredRefreshToken,
+  getStoredUser,
+  setStoredUser,
 } from '../../lib/apiClient';
 import { queryClient } from '../../app/queryClient';
 
@@ -29,33 +33,47 @@ export interface AuthProviderProps {
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(() => getStoredUser());
   const [accessTokenState, setAccessTokenState] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(() => Boolean(getStoredRefreshToken()));
   const [error, setError] = useState<string | null>(null);
 
   const clearError = useCallback(() => {
     setError(null);
   }, []);
 
-  // Silent refresh on initial page load via httpOnly refresh cookie
+  // Silent refresh on initial page load via stored refresh token or httpOnly cookie
   useEffect(() => {
     let isMounted = true;
 
     const performSilentRefresh = async (): Promise<void> => {
+      const storedToken = getStoredRefreshToken();
+      if (!storedToken) {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+        return;
+      }
+
       try {
-        const data = await refreshSessionApi();
+        const data = await refreshSessionApi(storedToken);
         if (isMounted) {
           setAccessToken(data.access_token);
           setAccessTokenState(data.access_token);
           setUser(data.user);
+          setStoredUser(data.user);
+          if (data.refresh_token) {
+            setStoredRefreshToken(data.refresh_token);
+          }
         }
       } catch {
-        // Silent failure if cookie expired or not set
+        // Silent failure if token expired or revoked
         if (isMounted) {
           setAccessToken(null);
           setAccessTokenState(null);
           setUser(null);
+          setStoredUser(null);
+          setStoredRefreshToken(null);
         }
       } finally {
         if (isMounted) {
@@ -122,6 +140,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setAccessToken(null);
       setAccessTokenState(null);
       setUser(null);
+      setStoredRefreshToken(null);
+      setStoredUser(null);
       queryClient.clear();
     }
   }, []);

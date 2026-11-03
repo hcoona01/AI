@@ -891,3 +891,18 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - `npm run build`: verified clean build in 10.87s with 0 errors.
   - Vercel production deployment verified: `https://pentalyx.vercel.app` (200 OK).
 - **Next Steps / Backlog Items**: None.
+
+## 2026-11-03: Prominent Landing Page Backdrop on Dashboards
+- **Task Objective**: Bring the vibrant Petalyx cherry blossom and river backdrop clearly and prominently onto the admin and faculty dashboards with high-contrast frosted glass surfaces.
+- **Changes Implemented**:
+  - Created `frontend/src/components/layout/DashboardBackground.tsx` rendering the full-resolution cherry blossom valley poster (`HERO_POSTER`), looping river/birds scene video (`HERO_VIDEO`), floating anime clouds (`CLOUD_A`, `CLOUD_B`), and drifting cherry blossom petals (`.petal`).
+  - Added a delicate translucent gradient veil ensuring high UI contrast and readability without dimming out the scenery.
+  - Rendered `DashboardBackground` in both `AdminLayout.tsx` and `FacultyLayout.tsx`.
+  - Updated `frontend/src/index.css`:
+    - Styled sidebar and topbar with frosted glass `rgba(255, 255, 255, 0.86)` and `backdrop-filter: blur(18px)`.
+    - Styled dashboard cards with crisp frosted glass `rgba(255, 255, 255, 0.86)` and `backdrop-filter: blur(14px)`.
+  - Built bundle with `npm run build` and redeployed to Vercel production: `https://pentalyx.vercel.app`.
+- **Test Results & Verification Status**:
+  - `npm run build`: built in 11.09s with zero errors.
+  - Vercel production verified live: `https://pentalyx.vercel.app` (200 OK).
+- **Next Steps / Backlog Items**: Hard-refresh in browser to view updated deployment.

@@ -1,5 +1,26 @@
 # Engineering Progress Log
 
+## 2026-11-03: Pinned Static Sidebar Scrolling & Statistics Cards Typography Alignment
+- **Task Objective**: Pin the dashboard sidebar tabs completely static during vertical page scrolling, and fix vertical alignment and font typography across the KPI statistics boxes (aligning "Infeasible" vs "34", Gini, etc.).
+- **Changes Implemented**:
+  - **Static Sidebar Lock**:
+    - Removed `position: relative` override from `.dashboard-shell .app-aside` in `frontend/src/index.css`.
+    - Pinned `<aside>` with `fixed top-0 left-0 bottom-0 z-40 h-screen w-64` in [`AdminLayout.tsx`](file:///e:/AI%20project/frontend/src/components/layout/AdminLayout.tsx) and [`FacultyLayout.tsx`](file:///e:/AI%20project/frontend/src/components/layout/FacultyLayout.tsx).
+    - Added `md:pl-64` to `.dashboard-content` so content flows neatly alongside the static sidebar without jumping or shifting on scroll.
+  - **KPI Statistics Cards Alignment & Typography**:
+    - Added Google Font `Space Grotesk` (weights 500, 600, 700) and `Plus Jakarta Sans` to [`frontend/index.html`](file:///e:/AI%20project/frontend/index.html).
+    - Defined `.stat-box`, `.stat-header` (`h-8 flex items-start`), `.stat-value-row` (`h-12 flex items-center`), `.stat-number`, `.stat-badge`, and `.stat-sub` (`h-5 flex items-center`) in [`frontend/src/index.css`](file:///e:/AI%20project/frontend/src/index.css).
+    - Updated [`OverviewPanel.tsx`](file:///e:/AI%20project/frontend/src/features/admin/OverviewPanel.tsx) KPI cards: "Schedule Feasibility" (`⚠️ Infeasible`), "Hard Violations" (`34`), "Workload Fairness" (`0.900`), "Mean Expertise Fit" (`77.0%`), and "Unassigned Sections" (`24 / 25`) now share identical 48px vertically centered rows and tabular Space Grotesk typography with zero baseline drift.
+    - Updated secondary stat cards in [`ConflictsPanel.tsx`](file:///e:/AI%20project/frontend/src/features/admin/conflicts/ConflictsPanel.tsx), [`ForecastPanel.tsx`](file:///e:/AI%20project/frontend/src/features/admin/ForecastPanel.tsx), and [`MyLoadPage.tsx`](file:///e:/AI%20project/frontend/src/features/faculty/myload/MyLoadPage.tsx) with `.stat-number`.
+- **Test Results & Verification Status**:
+  - `npm run build` in `frontend/`: 0 errors, successful production bundle.
+  - Git committed and pushed to `origin/main` (`03979a5`).
+  - Production deployed to Vercel at `https://pentalyx.vercel.app` (Ready).
+- **Next Steps / Backlog Items**:
+  - Monitor user feedback on mobile vs desktop responsiveness and stat clarity.
+
+
+
 ## 2026-10-29: Monorepo Scaffolding & Foundational Setup
 - **Task Objective**: Initialize repository structure, baseline configuration, and documentation contracts.
 - **Changes Implemented**:

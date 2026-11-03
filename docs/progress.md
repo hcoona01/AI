@@ -1,5 +1,20 @@
 # Engineering Progress Log
 
+## 2026-11-03: Landing Page Background & Animated Effects on Login / Auth Page
+- **Task Objective**: Bring the landing page animated video backdrop, drifting anime clouds, and falling petals with frosted glass effects to `/login` and OTP verification.
+- **Changes Implemented**:
+  - Integrated [`DashboardBackground`](file:///e:/AI%20project/frontend/src/components/layout/DashboardBackground.tsx) into [`LoginPage.tsx`](file:///e:/AI%20project/frontend/src/features/auth/LoginPage.tsx).
+  - Styled login card with semi-translucent frosted glass (`bg-white/90 backdrop-blur-xl border border-white/80 shadow-[0_24px_60px_rgba(40,60,15,0.14)] rounded-[28px]`) so the cherry blossom valley, floating clouds, and swaying petals flow seamlessly around and behind the form.
+  - Upgraded inputs, quick-test buttons, and OTP fields in [`OtpStep.tsx`](file:///e:/AI%20project/frontend/src/features/auth/OtpStep.tsx) with matching frosted tactile styling and contrast-compliant typography.
+- **Test Results & Verification Status**:
+  - `npm run build` in `frontend/`: 0 errors.
+  - Git committed and pushed to `origin/main` (`86a469d`).
+  - Production deployed to Vercel at `https://pentalyx.vercel.app` (Ready).
+- **Next Steps / Backlog Items**:
+  - Continue refining UI components based on live user feedback.
+
+
+
 ## 2026-11-03: Pinned Static Sidebar Scrolling & Statistics Cards Typography Alignment
 - **Task Objective**: Pin the dashboard sidebar tabs completely static during vertical page scrolling, and fix vertical alignment and font typography across the KPI statistics boxes (aligning "Infeasible" vs "34", Gini, etc.).
 - **Changes Implemented**:

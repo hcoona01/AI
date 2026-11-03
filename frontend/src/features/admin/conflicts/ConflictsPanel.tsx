@@ -166,7 +166,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             Total Violations Detected
           </div>
-          <div className="text-2xl font-bold text-white mt-1">{totalCount}</div>
+          <div className="text-2xl font-bold stat-number text-white mt-1">{totalCount}</div>
           <div className="text-xs text-slate-500 mt-1 font-mono">
             Across {conflicts?.violations?.length ?? 0} constraint checks
           </div>
@@ -177,7 +177,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
             Hard Invariants (Blocking)
           </div>
           <div
-            className={`text-2xl font-bold mt-1 ${
+            className={`text-2xl font-bold stat-number mt-1 ${
               hardCount > 0 ? 'text-rose-400' : 'text-emerald-400'
             }`}
           >
@@ -192,7 +192,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             Soft Optimization Warnings
           </div>
-          <div className="text-2xl font-bold text-amber-400 mt-1">{softCount}</div>
+          <div className="text-2xl font-bold stat-number text-amber-400 mt-1">{softCount}</div>
           <div className="text-xs text-slate-400 mt-1 font-mono">Preferences & soft targets</div>
         </div>
       </div>

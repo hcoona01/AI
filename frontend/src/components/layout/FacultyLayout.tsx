@@ -33,7 +33,7 @@ export const FacultyLayout: React.FC = () => {
     <div className="app-shell dashboard-shell min-h-screen flex flex-col md:flex-row relative">
       <DashboardBackground />
       <aside
-        className={`app-aside fixed md:sticky top-0 z-40 h-screen w-64 flex flex-col transition-transform duration-200 ease-in-out ${
+        className={`app-aside fixed top-0 left-0 bottom-0 z-40 h-screen w-64 flex flex-col transition-transform duration-200 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
         }`}
       >
@@ -91,7 +91,7 @@ export const FacultyLayout: React.FC = () => {
         />
       )}
 
-      <div className="dashboard-content flex-1 flex flex-col min-w-0">
+      <div className="dashboard-content flex-1 md:pl-64 flex flex-col min-w-0">
         <header className="app-topbar sticky top-0 z-20 h-16 px-4 sm:px-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button

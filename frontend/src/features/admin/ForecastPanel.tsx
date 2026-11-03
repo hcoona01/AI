@@ -167,9 +167,9 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             {scenarioMode === 'p50' ? 'Expected Enrollment (P50)' : 'Peak Enrollment (P90)'}
           </div>
-          <div className="text-2xl font-bold text-white mt-1">
+          <div className="text-2xl font-bold stat-number text-white mt-1">
             {scenarioMode === 'p50' ? metrics.totalDemandP50 : metrics.totalDemandP90}
-            <span className="text-xs font-normal text-slate-400 ml-1.5">students</span>
+            <span className="text-xs font-normal text-slate-400 ml-1.5 font-sans">students</span>
           </div>
           <div className="text-xs text-slate-400 mt-2 font-mono">
             {scenarioMode === 'p50'
@@ -182,9 +182,9 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             {scenarioMode === 'p50' ? 'Planned Sections (P50)' : 'Risk Sections (P90)'}
           </div>
-          <div className="text-2xl font-bold text-white mt-1">
+          <div className="text-2xl font-bold stat-number text-white mt-1">
             {scenarioMode === 'p50' ? metrics.totalSectionsP50 : metrics.totalSectionsP90}
-            <span className="text-xs font-normal text-slate-400 ml-1.5">sections</span>
+            <span className="text-xs font-normal text-slate-400 ml-1.5 font-sans">sections</span>
           </div>
           <div className="text-xs text-blue-400 mt-2 font-mono">
             {scenarioMode === 'p50' ? 'Target section plan' : `+${metrics.surgeBufferSections} buffer sections`}
@@ -193,18 +193,18 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
 
         <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">Surge Capacity Buffer</div>
-          <div className="text-2xl font-bold text-amber-400 mt-1">
+          <div className="text-2xl font-bold stat-number text-amber-400 mt-1">
             +{metrics.surgeBufferSections}
-            <span className="text-xs font-normal text-slate-400 ml-1.5">sections</span>
+            <span className="text-xs font-normal text-slate-400 ml-1.5 font-sans">sections</span>
           </div>
           <div className="text-xs text-amber-500/80 mt-2 font-mono">P90 - P50 staffing delta</div>
         </div>
 
         <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4">
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">Volatile Offerings</div>
-          <div className="text-2xl font-bold text-rose-400 mt-1">
+          <div className="text-2xl font-bold stat-number text-rose-400 mt-1">
             {metrics.highRiskCourseCount}
-            <span className="text-xs font-normal text-slate-400 ml-1.5">/ {forecasts.length} courses</span>
+            <span className="text-xs font-normal text-slate-400 ml-1.5 font-sans">/ {forecasts.length} courses</span>
           </div>
           <div className="text-xs text-slate-400 mt-2 font-mono">P90 &gt; 125% of P50 or extra section</div>
         </div>

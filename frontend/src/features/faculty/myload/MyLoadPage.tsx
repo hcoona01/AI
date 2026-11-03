@@ -149,7 +149,7 @@ export const MyLoadPage: React.FC = () => {
           </div>
 
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{totalAssignedHours.toFixed(1)}</span>
+            <span className="text-3xl font-bold text-white stat-number">{totalAssignedHours.toFixed(1)}</span>
             <span className="text-slate-400 text-sm font-mono">/ {maxLimit.toFixed(1)} hrs/wk limit</span>
           </div>
 

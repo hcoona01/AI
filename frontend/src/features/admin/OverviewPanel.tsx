@@ -132,98 +132,105 @@ export const OverviewPanel: React.FC<OverviewProps> = ({
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {/* Card 1: Feasibility Status */}
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="stat-box bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div className="stat-header">
             Schedule Feasibility
           </div>
-          <div className="my-2">
+          <div className="stat-value-row">
             {loadingConflicts || loadingSections ? (
               <span className="text-sm text-slate-500 animate-pulse">Checking...</span>
             ) : isFeasible ? (
-              <span className="inline-flex items-center gap-1.5 text-2xl font-bold text-emerald-400">
-                <span>✅</span> Feasible
+              <span className="inline-flex items-center gap-1.5 text-2xl font-bold stat-badge text-emerald-600">
+                <span className="text-xl leading-none">✅</span> Feasible
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1.5 text-2xl font-bold text-rose-400">
-                <span>⚠️</span> Infeasible
+              <span className="inline-flex items-center gap-1.5 text-2xl font-bold stat-badge text-rose-600">
+                <span className="text-xl leading-none">⚠️</span> Infeasible
               </span>
             )}
           </div>
-          <div className="text-[11px] font-mono text-slate-400">
+          <div className="stat-sub font-mono">
             {isFeasible ? 'All hard constraints satisfied' : `${hardViolationsCount} active violation(s)`}
           </div>
         </div>
 
         {/* Card 2: Hard Violations */}
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="stat-box bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div className="stat-header">
             Hard Violations (HC)
           </div>
-          <div className="my-2 text-3xl font-extrabold text-white">
+          <div className="stat-value-row">
             {loadingConflicts ? (
               <span className="text-sm text-slate-500">...</span>
             ) : (
-              <span className={hardViolationsCount > 0 ? 'text-rose-400' : 'text-emerald-400'}>
+              <span className={`text-3xl font-bold stat-number ${hardViolationsCount > 0 ? 'text-rose-600' : 'text-emerald-600'}`}>
                 {hardViolationsCount}
               </span>
             )}
           </div>
-          <div className="text-[11px] text-slate-400">
+          <div className="stat-sub">
             {hardViolationsCount === 0 ? 'Zero constraint breaches' : 'Immediate planner attention needed'}
           </div>
         </div>
 
         {/* Card 3: Workload Gini */}
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="stat-box bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div className="stat-header">
             Workload Fairness (Gini)
           </div>
-          <div className="my-2 text-3xl font-extrabold text-white">
+          <div className="stat-value-row">
             {loadingFairness ? (
               <span className="text-sm text-slate-500">...</span>
             ) : (
-              <span className={loadGini <= 0.15 ? 'text-emerald-400' : loadGini <= 0.3 ? 'text-amber-400' : 'text-rose-400'}>
+              <span className={`text-3xl font-bold stat-number ${loadGini <= 0.15 ? 'text-emerald-600' : loadGini <= 0.3 ? 'text-amber-600' : 'text-rose-600'}`}>
                 {loadGini.toFixed(3)}
               </span>
             )}
           </div>
-          <div className="text-[11px] text-slate-400">
+          <div className="stat-sub">
             {loadGini <= 0.15 ? 'Highly balanced' : loadGini <= 0.3 ? 'Moderate disparity' : 'High load imbalance'}
           </div>
         </div>
 
         {/* Card 4: Mean Fit */}
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="stat-box bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div className="stat-header">
             Mean Expertise Fit
           </div>
-          <div className="my-2 text-3xl font-extrabold text-blue-400">
+          <div className="stat-value-row">
             {loadingAssignments ? (
               <span className="text-sm text-slate-500">...</span>
             ) : (
-              `${(meanFit * 100).toFixed(1)}%`
+              <span className="text-3xl font-bold stat-number text-blue-600">
+                {(meanFit * 100).toFixed(1)}%
+              </span>
             )}
           </div>
-          <div className="text-[11px] text-slate-400">
+          <div className="stat-sub">
             Syllabus match & tag score
           </div>
         </div>
 
         {/* Card 5: Unassigned Sections */}
-        <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 flex flex-col justify-between">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+        <div className="stat-box bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+          <div className="stat-header">
             Unassigned Sections
           </div>
-          <div className="my-2 text-3xl font-extrabold text-white">
+          <div className="stat-value-row flex items-baseline gap-1.5">
             {loadingSections || loadingAssignments ? (
               <span className="text-sm text-slate-500">...</span>
             ) : (
-              <span className={unassignedCount > 0 ? 'text-amber-400' : 'text-emerald-400'}>
-                {unassignedCount} <span className="text-xs font-normal text-slate-400">/ {totalSections}</span>
-              </span>
+              <>
+                <span className={`text-3xl font-bold stat-number ${unassignedCount > 0 ? 'text-amber-600' : 'text-emerald-600'}`}>
+                  {unassignedCount}
+                </span>
+                <span className="text-xs font-semibold text-slate-500 font-mono">
+                  / {totalSections}
+                </span>
+              </>
             )}
           </div>
-          <div className="text-[11px] text-slate-400">
+          <div className="stat-sub">
             {unassignedCount === 0 ? 'All sections staffed' : `${unassignedCount} section(s) need instructor`}
           </div>
         </div>

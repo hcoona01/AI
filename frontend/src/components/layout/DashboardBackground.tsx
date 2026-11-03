@@ -67,3 +67,4 @@ export const DashboardBackground: React.FC = () => {
     </div>
   );
 };
+

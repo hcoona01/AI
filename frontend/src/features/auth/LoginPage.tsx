@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { useAuth } from './AuthContext';
 import { OtpStep } from './OtpStep';
 import { BrandMark } from '../../components/brand/BrandMark';
+import { DashboardBackground } from '../../components/layout/DashboardBackground';
 
 const emailSchema = z
   .string()
@@ -83,8 +84,10 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f3f6ec] flex flex-col justify-center items-center p-4">
-      <div className="relative max-w-md w-full bg-white border border-[#e8ece0] rounded-[26px] p-8 shadow-[0_20px_50px_rgba(10,20,60,0.06)]">
+    <div className="relative min-h-screen flex flex-col justify-center items-center p-4 overflow-hidden">
+      <DashboardBackground />
+
+      <div className="relative z-10 max-w-md w-full bg-white/90 backdrop-blur-xl border border-white/80 rounded-[28px] p-8 shadow-[0_24px_60px_rgba(40,60,15,0.14)]">
         {step === 'email' ? (
           <div>
             <div className="text-center mb-8">
@@ -96,7 +99,7 @@ export const LoginPage: React.FC = () => {
               <h1 className="text-2xl font-medium tracking-tight" style={{ letterSpacing: '-0.03em' }}>
                 Workload system sign in
               </h1>
-              <p className="text-sm text-slate-400 mt-2">
+              <p className="text-sm text-slate-500 mt-2">
                 Passwordless one-time passcode login for department chairs and faculty.
               </p>
             </div>
@@ -105,7 +108,7 @@ export const LoginPage: React.FC = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-xs font-medium text-slate-300 uppercase tracking-wider mb-2"
+                  className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2"
                 >
                   University Email Address
                 </label>
@@ -123,11 +126,11 @@ export const LoginPage: React.FC = () => {
                   placeholder="faculty@university.edu"
                   aria-invalid={Boolean(emailError || error)}
                   aria-describedby={emailError || error ? 'email-error' : undefined}
-                  className={`w-full px-4 py-3 rounded-2xl bg-white border ${
+                  className={`w-full px-4 py-3 rounded-2xl bg-white/95 border ${
                     emailError || error
                       ? 'border-rose-500/80 text-rose-700 focus:border-rose-500'
-                      : 'border-slate-700 text-slate-100 focus:border-blue-500'
-                  } placeholder-slate-600 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm transition`}
+                      : 'border-slate-300 text-slate-900 focus:border-[#4d6a10]'
+                  } placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#4d6a10]/20 text-sm transition shadow-xs`}
                 />
               </div>
 
@@ -146,18 +149,18 @@ export const LoginPage: React.FC = () => {
               </button>
             </form>
 
-            <div className="mt-6 pt-5 border-t border-slate-800">
-              <span className="block text-[11px] font-medium text-slate-400 uppercase tracking-wider mb-2.5">
+            <div className="mt-6 pt-5 border-t border-slate-200">
+              <span className="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2.5">
                 Quick sign-in test accounts
               </span>
               <div className="grid grid-cols-1 gap-2">
                 <button
                   type="button"
                   onClick={() => handleQuickFill('admin@university.edu')}
-                  className="w-full text-left p-2.5 rounded-2xl bg-white hover:bg-[#e7efcf] border border-slate-800 transition cursor-pointer"
+                  className="w-full text-left p-3 rounded-2xl bg-white/80 hover:bg-white border border-slate-200 hover:border-[#b4cd52] transition cursor-pointer shadow-xs"
                 >
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-mono text-slate-300">admin@university.edu</span>
+                    <span className="font-mono text-slate-700 font-medium">admin@university.edu</span>
                     <span className="pill">Admin</span>
                   </div>
                 </button>
@@ -165,10 +168,10 @@ export const LoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handleQuickFill('alan.turing@university.edu')}
-                  className="w-full text-left p-2.5 rounded-2xl bg-white hover:bg-[#e7efcf] border border-slate-800 transition cursor-pointer"
+                  className="w-full text-left p-3 rounded-2xl bg-white/80 hover:bg-white border border-slate-200 hover:border-[#b4cd52] transition cursor-pointer shadow-xs"
                 >
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-mono text-slate-300">alan.turing@university.edu</span>
+                    <span className="font-mono text-slate-700 font-medium">alan.turing@university.edu</span>
                     <span className="pill">Faculty (f-01)</span>
                   </div>
                 </button>
@@ -189,9 +192,9 @@ export const LoginPage: React.FC = () => {
           />
         )}
 
-        <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-          <Link to="/" className="hover:underline">
-            ← Back to landing
+        <div className="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+          <Link to="/" className="hover:underline flex items-center gap-1 font-medium">
+            <span>←</span> Back to landing
           </Link>
           <span className="font-mono">v0.1.0</span>
         </div>

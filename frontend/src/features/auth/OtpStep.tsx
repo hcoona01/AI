@@ -96,9 +96,9 @@ export const OtpStep: React.FC<OtpStepProps> = ({
       <div className="text-center">
         <div className="pill mb-3">Step 2 of 2 · verification</div>
         <h2 className="text-2xl font-medium tracking-tight">Enter verification code</h2>
-        <p className="text-sm text-slate-400 mt-2">
+        <p className="text-sm text-slate-500 mt-2">
           We sent a 6-digit one-time passcode to{' '}
-          <span className="text-slate-200 font-semibold">{email}</span>
+          <span className="text-slate-800 font-semibold">{email}</span>
         </p>
         <button
           type="button"
@@ -130,7 +130,7 @@ export const OtpStep: React.FC<OtpStepProps> = ({
         <div>
           <label
             htmlFor="otp-code"
-            className="block text-xs font-medium text-slate-300 uppercase tracking-wider mb-2 text-center"
+            className="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2 text-center"
           >
             6-Digit One-Time Passcode
           </label>
@@ -149,11 +149,11 @@ export const OtpStep: React.FC<OtpStepProps> = ({
             aria-invalid={Boolean(displayError)}
             aria-describedby={displayError ? 'otp-error' : undefined}
             placeholder="······"
-            className={`w-full px-4 py-3 text-center text-3xl font-mono tracking-[0.5em] rounded-2xl bg-white border ${
+            className={`w-full px-4 py-3 text-center text-3xl font-mono tracking-[0.5em] rounded-2xl bg-white/95 border ${
               displayError
                 ? 'border-rose-500/80 text-rose-700 focus:border-rose-500'
-                : 'border-slate-700 text-slate-100 focus:border-blue-500'
-            } placeholder-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500 transition`}
+                : 'border-slate-300 text-slate-900 focus:border-[#4d6a10]'
+            } placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#4d6a10]/20 transition shadow-xs`}
           />
         </div>
 
@@ -210,7 +210,7 @@ export const OtpStep: React.FC<OtpStepProps> = ({
         {resendCooldown > 0 ? (
           <p className="text-xs text-slate-400">
             Resend available in{' '}
-            <span className="font-mono text-slate-200 font-semibold">{resendCooldown}s</span>
+            <span className="font-mono text-slate-700 font-semibold">{resendCooldown}s</span>
           </p>
         ) : (
           <button

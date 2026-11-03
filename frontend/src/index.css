@@ -742,10 +742,62 @@ body.intro #landing-app {
   box-shadow: 0 8px 24px rgba(50, 67, 20, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
-/* Authenticated dashboard: clean, distraction-free solid background (not the landing page scene). */
+/* Dashboard Background: vibrant, visible landing scene (cherry blossom valley & river) */
+.dashboard-bg-fixed {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dashboard-bg-poster,
+.dashboard-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
+}
+
+.dashboard-bg-video {
+  opacity: 0.85;
+}
+
+.dashboard-bg-cloud {
+  position: absolute;
+  width: min(44vw, 640px);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.dashboard-bg-cloud--left {
+  top: 2%;
+  left: -6%;
+}
+
+.dashboard-bg-cloud--right {
+  top: 10%;
+  right: -6%;
+}
+
+.dashboard-bg-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(243, 246, 236, 0.25) 100%
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
 .dashboard-shell {
   position: relative;
-  background-color: #f3f6ec !important;
+  background: transparent !important;
 }
 
 .dashboard-content,
@@ -755,51 +807,60 @@ body.intro #landing-app {
 }
 
 .dashboard-shell .app-aside {
-  background-color: #ffffff;
-  border-color: #e8ece0;
+  background: rgba(255, 255, 255, 0.86) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow: 4px 0 24px rgba(60, 80, 20, 0.08);
 }
 
 .dashboard-shell .app-topbar {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-color: #e8ece0;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow: 0 4px 20px rgba(60, 80, 20, 0.05);
 }
 
-/* Dashboard controls: crisp, solid surfaces with gentle hover feedback */
+/* Dashboard controls: tactile frosted controls */
 .dashboard-shell button,
 .dashboard-shell select,
 .dashboard-shell input,
 .dashboard-shell textarea {
-  background-color: #ffffff !important;
-  border-color: #d8decd !important;
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(180, 205, 82, 0.5) !important;
   color: var(--ink) !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .dashboard-shell button:hover:not(:disabled) {
-  background-color: #f8faf2 !important;
-  border-color: #b5c78a !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: var(--olive) !important;
+  box-shadow: 0 3px 8px rgba(60, 80, 20, 0.12);
 }
 
 .dashboard-shell button:focus-visible,
 .dashboard-shell select:focus-visible,
 .dashboard-shell input:focus-visible,
 .dashboard-shell textarea:focus-visible {
-  outline: 2px solid rgba(111, 154, 12, 0.72);
+  outline: 2px solid rgba(111, 154, 12, 0.85);
   outline-offset: 2px;
 }
 
-/* Dashboard cards: crisp, solid white containers on the neutral background */
+/* Dashboard cards: frosted glass containers allowing the scenery to shine through */
 .dashboard-shell [class*="bg-slate-900"] {
-  background-color: #ffffff !important;
-  border-color: #e8ece0 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  background: rgba(255, 255, 255, 0.86) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 10px 30px rgba(40, 60, 10, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  border-radius: 20px;
 }
 
 .dashboard-shell [class*="bg-slate-950"] {
-  background-color: #f3f6ec !important;
+  background: transparent !important;
 }
 
 /* Keep mobile navigation and dialog scrims reliably opaque for focus and contrast */

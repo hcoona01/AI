@@ -742,54 +742,10 @@ body.intro #landing-app {
   box-shadow: 0 8px 24px rgba(50, 67, 20, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
-/* Authenticated dashboard: the landing scene remains visible, but its contrast
-   is intentionally restrained so data and controls take visual priority. */
+/* Authenticated dashboard: clean, distraction-free solid background (not the landing page scene). */
 .dashboard-shell {
   position: relative;
-  isolation: isolate;
-  background: #edf1e5;
-}
-
-.dashboard-atmosphere {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-  background: #edf1e5;
-}
-
-.dashboard-atmosphere__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 72%;
-  opacity: 0.18;
-  filter: saturate(0.72) blur(2px);
-  transform: scale(1.04);
-}
-
-.dashboard-atmosphere__cloud {
-  position: absolute;
-  width: min(42vw, 620px);
-  opacity: 0.18;
-  filter: blur(1px);
-}
-
-.dashboard-atmosphere__cloud--left {
-  top: 6%;
-  left: -10%;
-}
-
-.dashboard-atmosphere__cloud--right {
-  right: -12%;
-  bottom: 4%;
-}
-
-.dashboard-atmosphere__wash {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(243, 246, 236, 0.8), rgba(243, 246, 236, 0.61) 52%, rgba(235, 241, 219, 0.76));
+  background-color: #f3f6ec !important;
 }
 
 .dashboard-content,
@@ -798,31 +754,33 @@ body.intro #landing-app {
   z-index: 1;
 }
 
-.dashboard-shell .app-aside,
-.dashboard-shell .app-topbar {
-  background: rgba(255, 255, 255, 0.58);
-  border-color: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(18px) saturate(1.08);
-  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+.dashboard-shell .app-aside {
+  background-color: #ffffff;
+  border-color: #e8ece0;
 }
 
-/* Neutral, tactile controls replace the saturated utility-button treatment. */
+.dashboard-shell .app-topbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: #e8ece0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Dashboard controls: crisp, solid surfaces with gentle hover feedback */
 .dashboard-shell button,
 .dashboard-shell select,
 .dashboard-shell input,
 .dashboard-shell textarea {
-  background-color: rgba(255, 255, 255, 0.52) !important;
-  border-color: rgba(255, 255, 255, 0.82) !important;
+  background-color: #ffffff !important;
+  border-color: #d8decd !important;
   color: var(--ink) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 6px 18px rgba(62, 76, 29, 0.07);
-  backdrop-filter: blur(12px) saturate(1.05);
-  -webkit-backdrop-filter: blur(12px) saturate(1.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .dashboard-shell button:hover:not(:disabled) {
-  background-color: rgba(255, 255, 255, 0.72) !important;
-  border-color: rgba(205, 220, 168, 0.94) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 10px 24px rgba(62, 76, 29, 0.12);
+  background-color: #f8faf2 !important;
+  border-color: #b5c78a !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .dashboard-shell button:focus-visible,
@@ -833,29 +791,22 @@ body.intro #landing-app {
   outline-offset: 2px;
 }
 
-/* Existing dashboard panels become translucent surfaces without changing their
-   component APIs or data-loading behaviour. */
-.dashboard-shell [class*="bg-slate-900"],
-.dashboard-shell [class*="bg-slate-950"] {
-  background-color: rgba(255, 255, 255, 0.52) !important;
-  border-color: rgba(255, 255, 255, 0.76) !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62), 0 12px 30px rgba(62, 76, 29, 0.07);
-  backdrop-filter: blur(15px) saturate(1.04);
-  -webkit-backdrop-filter: blur(15px) saturate(1.04);
+/* Dashboard cards: crisp, solid white containers on the neutral background */
+.dashboard-shell [class*="bg-slate-900"] {
+  background-color: #ffffff !important;
+  border-color: #e8ece0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
-/* Keep mobile navigation and dialog scrims reliably opaque for focus and
-   contrast; they are overlays rather than dashboard surfaces. */
+.dashboard-shell [class*="bg-slate-950"] {
+  background-color: #f3f6ec !important;
+}
+
+/* Keep mobile navigation and dialog scrims reliably opaque for focus and contrast */
 .dashboard-shell .fixed.inset-0[class~="bg-slate-950/80"] {
   background-color: rgba(18, 20, 16, 0.72) !important;
   border-color: transparent !important;
   box-shadow: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dashboard-atmosphere__video {
-    display: none;
-  }
 }
 
 @media (max-width: 900px) {

@@ -4,7 +4,6 @@ import { z } from 'zod';
 import { useAuth } from './AuthContext';
 import { OtpStep } from './OtpStep';
 import { BrandMark } from '../../components/brand/BrandMark';
-import { HERO_POSTER } from '../../lib/visualAssets';
 
 const emailSchema = z
   .string()
@@ -84,21 +83,8 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col justify-center items-center p-4 overflow-hidden">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${HERO_POSTER})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 70%',
-          filter: 'blur(18px) saturate(1.1)',
-          transform: 'scale(1.15)',
-        }}
-        aria-hidden="true"
-      />
-      <div className="absolute inset-0 bg-white/55" aria-hidden="true" />
-
-      <div className="relative max-w-md w-full bg-white/90 border border-white/70 rounded-[26px] p-8 shadow-[0_30px_60px_rgba(10,20,60,0.12)] backdrop-blur-md">
+    <div className="min-h-screen bg-[#f3f6ec] flex flex-col justify-center items-center p-4">
+      <div className="relative max-w-md w-full bg-white border border-[#e8ece0] rounded-[26px] p-8 shadow-[0_20px_50px_rgba(10,20,60,0.06)]">
         {step === 'email' ? (
           <div>
             <div className="text-center mb-8">

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../features/auth/AuthContext';
 import { BrandMark } from '../brand/BrandMark';
-import { DashboardAtmosphere } from './DashboardAtmosphere';
 
 interface NavItem {
   name: string;
@@ -30,8 +29,7 @@ export const FacultyLayout: React.FC = () => {
   };
 
   return (
-    <div className="app-shell dashboard-shell min-h-screen flex flex-col md:flex-row">
-      <DashboardAtmosphere />
+    <div className="app-shell dashboard-shell min-h-screen flex flex-col md:flex-row bg-[#f3f6ec]">
       <aside
         className={`app-aside fixed md:sticky top-0 z-40 h-screen w-64 flex flex-col transition-transform duration-200 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'

@@ -875,3 +875,19 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - `npm run build`: verified clean build with zero TypeScript or Vite errors.
   - Live production endpoints verified: `https://pentalyx.vercel.app` (200 OK) and `https://faculty-workload-api-vidc.onrender.com/health` (200 OK).
 - **Next Steps / Backlog Items**: Test end-to-end admin session refresh directly in browser.
+
+## 2026-11-03: Restore Clean Solid Background on Dashboards
+- **Task Objective**: Remove landing page anime video/clouds atmosphere from the admin and faculty dashboards, reverting to a clean, distraction-free solid background.
+- **Changes Implemented**:
+  - Removed `<DashboardAtmosphere />` from `AdminLayout.tsx` and `FacultyLayout.tsx`.
+  - Deleted obsolete `frontend/src/components/layout/DashboardAtmosphere.tsx`.
+  - Updated `frontend/src/index.css`:
+    - Replaced translucent glass-morphism overrides with solid `#f3f6ec` page background and solid `#ffffff` cards (`bg-slate-900` rendered as crisp white with subtle border `#e8ece0`).
+    - Standardized sidebar and topbar as solid white containers with border `#e8ece0`.
+    - Removed video, cloud keyframes, and wash overlays from authenticated views.
+  - Updated `LoginPage.tsx` to use the same clean solid `#f3f6ec` background.
+  - Built and redeployed the frontend to Vercel production: `https://pentalyx.vercel.app`.
+- **Test Results & Verification Status**:
+  - `npm run build`: verified clean build in 10.87s with 0 errors.
+  - Vercel production deployment verified: `https://pentalyx.vercel.app` (200 OK).
+- **Next Steps / Backlog Items**: None.

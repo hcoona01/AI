@@ -227,7 +227,7 @@ sequenceDiagram
 Academic course demand fluctuates based on cohort size, seasonality, prerequisite completion rates, and curriculum changes. Rather than using single-point regression, Pentalyx implements **Quantile Gradient Boosted Decision Trees** via LightGBM.
 
 ### 3.1 P10 / P50 / P90 Quantile Formulation
-Three independent text boosters are trained using the **pinball loss function** for quantiles $\tau \in \{0.10, 0.50, 0.90\}$:
+Three independent text boosters are trained using the **pinball loss function** for quantiles $\tau \in \lbrace 0.10, 0.50, 0.90 \rbrace$:
 
 $$\mathcal{L}_{\tau}(y, \hat{y}) = \max(\tau(y - \hat{y}), (1 - \tau)(\hat{y} - y))$$
 
@@ -264,8 +264,8 @@ Offline model training runs via `make train` (`python ml/scripts/train.py`). The
 Course allocation is modeled as a **Multi-Objective Mixed-Integer Linear Program (MILP)** using **Google OR-Tools CP-SAT**.
 
 ### 4.1 Step 1: Domain Pre-Filtering (Graph Pruning)
-To prevent combinatorial explosion and respect the 512 MB memory ceiling, binary decision variables $x_{i,j} \in \{0, 1\}$ are instantiated **only** for valid faculty-section pairs:
-$$\mathcal{E} = \left\{ (i, j) \in \mathcal{F} \times \mathcal{S} \;\middle|\; \text{Proficiency}(i, \text{Syllabus}(j)) \ge \text{MinProf}(j) \;\land\; i \notin \text{OnLeave}(\text{Term}(j)) \right\}$$
+To prevent combinatorial explosion and respect the 512 MB memory ceiling, binary decision variables $x_{i,j} \in \lbrace 0, 1 \rbrace$ are instantiated **only** for valid faculty-section pairs:
+$$\mathcal{E} = \lbrace (i, j) \in \mathcal{F} \times \mathcal{S} \mid \text{Proficiency}(i, \text{Syllabus}(j)) \ge \text{MinProf}(j) \land i \notin \text{OnLeave}(\text{Term}(j)) \rbrace$$
 If $\sum_{i} x_{i, j} = 0$ for any mandatory section $j$, the solver aborts with an instant infeasibility certificate ($< 10\text{ ms}$) citing the exact missing expertise tag.
 
 ### 4.2 Mathematical Optimization Model
@@ -273,7 +273,7 @@ If $\sum_{i} x_{i, j} = 0$ for any mandatory section $j$, the solver aborts with
 #### Objective Function
 Maximize global expertise fit, honor faculty course preferences, and maintain pedagogical continuity while penalizing workload variance across colleagues:
 
-$$\max \sum_{(i, j) \in \mathcal{E}} \left( W_{\text{fit}} \cdot \text{FitScore}_{i, j} + W_{\text{pref}} \cdot \text{Pref}_{i, j} + W_{\text{cont}} \cdot \text{Cont}_{i, j} \right) x_{i, j} - W_{\text{imbalance}} \cdot \Delta_{\text{load}}$$
+$$\max \sum_{(i, j) \in \mathcal{E}} ( W_{\text{fit}} \cdot \text{FitScore}_{i, j} + W_{\text{pref}} \cdot \text{Pref}_{i, j} + W_{\text{cont}} \cdot \text{Cont}_{i, j} ) x_{i, j} - W_{\text{imbalance}} \cdot \Delta_{\text{load}}$$
 
 #### Formal Constraint Catalog
 

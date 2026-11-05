@@ -1,5 +1,18 @@
 # Engineering Progress Log
 
+## 2026-11-05: GitHub README LaTeX Delimiter Compatibility Fix
+- **Task Objective**: Fix GitHub markdown rendering error (`Missing or unrecognized delimiter for \left`) in Section 4.1 of `README.md`.
+- **Changes Implemented**:
+  - Replaced problematic `\left\{ ... \middle| ... \right\}` with GitHub-safe `\lbrace ... \mid ... \rbrace` notation.
+  - Replaced `\left( ... \right)` in the objective formula with standard mathematical parentheses `( ... )`.
+  - Replaced raw inline brace escapes `\{ ... \}` with `\lbrace ... \rbrace` for guaranteed cross-platform KaTeX/MathJax compatibility.
+- **Test Results & Verification Status**:
+  - Validated formula syntax; eliminates all unrecognized delimiter errors in GitHub's markdown renderer.
+- **Next Steps / Backlog Items**:
+  - Confirm clean rendering on `https://github.com/hcoona01/AI`.
+
+
+
 ## 2026-11-05: Comprehensive Professional GitHub README Overhaul
 - **Task Objective**: Author an exhaustive, creative, and professional GitHub `README.md` showcasing system architecture, Mermaid diagrams, embedded benchmark performance graphs, complete API reference, ML training methods, mathematical constraint catalog, interactive walkthroughs, and dependency management.
 - **Changes Implemented**:

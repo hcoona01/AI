@@ -1,5 +1,25 @@
 # Engineering Progress Log
 
+## 2026-11-05: Comprehensive Professional GitHub README Overhaul
+- **Task Objective**: Author an exhaustive, creative, and professional GitHub `README.md` showcasing system architecture, Mermaid diagrams, embedded benchmark performance graphs, complete API reference, ML training methods, mathematical constraint catalog, interactive walkthroughs, and dependency management.
+- **Changes Implemented**:
+  - Authored a multi-section, beautifully styled [`README.md`](file:///e:/AI%20project/README.md) featuring:
+    - High-level architecture and sequence flowcharts using Mermaid syntax.
+    - Embedded solver benchmark charts (`docs/img/benchmark_solve_time.png`, `benchmark_tradeoffs.png`, `benchmark_memory.png`).
+    - Empirical solver comparison table (CP-SAT vs. Greedy across 10 evaluation fixtures).
+    - Detailed LightGBM quantile demand forecasting methodology ($P_{10}, P_{50}, P_{90}$), feature engineering, and offline metrics table.
+    - Complete formal constraint catalog (`HC-01` through `HC-07` and `SC-01` through `SC-05`) with mathematical notation.
+    - Exhaustive REST API reference covering all 14 subrouters and endpoints.
+    - 5-step interactive walkthrough script for administrative, diagnostic, override, and privacy testing.
+    - Compute budget compliance rules (CPU-only, $\le 512\text{ MB}$ RAM, no GPU, no pickle).
+- **Test Results & Verification Status**:
+  - Pytest full suite verified: 233 passed in 58.70s.
+  - Formatted and validated markdown structure, badges, tables, and links.
+- **Next Steps / Backlog Items**:
+  - Keep documentation synchronized with future API endpoint or scenario expansions.
+
+
+
 ## 2026-11-03: Landing Page Background & Animated Effects on Login / Auth Page
 - **Task Objective**: Bring the landing page animated video backdrop, drifting anime clouds, and falling petals with frosted glass effects to `/login` and OTP verification.
 - **Changes Implemented**:

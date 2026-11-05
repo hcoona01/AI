@@ -19,7 +19,7 @@ else
     SET_ENV := PYTHONPATH=.:backend:ml
 endif
 
-.PHONY: help install-backend install-ml install-frontend dev-backend dev-frontend lint test train benchmark-quick e2e
+.PHONY: help install-backend install-ml install-frontend dev-backend dev-frontend lint test train benchmark-quick sync-gist e2e
 
 help:
 	@echo "Available commands:"
@@ -29,6 +29,7 @@ help:
 	@echo "  lint             Run ruff and black code checks"
 	@echo "  train            Run offline ML model training (ml/scripts/train.py)"
 	@echo "  benchmark-quick  Run quick CP-SAT vs greedy benchmark"
+	@echo "  sync-gist        Sync local database to GitHub Gist & verify live"
 	@echo "  e2e              Run frontend e2e integration tests (optional)"
 	@echo "  install-backend  Install runtime backend dependencies"
 	@echo "  install-ml       Install offline ML training dependencies"
@@ -66,6 +67,9 @@ benchmark-quick:
 
 benchmark-full:
 	$(SET_ENV) $(PYTHON) ml/benchmark/run_benchmark.py --profile full
+
+sync-gist:
+	$(SET_ENV) $(PYTHON) scripts/sync_to_gist.py
 
 e2e:
 	$(SET_ENV) $(PYTEST) tests/e2e -m e2e -v

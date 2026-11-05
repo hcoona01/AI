@@ -1,5 +1,34 @@
 # Engineering Progress Log
 
+## 2026-11-05: Live Database Testing & GitHub Gist Synchronization
+- **Task Objective**: Test all database collections and domain entities, create a private GitHub Gist, synchronize all data live to the Gist, and configure the application to support live Gist persistence with optimistic concurrency.
+- **Changes Implemented**:
+  - Created private GitHub Gist persistence store: [`https://gist.github.com/62907a1fa0dd1bd05513a9b4ffd0a660`](https://gist.github.com/62907a1fa0dd1bd05513a9b4ffd0a660).
+  - Synchronized and verified all 12 domain entity files from `data/store`:
+    - `users.json` (27 items)
+    - `faculty.json` (25 items)
+    - `courses.json` (42 items)
+    - `sections.json` (62 items)
+    - `resources.json` (10 items)
+    - `timeslots.json` (20 items)
+    - `constraints.json` (12 items)
+    - `forecasts.json` (40 items)
+    - `assignments.json` (6 items)
+    - `overrides.json` (17 items)
+    - `audit_log.json` (446 items)
+    - `change_requests.json` (16 items)
+  - Enhanced [`backend/app/repositories/gist_store.py`](file:///e:/AI%20project/backend/app/repositories/gist_store.py) to manage `change_requests.json` and prefer existing `data/store` records during initial Gist bootstrapping.
+  - Authored automated synchronization script [`scripts/sync_to_gist.py`](file:///e:/AI%20project/scripts/sync_to_gist.py) and added `make sync-gist` to [`Makefile`](file:///e:/AI%20project/Makefile).
+  - Added [`backend/tests/conftest.py`](file:///e:/AI%20project/backend/tests/conftest.py) ensuring local isolation during fast pytest runs while allowing live Gist persistence during server runtime.
+  - Performed live round-trip CRUD and CP-SAT solver optimization verification against GitHub Gist API with verified PATCH writes and ETag concurrency checks.
+- **Test Results & Verification Status**:
+  - Live round-trip audit entry creation and read-back verified against GitHub Gist `62907a1fa0dd1bd05513a9b4ffd0a660`.
+  - Authenticated API test suite verified (`health`, `faculty`, `courses`, `sections`, `assign/run` all passing).
+- **Next Steps / Backlog Items**:
+  - Set `GIST_TOKEN` and `GIST_ID` on production Render deployment dashboard if continuous remote Gist persistence is desired on Render.
+
+
+
 ## 2026-11-05: GitHub README LaTeX Delimiter Compatibility Fix
 - **Task Objective**: Fix GitHub markdown rendering error (`Missing or unrecognized delimiter for \left`) in Section 4.1 of `README.md`.
 - **Changes Implemented**:

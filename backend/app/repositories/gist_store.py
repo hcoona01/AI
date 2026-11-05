@@ -43,6 +43,7 @@ MANAGED_FILES = [
     "assignments.json",
     "overrides.json",
     "audit_log.json",
+    "change_requests.json",
 ]
 
 
@@ -130,17 +131,19 @@ class GistStore(BaseStore):
         client = await self._get_client()
         logger.info("[*] GIST_ID is empty. Creating new private GitHub Gist...")
 
-        # Prepare initial files using seed data where available
+        # Prepare initial files using store data or seed data where available
         initial_files: dict[str, dict[str, str]] = {}
         for fname in MANAGED_FILES:
+            store_file = Path(settings.LOCAL_DATA_DIR) / fname
             seed_file = self.seed_dir / fname
-            if seed_file.exists():
+            source_file = store_file if store_file.exists() else seed_file
+            if source_file.exists():
                 try:
-                    content = seed_file.read_text(encoding="utf-8")
+                    content = source_file.read_text(encoding="utf-8")
                     initial_files[fname] = {"content": content}
                     continue
                 except (OSError, UnicodeDecodeError) as exc:
-                    logger.warning(f"Failed to read seed file {fname}: {exc}")
+                    logger.warning(f"Failed to read file {source_file}: {exc}")
             initial_files[fname] = {"content": "[]"}
 
         payload = {

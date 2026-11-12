@@ -1019,3 +1019,35 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - `npm run build`: built in 11.09s with zero errors.
   - Vercel production verified live: `https://pentalyx.vercel.app` (200 OK).
 - **Next Steps / Backlog Items**: Hard-refresh in browser to view updated deployment.
+
+## 2026-11-12: Implement Faculty Directory, Courses & Syllabi, and Benchmark Scenarios Pages
+- **Task Objective**: Replace scaffold placeholders with production-grade interactive views for Faculty Directory (`/admin/faculty`), Course Catalog & Syllabi (`/admin/courses`), and Benchmark Scenarios & Tests (`/admin/scenarios`).
+- **Changes Implemented**:
+  - Implemented `frontend/src/features/admin/faculty/FacultyDirectoryPage.tsx`:
+    - Full roster of 25 faculty members with avatar initials, rank badge classification, and email links.
+    - Contractual limits display: max weekly hours, min/max courses, and max preparations.
+    - Expertise proficiencies matrix: interactive chips with 1-to-5 star proficiency indicators.
+    - Sabbatical / leave status indicators for HC-04 constraint tracking.
+    - KPI cards: Total faculty, full-time vs adjunct/visiting, total teaching capacity (hours/wk), and active leaves.
+    - Dynamic search and filters for name, email, expertise tags, rank, and availability.
+    - Faculty profile detail modal.
+  - Implemented `frontend/src/features/admin/courses/CoursesCatalogPage.tsx`:
+    - Complete catalog of courses with codes, titles, level (undergraduate, graduate, doctoral), credits, and contact hours.
+    - Laboratory requirement tags (🧪) for specialized facility planning.
+    - Required faculty expertise tags with minimum required proficiency rating.
+    - Scheduled sections aggregation displaying section count, expected sizes, and seat capacities.
+    - KPI summary row: Total catalog courses, active scheduled sections, lab offerings, and average contact hours.
+    - Dynamic search and filters for course code, level, type, and credits.
+    - Course sections detail modal.
+  - Implemented `frontend/src/features/admin/scenarios/ScenariosPage.tsx`:
+    - Interactive fixture suite featuring all 10 benchmark fixtures (`balanced_baseline`, `tight_capacity`, `infeasible_expertise`, `leave_heavy`, `single_expert_bottleneck`, `lab_resource_shortage`, `time_clash_dense`, `demand_spike`, `boundary_exact_limit`, `boundary_zero_capacity`).
+    - Feasibility indicators (`Feasible` vs `Infeasible`), tested constraint rule IDs (`HC-01` through `HC-07`), categories, and diagnostic failure explanations.
+    - One-click fixture loader invoking `POST /api/v1/scenarios/load/{name}` to replace active storage and log audit events.
+    - Direct shortcut to launch solver in the Optimizer Panel.
+  - Updated `frontend/src/app/router.tsx`:
+    - Replaced `FeaturePlaceholderPage` routes for `/admin/faculty`, `/admin/courses`, and `/admin/scenarios` with the respective page components.
+  - Built frontend with `npm run build` and deployed live to Vercel production: `https://pentalyx.vercel.app`.
+- **Test Results & Verification Status**:
+  - `npm --prefix frontend run build`: 777 modules transformed, 0 errors, build completed in 6.61s.
+  - Vercel production deployment: verified live at `https://pentalyx.vercel.app` (200 OK, aliased).
+- **Next Steps / Backlog Items**: None; all admin routes are fully functional.

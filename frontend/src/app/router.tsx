@@ -8,6 +8,9 @@ import { ConflictsPage } from '../features/admin/conflicts/ConflictsPage';
 import { RulesCatalogPage } from '../features/admin/rules/RulesCatalogPage';
 import { AuditTrailPage } from '../features/admin/audit/AuditTrailPage';
 import { OverridesPage } from '../features/admin/overrides/OverridesPage';
+import { FacultyDirectoryPage } from '../features/admin/faculty/FacultyDirectoryPage';
+import { CoursesCatalogPage } from '../features/admin/courses/CoursesCatalogPage';
+import { ScenariosPage } from '../features/admin/scenarios/ScenariosPage';
 import { MyLoadPage } from '../features/faculty/myload/MyLoadPage';
 import { AvailabilityPage } from '../features/faculty/availability/AvailabilityPage';
 import { RequestsPage } from '../features/faculty/requests/RequestsPage';
@@ -58,25 +61,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'faculty',
-        element: (
-          <FeaturePlaceholderPage
-            title="Faculty Directory"
-            category="Personnel"
-            description="Faculty profiles, expertise proficiencies, ranks, and maximum load capacities."
-            backLink="/admin"
-          />
-        ),
+        element: <FacultyDirectoryPage />,
       },
       {
         path: 'courses',
-        element: (
-          <FeaturePlaceholderPage
-            title="Course Catalog & Syllabi"
-            category="Academic Offerings"
-            description="Curriculum requirements, contact hours, required expertise tags, and labs."
-            backLink="/admin"
-          />
-        ),
+        element: <CoursesCatalogPage />,
       },
       {
         path: 'conflicts',
@@ -92,14 +81,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'scenarios',
-        element: (
-          <FeaturePlaceholderPage
-            title="Benchmark Scenarios"
-            category="Evaluation"
-            description="Load reproducible benchmark fixtures (e.g., infeasible expertise, tight capacity)."
-            backLink="/admin"
-          />
-        ),
+        element: <ScenariosPage />,
       },
       {
         path: 'audit',

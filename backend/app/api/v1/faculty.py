@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from app.core.security import require_admin, require_authenticated
 from app.schemas.change_request import ChangeRequest, ChangeRequestCreate
-from app.schemas.faculty import Faculty
+from app.schemas.faculty import Faculty, FacultyExpertise
 from app.schemas.user import User
 from app.services.faculty_service import FacultyService
 
@@ -31,6 +31,9 @@ class PreferencesUpdateRequest(BaseModel):
     )
     preferred_course_ids: list[str] = Field(
         default_factory=list, description="Preferred course IDs"
+    )
+    expertise: list[FacultyExpertise] | None = Field(
+        default=None, description="Optional self-evaluated expertise proficiencies"
     )
 
 
@@ -123,6 +126,7 @@ async def update_preferences(
         leave_terms=payload.leave_terms,
         preferred_course_ids=payload.preferred_course_ids,
         current_user=current_user,
+        expertise=payload.expertise,
     )
 
 

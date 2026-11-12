@@ -1051,3 +1051,32 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - `npm --prefix frontend run build`: 777 modules transformed, 0 errors, build completed in 6.61s.
   - Vercel production deployment: verified live at `https://pentalyx.vercel.app` (200 OK, aliased).
 - **Next Steps / Backlog Items**: None; all admin routes are fully functional.
+
+## 2026-11-12: Implement Faculty Expertise & Syllabi Fit and Course Sections Views
+- **Task Objective**: Replace feature placeholders in the Faculty portal for Expertise & Syllabi Fit (`/faculty/expertise`) and Course Sections (`/faculty/courses`) with full production-grade interactive views and backend preference persistence.
+- **Changes Implemented**:
+  - Enhanced backend `backend/app/api/v1/faculty.py` and `backend/app/services/faculty_service.py`:
+    - Updated `PreferencesUpdateRequest` to accept optional `expertise: list[FacultyExpertise]` allowing faculty to update their self-evaluated research specialties and proficiencies (1-5).
+    - Preserved audit logging with `FACULTY_PREFERENCES_UPDATE`.
+  - Implemented `frontend/src/features/faculty/expertise/ExpertiseFitPage.tsx`:
+    - Interactive 5-star rating editor for existing research competencies and proficiencies.
+    - Autocomplete input for adding new competencies from standard department specialties.
+    - Automated Syllabi Fit Matrix calculating qualification percentages (0-100%) against each course's `required_tags` and `min_proficiency`.
+    - Detailed requirement comparisons (e.g. `You: ★4 vs Req: ★3`).
+    - One-click "Prefer Course" toggle to set course preferences.
+    - Persistence via `useUpdateFacultyPreferences`.
+  - Implemented `frontend/src/features/faculty/courses/FacultyCourseSectionsPage.tsx`:
+    - Global academic term filter (Fall 2026, Spring 2027, Summer 2027).
+    - Real-time scheduled class sections grid with timeslot, classroom, enrollment cap, and quantile demand (`P10`/`P50`/`P90`).
+    - Blackout collision warning if section timeslot matches faculty's `unavailable_slots`.
+    - Section assignment status pills: "Assigned to You", "Open Section", or "Assigned to Colleague".
+    - Change request modal enabling faculty to request section swaps or drops with justification.
+    - One-click preference addition for open unassigned sections.
+  - Updated `frontend/src/app/router.tsx`:
+    - Connected `ExpertiseFitPage` and `FacultyCourseSectionsPage` to `/faculty/expertise` and `/faculty/courses`.
+  - Rebuilt and deployed live to production on Vercel (`https://pentalyx.vercel.app`).
+- **Test Results & Verification Status**:
+  - `pytest backend/tests/test_faculty_features.py`: 3/3 passed (100%).
+  - `npm --prefix frontend run build`: 778 modules transformed cleanly with zero errors in 10.60s.
+  - Vercel production deployment: verified live at `https://pentalyx.vercel.app` (200 OK, aliased).
+- **Next Steps / Backlog Items**: None; all faculty and admin portal views are active and functioning.

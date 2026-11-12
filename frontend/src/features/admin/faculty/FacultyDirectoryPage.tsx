@@ -496,3 +496,4 @@ export const FacultyDirectoryPage: React.FC = () => {
   );
 };
 export default FacultyDirectoryPage;
+

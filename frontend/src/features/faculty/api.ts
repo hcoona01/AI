@@ -40,9 +40,10 @@ export interface ChangeRequest {
 }
 
 export interface PreferencesUpdatePayload {
-  unavailable_slots: string[];
-  leave_terms: string[];
-  preferred_course_ids: string[];
+  unavailable_slots?: string[];
+  leave_terms?: string[];
+  preferred_course_ids?: string[];
+  expertise?: { tag: string; proficiency: number }[];
 }
 
 export interface AssignmentExplanation {

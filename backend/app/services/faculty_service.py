@@ -21,7 +21,7 @@ from app.schemas.assignment import Assignment
 from app.schemas.change_request import ChangeRequest
 from app.schemas.common import UserRole
 from app.schemas.course import Course
-from app.schemas.faculty import Faculty
+from app.schemas.faculty import Faculty, FacultyExpertise
 from app.schemas.section import Section
 from app.schemas.user import User
 from app.services.audit_service import AuditService
@@ -134,8 +134,9 @@ class FacultyService:
         leave_terms: list[str],
         preferred_course_ids: list[str],
         current_user: User,
+        expertise: list[FacultyExpertise] | None = None,
     ) -> dict[str, Any]:
-        """Update availability and teaching preferences (restricted to own ID)."""
+        """Update availability, teaching preferences, and expertise proficiencies (restricted to own ID)."""
         if (
             current_user.role == UserRole.FACULTY
             and current_user.faculty_id != faculty_id
@@ -151,25 +152,31 @@ class FacultyService:
         if not existing:
             raise NotFoundError(f"Faculty record '{faculty_id}' not found")
 
-        updated = existing.model_copy(
-            update={
-                "unavailable_slots": unavailable_slots,
-                "leave_terms": leave_terms,
-                "preferred_course_ids": preferred_course_ids,
-            }
-        )
+        update_fields: dict[str, Any] = {
+            "unavailable_slots": unavailable_slots,
+            "leave_terms": leave_terms,
+            "preferred_course_ids": preferred_course_ids,
+        }
+        if expertise is not None:
+            update_fields["expertise"] = expertise
+
+        updated = existing.model_copy(update=update_fields)
         await self.repository.upsert(updated)
+
+        log_payload: dict[str, Any] = {
+            "faculty_id": faculty_id,
+            "unavailable_slots": unavailable_slots,
+            "leave_terms": leave_terms,
+            "preferred_course_ids": preferred_course_ids,
+        }
+        if expertise is not None:
+            log_payload["expertise"] = [e.model_dump(mode="json") for e in expertise]
 
         await self.audit_service.log_event(
             actor_id=current_user.id,
             action="FACULTY_PREFERENCES_UPDATE",
             entity="faculty",
-            payload={
-                "faculty_id": faculty_id,
-                "unavailable_slots": unavailable_slots,
-                "leave_terms": leave_terms,
-                "preferred_course_ids": preferred_course_ids,
-            },
+            payload=log_payload,
         )
 
         return {

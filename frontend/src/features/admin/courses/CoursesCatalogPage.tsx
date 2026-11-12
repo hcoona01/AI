@@ -470,3 +470,4 @@ export const CoursesCatalogPage: React.FC = () => {
   );
 };
 export default CoursesCatalogPage;
+

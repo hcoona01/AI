@@ -14,13 +14,14 @@ import { ScenariosPage } from '../features/admin/scenarios/ScenariosPage';
 import { MyLoadPage } from '../features/faculty/myload/MyLoadPage';
 import { AvailabilityPage } from '../features/faculty/availability/AvailabilityPage';
 import { RequestsPage } from '../features/faculty/requests/RequestsPage';
+import { ExpertiseFitPage } from '../features/faculty/expertise/ExpertiseFitPage';
+import { FacultyCourseSectionsPage } from '../features/faculty/courses/FacultyCourseSectionsPage';
 import { LandingPage } from '../features/home/LandingPage';
 import { ProtectedRoute } from '../components/layout/ProtectedRoute';
 import { AdminLayout } from '../components/layout/AdminLayout';
 import { FacultyLayout } from '../components/layout/FacultyLayout';
 import { ForbiddenPage } from '../components/layout/ForbiddenPage';
 import { NotFoundPage } from '../components/layout/NotFoundPage';
-import { FeaturePlaceholderPage } from '../components/layout/FeaturePlaceholderPage';
 
 export const router = createBrowserRouter([
   {
@@ -111,25 +112,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'expertise',
-        element: (
-          <FeaturePlaceholderPage
-            title="Expertise & Syllabi Fit"
-            category="Teaching Profile"
-            description="Update research tags, self-evaluated proficiencies, and syllabus matches."
-            backLink="/faculty"
-          />
-        ),
+        element: <ExpertiseFitPage />,
       },
       {
         path: 'courses',
-        element: (
-          <FeaturePlaceholderPage
-            title="Department Course Sections"
-            category="Offerings"
-            description="Browse active sections, scheduled timeslots, and assigned classrooms."
-            backLink="/faculty"
-          />
-        ),
+        element: <FacultyCourseSectionsPage />,
       },
     ],
   },

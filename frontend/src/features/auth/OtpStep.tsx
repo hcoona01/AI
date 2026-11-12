@@ -149,11 +149,12 @@ export const OtpStep: React.FC<OtpStepProps> = ({
             aria-invalid={Boolean(displayError)}
             aria-describedby={displayError ? 'otp-error' : undefined}
             placeholder="······"
-            className={`w-full px-4 py-3 text-center text-3xl font-mono tracking-[0.5em] rounded-2xl bg-white/95 border ${
+            className={`w-full px-4 py-3 text-center text-3xl font-mono tracking-[0.5em] rounded-2xl bg-white border ${
               displayError
                 ? 'border-rose-500/80 text-rose-700 focus:border-rose-500'
-                : 'border-slate-300 text-slate-900 focus:border-[#4d6a10]'
-            } placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#4d6a10]/20 transition shadow-xs`}
+                : 'border-slate-300 text-black focus:border-[#4d6a10]'
+            } placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#4d6a10]/20 font-bold transition shadow-xs text-black`}
+            style={{ color: '#121410' }}
           />
         </div>
 

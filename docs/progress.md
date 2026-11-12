@@ -1,5 +1,20 @@
 # Engineering Progress Log
 
+## 2026-11-12: Login & OTP Page Input Text Visibility Fix
+- **Task Objective**: Fix text color of entered email address and OTP digits on `/login` so letters and numbers appear in solid black/dark-ink rather than invisible white.
+- **Changes Implemented**:
+  - Identified root cause: `--color-slate-900: #ffffff` in Tailwind CSS theme caused `text-slate-900` to render as white text on white inputs.
+  - In [`LoginPage.tsx`](file:///e:/AI%20project/frontend/src/features/auth/LoginPage.tsx), changed email input classes to `text-black` with inline `style={{ color: '#121410' }}` and `placeholder:text-slate-500`.
+  - In [`OtpStep.tsx`](file:///e:/AI%20project/frontend/src/features/auth/OtpStep.tsx), updated 6-digit OTP passcode input to `text-black` with inline `style={{ color: '#121410' }}` and `placeholder:text-slate-500`.
+  - In [`frontend/src/index.css`](file:///e:/AI%20project/frontend/src/index.css), added explicit CSS rules for `input#email` and `input#otp-code` guaranteeing `color: #121410 !important; -webkit-text-fill-color: #121410 !important;` and clearly legible placeholders across all browsers.
+- **Test Results & Verification Status**:
+  - `npm run build` in `frontend/`: 0 errors.
+  - Deployed live to production on Vercel.
+- **Next Steps / Backlog Items**:
+  - Confirm user verification on live production login page.
+
+
+
 ## 2026-11-05: Live Database Testing & GitHub Gist Synchronization
 - **Task Objective**: Test all database collections and domain entities, create a private GitHub Gist, synchronize all data live to the Gist, and configure the application to support live Gist persistence with optimistic concurrency.
 - **Changes Implemented**:

@@ -862,6 +862,20 @@ body.intro #landing-app {
   color: #6a7158;
 }
 
+/* Auth / Login Page Inputs: Guarantee solid black/dark-ink letters & visible placeholders */
+input#email,
+input#otp-code {
+  color: #121410 !important;
+  -webkit-text-fill-color: #121410 !important;
+}
+
+input#email::placeholder,
+input#otp-code::placeholder {
+  color: #6a7158 !important;
+  opacity: 0.8 !important;
+  -webkit-text-fill-color: #6a7158 !important;
+}
+
 .dashboard-shell .app-topbar {
   background: rgba(255, 255, 255, 0.85) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.8) !important;

@@ -1,5 +1,21 @@
 # Engineering Progress Log
 
+## 2026-11-17: Linked User Account Provisioning & Windows File Lock Resilience
+- **Task Objective**: Ensure newly registered faculty members from the directory flow are automatically provisioned with a linked user account for passwordless OTP authentication, clean up linked accounts on deletion, and harden local atomic file writing against transient Windows file-lock race conditions.
+- **Changes Implemented**:
+  - Updated [`backend/app/services/faculty_service.py`](file:///e:/AI%20project/backend/app/services/faculty_service.py):
+    - Added automatic provisioning of linked `User(role=UserRole.FACULTY, faculty_id=...)` in `users.json` upon faculty creation.
+    - Added automatic removal of linked user account upon faculty deletion.
+  - Hardened [`backend/app/repositories/local_store.py`](file:///e:/AI%20project/backend/app/repositories/local_store.py) atomic file replacement with an asynchronous retry loop handling transient Windows `PermissionError` [WinError 5] during fast concurrent writes.
+  - Ignored accidental `backend/data/` working directory duplicates in [`.gitignore`](file:///e:/AI%20project/.gitignore).
+  - Enhanced [`backend/tests/test_api_crud_and_rbac.py`](file:///e:/AI%20project/backend/tests/test_api_crud_and_rbac.py) to assert immediate OTP request issuance for newly registered faculty profiles.
+- **Test Results & Verification Status**:
+  - Full backend and ML test suite: 234 passed in 20.15s cleanly.
+  - `npm --prefix frontend run build`: 779 modules transformed cleanly in 8.24s with 0 errors.
+  - Formatted and linted with `ruff` and `black`.
+- **Next Steps / Backlog Items**:
+  - Consider adding edit and deactivation controls in the Faculty Directory UI.
+
 ## 2026-11-17: Admin Faculty Directory Creation Flow
 - **Task Objective**: Add a functional administrator workflow for registering a faculty member from the Faculty Directory.
 - **Changes Implemented**:

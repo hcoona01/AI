@@ -8,13 +8,19 @@ import uuid
 from datetime import UTC, datetime
 from typing import Any
 
-from app.core.errors import ConflictError, ForbiddenError, NotFoundError, ValidationError
+from app.core.errors import (
+    ConflictError,
+    ForbiddenError,
+    NotFoundError,
+    ValidationError,
+)
 from app.repositories import (
     get_assignment_repository,
     get_change_request_repository,
     get_course_repository,
     get_faculty_repository,
     get_section_repository,
+    get_user_repository,
 )
 from app.repositories.base import Repository
 from app.schemas.assignment import Assignment
@@ -25,6 +31,8 @@ from app.schemas.faculty import Faculty, FacultyExpertise
 from app.schemas.section import Section
 from app.schemas.user import User
 from app.services.audit_service import AuditService
+
+_FACULTY_USER_ID_PREFIX = "u-"
 
 logger = logging.getLogger("app.services.faculty")
 
@@ -40,13 +48,17 @@ class FacultyService:
         section_repo: Repository[Section] | None = None,
         course_repo: Repository[Course] | None = None,
         change_request_repo: Repository[ChangeRequest] | None = None,
+        user_repo: Repository[User] | None = None,
     ) -> None:
         self.repository = repository or get_faculty_repository()
         self.audit_service = audit_service or AuditService()
         self.assignment_repo = assignment_repo or get_assignment_repository()
         self.section_repo = section_repo or get_section_repository()
         self.course_repo = course_repo or get_course_repository()
-        self.change_request_repo = change_request_repo or get_change_request_repository()
+        self.change_request_repo = (
+            change_request_repo or get_change_request_repository()
+        )
+        self.user_repo = user_repo or get_user_repository()
 
     async def get_all(self, current_user: User) -> list[Faculty]:
         """Fetch faculty records. Admins see all; Faculty see only their own record."""
@@ -81,12 +93,42 @@ class FacultyService:
         return faculty
 
     async def create(self, faculty: Faculty, actor_id: str) -> Faculty:
-        """Create a new faculty profile (Admin only) and record audit log."""
+        """Create a new faculty profile (Admin only) and record audit log.
+
+        Also creates a linked User record in users.json so the new faculty
+        member can authenticate via OTP immediately after creation.
+        """
         existing = await self.repository.get(faculty.id)
         if existing:
             raise ConflictError(f"Faculty with ID '{faculty.id}' already exists")
 
         created = await self.repository.upsert(faculty)
+
+        # Derive a stable user ID from the faculty ID (e.g. f-26 -> u-f-26)
+        user_id = f"{_FACULTY_USER_ID_PREFIX}{faculty.id}"
+
+        # Only create the user record if one with the same ID doesn't already exist
+        existing_user = await self.user_repo.get(user_id)
+        if not existing_user:
+            # Also check by email to avoid duplicate login entries
+            all_users = await self.user_repo.get_all()
+            email_taken = any(u.email == faculty.email for u in all_users)
+            if not email_taken:
+                new_user = User(
+                    id=user_id,
+                    email=faculty.email,
+                    role=UserRole.FACULTY,
+                    faculty_id=faculty.id,
+                )
+                await self.user_repo.upsert(new_user)
+                logger.info(
+                    f"Created user record '{user_id}' for new faculty '{faculty.id}' ({faculty.email})"
+                )
+            else:
+                logger.warning(
+                    f"Skipped user creation for faculty '{faculty.id}': email '{faculty.email}' already registered"
+                )
+
         await self.audit_service.log_event(
             actor_id=actor_id,
             action="FACULTY_CREATED",
@@ -112,13 +154,29 @@ class FacultyService:
         return updated
 
     async def delete(self, faculty_id: str, actor_id: str) -> bool:
-        """Delete a faculty profile (Admin only) and record audit log."""
+        """Delete a faculty profile (Admin only) and record audit log.
+
+        Also removes the linked User record from users.json so the deleted
+        faculty member can no longer authenticate.
+        """
         existing = await self.repository.get(faculty_id)
         if not existing:
             raise NotFoundError(f"Cannot delete non-existent faculty '{faculty_id}'")
 
         success = await self.repository.delete(faculty_id)
         if success:
+            # Remove the linked user account so the ex-faculty cannot log in
+            user_id = f"{_FACULTY_USER_ID_PREFIX}{faculty_id}"
+            user_deleted = await self.user_repo.delete(user_id)
+            if user_deleted:
+                logger.info(
+                    f"Removed user record '{user_id}' for deleted faculty '{faculty_id}'"
+                )
+            else:
+                logger.debug(
+                    f"User record '{user_id}' was not found during faculty deletion of '{faculty_id}'"
+                )
+
             await self.audit_service.log_event(
                 actor_id=actor_id,
                 action="FACULTY_DELETED",
@@ -218,12 +276,8 @@ class FacultyService:
 
         # Filter assignments for specified term
         term_lower = term.lower()
-        term_sections = {
-            s.id: s for s in all_sections if s.term.lower() == term_lower
-        }
-        term_assignments = [
-            a for a in all_assignments if a.section_id in term_sections
-        ]
+        term_sections = {s.id: s for s in all_sections if s.term.lower() == term_lower}
+        term_assignments = [a for a in all_assignments if a.section_id in term_sections]
 
         # Calculate contact hours per faculty
         loads_by_faculty: dict[str, float] = {f.id: 0.0 for f in all_faculty}

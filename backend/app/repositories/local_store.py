@@ -145,10 +145,17 @@ class LocalStore(BaseStore):
                         rule_id="CONCURRENCY_CONFLICT_409",
                     )
 
-            # Atomic write via temp file
+            # Atomic write via temp file (with Windows retry for transient file locks)
             temp_path = file_path.with_suffix(f".tmp_{time.time_ns()}")
             temp_path.write_text(content, encoding="utf-8")
-            temp_path.replace(file_path)
+            for attempt in range(5):
+                try:
+                    temp_path.replace(file_path)
+                    break
+                except PermissionError:
+                    if attempt == 4:
+                        raise
+                    await asyncio.sleep(0.05)
 
             new_stat = file_path.stat()
             new_version = self._compute_version(content, new_stat.st_mtime_ns)

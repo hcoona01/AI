@@ -84,7 +84,6 @@ def test_writes_are_strictly_admin_only():
     )
     assert resp.status_code == 403
 
-
     # 2. Faculty write
     fac_payload = {
         "id": "f-unauth",
@@ -172,7 +171,14 @@ def test_admin_can_create_faculty_and_audit_the_change():
     assert read_resp.status_code == 200
     assert read_resp.json()["email"] == payload["email"]
 
-    audit_resp = client.get("/api/v1/audit?action=FACULTY_CREATED", headers=ADMIN_HEADERS)
+    # Verify linked User account was provisioned so faculty can authenticate immediately
+    otp_req = client.post("/api/v1/auth/request-otp", json={"email": payload["email"]})
+    assert otp_req.status_code == 200
+    assert otp_req.json()["status"] == "sent"
+
+    audit_resp = client.get(
+        "/api/v1/audit?action=FACULTY_CREATED", headers=ADMIN_HEADERS
+    )
     assert audit_resp.status_code == 200
     assert any(log["payload"]["id"] == faculty_id for log in audit_resp.json())
 

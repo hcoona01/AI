@@ -54,3 +54,5 @@ yarn-error.log*
 # Large/Temporary ML data (keep small artifacts in ml/artifacts)
 *.tmp
 *.tmp_*
+backend/data/
+

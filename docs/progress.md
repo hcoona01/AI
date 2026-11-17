@@ -4,7 +4,8 @@
 - **Task Objective**: Ensure newly registered faculty members from the directory flow are automatically provisioned with a linked user account for passwordless OTP authentication, clean up linked accounts on deletion, and harden local atomic file writing against transient Windows file-lock race conditions.
 - **Changes Implemented**:
   - Updated [`backend/app/services/faculty_service.py`](file:///e:/AI%20project/backend/app/services/faculty_service.py):
-    - Added automatic provisioning of linked `User(role=UserRole.FACULTY, faculty_id=...)` in `users.json` upon faculty creation.
+    - Added automatic provisioning of linked `User(role=UserRole.FACULTY, faculty_id=...)` in `users.json` upon faculty creation with case-insensitive email collision prevention.
+    - Added automatic synchronization of email updates to linked `User` accounts on faculty profile edits (`update`), plus backfilling if missing.
     - Added automatic removal of linked user account upon faculty deletion.
   - Hardened [`backend/app/repositories/local_store.py`](file:///e:/AI%20project/backend/app/repositories/local_store.py) atomic file replacement with an asynchronous retry loop handling transient Windows `PermissionError` [WinError 5] during fast concurrent writes.
   - Ignored accidental `backend/data/` working directory duplicates in [`.gitignore`](file:///e:/AI%20project/.gitignore).

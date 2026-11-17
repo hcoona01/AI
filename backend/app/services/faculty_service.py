@@ -110,9 +110,10 @@ class FacultyService:
         # Only create the user record if one with the same ID doesn't already exist
         existing_user = await self.user_repo.get(user_id)
         if not existing_user:
-            # Also check by email to avoid duplicate login entries
+            # Also check case-insensitively by email to avoid duplicate login entries
             all_users = await self.user_repo.get_all()
-            email_taken = any(u.email == faculty.email for u in all_users)
+            norm_email = faculty.email.strip().lower()
+            email_taken = any(u.email.strip().lower() == norm_email for u in all_users)
             if not email_taken:
                 new_user = User(
                     id=user_id,
@@ -145,6 +146,32 @@ class FacultyService:
 
         faculty.id = faculty_id
         updated = await self.repository.upsert(faculty)
+
+        # Synchronize email change to the linked user account in users.json
+        user_id = f"{_FACULTY_USER_ID_PREFIX}{faculty_id}"
+        existing_user = await self.user_repo.get(user_id)
+        if (
+            existing_user
+            and existing_user.email.strip().lower() != faculty.email.strip().lower()
+        ):
+            existing_user.email = faculty.email
+            await self.user_repo.upsert(existing_user)
+            logger.info(
+                f"Updated login email for linked user '{user_id}' to '{faculty.email}'"
+            )
+        elif not existing_user:
+            # Backfill linked user account if it was previously missing
+            new_user = User(
+                id=user_id,
+                email=faculty.email,
+                role=UserRole.FACULTY,
+                faculty_id=faculty_id,
+            )
+            await self.user_repo.upsert(new_user)
+            logger.info(
+                f"Backfilled missing user record '{user_id}' for updated faculty '{faculty_id}'"
+            )
+
         await self.audit_service.log_event(
             actor_id=actor_id,
             action="FACULTY_UPDATED",

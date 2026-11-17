@@ -44,10 +44,10 @@ class OTPService:
         return email.strip().lower()
 
     def check_and_record_rate_limit(self, email: str, client_ip: str) -> None:
-        """Enforce strict rate limits: 3 OTP requests per email and per IP per 10 minutes."""
+        """Enforce rate limits: up to 8 OTP requests per email and per IP per 10 minutes."""
         now = datetime.now(UTC)
         window = timedelta(minutes=10)
-        max_requests = 3
+        max_requests = getattr(settings, "OTP_MAX_REQUESTS", 8)
 
         norm_email = self._normalize_email(email)
         norm_ip = client_ip.strip()
@@ -68,19 +68,19 @@ class OTPService:
 
         if len(email_history) >= max_requests:
             logger.warning(
-                f"Rate limit exceeded: 3 OTP requests per 10m reached for email {norm_email}"
+                f"Rate limit exceeded: {max_requests} OTP requests per 10m reached for email {norm_email}"
             )
             raise RateLimitError(
-                message="Rate limit exceeded: Maximum 3 OTP requests per 10 minutes for this email.",
+                message=f"Rate limit exceeded: Maximum {max_requests} OTP requests per 10 minutes for this email.",
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
             )
 
         if len(ip_history) >= max_requests:
             logger.warning(
-                f"Rate limit exceeded: 3 OTP requests per 10m reached for IP {norm_ip}"
+                f"Rate limit exceeded: {max_requests} OTP requests per 10m reached for IP {norm_ip}"
             )
             raise RateLimitError(
-                message="Rate limit exceeded: Maximum 3 OTP requests per 10 minutes for this IP address.",
+                message=f"Rate limit exceeded: Maximum {max_requests} OTP requests per 10 minutes for this IP address.",
                 status_code=status.HTTP_429_TOO_MANY_REQUESTS,
             )
 

@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
     OTP_DEV_MODE: bool = True
     OTP_CODE_TTL_MINUTES: int = 5
+    OTP_MAX_REQUESTS: int = 8
 
     # Email / SMTP
     SMTP_HOST: str = "localhost"

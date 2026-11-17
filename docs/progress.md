@@ -1,5 +1,24 @@
 # Engineering Progress Log
 
+## 2026-11-17: OTP Rate Limit Increase from 3 to 8 Requests
+- **Task Objective**: Increase the passwordless email OTP rate limit from 3 to 8 requests per 10 minutes per email and per client IP, making it configurable via `OTP_MAX_REQUESTS` and updating the CI test suite and production deployments.
+- **Changes Implemented**:
+  - In [`backend/app/core/config.py`](file:///e:/AI%20project/backend/app/core/config.py):
+    - Added configurable setting `OTP_MAX_REQUESTS: int = 8`.
+  - In [`backend/app/services/otp_service.py`](file:///e:/AI%20project/backend/app/services/otp_service.py):
+    - Updated rate limit window threshold from 3 to `getattr(settings, "OTP_MAX_REQUESTS", 8)`.
+    - Updated warning logs and error message strings to reference the 8 request limit.
+  - In [`backend/app/services/auth_service.py`](file:///e:/AI%20project/backend/app/services/auth_service.py):
+    - Updated rate limiting docstring.
+  - In [`.env.example`](file:///e:/AI%20project/.env.example) and [`.env`](file:///e:/AI%20project/.env):
+    - Documented `OTP_MAX_REQUESTS=8`.
+  - In [`backend/tests/test_auth.py`](file:///e:/AI%20project/backend/tests/test_auth.py):
+    - Updated `test_otp_rate_limiting_per_email` and `test_otp_rate_limiting_per_ip` to verify 8 allowed requests and 9th request blocked with HTTP 429.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests/test_auth.py`: 11/11 passed cleanly.
+- **Next Steps / Backlog Items**:
+  - Deploy frontend to Vercel and commit/push changes to GitHub.
+
 ## 2026-11-17: Global Heading Color & Contrast Correction
 - **Task Objective**: Change heading colors from low-contrast white or faint tones to prominent, visible dark-ink colors (`#182413` / `text-slate-900`) across all admin and faculty pages, dialogs, drawers, and global stylesheets.
 - **Changes Implemented**:

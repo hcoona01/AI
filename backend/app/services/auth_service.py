@@ -41,7 +41,7 @@ class AuthService:
 
     async def request_otp(self, email: str, client_ip: str) -> dict[str, str]:
         """Process OTP request with rate limiting and generic response to prevent user enumeration."""
-        # 1. Rate limiting checked regardless of user existence (3 per email/IP per 10m)
+        # 1. Rate limiting checked regardless of user existence (up to 8 per email/IP per 10m)
         self.otp_service.check_and_record_rate_limit(email=email, client_ip=client_ip)
 
         # 2. Check if user exists

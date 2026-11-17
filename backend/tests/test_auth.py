@@ -54,36 +54,41 @@ def test_generic_response_for_existing_and_nonexistent_email():
 
 
 def test_otp_rate_limiting_per_email():
-    """Verify that more than 3 OTP requests for the same email within 10 minutes returns 429."""
+    """Verify that more than 8 OTP requests for the same email within 10 minutes returns 429."""
     email = "alan.turing@university.edu"
 
-    # 3 allowed requests
-    for i in range(3):
+    # 8 allowed requests
+    for i in range(8):
         resp = client.post("/auth/request-otp", json={"email": email})
         assert resp.status_code == 200, f"Request {i+1} should succeed"
 
-    # 4th request must be rate-limited (HTTP 429)
+    # 9th request must be rate-limited (HTTP 429)
     resp_blocked = client.post("/auth/request-otp", json={"email": email})
     assert resp_blocked.status_code == 429
     assert "Rate limit exceeded" in resp_blocked.json()["message"]
 
 
 def test_otp_rate_limiting_per_ip():
-    """Verify that more than 3 OTP requests from the same IP address within 10 minutes returns 429."""
+    """Verify that more than 8 OTP requests from the same IP address within 10 minutes returns 429."""
     client_ip = "192.168.1.100"
     headers = {"x-forwarded-for": client_ip}
 
-    # 3 allowed requests with different emails from the same IP
+    # 8 allowed requests with different emails from the same IP
     emails = [
         "admin@university.edu",
         "chair@university.edu",
         "ada.lovelace@university.edu",
+        "john.von.neumann@university.edu",
+        "claude.shannon@university.edu",
+        "marvin.minsky@university.edu",
+        "tim.berners-lee@university.edu",
+        "donald.knuth@university.edu",
     ]
     for email in emails:
         resp = client.post("/auth/request-otp", json={"email": email}, headers=headers)
         assert resp.status_code == 200
 
-    # 4th request from same IP must be rejected with 429
+    # 9th request from same IP must be rejected with 429
     resp_blocked = client.post(
         "/auth/request-otp",
         json={"email": "grace.hopper@university.edu"},

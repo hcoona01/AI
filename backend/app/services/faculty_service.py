@@ -479,3 +479,60 @@ class FacultyService:
             },
         )
         return updated
+
+
+async def sync_faculty_user_accounts(
+    faculty_repo: Repository[Faculty] | None = None,
+    user_repo: Repository[User] | None = None,
+) -> int:
+    """Scan all faculty profiles and ensure linked User accounts exist in users.json.
+
+    Self-heals accounts created before auto-provisioning was introduced or
+    records populated directly from seed/import files. Returns the count of
+    newly provisioned or updated accounts.
+    """
+    f_repo = faculty_repo or get_faculty_repository()
+    u_repo = user_repo or get_user_repository()
+
+    all_faculty = await f_repo.get_all()
+    all_users = await u_repo.get_all()
+
+    users_by_faculty_id = {u.faculty_id: u for u in all_users if u.faculty_id}
+    users_by_email = {u.email.strip().lower(): u for u in all_users}
+
+    synced_count = 0
+    for faculty in all_faculty:
+        norm_email = faculty.email.strip().lower()
+        linked_user = users_by_faculty_id.get(faculty.id) or users_by_email.get(
+            norm_email
+        )
+
+        if not linked_user:
+            user_id = f"{_FACULTY_USER_ID_PREFIX}{faculty.id}"
+            new_user = User(
+                id=user_id,
+                email=faculty.email,
+                role=UserRole.FACULTY,
+                faculty_id=faculty.id,
+            )
+            await u_repo.upsert(new_user)
+            users_by_faculty_id[faculty.id] = new_user
+            users_by_email[norm_email] = new_user
+            synced_count += 1
+            logger.info(
+                f"Auto-provisioned missing user '{user_id}' for faculty '{faculty.id}' ({faculty.email})"
+            )
+        elif (
+            linked_user.email.strip().lower() != norm_email
+            or linked_user.faculty_id != faculty.id
+        ):
+            linked_user.email = faculty.email
+            linked_user.faculty_id = faculty.id
+            linked_user.role = UserRole.FACULTY
+            await u_repo.upsert(linked_user)
+            synced_count += 1
+            logger.info(
+                f"Synchronized user '{linked_user.id}' with faculty '{faculty.id}' ({faculty.email})"
+            )
+
+    return synced_count

@@ -9,7 +9,7 @@ from fastapi import APIRouter, Cookie, Depends, Request, Response, status
 
 from app.core.config import settings
 from app.core.errors import UnauthorizedError
-from app.repositories import get_user_repository
+from app.repositories import get_faculty_repository, get_user_repository
 from app.repositories.base import Repository
 from app.schemas.auth import (
     MessageResponse,
@@ -19,6 +19,7 @@ from app.schemas.auth import (
     RefreshTokenRequest,
     TokenResponse,
 )
+from app.schemas.faculty import Faculty
 from app.schemas.user import User
 from app.services.auth_service import AuthService
 from app.services.otp_service import OTPService, get_otp_service
@@ -40,9 +41,12 @@ def get_client_ip(request: Request) -> str:
 
 def get_auth_service(
     user_repo: Annotated[Repository[User], Depends(get_user_repository)],
+    faculty_repo: Annotated[Repository[Faculty], Depends(get_faculty_repository)],
     otp_service: Annotated[OTPService, Depends(get_otp_service)],
 ) -> AuthService:
-    return AuthService(user_repo=user_repo, otp_service=otp_service)
+    return AuthService(
+        user_repo=user_repo, faculty_repo=faculty_repo, otp_service=otp_service
+    )
 
 
 @router.post(

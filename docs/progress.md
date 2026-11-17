@@ -1168,3 +1168,25 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - `npm --prefix frontend run build`: 778 modules transformed cleanly with zero errors in 10.60s.
   - Vercel production deployment: verified live at `https://pentalyx.vercel.app` (200 OK, aliased).
 - **Next Steps / Backlog Items**: None; all faculty and admin portal views are active and functioning.
+
+## 2026-11-17: Self-Healing Faculty Authentication & Startup User Synchronization
+- **Task Objective**: Resolve issue where registered faculty member profiles existing in `faculty.json` (such as `f-007` `om@gmail.com`) did not generate OTP passcodes because a corresponding `User` record was absent from `users.json`.
+- **Changes Implemented**:
+  - `backend/app/services/auth_service.py`:
+    - Updated `AuthService.__init__` to inject `faculty_repo`.
+    - Enhanced `get_user_by_email` with automatic self-healing: if an email is not in `users.json`, it queries `faculty.json`. When a matching faculty record is found, it automatically provisions the linked `User` record (`u-<faculty_id>`) in `users.json` and proceeds with OTP generation.
+  - `backend/app/api/v1/auth.py`:
+    - Injected `faculty_repo: Annotated[Repository[Faculty], Depends(get_faculty_repository)]` into `get_auth_service`.
+  - `backend/app/services/faculty_service.py`:
+    - Added `sync_faculty_user_accounts()` helper to scan all faculty profiles and backfill missing or desynchronized `User` records in `users.json`.
+  - `backend/app/main.py`:
+    - Added automatic startup synchronization inside application `lifespan` to self-heal all existing faculty accounts upon server start.
+  - `backend/tests/test_auth.py`:
+    - Added `test_faculty_email_without_prior_user_record_auto_heals_and_generates_otp` verifying that a faculty member existing in `faculty.json` without an existing `users.json` entry auto-provisions, receives an OTP, and successfully logs in.
+    - Added `test_sync_faculty_user_accounts_startup_helper` verifying bulk sync on startup.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests ml/tests`: 236/236 passed in 1m25s.
+  - `npm --prefix frontend run build`: 779 modules transformed cleanly with zero errors in 20.18s.
+  - `ruff` and `black`: verified clean on all modified files.
+- **Next Steps / Backlog Items**:
+  - Commit and push changes to GitHub `origin/main` so Render automatically builds and deploys the backend with self-healing faculty auth.

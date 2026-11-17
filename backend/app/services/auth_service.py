@@ -11,12 +11,16 @@ from app.core.security import (
     create_refresh_token,
     decode_access_token,
 )
-from app.repositories import get_user_repository
+from app.repositories import get_faculty_repository, get_user_repository
 from app.repositories.base import Repository
+from app.schemas.common import UserRole
+from app.schemas.faculty import Faculty
 from app.schemas.user import User
 from app.services.otp_service import OTPService, get_otp_service
 
 logger = logging.getLogger("app.services.auth")
+
+_FACULTY_USER_ID_PREFIX = "u-"
 
 
 class AuthService:
@@ -25,18 +29,54 @@ class AuthService:
     def __init__(
         self,
         user_repo: Repository[User] | None = None,
+        faculty_repo: Repository[Faculty] | None = None,
         otp_service: OTPService | None = None,
     ) -> None:
         self.user_repo = user_repo or get_user_repository()
+        self.faculty_repo = faculty_repo or get_faculty_repository()
         self.otp_service = otp_service or get_otp_service()
 
     async def get_user_by_email(self, email: str) -> User | None:
-        """Query user collection case-insensitively by email address."""
+        """Query user collection case-insensitively by email address.
+
+        If a matching user is not found in users.json, check faculty.json and
+        auto-provision / self-heal the missing user record so registered faculty
+        members can always authenticate without manual intervention.
+        """
         norm_email = email.strip().lower()
         all_users = await self.user_repo.get_all()
         for u in all_users:
             if u.email.strip().lower() == norm_email:
                 return u
+
+        # Fallback & self-heal: Check if this email belongs to any registered Faculty
+        all_faculty = await self.faculty_repo.get_all()
+        for f in all_faculty:
+            if f.email.strip().lower() == norm_email:
+                user_id = f"{_FACULTY_USER_ID_PREFIX}{f.id}"
+                existing_user = await self.user_repo.get(user_id)
+                if existing_user:
+                    existing_user.email = f.email
+                    existing_user.faculty_id = f.id
+                    existing_user.role = UserRole.FACULTY
+                    await self.user_repo.upsert(existing_user)
+                    logger.info(
+                        f"Synchronized existing user '{user_id}' with faculty email '{f.email}' during auth lookup"
+                    )
+                    return existing_user
+
+                new_user = User(
+                    id=user_id,
+                    email=f.email,
+                    role=UserRole.FACULTY,
+                    faculty_id=f.id,
+                )
+                await self.user_repo.upsert(new_user)
+                logger.info(
+                    f"Auto-provisioned missing user record '{user_id}' for registered faculty '{f.id}' ({f.email}) during auth lookup"
+                )
+                return new_user
+
         return None
 
     async def request_otp(self, email: str, client_ip: str) -> dict[str, str]:

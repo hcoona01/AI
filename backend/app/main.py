@@ -22,6 +22,18 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         f"Starting {settings.PROJECT_NAME} v{settings.VERSION} "
         f"[env: {settings.ENVIRONMENT}, store: {settings.STORE_BACKEND}, forecast: {settings.FORECAST_MODE}]"
     )
+    try:
+        from app.services.faculty_service import sync_faculty_user_accounts
+
+        synced = await sync_faculty_user_accounts()
+        if synced > 0:
+            logger.info(
+                f"Startup sync completed: {synced} faculty user account(s) provisioned/synchronized"
+            )
+    except (OSError, RuntimeError, ValueError) as exc:
+        logger.warning(
+            f"Startup faculty user account synchronization encountered warning: {exc}"
+        )
     yield
     logger.info(f"Shutting down {settings.PROJECT_NAME}")
 
@@ -53,7 +65,9 @@ app.add_middleware(
 # Production security headers & rate-limiting middlewares
 app.add_middleware(SecurityHeadersMiddleware)
 if settings.RATE_LIMIT_PER_MINUTE > 0:
-    app.add_middleware(RateLimitMiddleware, requests_per_minute=settings.RATE_LIMIT_PER_MINUTE)
+    app.add_middleware(
+        RateLimitMiddleware, requests_per_minute=settings.RATE_LIMIT_PER_MINUTE
+    )
 
 # Register global error handlers
 register_error_handlers(app)

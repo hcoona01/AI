@@ -336,3 +336,131 @@ def test_faculty_access_control_helper():
     with pytest.raises(ForbiddenError) as exc_info:
         verify_faculty_access("f-02", faculty_user_01)
     assert "restricted to accessing their own data" in str(exc_info.value)
+
+
+def test_faculty_email_without_prior_user_record_auto_heals_and_generates_otp():
+    """Verify that a faculty profile in faculty.json whose User record was never created
+    auto-heals into users.json on authentication request, receives an OTP, and can log in.
+    """
+    import asyncio
+
+    from app.repositories import get_faculty_repository, get_user_repository
+    from app.schemas.faculty import Faculty
+
+    faculty_repo = get_faculty_repository()
+    user_repo = get_user_repository()
+    otp_svc = get_otp_service()
+
+    test_faculty_id = "f-test-om-999"
+    test_faculty_email = "om.newfaculty@university.edu"
+
+    # Clean up prior test residues
+    asyncio.run(faculty_repo.delete(test_faculty_id))
+    asyncio.run(user_repo.delete(f"u-{test_faculty_id}"))
+
+    try:
+        # 1. Insert faculty profile directly into faculty.json (simulating pre-existing record)
+        test_fac = Faculty(
+            id=test_faculty_id,
+            name="Om Professor",
+            email=test_faculty_email,
+            rank="Assistant Professor",
+            expertise=[],
+            max_weekly_load_hours=12.0,
+            min_courses=1,
+            max_courses=3,
+            max_preparations=2,
+            unavailable_slots=[],
+            leave_terms=[],
+            preferred_course_ids=[],
+        )
+        asyncio.run(faculty_repo.upsert(test_fac))
+
+        # Confirm user record does NOT exist yet in users.json
+        user_before = asyncio.run(user_repo.get(f"u-{test_faculty_id}"))
+        assert user_before is None
+
+        # 2. Request OTP via public auth endpoint
+        resp = client.post(
+            "/auth/request-otp",
+            json={"email": test_faculty_email},
+        )
+        assert resp.status_code == 200
+        assert "one-time passcode" in resp.json()["message"]
+
+        # 3. Verify OTP was generated and dev code is available
+        code = otp_svc.get_dev_otp(test_faculty_email)
+        assert code is not None
+        assert len(code) == 6
+
+        # 4. Verify user record was auto-provisioned in users.json
+        user_after = asyncio.run(user_repo.get(f"u-{test_faculty_id}"))
+        assert user_after is not None
+        assert user_after.email == test_faculty_email
+        assert user_after.role == UserRole.FACULTY
+        assert user_after.faculty_id == test_faculty_id
+
+        # 5. Verify user can successfully verify OTP and obtain JWT tokens
+        resp_verify = client.post(
+            "/auth/verify-otp",
+            json={"email": test_faculty_email, "otp": code},
+        )
+        assert resp_verify.status_code == 200
+        token_data = resp_verify.json()
+        assert "access_token" in token_data
+        assert token_data["user"]["faculty_id"] == test_faculty_id
+        assert token_data["user"]["role"] == "faculty"
+
+    finally:
+        asyncio.run(faculty_repo.delete(test_faculty_id))
+        asyncio.run(user_repo.delete(f"u-{test_faculty_id}"))
+
+
+def test_sync_faculty_user_accounts_startup_helper():
+    """Verify sync_faculty_user_accounts scans faculty.json and creates missing User entries."""
+    import asyncio
+
+    from app.repositories import get_faculty_repository, get_user_repository
+    from app.schemas.faculty import Faculty
+    from app.services.faculty_service import sync_faculty_user_accounts
+
+    faculty_repo = get_faculty_repository()
+    user_repo = get_user_repository()
+
+    f_id = "f-sync-test-888"
+    f_email = "sync.tester@university.edu"
+
+    asyncio.run(faculty_repo.delete(f_id))
+    asyncio.run(user_repo.delete(f"u-{f_id}"))
+
+    try:
+        fac = Faculty(
+            id=f_id,
+            name="Sync Tester",
+            email=f_email,
+            rank="Lecturer",
+            expertise=[],
+            max_weekly_load_hours=9.0,
+            min_courses=1,
+            max_courses=2,
+            max_preparations=1,
+            unavailable_slots=[],
+            leave_terms=[],
+            preferred_course_ids=[],
+        )
+        asyncio.run(faculty_repo.upsert(fac))
+
+        # Run sync function
+        synced = asyncio.run(
+            sync_faculty_user_accounts(faculty_repo=faculty_repo, user_repo=user_repo)
+        )
+        assert synced >= 1
+
+        # Confirm user was created
+        u = asyncio.run(user_repo.get(f"u-{f_id}"))
+        assert u is not None
+        assert u.email == f_email
+        assert u.faculty_id == f_id
+    finally:
+        asyncio.run(faculty_repo.delete(f_id))
+        asyncio.run(user_repo.delete(f"u-{f_id}"))

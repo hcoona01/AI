@@ -548,3 +548,4 @@ export const FacultyCourseSectionsPage: React.FC = () => {
   );
 };
 export default FacultyCourseSectionsPage;
+

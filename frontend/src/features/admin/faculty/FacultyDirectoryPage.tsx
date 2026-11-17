@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useFacultyList } from '../api';
 import type { Faculty, FacultyRank } from '../../../types';
+import { AddFacultyModal } from './AddFacultyModal';
 
 const RANK_BADGE_STYLES: Record<FacultyRank, string> = {
   Professor: 'bg-purple-100 text-purple-900 border-purple-200',
@@ -19,6 +20,7 @@ export const FacultyDirectoryPage: React.FC = () => {
   const [selectedStatus, setSelectedStatus] = useState<'all' | 'active' | 'on_leave'>('all');
   const [sortBy, setSortBy] = useState<'name' | 'rank' | 'capacity'>('name');
   const [selectedFaculty, setSelectedFaculty] = useState<Faculty | null>(null);
+  const [showAddFaculty, setShowAddFaculty] = useState(false);
 
   // Compute metrics
   const metrics = useMemo(() => {
@@ -128,6 +130,9 @@ export const FacultyDirectoryPage: React.FC = () => {
             Department roster, academic rank, contractual teaching limits, course preferences, and syllabus expertise.
           </p>
         </div>
+        <button type="button" onClick={() => setShowAddFaculty(true)} className="btn text-xs px-4">
+          + Add faculty
+        </button>
       </div>
 
       {/* KPI Cards Row */}
@@ -492,6 +497,8 @@ export const FacultyDirectoryPage: React.FC = () => {
           </div>
         </div>
       )}
+
+      {showAddFaculty && <AddFacultyModal onClose={() => setShowAddFaculty(false)} />}
     </div>
   );
 };

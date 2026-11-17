@@ -1,5 +1,41 @@
 # Engineering Progress Log
 
+## 2026-11-17: Admin Faculty Directory Creation Flow
+- **Task Objective**: Add a functional administrator workflow for registering a faculty member from the Faculty Directory.
+- **Changes Implemented**:
+  - Added an accessible “Add faculty” dialog with client-side validation for identity, academic rank, teaching limits, and optional expertise tags.
+  - Added a typed TanStack Query creation mutation using the existing admin-only `POST /faculty` API, with directory and audit cache invalidation after success.
+  - Added an API integration test covering create, read-back, audit record, and cleanup deletion for a new faculty profile.
+- **Test Results & Verification Status**:
+  - Focused faculty API and self-service tests: 9 passed.
+  - Full backend and ML suite: 234 passed in 21.15s.
+  - `npm run build` in `frontend/`: TypeScript and Vite production build passed.
+- **Next Steps / Backlog Items**:
+  - Consider adding edit and deactivation controls if administrators need lifecycle management from the directory UI.
+
+## 2026-11-17: Admin and Faculty Workflow Verification
+- **Task Objective**: Verify the implemented administrative and faculty self-service workflows without mutating the shared runtime store.
+- **Changes Implemented**:
+  - No product code or application data changed.
+  - Verified role-protected admin and faculty route definitions, API/RBAC coverage, optimizer and forecast paths, persistence adapters, and frontend compilation.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests ml/tests -q`: 233 passed in 16.01s.
+  - `npm run build` in `frontend/`: TypeScript and Vite production build passed.
+  - The test suite emitted two upstream FastAPI/Starlette TestClient deprecation warnings; no functional failures occurred.
+- **Next Steps / Backlog Items**:
+  - Execute Playwright browser E2E tests in GitHub Actions before a release, as required by the local test-budget policy.
+
+## 2026-11-17: Dashboard Readability and Contrast Correction
+- **Task Objective**: Make the dashboard conflict and repair interfaces readable over the decorative background image.
+- **Changes Implemented**:
+  - Replaced translucent dashboard data cards, modal panels, and nested slate surfaces with opaque white or pale neutral surfaces in [`frontend/src/index.css`](file:///e:/AI%20project/frontend/src/index.css).
+  - Restored conventional dark-to-light Slate and semantic palettes; headings and metadata no longer inherit white or low-contrast values from inverted theme tokens.
+  - Added opaque alert/recommendation treatments and darker semantic rose, amber, and purple text tokens so warnings, violations, and repair guidance retain sufficient contrast.
+- **Test Results & Verification Status**:
+  - `npm run build` in `frontend/`: passed with TypeScript and Vite compilation successful.
+- **Next Steps / Backlog Items**:
+  - Confirm the deployed dashboard visually after the next frontend deployment.
+
 ## 2026-11-12: Login & OTP Page Input Text Visibility Fix
 - **Task Objective**: Fix text color of entered email address and OTP digits on `/login` so letters and numbers appear in solid black/dark-ink rather than invisible white.
 - **Changes Implemented**:

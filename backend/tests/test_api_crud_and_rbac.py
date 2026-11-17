@@ -84,6 +84,7 @@ def test_writes_are_strictly_admin_only():
     )
     assert resp.status_code == 403
 
+
     # 2. Faculty write
     fac_payload = {
         "id": "f-unauth",
@@ -139,6 +140,44 @@ def test_writes_are_strictly_admin_only():
         "/api/v1/timeslots", json=slot_payload, headers=FACULTY_HEADERS_F01
     )
     assert resp.status_code == 403
+
+
+def test_admin_can_create_faculty_and_audit_the_change():
+    """Verify the directory's add-faculty flow persists, is readable, and is audited."""
+    faculty_id = "f-directory-create-test"
+    payload = {
+        "id": faculty_id,
+        "name": "Dr. Directory Test",
+        "email": "directory.test@university.edu",
+        "rank": "Assistant Professor",
+        "expertise": [
+            {"tag": "Algorithms", "proficiency": 4},
+            {"tag": "Machine Learning", "proficiency": 3},
+        ],
+        "max_weekly_load_hours": 12.0,
+        "min_courses": 1,
+        "max_courses": 3,
+        "max_preparations": 2,
+        "unavailable_slots": [],
+        "leave_terms": [],
+        "preferred_course_ids": [],
+    }
+
+    create_resp = client.post("/api/v1/faculty", json=payload, headers=ADMIN_HEADERS)
+    assert create_resp.status_code == 201
+    assert create_resp.json()["id"] == faculty_id
+    assert create_resp.json()["expertise"][0]["tag"] == "Algorithms"
+
+    read_resp = client.get(f"/api/v1/faculty/{faculty_id}", headers=ADMIN_HEADERS)
+    assert read_resp.status_code == 200
+    assert read_resp.json()["email"] == payload["email"]
+
+    audit_resp = client.get("/api/v1/audit?action=FACULTY_CREATED", headers=ADMIN_HEADERS)
+    assert audit_resp.status_code == 200
+    assert any(log["payload"]["id"] == faculty_id for log in audit_resp.json())
+
+    delete_resp = client.delete(f"/api/v1/faculty/{faculty_id}", headers=ADMIN_HEADERS)
+    assert delete_resp.status_code == 204
 
 
 def test_admin_crud_and_audit_trail_logging():

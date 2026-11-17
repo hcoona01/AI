@@ -231,6 +231,20 @@ export const useFacultyList = () => {
   });
 };
 
+export const useCreateFaculty = () => {
+  const queryClient = useQueryClient();
+  return useMutation<Faculty, Error, Faculty>({
+    mutationFn: async (faculty) => {
+      const resp = await apiClient.post<Faculty>('/faculty', faculty);
+      return resp.data;
+    },
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ['faculty'] });
+      void queryClient.invalidateQueries({ queryKey: ['auditLogs'] });
+    },
+  });
+};
+
 export const useCoursesList = () => {
   return useQuery<Course[]>({
     queryKey: ['courses'],

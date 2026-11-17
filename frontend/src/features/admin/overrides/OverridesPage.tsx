@@ -32,8 +32,8 @@ export const OverridesPage: React.FC = () => {
           <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded border border-amber-500/20">
             Administrative Overrides
           </span>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">Manual Assignment Overrides</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">Manual Assignment Overrides</h1>
+          <p className="text-xs text-slate-600">
             Audit history of manual instructor reassignments, mandatory justifications, and preserved constraint evidence.
           </p>
         </div>
@@ -161,8 +161,8 @@ export const OverridesPage: React.FC = () => {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
                   Evidence Snapshot
                 </span>
-                <h3 className="text-base font-bold text-white mt-1">Override Evidence Record</h3>
-                <p className="text-xs text-slate-400 font-mono">ID: {selectedOverride.id}</p>
+                <h3 className="text-base font-bold text-slate-900 mt-1">Override Evidence Record</h3>
+                <p className="text-xs text-slate-600 font-mono">ID: {selectedOverride.id}</p>
               </div>
               <button
                 type="button"

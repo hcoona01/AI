@@ -13,8 +13,8 @@ export const ConflictsPage: React.FC = () => {
           <span className="text-[10px] font-bold uppercase tracking-wider text-rose-400 bg-rose-500/10 px-2.5 py-0.5 rounded border border-rose-500/20">
             Audit & Compliance
           </span>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">Constraint Conflicts & Diagnostics</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">Constraint Conflicts & Diagnostics</h1>
+          <p className="text-xs text-slate-600">
             Real-time validation against institutional regulations with automated repair suggestions.
           </p>
         </div>

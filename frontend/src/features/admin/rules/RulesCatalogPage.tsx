@@ -119,8 +119,8 @@ export const RulesCatalogPage: React.FC = () => {
           <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-500/20">
             Rules Engine & Parameterization
           </span>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">Constraint Rules Catalog</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">Constraint Rules Catalog</h1>
+          <p className="text-xs text-slate-600">
             Enable or disable institutional invariants, adjust soft objective weights, and simulate impact on current assignments.
           </p>
         </div>

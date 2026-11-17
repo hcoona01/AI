@@ -11,8 +11,8 @@ export const AssignmentsPage: React.FC = () => {
           <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">
             Optimization & Assignments
           </span>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">Section Assignments Schedule</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">Section Assignments Schedule</h1>
+          <p className="text-xs text-slate-600">
             Interactive schedule grid with fit scores, constraint satisfaction badges, and administrative overrides.
           </p>
         </div>

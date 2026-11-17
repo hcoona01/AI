@@ -239,8 +239,8 @@ export const OverviewPanel: React.FC<OverviewProps> = ({
       {/* Fast Action Banner */}
       <div className="bg-gradient-to-r from-blue-950/40 via-slate-900 to-indigo-950/40 border border-blue-900/40 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-base font-bold text-white">Mathematical Course Allocation Optimizer</h2>
-          <p className="text-xs text-slate-400 mt-1 max-w-xl">
+          <h2 className="text-base font-bold text-slate-900">Mathematical Course Allocation Optimizer</h2>
+          <p className="text-xs text-slate-600 mt-1 max-w-xl">
             Execute Google OR-Tools CP-SAT or deterministic Greedy heuristic to satisfy contractual load, time clashes, and preparation limits.
           </p>
         </div>

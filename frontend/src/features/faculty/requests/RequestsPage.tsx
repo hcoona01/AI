@@ -56,8 +56,8 @@ export const RequestsPage: React.FC = () => {
           <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-500/10 px-2.5 py-0.5 rounded border border-purple-500/20">
             Administrative Dialogue
           </span>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">Assignment Change Requests</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">Assignment Change Requests</h1>
+          <p className="text-xs text-slate-600">
             Submit comments or modification requests for assigned sections. Administrators receive immediate notifications.
           </p>
         </div>
@@ -73,7 +73,7 @@ export const RequestsPage: React.FC = () => {
 
       {/* New Change Request Form Card */}
       <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
-        <h2 className="text-sm font-bold text-white uppercase tracking-wider">
+        <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
           Submit New Section Modification Request
         </h2>
 
@@ -128,7 +128,7 @@ export const RequestsPage: React.FC = () => {
       {/* Submitted Requests List */}
       <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-          <h2 className="text-sm font-bold text-white uppercase tracking-wider">
+          <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
             My Submitted Change Requests ({changeRequests?.length || 0})
           </h2>
           <span className="text-xs text-slate-400">Chronological history</span>

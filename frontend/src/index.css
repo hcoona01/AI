@@ -132,6 +132,7 @@ html body :is(.bg-blue-600, .bg-blue-500, .bg-purple-600, .bg-emerald-600, .bg-r
   letter-spacing: -0.03em;
   line-height: 1.12;
   text-align: center;
+  color: var(--ink);
 }
 
 .btn {
@@ -956,9 +957,14 @@ input#otp-code::placeholder {
   -webkit-backdrop-filter: none;
 }
 
-/* Keep ordinary headings and supporting copy consistently dark on light panels. */
-.dashboard-shell .dashboard-content :is(h1, h2, h3, h4, h5, h6) {
-  color: #182413;
+/* Keep all headings consistently dark, visible, and high-contrast across all panels, cards, modals, and drawers. */
+h1, h2, h3, h4, h5, h6,
+.dashboard-shell :is(h1, h2, h3, h4, h5, h6),
+.dashboard-shell :is(h1, h2, h3, h4, h5, h6).text-white,
+.dashboard-shell [class*="text-white"]:is(h1, h2, h3, h4, h5, h6),
+[role="dialog"] :is(h1, h2, h3, h4, h5, h6),
+[role="dialog"] :is(h1, h2, h3, h4, h5, h6).text-white {
+  color: #182413 !important;
 }
 
 /* Alerts and recommendations must never inherit the animated page image. */

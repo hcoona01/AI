@@ -109,8 +109,8 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
       {/* Header and Filter Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900/90 border border-slate-800 rounded-xl p-4">
         <div>
-          <h2 className="text-base font-bold text-white">Faculty Teaching Load Distribution</h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h2 className="text-base font-bold text-slate-900">Faculty Teaching Load Distribution</h2>
+          <p className="text-xs text-slate-600 mt-0.5">
             Weekly contact hours compared against contractual limits ({currentTerm}).
           </p>
         </div>

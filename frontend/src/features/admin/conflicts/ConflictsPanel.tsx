@@ -141,8 +141,8 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
             </span>
             <span className="text-xs text-slate-400 font-mono">Term: {currentTerm}</span>
           </div>
-          <h2 className="text-lg font-bold text-white mt-1">Schedule Conflicts & Rule Violations</h2>
-          <p className="text-xs text-slate-400">
+          <h2 className="text-lg font-bold text-slate-900 mt-1">Schedule Conflicts & Rule Violations</h2>
+          <p className="text-xs text-slate-600">
             Automated detection of institutional invariants (HC-01 through SC-04) with remediation recommendations.
           </p>
         </div>
@@ -166,7 +166,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             Total Violations Detected
           </div>
-          <div className="text-2xl font-bold stat-number text-white mt-1">{totalCount}</div>
+          <div className="text-2xl font-bold stat-number text-slate-900 mt-1">{totalCount}</div>
           <div className="text-xs text-slate-500 mt-1 font-mono">
             Across {conflicts?.violations?.length ?? 0} constraint checks
           </div>
@@ -250,7 +250,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
       {filteredViolations.length === 0 ? (
         <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-12 text-center text-slate-400">
           <span className="text-4xl mb-3 block">🎉</span>
-          <h3 className="text-base font-bold text-white mb-1">
+          <h3 className="text-base font-bold text-slate-900 mb-1">
             {totalCount === 0
               ? 'No Constraint Conflicts Detected'
               : 'No Conflicts Match the Selected Filter'}

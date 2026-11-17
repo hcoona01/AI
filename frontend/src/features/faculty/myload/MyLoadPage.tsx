@@ -103,10 +103,10 @@ export const MyLoadPage: React.FC = () => {
             </span>
             <span className="text-xs text-slate-400 font-mono">ID: {currentFacultyId}</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mt-1">
             {profile ? `${profile.name} • ${profile.rank}` : 'My Teaching Schedule'}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
             Personal teaching assignments, load capacity metrics, timetable schedule, and assignment rationale.
           </p>
         </div>
@@ -251,7 +251,7 @@ export const MyLoadPage: React.FC = () => {
           ) : !assignments || assignments.length === 0 ? (
             <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-12 text-center text-slate-400">
               <span className="text-4xl mb-2 block">🏖️</span>
-              <h3 className="text-base font-bold text-white">No Assigned Teaching Load</h3>
+              <h3 className="text-base font-bold text-slate-900">No Assigned Teaching Load</h3>
               <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
                 You have no scheduled teaching sections for {currentTerm}. If this is unexpected, contact your department chair.
               </p>
@@ -285,7 +285,7 @@ export const MyLoadPage: React.FC = () => {
                               </span>
                             )}
                           </div>
-                          <h4 className="text-xs font-semibold text-slate-300 mt-1">
+                          <h4 className="text-xs font-semibold text-slate-800 mt-1">
                             {crs?.title || 'Course Offering'}
                           </h4>
                         </div>
@@ -343,10 +343,10 @@ export const MyLoadPage: React.FC = () => {
               <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                   <div>
-                    <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+                    <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                       Weekly Teaching Timetable
                     </h3>
-                    <p className="text-xs text-slate-400 mt-0.5">
+                    <p className="text-xs text-slate-600 mt-0.5">
                       Class schedule across days and institutional timeslots for {currentTerm}.
                     </p>
                   </div>
@@ -412,7 +412,7 @@ export const MyLoadPage: React.FC = () => {
         <div className="space-y-6">
           {/* Fit Explanations */}
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
               Assignment Fit Breakdown & Justifying Constraints
             </h3>
 
@@ -512,11 +512,11 @@ export const MyLoadPage: React.FC = () => {
           <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
               <div>
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
                   <span>📊</span>
                   <span>Teaching Load Relative to Department Median</span>
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-600 mt-0.5">
                   Anonymized distribution of teaching contact hours across departmental faculty.
                 </p>
               </div>
@@ -621,10 +621,10 @@ export const MyLoadPage: React.FC = () => {
         <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
           <div className="flex items-center justify-between border-b border-slate-800 pb-3">
             <div>
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+              <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                 Submitted Assignment Change Requests
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-600 mt-0.5">
                 History of comments and modification requests submitted to curriculum administrators.
               </p>
             </div>
@@ -694,7 +694,7 @@ export const MyLoadPage: React.FC = () => {
                 <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
                   Assignment Feedback
                 </span>
-                <h3 className="text-base font-bold text-white mt-1">Submit Change Request</h3>
+                <h3 className="text-base font-bold text-slate-900 mt-1">Submit Change Request</h3>
                 <p className="text-xs text-slate-400 font-mono">
                   Section ID: {changeRequestAssignment.section_id}
                 </p>
@@ -782,10 +782,10 @@ const ExplainModal: React.FC<ExplainModalProps> = ({ assignmentId, onClose }) =>
             <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
               Assignment Rationale
             </span>
-            <h3 className="text-base font-bold text-white mt-1">
+            <h3 className="text-base font-bold text-slate-900 mt-1">
               {explanation?.course_code}: {explanation?.course_title}
             </h3>
-            <p className="text-xs text-slate-400 font-mono">Section ID: {explanation?.section_id}</p>
+            <p className="text-xs text-slate-600 font-mono">Section ID: {explanation?.section_id}</p>
           </div>
           <button type="button" onClick={onClose} className="text-slate-400 hover:text-white p-1">
             ✕

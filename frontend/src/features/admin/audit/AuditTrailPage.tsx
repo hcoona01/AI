@@ -137,8 +137,8 @@ export const AuditTrailPage: React.FC = () => {
           <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">
             Compliance & Provenance
           </span>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">Audit Trail & Activity Log</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">Audit Trail & Activity Log</h1>
+          <p className="text-xs text-slate-600">
             Immutable chronological record of optimization solver runs, human overrides, repairs, and rule reweightings.
           </p>
         </div>
@@ -352,8 +352,8 @@ export const AuditTrailPage: React.FC = () => {
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
                   {inspectedLog.action}
                 </span>
-                <h3 className="text-base font-bold text-white mt-1">Audit Record Snapshot</h3>
-                <p className="text-xs text-slate-400 font-mono">
+                <h3 className="text-base font-bold text-slate-900 mt-1">Audit Record Snapshot</h3>
+                <p className="text-xs text-slate-600 font-mono">
                   ID: {inspectedLog.id} • {new Date(inspectedLog.timestamp).toISOString()}
                 </p>
               </div>

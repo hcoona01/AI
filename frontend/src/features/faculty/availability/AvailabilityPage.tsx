@@ -122,10 +122,10 @@ export const AvailabilityPage: React.FC = () => {
             </span>
             <span className="text-xs text-slate-400 font-mono">ID: {currentFacultyId}</span>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">
             Availability & Course Preferences
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-600">
             Configure blackout timeslots, approved sabbatical terms, and preferred courses for automated solver optimization.
           </p>
         </div>
@@ -163,11 +163,11 @@ export const AvailabilityPage: React.FC = () => {
       <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
               <span>⏱️</span>
               <span>Unavailable Timeslots (HC-03 & HC-04 Blackouts)</span>
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-600 mt-0.5">
               Click a timeslot to mark it as unavailable. The solver will strictly avoid assigning you to highlighted blocks.
             </p>
           </div>
@@ -219,11 +219,11 @@ export const AvailabilityPage: React.FC = () => {
       {/* SECTION 2: APPROVED SABBATICAL & LEAVE TERMS */}
       <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
         <div className="border-b border-slate-800 pb-3">
-          <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+          <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
             <span>🏖️</span>
             <span>Approved Sabbatical & Leave Terms (HC-04)</span>
           </h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-600 mt-0.5">
             Select semesters in which you have an institutional grant release, fellowship, or sabbatical.
           </p>
         </div>
@@ -268,11 +268,11 @@ export const AvailabilityPage: React.FC = () => {
       <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
               <span>🎯</span>
               <span>Course Preferences (SC-03 Bonus)</span>
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-600 mt-0.5">
               Select courses you would like to teach. The solver incorporates these with a soft objective bonus.
             </p>
           </div>

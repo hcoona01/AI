@@ -46,10 +46,10 @@ export const RepairModal: React.FC<RepairModalProps> = ({
               </span>
               <span className="text-xs text-slate-400 font-mono">Term: {term}</span>
             </div>
-            <h3 className="text-lg font-bold text-white mt-1">
+            <h3 className="text-lg font-bold text-slate-900 mt-1">
               Select Schedule Repair Strategy
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-600 mt-0.5">
               Evaluate predicted fairness, expertise fit, and constraint compliance tradeoffs before applying.
             </p>
           </div>

@@ -1,5 +1,21 @@
 # Engineering Progress Log
 
+## 2026-11-17: Global Heading Color & Contrast Correction
+- **Task Objective**: Change heading colors from low-contrast white or faint tones to prominent, visible dark-ink colors (`#182413` / `text-slate-900`) across all admin and faculty pages, dialogs, drawers, and global stylesheets.
+- **Changes Implemented**:
+  - In [`frontend/src/index.css`](file:///e:/AI%20project/frontend/src/index.css):
+    - Added global high-specificity heading rule targeting `h1-h6`, `.dashboard-shell`, `[role="dialog"]`, and modals ensuring `color: #182413 !important;`.
+    - Added explicit dark text color to `.h2`.
+  - In all feature pages and components:
+    - Replaced `text-white` and faint slate classes (`text-slate-300`, `text-slate-400`) on headings and subheadings with `text-slate-900` / `text-slate-800` across:
+      - Admin: `AssignmentsPage`, `AssignmentDetailDrawer`, `AssignmentsGrid`, `AuditTrailPage`, `ConflictsPage`, `ConflictsPanel`, `RepairModal`, `ForecastPage`, `ForecastPanel`, `LoadBalancePage`, `LoadViewPanel`, `OverridesPage`, `OptimizerPanel`, `OverviewPanel`, `RulesCatalogPage`.
+      - Faculty: `AvailabilityPage`, `MyLoadPage`, `RequestsPage`.
+- **Test Results & Verification Status**:
+  - `npm --prefix frontend run build`: 779 modules transformed cleanly in 9.02s with zero TypeScript or Vite errors.
+  - `pytest backend/tests ml/tests`: 234 passed in 46.59s.
+- **Next Steps / Backlog Items**:
+  - Deploy updated bundle to production on Vercel.
+
 ## 2026-11-17: Linked User Account Provisioning & Windows File Lock Resilience
 - **Task Objective**: Ensure newly registered faculty members from the directory flow are automatically provisioned with a linked user account for passwordless OTP authentication, clean up linked accounts on deletion, and harden local atomic file writing against transient Windows file-lock race conditions.
 - **Changes Implemented**:

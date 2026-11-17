@@ -108,7 +108,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
     return (
       <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-12 text-center text-slate-400">
         <span className="text-4xl mb-3 block">📊</span>
-        <h3 className="text-lg font-semibold text-white mb-1">No Forecast Data Available</h3>
+        <h3 className="text-lg font-semibold text-slate-900 mb-1">No Forecast Data Available</h3>
         <p className="text-sm max-w-md mx-auto">
           No demand forecasts generated for <span className="font-semibold text-slate-200">{currentTerm}</span>.
           Generate forecasts or switch academic terms.
@@ -128,8 +128,8 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
             </span>
             <span className="text-xs text-slate-400 font-mono">LightGBM (P10, P50, P90)</span>
           </div>
-          <h2 className="text-lg font-bold text-white mt-1">Student Enrollment Demand Projections</h2>
-          <p className="text-xs text-slate-400">
+          <h2 className="text-lg font-bold text-slate-900 mt-1">Student Enrollment Demand Projections</h2>
+          <p className="text-xs text-slate-600">
             Term: <strong className="text-slate-200">{currentTerm}</strong> • {forecasts.length} courses forecasted
           </p>
         </div>
@@ -214,10 +214,10 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
       <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
           <div>
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
               Course Demand & Uncertainty Bands (P10 &bull; P50 &bull; P90)
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-600 mt-0.5">
               The spread between P10 (conservative) and P90 (surge) illustrates enrollment volatility.
             </p>
           </div>
@@ -303,7 +303,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
       {/* Course Projections Detailed Table */}
       <div className="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <h3 className="text-xs font-bold text-white uppercase tracking-wider">
+          <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
             Course Section Requirements ({filteredForecasts.length})
           </h3>
           <span className="text-xs text-slate-400">

@@ -185,7 +185,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                 </span>
               )}
             </div>
-            <h2 className="text-lg font-bold text-white mt-1">
+            <h2 className="text-lg font-bold text-slate-900 mt-1">
               {currentCourse ? `${currentCourse.code} • ${currentCourse.title}` : explanation?.course_title || 'Section Assignment'}
             </h2>
             <div className="text-xs text-slate-400 font-mono mt-0.5">
@@ -268,7 +268,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                     <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
                       {isOverridden ? 'Current Assigned Instructor' : 'Solver Recommended Instructor'}
                     </span>
-                    <h3 className="text-base font-bold text-white mt-0.5">
+                    <h3 className="text-base font-bold text-slate-900 mt-0.5">
                       {explanation.chosen_faculty.name}
                     </h3>
                     <div className="text-xs text-slate-400 font-mono">
@@ -376,7 +376,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
               {/* Top Alternatives & Constraints That Blocked Others */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
                     Top Alternative Candidates Evaluated ({explanation.top_alternatives.length} of{' '}
                     {explanation.total_candidates_evaluated})
                   </h4>
@@ -444,8 +444,8 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                 <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
                   Administrative Action
                 </span>
-                <h3 className="text-base font-bold text-white mt-1">Manual Faculty Override</h3>
-                <p className="text-xs text-slate-400">
+                <h3 className="text-base font-bold text-slate-900 mt-1">Manual Faculty Override</h3>
+                <p className="text-xs text-slate-600">
                   Reassign section with live constraint validation and required justification.
                 </p>
               </div>

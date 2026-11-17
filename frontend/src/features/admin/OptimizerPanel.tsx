@@ -74,7 +74,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
               <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
                 Optimization Engine
               </span>
-              <h2 className="text-base font-bold text-white mt-1">Configure & Run Solver</h2>
+              <h2 className="text-base font-bold text-slate-900 mt-1">Configure & Run Solver</h2>
             </div>
             <span className="text-xs text-slate-400 font-mono">
               Target Term: <strong className="text-slate-200">{currentTerm}</strong>
@@ -127,7 +127,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
           {/* Soft Objective Weights Sliders */}
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
                 Objective Function Weights (Integer-Scaled)
               </h3>
               <button
@@ -275,7 +275,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
         <div className="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800">
                 Job Progress & Solution
               </h3>
               {activeJobId ? (
@@ -422,8 +422,8 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
           <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
             Empirical Benchmark Comparison
           </span>
-          <h3 className="text-base font-bold text-white mt-1">CP-SAT Multi-Objective vs. Greedy Baseline</h3>
-          <p className="text-xs text-slate-400">
+          <h3 className="text-base font-bold text-slate-900 mt-1">CP-SAT Multi-Objective vs. Greedy Baseline</h3>
+          <p className="text-xs text-slate-600">
             Results measured across standard benchmark scenarios under CPU-only constraints.
           </p>
         </div>

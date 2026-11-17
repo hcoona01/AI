@@ -11,8 +11,8 @@ export const ForecastPage: React.FC = () => {
           <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2.5 py-0.5 rounded border border-blue-500/20">
             Machine Learning Demand Forecasts
           </span>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">Course Enrollment Forecasts</h1>
-          <p className="text-xs text-slate-400">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 mt-1">Course Enrollment Forecasts</h1>
+          <p className="text-xs text-slate-600">
             Quantile regression projections (P10 conservative floor, P50 expected, P90 surge stress)
           </p>
         </div>

@@ -169,7 +169,7 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
               Showing {filteredRows.length} of {tableRows.length} sections
             </span>
           </div>
-          <h2 className="text-lg font-bold text-white mt-1">Section Assignments & Rule Compliance</h2>
+          <h2 className="text-lg font-bold text-slate-900 mt-1">Section Assignments & Rule Compliance</h2>
         </div>
 
         {/* Filters */}
@@ -477,8 +477,8 @@ const OverrideModal: React.FC<OverrideModalProps> = ({ assignment, facultyList, 
             <span className="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
               Administrative Action
             </span>
-            <h3 className="text-base font-bold text-white mt-1">Manual Assignment Override</h3>
-            <p className="text-xs text-slate-400">Section: {assignment.section_id}</p>
+            <h3 className="text-base font-bold text-slate-900 mt-1">Manual Assignment Override</h3>
+            <p className="text-xs text-slate-600">Section: {assignment.section_id}</p>
           </div>
           <button type="button" onClick={onClose} className="text-slate-400 hover:text-white p-1">
             ✕

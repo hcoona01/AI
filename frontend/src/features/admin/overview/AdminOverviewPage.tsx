@@ -42,7 +42,7 @@ export const AdminOverviewPage: React.FC = () => {
             id="global-term-select"
             value={currentTerm}
             onChange={(e) => setCurrentTerm(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-white text-xs font-medium rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="bg-slate-950 border border-slate-700 text-black text-xs font-medium rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
           >
             <option value="Fall 2026">Fall 2026</option>
             <option value="Spring 2027">Spring 2027</option>
@@ -58,8 +58,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('overview')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'overview'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-blue-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>📊</span>
@@ -71,8 +71,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('optimizer')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'optimizer'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-blue-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>⚡</span>
@@ -84,8 +84,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('load')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'load'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-blue-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>⚖️</span>
@@ -97,8 +97,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('assignments')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'assignments'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-blue-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>📋</span>
@@ -110,8 +110,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('conflicts')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'conflicts'
-              ? 'bg-rose-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-rose-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>⚠️</span>
@@ -123,8 +123,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('forecast')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'forecast'
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-blue-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>📈</span>
@@ -136,8 +136,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('rules')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'rules'
-              ? 'bg-emerald-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-emerald-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>⚙️</span>
@@ -149,8 +149,8 @@ export const AdminOverviewPage: React.FC = () => {
           onClick={() => setActiveTab('audit')}
           className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-lg transition whitespace-nowrap ${
             activeTab === 'audit'
-              ? 'bg-purple-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              ? 'bg-purple-600 text-black shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-800/60'
           }`}
         >
           <span>📜</span>

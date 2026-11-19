@@ -141,7 +141,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
             onClick={() => setScenarioMode('p50')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               scenarioMode === 'p50'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-blue-600 text-black shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -152,7 +152,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
             onClick={() => setScenarioMode('p90')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               scenarioMode === 'p90'
-                ? 'bg-amber-600 text-white shadow-sm'
+                ? 'bg-amber-600 text-black shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -167,7 +167,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             {scenarioMode === 'p50' ? 'Expected Enrollment (P50)' : 'Peak Enrollment (P90)'}
           </div>
-          <div className="text-2xl font-bold stat-number text-white mt-1">
+          <div className="text-2xl font-bold stat-number text-black mt-1">
             {scenarioMode === 'p50' ? metrics.totalDemandP50 : metrics.totalDemandP90}
             <span className="text-xs font-normal text-slate-400 ml-1.5 font-sans">students</span>
           </div>
@@ -182,7 +182,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
           <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             {scenarioMode === 'p50' ? 'Planned Sections (P50)' : 'Risk Sections (P90)'}
           </div>
-          <div className="text-2xl font-bold stat-number text-white mt-1">
+          <div className="text-2xl font-bold stat-number text-black mt-1">
             {scenarioMode === 'p50' ? metrics.totalSectionsP50 : metrics.totalSectionsP90}
             <span className="text-xs font-normal text-slate-400 ml-1.5 font-sans">sections</span>
           </div>
@@ -227,7 +227,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
               placeholder="Filter by course..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-44"
+              className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-44"
             />
           </div>
         </div>
@@ -260,7 +260,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
                     };
                     return (
                       <div className="bg-slate-950 border border-slate-700 p-3 rounded-lg shadow-xl text-xs space-y-1">
-                        <div className="font-bold text-white text-sm border-b border-slate-800 pb-1 mb-1">
+                        <div className="font-bold text-black text-sm border-b border-slate-800 pb-1 mb-1">
                           {data.courseCode}
                         </div>
                         <div className="text-slate-400 flex justify-between gap-4">
@@ -333,7 +333,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
 
                 return (
                   <tr key={f.course_id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3 px-4 font-mono font-bold text-white">
+                    <td className="py-3 px-4 font-mono font-bold text-black">
                       {f.course_code}
                     </td>
                     <td className="py-3 px-4 text-center font-mono text-slate-400">{f.p10}</td>
@@ -345,7 +345,7 @@ export const ForecastPanel: React.FC<ForecastPanelProps> = ({ currentTerm }) => 
                     </td>
                     <td className="py-3 px-4 text-center font-mono text-slate-400">&plusmn;{Math.round(spread / 2)}</td>
                     <td className="py-3 px-4 text-center">
-                      <span className="font-mono font-bold text-white px-2 py-0.5 rounded bg-slate-800">
+                      <span className="font-mono font-bold text-black px-2 py-0.5 rounded bg-slate-800">
                         {activeSections}
                       </span>
                     </td>

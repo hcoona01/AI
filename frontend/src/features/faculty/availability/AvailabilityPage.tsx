@@ -134,7 +134,7 @@ export const AvailabilityPage: React.FC = () => {
           type="button"
           disabled={updateMutation.isPending}
           onClick={handleSave}
-          className="px-5 py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-md shadow-purple-600/20 transition flex items-center gap-2 self-start md:self-auto"
+          className="px-5 py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-black text-xs font-bold uppercase tracking-wider rounded-lg shadow-md shadow-purple-600/20 transition flex items-center gap-2 self-start md:self-auto"
         >
           {updateMutation.isPending ? 'Saving Preferences...' : 'Save Preferences'}
         </button>
@@ -244,11 +244,11 @@ export const AvailabilityPage: React.FC = () => {
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-xs text-white">{term}</span>
+                  <span className="font-semibold text-xs text-black">{term}</span>
                   <span
                     className={`w-3.5 h-3.5 rounded-xs border flex items-center justify-center text-[10px] ${
                       isSelected
-                        ? 'bg-purple-600 border-purple-500 text-white'
+                        ? 'bg-purple-600 border-purple-500 text-black'
                         : 'border-slate-700 bg-slate-900'
                     }`}
                   >
@@ -282,7 +282,7 @@ export const AvailabilityPage: React.FC = () => {
             placeholder="Search catalog by code or title..."
             value={courseSearch}
             onChange={(e) => setCourseSearch(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-purple-500 w-56"
+            className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-purple-500 w-56"
           />
         </div>
 
@@ -301,11 +301,11 @@ export const AvailabilityPage: React.FC = () => {
                 }`}
               >
                 <div className="flex items-start justify-between">
-                  <div className="font-mono font-bold text-white">{c.code}</div>
+                  <div className="font-mono font-bold text-black">{c.code}</div>
                   <span
                     className={`w-3.5 h-3.5 rounded-xs border flex items-center justify-center text-[10px] ${
                       isPreferred
-                        ? 'bg-blue-600 border-blue-500 text-white'
+                        ? 'bg-blue-600 border-blue-500 text-black'
                         : 'border-slate-700 bg-slate-900'
                     }`}
                   >

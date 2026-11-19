@@ -152,7 +152,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
           <button
             type="button"
             onClick={() => setShowRepairModal(true)}
-            className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md shadow-purple-600/20 transition"
+            className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md shadow-purple-600/20 transition"
           >
             <span>🛠️</span>
             <span>Synthesize Repairs ({repairAlternatives.length})</span>
@@ -205,7 +205,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
             placeholder="Search by rule, explanation, or entity ID..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-64"
+            className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-64"
           />
         </div>
 
@@ -215,8 +215,8 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
             onClick={() => setSeverityFilter('all')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               severityFilter === 'all'
-                ? 'bg-blue-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-blue-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             All ({totalCount})
@@ -226,8 +226,8 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
             onClick={() => setSeverityFilter('error')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               severityFilter === 'error'
-                ? 'bg-rose-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-rose-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Hard Only ({hardCount})
@@ -237,8 +237,8 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
             onClick={() => setSeverityFilter('warning')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               severityFilter === 'warning'
-                ? 'bg-amber-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-amber-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Soft Only ({softCount})
@@ -282,7 +282,7 @@ export const ConflictsPanel: React.FC<ConflictsPanelProps> = ({
                   <div className="space-y-2 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
                       {/* Rule ID Badge */}
-                      <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-slate-950 text-white border border-slate-700">
+                      <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-slate-950 text-black border border-slate-700">
                         {v.rule_id}
                       </span>
                       {getSeverityBadge(v.severity)}

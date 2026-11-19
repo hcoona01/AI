@@ -198,7 +198,7 @@ export const ScenariosPage: React.FC = () => {
           <button
             type="button"
             onClick={() => navigate('/admin')}
-            className="btn text-xs px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-white"
+            className="btn text-xs px-3 py-1 bg-emerald-700 hover:bg-emerald-800 text-black"
           >
             Open Optimizer & Dashboard →
           </button>
@@ -222,7 +222,7 @@ export const ScenariosPage: React.FC = () => {
             onClick={() => setFilterType('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               filterType === 'all'
-                ? 'bg-emerald-800 text-white shadow-xs'
+                ? 'bg-emerald-800 text-black shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -233,7 +233,7 @@ export const ScenariosPage: React.FC = () => {
             onClick={() => setFilterType('feasible')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               filterType === 'feasible'
-                ? 'bg-emerald-800 text-white shadow-xs'
+                ? 'bg-emerald-800 text-black shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -244,7 +244,7 @@ export const ScenariosPage: React.FC = () => {
             onClick={() => setFilterType('infeasible')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               filterType === 'infeasible'
-                ? 'bg-emerald-800 text-white shadow-xs'
+                ? 'bg-emerald-800 text-black shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -343,7 +343,7 @@ export const ScenariosPage: React.FC = () => {
                   onClick={() => handleLoadScenario(sc.id, sc.name)}
                   className={`btn text-xs px-3.5 py-1.5 flex items-center gap-1.5 ${
                     isCurrentlyLoaded
-                      ? 'bg-emerald-700 hover:bg-emerald-800 text-white'
+                      ? 'bg-emerald-700 hover:bg-emerald-800 text-black'
                       : ''
                   }`}
                 >

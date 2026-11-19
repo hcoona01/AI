@@ -80,7 +80,7 @@ export const OverviewPanel: React.FC<OverviewProps> = ({
             id="term-select"
             value={currentTerm}
             onChange={(e) => onTermChange(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-white text-sm rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+            className="bg-slate-950 border border-slate-700 text-black text-sm rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
           >
             <option value="Fall 2026">Fall 2026</option>
             <option value="Spring 2027">Spring 2027</option>
@@ -107,7 +107,7 @@ export const OverviewPanel: React.FC<OverviewProps> = ({
             type="button"
             onClick={handleScenarioLoad}
             disabled={!selectedScenario || loadScenarioMutation.isPending}
-            className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-medium rounded-lg transition cursor-pointer"
+            className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-black text-xs font-medium rounded-lg transition cursor-pointer"
           >
             {loadScenarioMutation.isPending ? 'Loading...' : 'Load Scenario'}
           </button>
@@ -117,7 +117,7 @@ export const OverviewPanel: React.FC<OverviewProps> = ({
       {scenarioSuccess && (
         <div className="bg-emerald-950/60 border border-emerald-700/50 text-emerald-300 px-4 py-2.5 rounded-lg text-xs flex items-center justify-between">
           <span>{scenarioSuccess}</span>
-          <button type="button" onClick={() => setScenarioSuccess(null)} className="text-emerald-400 hover:text-white">
+          <button type="button" onClick={() => setScenarioSuccess(null)} className="text-emerald-400 hover:text-black">
             ✕
           </button>
         </div>
@@ -247,7 +247,7 @@ export const OverviewPanel: React.FC<OverviewProps> = ({
         <button
           type="button"
           onClick={onOpenOptimizer}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-lg shadow-md shadow-blue-600/30 transition cursor-pointer flex items-center gap-2 whitespace-nowrap"
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-black text-xs font-semibold rounded-lg shadow-md shadow-blue-600/30 transition cursor-pointer flex items-center gap-2 whitespace-nowrap"
         >
           <span>⚡ Open Optimizer Panel</span>
         </button>

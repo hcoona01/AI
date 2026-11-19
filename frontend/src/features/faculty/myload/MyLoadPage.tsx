@@ -120,7 +120,7 @@ export const MyLoadPage: React.FC = () => {
             id="term-select"
             value={currentTerm}
             onChange={(e) => setCurrentTerm(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-white text-xs font-medium rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-purple-500"
+            className="bg-slate-950 border border-slate-700 text-black text-xs font-medium rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-purple-500"
           >
             <option value="Fall 2026">Fall 2026</option>
             <option value="Spring 2027">Spring 2027</option>
@@ -149,7 +149,7 @@ export const MyLoadPage: React.FC = () => {
           </div>
 
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white stat-number">{totalAssignedHours.toFixed(1)}</span>
+            <span className="text-3xl font-bold text-black stat-number">{totalAssignedHours.toFixed(1)}</span>
             <span className="text-slate-400 text-sm font-mono">/ {maxLimit.toFixed(1)} hrs/wk limit</span>
           </div>
 
@@ -173,7 +173,7 @@ export const MyLoadPage: React.FC = () => {
           <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">
             Assigned Course Sections
           </span>
-          <div className="text-3xl font-bold text-white font-mono mt-1">
+          <div className="text-3xl font-bold text-black font-mono mt-1">
             {assignments?.length || 0}
             <span className="text-xs font-normal text-slate-400 ml-2">sections</span>
           </div>
@@ -193,7 +193,7 @@ export const MyLoadPage: React.FC = () => {
           </div>
           <div className="text-xs text-slate-400 mt-1">
             Your load:{' '}
-            <strong className="text-white font-mono">{totalAssignedHours.toFixed(1)}h</strong>{' '}
+            <strong className="text-black font-mono">{totalAssignedHours.toFixed(1)}h</strong>{' '}
             ({totalAssignedHours >= (loadComparison?.department_median_load ?? 9.0) ? 'At / above median' : 'Below median'})
           </div>
         </div>
@@ -206,8 +206,8 @@ export const MyLoadPage: React.FC = () => {
           onClick={() => setActiveTab('schedule')}
           className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition ${
             activeTab === 'schedule'
-              ? 'bg-slate-900 text-white border-t-2 border-purple-500 shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-900/50'
+              ? 'bg-slate-900 text-black border-t-2 border-purple-500 shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-900/50'
           }`}
         >
           <span>📅</span>
@@ -219,8 +219,8 @@ export const MyLoadPage: React.FC = () => {
           onClick={() => setActiveTab('why')}
           className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition ${
             activeTab === 'why'
-              ? 'bg-slate-900 text-white border-t-2 border-purple-500 shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-900/50'
+              ? 'bg-slate-900 text-black border-t-2 border-purple-500 shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-900/50'
           }`}
         >
           <span>💡</span>
@@ -232,8 +232,8 @@ export const MyLoadPage: React.FC = () => {
           onClick={() => setActiveTab('requests')}
           className={`flex items-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-t-lg transition ${
             activeTab === 'requests'
-              ? 'bg-slate-900 text-white border-t-2 border-purple-500 shadow-sm'
-              : 'text-slate-400 hover:text-white hover:bg-slate-900/50'
+              ? 'bg-slate-900 text-black border-t-2 border-purple-500 shadow-sm'
+              : 'text-slate-400 hover:text-black hover:bg-slate-900/50'
           }`}
         >
           <span>📝</span>
@@ -273,7 +273,7 @@ export const MyLoadPage: React.FC = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-mono font-bold text-base text-white">
+                            <span className="font-mono font-bold text-base text-black">
                               {crs?.code || asgn.section_id}
                             </span>
                             <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-950 text-slate-300 border border-slate-800">
@@ -425,7 +425,7 @@ export const MyLoadPage: React.FC = () => {
                   <div key={asgn.id} className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 space-y-4">
                     <div className="flex items-start justify-between">
                       <div>
-                        <span className="font-mono font-bold text-base text-white">
+                        <span className="font-mono font-bold text-base text-black">
                           {crs?.code || asgn.section_id}
                         </span>
                         <div className="text-xs text-slate-400 mt-0.5">{crs?.title}</div>
@@ -633,7 +633,7 @@ export const MyLoadPage: React.FC = () => {
           {!myChangeRequests || myChangeRequests.length === 0 ? (
             <div className="p-8 text-center text-slate-400 text-xs">
               <span className="text-3xl mb-2 block">📝</span>
-              <p className="font-semibold text-white">No Change Requests Submitted</p>
+              <p className="font-semibold text-black">No Change Requests Submitted</p>
               <p className="text-slate-500 mt-1">
                 You can request changes on any assigned course from your schedule tab.
               </p>
@@ -648,7 +648,7 @@ export const MyLoadPage: React.FC = () => {
                   <div className="flex items-start justify-between">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-bold text-white font-mono">{cr.course_code || cr.section_id}</span>
+                        <span className="font-bold text-black font-mono">{cr.course_code || cr.section_id}</span>
                         <span className="text-[10px] font-mono text-slate-500">
                           {new Date(cr.created_at).toLocaleDateString()}
                         </span>
@@ -702,7 +702,7 @@ export const MyLoadPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setChangeRequestAssignment(null)}
-                className="text-slate-400 hover:text-white p-1"
+                className="text-slate-400 hover:text-black p-1"
                 aria-label="Close"
               >
                 ✕
@@ -724,7 +724,7 @@ export const MyLoadPage: React.FC = () => {
                 value={changeComment}
                 onChange={(e) => setChangeComment(e.target.value)}
                 placeholder="Describe your scheduling conflict, research commitment, or preferred course adjustment..."
-                className="w-full bg-slate-950 border border-slate-700 text-white rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                className="w-full bg-slate-950 border border-slate-700 text-black rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-purple-500"
               />
               <p className="text-[11px] text-slate-500">
                 This will create a notification for the curriculum administrator and be reviewed prior to final schedule lock.
@@ -743,7 +743,7 @@ export const MyLoadPage: React.FC = () => {
                 type="button"
                 disabled={!changeComment.trim() || createChangeRequestMutation.isPending}
                 onClick={handleSubmittingChangeRequest}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-black text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
               >
                 {createChangeRequestMutation.isPending ? 'Submitting...' : 'Submit Request'}
               </button>
@@ -787,7 +787,7 @@ const ExplainModal: React.FC<ExplainModalProps> = ({ assignmentId, onClose }) =>
             </h3>
             <p className="text-xs text-slate-600 font-mono">Section ID: {explanation?.section_id}</p>
           </div>
-          <button type="button" onClick={onClose} className="text-slate-400 hover:text-white p-1">
+          <button type="button" onClick={onClose} className="text-slate-400 hover:text-black p-1">
             ✕
           </button>
         </div>
@@ -810,7 +810,7 @@ const ExplainModal: React.FC<ExplainModalProps> = ({ assignmentId, onClose }) =>
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-slate-400 uppercase">Assigned Instructor</span>
-                  <div className="font-bold text-white text-sm">{explanation.chosen_faculty.name}</div>
+                  <div className="font-bold text-black text-sm">{explanation.chosen_faculty.name}</div>
                 </div>
                 <div className="text-right">
                   <div className="text-xl font-bold font-mono text-emerald-400">
@@ -874,7 +874,7 @@ const ExplainModal: React.FC<ExplainModalProps> = ({ assignmentId, onClose }) =>
               </div>
 
               <div className="pt-2 border-t border-slate-800 text-slate-300">
-                <span className="font-semibold text-white">Rationale: </span>
+                <span className="font-semibold text-black">Rationale: </span>
                 {explanation.chosen_faculty.rationale}
               </div>
             </div>
@@ -885,7 +885,7 @@ const ExplainModal: React.FC<ExplainModalProps> = ({ assignmentId, onClose }) =>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold rounded-lg transition"
+            className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-black text-xs font-semibold rounded-lg transition"
           >
             Close
           </button>

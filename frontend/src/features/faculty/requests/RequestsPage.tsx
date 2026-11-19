@@ -85,7 +85,7 @@ export const RequestsPage: React.FC = () => {
             <select
               value={selectedAssignmentId}
               onChange={(e) => setSelectedAssignmentId(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700 text-white rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-purple-500"
+              className="w-full bg-slate-950 border border-slate-700 text-black rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-purple-500"
             >
               <option value="">-- Choose Assigned Section --</option>
               {assignments?.map((a) => {
@@ -109,7 +109,7 @@ export const RequestsPage: React.FC = () => {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="State reason for change (e.g., sabbatical schedule, specialized lab conflict, research grant overlap)..."
-              className="w-full bg-slate-950 border border-slate-700 text-white rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-purple-500"
+              className="w-full bg-slate-950 border border-slate-700 text-black rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-purple-500"
             />
           </div>
 
@@ -117,7 +117,7 @@ export const RequestsPage: React.FC = () => {
             <button
               type="submit"
               disabled={!selectedAssignmentId || !comment.trim() || createMutation.isPending}
-              className="px-5 py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
+              className="px-5 py-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-black text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
             >
               {createMutation.isPending ? 'Submitting...' : 'Submit Request to Admin'}
             </button>
@@ -143,7 +143,7 @@ export const RequestsPage: React.FC = () => {
         {!loadingRequests && (!changeRequests || changeRequests.length === 0) && (
           <div className="p-8 text-center text-slate-400 text-xs">
             <span className="text-3xl mb-2 block">📋</span>
-            <p className="font-semibold text-white">No Change Requests on File</p>
+            <p className="font-semibold text-black">No Change Requests on File</p>
             <p className="text-slate-500 mt-1">
               Submit a request using the form above if you need a schedule adjustment.
             </p>
@@ -160,7 +160,7 @@ export const RequestsPage: React.FC = () => {
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono font-bold text-sm text-white">
+                      <span className="font-mono font-bold text-sm text-black">
                         {cr.course_code || cr.section_id}
                       </span>
                       <span className="text-[10px] font-mono text-slate-400">

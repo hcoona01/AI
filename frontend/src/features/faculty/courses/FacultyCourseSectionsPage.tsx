@@ -278,7 +278,7 @@ export const FacultyCourseSectionsPage: React.FC = () => {
             onClick={() => setFilterType('all')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               filterType === 'all'
-                ? 'bg-emerald-800 text-white shadow-xs'
+                ? 'bg-emerald-800 text-black shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -289,7 +289,7 @@ export const FacultyCourseSectionsPage: React.FC = () => {
             onClick={() => setFilterType('my_sections')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               filterType === 'my_sections'
-                ? 'bg-emerald-800 text-white shadow-xs'
+                ? 'bg-emerald-800 text-black shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -300,7 +300,7 @@ export const FacultyCourseSectionsPage: React.FC = () => {
             onClick={() => setFilterType('unassigned')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               filterType === 'unassigned'
-                ? 'bg-emerald-800 text-white shadow-xs'
+                ? 'bg-emerald-800 text-black shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -311,7 +311,7 @@ export const FacultyCourseSectionsPage: React.FC = () => {
             onClick={() => setFilterType('others')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               filterType === 'others'
-                ? 'bg-emerald-800 text-white shadow-xs'
+                ? 'bg-emerald-800 text-black shadow-xs'
                 : 'text-slate-600 hover:bg-slate-100'
             }`}
           >
@@ -462,7 +462,7 @@ export const FacultyCourseSectionsPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleOpenRequest(sec, assignment)}
-                      className="btn text-xs px-3 py-1 bg-amber-700 hover:bg-amber-800 text-white"
+                      className="btn text-xs px-3 py-1 bg-amber-700 hover:bg-amber-800 text-black"
                     >
                       Request Swap / Change
                     </button>

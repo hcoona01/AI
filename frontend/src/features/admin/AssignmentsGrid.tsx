@@ -182,7 +182,7 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
               setSearchTerm(e.target.value);
               setPage(1);
             }}
-            className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-52"
+            className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-52"
           />
 
           <select
@@ -219,7 +219,7 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
         {paginatedRows.length === 0 ? (
           <div className="p-12 text-center text-slate-400">
             <span className="text-3xl mb-2 block">🔍</span>
-            <p className="font-semibold text-white">No section assignments match the current filter</p>
+            <p className="font-semibold text-black">No section assignments match the current filter</p>
             <p className="text-xs text-slate-500 mt-1">Try clearing your search query or adjusting filter dropdowns.</p>
           </div>
         ) : (
@@ -241,7 +241,7 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
                     <tr key={section.id} className="hover:bg-slate-800/40 transition">
                       {/* Course / Section */}
                       <td className="py-3.5 px-4">
-                        <div className="font-mono font-bold text-white text-sm">
+                        <div className="font-mono font-bold text-black text-sm">
                           {course?.code || section.course_id}
                         </div>
                         <div className="text-slate-400 text-[11px] truncate max-w-xs">
@@ -268,7 +268,7 @@ export const AssignmentsGrid: React.FC<AssignmentsGridProps> = ({ currentTerm })
                         {faculty ? (
                           <div>
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="font-semibold text-white text-xs">{faculty.name}</span>
+                              <span className="font-semibold text-black text-xs">{faculty.name}</span>
                               {assignment?.source === 'override' && (
                                 <span className="text-[9px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/15 px-1.5 py-0.5 rounded border border-amber-500/30">
                                   Overridden
@@ -480,7 +480,7 @@ const OverrideModal: React.FC<OverrideModalProps> = ({ assignment, facultyList, 
             <h3 className="text-base font-bold text-slate-900 mt-1">Manual Assignment Override</h3>
             <p className="text-xs text-slate-600">Section: {assignment.section_id}</p>
           </div>
-          <button type="button" onClick={onClose} className="text-slate-400 hover:text-white p-1">
+          <button type="button" onClick={onClose} className="text-slate-400 hover:text-black p-1">
             ✕
           </button>
         </div>
@@ -491,7 +491,7 @@ const OverrideModal: React.FC<OverrideModalProps> = ({ assignment, facultyList, 
             <select
               value={newFacultyId}
               onChange={(e) => setNewFacultyId(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-700 text-white rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full bg-slate-950 border border-slate-700 text-black rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
             >
               <option value="">-- Choose Faculty Member --</option>
               {facultyList
@@ -513,7 +513,7 @@ const OverrideModal: React.FC<OverrideModalProps> = ({ assignment, facultyList, 
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               placeholder="State institutional justification (e.g. specialized grant release, emergency co-teaching agreement)..."
-              className="w-full bg-slate-950 border border-slate-700 text-white rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full bg-slate-950 border border-slate-700 text-black rounded-lg p-2.5 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
@@ -565,7 +565,7 @@ const OverrideModal: React.FC<OverrideModalProps> = ({ assignment, facultyList, 
             type="button"
             disabled={!newFacultyId || !reason.trim() || overrideMutation.isPending}
             onClick={handleApplyOverride}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-semibold rounded-lg shadow-sm transition"
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-black text-xs font-semibold rounded-lg shadow-sm transition"
           >
             {overrideMutation.isPending ? 'Validating...' : 'Apply Override'}
           </button>

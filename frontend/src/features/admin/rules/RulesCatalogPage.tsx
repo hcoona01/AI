@@ -131,7 +131,7 @@ export const RulesCatalogPage: React.FC = () => {
             type="button"
             disabled={validateMutation.isPending}
             onClick={handlePreviewImpact}
-            className="px-3.5 py-1.5 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition"
+            className="px-3.5 py-1.5 bg-purple-600 hover:bg-purple-500 text-black rounded-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition"
           >
             {validateMutation.isPending ? (
               <>
@@ -159,7 +159,7 @@ export const RulesCatalogPage: React.FC = () => {
                 type="button"
                 disabled={updateMutation.isPending}
                 onClick={handleSave}
-                className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
+                className="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-black text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
               >
                 {updateMutation.isPending ? 'Saving...' : 'Save Rules'}
               </button>
@@ -202,7 +202,7 @@ export const RulesCatalogPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setSimulationResult(null)}
-              className="text-slate-400 hover:text-white text-xs"
+              className="text-slate-400 hover:text-black text-xs"
             >
               Dismiss
             </button>
@@ -254,7 +254,7 @@ export const RulesCatalogPage: React.FC = () => {
                     className="p-2 rounded bg-slate-900 border border-slate-800 text-xs flex items-center justify-between"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-950 text-white">
+                      <span className="font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-950 text-black">
                         {v.rule_id}
                       </span>
                       <span className="text-slate-300">{v.explanation}</span>
@@ -278,8 +278,8 @@ export const RulesCatalogPage: React.FC = () => {
             onClick={() => setActiveTab('all')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               activeTab === 'all'
-                ? 'bg-blue-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-blue-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             All Constraints ({localRules.length})
@@ -289,8 +289,8 @@ export const RulesCatalogPage: React.FC = () => {
             onClick={() => setActiveTab('hard')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               activeTab === 'hard'
-                ? 'bg-rose-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-rose-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Hard Invariants (HC)
@@ -300,8 +300,8 @@ export const RulesCatalogPage: React.FC = () => {
             onClick={() => setActiveTab('soft')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               activeTab === 'soft'
-                ? 'bg-emerald-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-emerald-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Soft Objectives (SC)
@@ -341,7 +341,7 @@ export const RulesCatalogPage: React.FC = () => {
                 {/* Left: Info */}
                 <div className="space-y-1.5 flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-mono font-bold text-xs text-white px-2 py-0.5 rounded bg-slate-950 border border-slate-700">
+                    <span className="font-mono font-bold text-xs text-black px-2 py-0.5 rounded bg-slate-950 border border-slate-700">
                       {rule.rule_id}
                     </span>
                     <span
@@ -408,7 +408,7 @@ export const RulesCatalogPage: React.FC = () => {
                     onClick={() => handleToggleEnabled(rule.rule_id)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition ${
                       rule.enabled
-                        ? 'bg-slate-800 hover:bg-slate-700 text-white'
+                        ? 'bg-slate-800 hover:bg-slate-700 text-black'
                         : 'bg-rose-950/50 hover:bg-rose-900/60 text-rose-300 border border-rose-800/60'
                     }`}
                   >

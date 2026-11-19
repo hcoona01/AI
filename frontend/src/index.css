@@ -111,7 +111,7 @@ a {
 
 html body :is(.bg-blue-600, .bg-blue-500, .bg-purple-600, .bg-emerald-600, .bg-rose-600, .bg-olive).text-white,
 html body :is(.bg-blue-600, .bg-blue-500, .bg-purple-600, .bg-emerald-600, .bg-rose-600) {
-  color: #f3f8e4;
+  color: #000000;
 }
 
 .pill {
@@ -965,6 +965,19 @@ h1, h2, h3, h4, h5, h6,
 [role="dialog"] :is(h1, h2, h3, h4, h5, h6),
 [role="dialog"] :is(h1, h2, h3, h4, h5, h6).text-white {
   color: #182413 !important;
+}
+
+/* Universal text color override: enforce solid black text anywhere text-white or white text is applied */
+.text-white,
+[class*="text-white"],
+.hover\:text-white:hover,
+[class*="hover:text-white"]:hover,
+.dashboard-shell .text-white,
+.dashboard-shell [class*="text-white"],
+[role="dialog"] .text-white,
+[role="dialog"] [class*="text-white"] {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
 }
 
 /* Alerts and recommendations must never inherit the animated page image. */

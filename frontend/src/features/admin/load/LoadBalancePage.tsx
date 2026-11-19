@@ -25,7 +25,7 @@ export const LoadBalancePage: React.FC = () => {
             id="load-term-select"
             value={currentTerm}
             onChange={(e) => setCurrentTerm(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-white text-xs font-medium rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="bg-slate-950 border border-slate-700 text-black text-xs font-medium rounded-lg px-2.5 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
           >
             <option value="Fall 2026">Fall 2026</option>
             <option value="Spring 2027">Spring 2027</option>

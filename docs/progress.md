@@ -1190,3 +1190,21 @@ All tests green. Full suite runs in ~11 seconds, well inside the 2-minute local 
   - `ruff` and `black`: verified clean on all modified files.
 - **Next Steps / Backlog Items**:
   - Commit and push changes to GitHub `origin/main` so Render automatically builds and deploys the backend with self-healing faculty auth.
+
+## 2026-11-19: UI Text Color Migration from White to Black Across All Feature Views
+- **Task Objective**: Change only the text color wherever it is white to black across the entire project UI, ensuring perfect contrast on light surfaces, modals, and tables, and update GitHub and deployment.
+- **Changes Implemented**:
+  - `frontend/src/index.css`:
+    - Added universal CSS text-color rules enforcing solid black text (`color: #000000 !important; -webkit-text-fill-color: #000000 !important;`) on `.text-white`, `[class*="text-white"]`, and hover states across `.dashboard-shell`, `[role="dialog"]`, drawers, and alerts.
+    - Updated colored badge rules (`.bg-blue-600`, `.bg-purple-600`, etc.) text color to `#000000`.
+  - Replaced all instances of `text-white` with `text-black` and `hover:text-white` with `hover:text-black` across 23 component and feature files:
+    - `AssignmentsGrid.tsx`, `ForecastPanel.tsx`, `LoadViewPanel.tsx`, `OptimizerPanel.tsx`, `OverviewPanel.tsx`
+    - `AssignmentDetailDrawer.tsx`, `AssignmentsPage.tsx`, `AuditTrailPage.tsx`, `ConflictsPage.tsx`, `ConflictsPanel.tsx`, `RepairModal.tsx`
+    - `ForecastPage.tsx`, `LoadBalancePage.tsx`, `OverridesPage.tsx`, `AdminOverviewPage.tsx`, `RulesCatalogPage.tsx`, `ScenariosPage.tsx`
+    - `OtpStep.tsx`
+    - `AvailabilityPage.tsx`, `FacultyCourseSectionsPage.tsx`, `ExpertiseFitPage.tsx`, `MyLoadPage.tsx`, `RequestsPage.tsx`
+- **Test Results & Verification Status**:
+  - `npm --prefix frontend run build`: 779 modules transformed cleanly with 0 TypeScript/Vite errors in 20.37s.
+  - `pytest backend/tests/test_auth.py`: 13/13 passed (100%).
+- **Next Steps / Backlog Items**:
+  - Commit, push to `origin/main`, and trigger production deployment on Vercel.

@@ -91,7 +91,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 value={method}
                 onChange={(e) => setMethod(e.target.value as 'cpsat' | 'greedy')}
                 disabled={isRunning}
-                className="w-full bg-slate-950 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
+                className="w-full bg-slate-950 border border-slate-700 text-black rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
               >
                 <option value="cpsat">Google OR-Tools CP-SAT (Exact Multi-Objective)</option>
                 <option value="greedy">Greedy Baseline (Fast Heuristic)</option>
@@ -111,7 +111,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 value={forecastMode}
                 onChange={(e) => setForecastMode(e.target.value as 'p50' | 'p90')}
                 disabled={isRunning}
-                className="w-full bg-slate-950 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
+                className="w-full bg-slate-950 border border-slate-700 text-black rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
               >
                 <option value="p50">P50 Expected Demand (Baseline enrollment)</option>
                 <option value="p90">P90 Surge Stress Mode (Surge capacity)</option>
@@ -231,7 +231,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                   value={timeLimit}
                   onChange={(e) => setTimeLimit(Number(e.target.value))}
                   disabled={isRunning}
-                  className="w-16 bg-slate-900 border border-slate-700 text-white rounded px-2 py-1 text-xs font-mono text-center"
+                  className="w-16 bg-slate-900 border border-slate-700 text-black rounded px-2 py-1 text-xs font-mono text-center"
                 />
                 <span className="text-xs text-slate-400">sec</span>
               </div>
@@ -253,7 +253,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
               className={`w-full py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition ${
                 isRunning
                   ? 'bg-blue-600/40 text-blue-200 cursor-wait'
-                  : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20 active:scale-[0.99]'
+                  : 'bg-blue-600 hover:bg-blue-500 text-black shadow-blue-600/20 active:scale-[0.99]'
               }`}
             >
               {isRunning ? (
@@ -289,7 +289,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
             {!activeJobId && !isRunning && (
               <div className="py-12 text-center text-slate-400 space-y-2">
                 <span className="text-3xl block">⚙️</span>
-                <p className="font-medium text-white text-xs">Ready for Solver Execution</p>
+                <p className="font-medium text-black text-xs">Ready for Solver Execution</p>
                 <p className="text-[11px] text-slate-500 max-w-xs mx-auto">
                   Configure weights and hit execute to solve the multi-objective course assignment.
                 </p>
@@ -355,7 +355,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   <div className="bg-slate-950 p-2.5 rounded-lg border border-slate-800">
                     <span className="text-slate-400 text-[10px] uppercase block">Assigned Sections</span>
-                    <span className="font-mono text-base font-bold text-white">
+                    <span className="font-mono text-base font-bold text-black">
                       {jobStatus.result.assignments_count}
                     </span>
                   </div>
@@ -440,7 +440,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
             </thead>
             <tbody className="divide-y divide-slate-800/60 font-mono">
               <tr className="hover:bg-slate-800/30">
-                <td className="py-2.5 px-3 text-white font-sans font-semibold">Workload Fairness (Gini)</td>
+                <td className="py-2.5 px-3 text-black font-sans font-semibold">Workload Fairness (Gini)</td>
                 <td className="py-2.5 px-3 text-center text-emerald-400 font-bold bg-blue-950/10">0.071</td>
                 <td className="py-2.5 px-3 text-center text-rose-400">0.494</td>
                 <td className="py-2.5 px-3 text-right text-emerald-400 font-sans text-[11px]">
@@ -448,7 +448,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 </td>
               </tr>
               <tr className="hover:bg-slate-800/30">
-                <td className="py-2.5 px-3 text-white font-sans font-semibold">Max-Min Load Gap</td>
+                <td className="py-2.5 px-3 text-black font-sans font-semibold">Max-Min Load Gap</td>
                 <td className="py-2.5 px-3 text-center text-emerald-400 font-bold bg-blue-950/10">1 section</td>
                 <td className="py-2.5 px-3 text-center text-amber-400">7 sections</td>
                 <td className="py-2.5 px-3 text-right text-emerald-400 font-sans text-[11px]">
@@ -456,7 +456,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 </td>
               </tr>
               <tr className="hover:bg-slate-800/30">
-                <td className="py-2.5 px-3 text-white font-sans font-semibold">Expertise Fit Score</td>
+                <td className="py-2.5 px-3 text-black font-sans font-semibold">Expertise Fit Score</td>
                 <td className="py-2.5 px-3 text-center text-purple-400 font-bold bg-blue-950/10">55.4%</td>
                 <td className="py-2.5 px-3 text-center text-purple-400">59.0%</td>
                 <td className="py-2.5 px-3 text-right text-slate-400 font-sans text-[11px]">
@@ -464,7 +464,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 </td>
               </tr>
               <tr className="hover:bg-slate-800/30">
-                <td className="py-2.5 px-3 text-white font-sans font-semibold">Hard Constraint Violations</td>
+                <td className="py-2.5 px-3 text-black font-sans font-semibold">Hard Constraint Violations</td>
                 <td className="py-2.5 px-3 text-center text-emerald-400 font-bold bg-blue-950/10">0</td>
                 <td className="py-2.5 px-3 text-center text-emerald-400">0</td>
                 <td className="py-2.5 px-3 text-right text-slate-400 font-sans text-[11px]">
@@ -472,7 +472,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 </td>
               </tr>
               <tr className="hover:bg-slate-800/30">
-                <td className="py-2.5 px-3 text-white font-sans font-semibold">Solve Time (Balanced)</td>
+                <td className="py-2.5 px-3 text-black font-sans font-semibold">Solve Time (Balanced)</td>
                 <td className="py-2.5 px-3 text-center text-slate-300 bg-blue-950/10">0.38s</td>
                 <td className="py-2.5 px-3 text-center text-emerald-400 font-bold">0.09s</td>
                 <td className="py-2.5 px-3 text-right text-slate-400 font-sans text-[11px]">
@@ -480,7 +480,7 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
                 </td>
               </tr>
               <tr className="hover:bg-slate-800/30">
-                <td className="py-2.5 px-3 text-white font-sans font-semibold">Peak RAM Footprint</td>
+                <td className="py-2.5 px-3 text-black font-sans font-semibold">Peak RAM Footprint</td>
                 <td className="py-2.5 px-3 text-center text-slate-300 bg-blue-950/10">0.19 MB</td>
                 <td className="py-2.5 px-3 text-center text-slate-300">0.05 MB</td>
                 <td className="py-2.5 px-3 text-right text-emerald-400 font-sans text-[11px]">
@@ -492,12 +492,12 @@ export const OptimizerPanel: React.FC<OptimizerPanelProps> = ({ currentTerm, onR
         </div>
 
         <div className="bg-slate-950 rounded-xl p-4 border border-slate-800/80 text-xs text-slate-300 space-y-1.5">
-          <div className="font-semibold text-white flex items-center gap-1.5">
+          <div className="font-semibold text-black flex items-center gap-1.5">
             <span>💡</span>
             <span>Recommendation & Usage Policy:</span>
           </div>
           <p className="text-[11px] text-slate-400">
-            Use <strong className="text-white">CP-SAT</strong> as the default production solver. It eliminates disproportionate teaching burdens (reducing load gap from 7 to 1 section) with negligible CPU overhead (0.38s). Use <strong className="text-white">Greedy</strong> for rapid draft generation or sanity checks during initial curriculum drafting.
+            Use <strong className="text-black">CP-SAT</strong> as the default production solver. It eliminates disproportionate teaching burdens (reducing load gap from 7 to 1 section) with negligible CPU overhead (0.38s). Use <strong className="text-black">Greedy</strong> for rapid draft generation or sanity checks during initial curriculum drafting.
           </p>
         </div>
       </div>

@@ -294,7 +294,7 @@ export const ExpertiseFitPage: React.FC = () => {
             onClick={handleSave}
             className={`btn text-xs px-4 py-2 ${
               isDirty
-                ? 'bg-emerald-700 hover:bg-emerald-800 text-white'
+                ? 'bg-emerald-700 hover:bg-emerald-800 text-black'
                 : 'opacity-50 cursor-not-allowed'
             }`}
           >

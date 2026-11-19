@@ -54,7 +54,7 @@ export const OverridesPage: React.FC = () => {
           placeholder="Search overrides by section, instructor name, justification, or admin ID..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full max-w-md"
+          className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full max-w-md"
         />
         <span className="text-xs text-slate-400">
           Showing {filteredOverrides?.length || 0} override records
@@ -77,7 +77,7 @@ export const OverridesPage: React.FC = () => {
         {!isLoading && (!filteredOverrides || filteredOverrides.length === 0) && (
           <div className="p-12 text-center text-slate-400">
             <span className="text-3xl mb-2 block">⚖️</span>
-            <p className="font-semibold text-white">No manual overrides recorded</p>
+            <p className="font-semibold text-black">No manual overrides recorded</p>
             <p className="text-xs text-slate-500 mt-1">
               All active sections currently reflect pure solver recommendations. Manual overrides will appear here.
             </p>
@@ -109,7 +109,7 @@ export const OverridesPage: React.FC = () => {
                         <div className="text-[10px] text-slate-500">By: {ovr.admin_id}</div>
                       </td>
 
-                      <td className="py-3 px-4 font-mono font-bold text-white whitespace-nowrap">
+                      <td className="py-3 px-4 font-mono font-bold text-black whitespace-nowrap">
                         {ovr.assignment_id}
                       </td>
 
@@ -167,7 +167,7 @@ export const OverridesPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelectedOverride(null)}
-                className="text-slate-400 hover:text-white p-1"
+                className="text-slate-400 hover:text-black p-1"
                 aria-label="Close"
               >
                 ✕
@@ -182,7 +182,7 @@ export const OverridesPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelectedOverride(null)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold rounded-lg transition"
+                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-black text-xs font-semibold rounded-lg transition"
               >
                 Close
               </button>

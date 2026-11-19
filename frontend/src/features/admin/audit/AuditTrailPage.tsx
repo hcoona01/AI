@@ -87,7 +87,7 @@ export const AuditTrailPage: React.FC = () => {
     if (log.action === 'ASSIGNMENT_OVERRIDE') {
       return (
         <span>
-          Reassigned section <strong className="text-white font-mono">{String(p.section_id || '')}</strong> from{' '}
+          Reassigned section <strong className="text-black font-mono">{String(p.section_id || '')}</strong> from{' '}
           <span className="text-slate-400 font-mono">{String(p.previous_faculty_id || 'unassigned')}</span> to{' '}
           <strong className="text-blue-300 font-mono">{String(p.new_faculty_id || '')}</strong>. Reason: "
           <span className="italic text-slate-300">{String(p.reason || '')}</span>"
@@ -98,7 +98,7 @@ export const AuditTrailPage: React.FC = () => {
       return (
         <span>
           Started background optimization job for term{' '}
-          <strong className="text-white">{String(p.term || '')}</strong> using{' '}
+          <strong className="text-black">{String(p.term || '')}</strong> using{' '}
           <strong className="text-blue-300 uppercase">{String(p.method || 'cpsat')}</strong> ({String(p.forecast_mode || 'p50')}).
         </span>
       );
@@ -115,7 +115,7 @@ export const AuditTrailPage: React.FC = () => {
       return (
         <span>
           Applied automated repair strategy <strong className="text-purple-300">{String(p.repair_type || '')}</strong> for term{' '}
-          <strong className="text-white">{String(p.term || '')}</strong>.
+          <strong className="text-black">{String(p.term || '')}</strong>.
         </span>
       );
     }
@@ -162,7 +162,7 @@ export const AuditTrailPage: React.FC = () => {
             placeholder="Search audit trail by actor, action, section, or keyword..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full max-w-md"
+            className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full max-w-md"
           />
         </div>
 
@@ -173,8 +173,8 @@ export const AuditTrailPage: React.FC = () => {
             onClick={() => setActionCategory('all')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               actionCategory === 'all'
-                ? 'bg-blue-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-blue-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             All Events
@@ -184,8 +184,8 @@ export const AuditTrailPage: React.FC = () => {
             onClick={() => setActionCategory('runs')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               actionCategory === 'runs'
-                ? 'bg-blue-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-blue-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Solver Runs
@@ -195,8 +195,8 @@ export const AuditTrailPage: React.FC = () => {
             onClick={() => setActionCategory('overrides')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               actionCategory === 'overrides'
-                ? 'bg-amber-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-amber-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Overrides
@@ -206,8 +206,8 @@ export const AuditTrailPage: React.FC = () => {
             onClick={() => setActionCategory('rules')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               actionCategory === 'rules'
-                ? 'bg-emerald-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-emerald-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Rule Changes
@@ -217,8 +217,8 @@ export const AuditTrailPage: React.FC = () => {
             onClick={() => setActionCategory('repairs')}
             className={`px-3 py-1 rounded-lg text-xs font-semibold transition ${
               actionCategory === 'repairs'
-                ? 'bg-purple-600 text-white'
-                : 'text-slate-400 hover:text-white bg-slate-950'
+                ? 'bg-purple-600 text-black'
+                : 'text-slate-400 hover:text-black bg-slate-950'
             }`}
           >
             Repairs
@@ -230,7 +230,7 @@ export const AuditTrailPage: React.FC = () => {
           <select
             value={entityFilter}
             onChange={(e) => setEntityFilter(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-2.5 py-1"
+            className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-2.5 py-1"
           >
             <option value="">All Entities</option>
             <option value="assignment">Assignments</option>
@@ -242,7 +242,7 @@ export const AuditTrailPage: React.FC = () => {
           <select
             value={limit}
             onChange={(e) => setLimit(Number(e.target.value))}
-            className="bg-slate-950 border border-slate-700 text-xs text-white rounded-lg px-2 py-1"
+            className="bg-slate-950 border border-slate-700 text-xs text-black rounded-lg px-2 py-1"
           >
             <option value={50}>50</option>
             <option value={100}>100</option>
@@ -268,7 +268,7 @@ export const AuditTrailPage: React.FC = () => {
         {!isLoading && filteredLogs.length === 0 && (
           <div className="p-12 text-center text-slate-400">
             <span className="text-3xl mb-2 block">📜</span>
-            <p className="font-semibold text-white">No audit entries found</p>
+            <p className="font-semibold text-black">No audit entries found</p>
             <p className="text-xs text-slate-500 mt-1">
               Events will be appended automatically as administrators run solvers, apply repairs, and execute overrides.
             </p>
@@ -305,7 +305,7 @@ export const AuditTrailPage: React.FC = () => {
 
                       {/* Actor */}
                       <td className="py-3 px-4 whitespace-nowrap">
-                        <div className="font-mono text-white font-semibold text-xs">{log.actor_id}</div>
+                        <div className="font-mono text-black font-semibold text-xs">{log.actor_id}</div>
                         <span className="text-[10px] uppercase font-bold text-blue-400">Administrator</span>
                       </td>
 
@@ -360,7 +360,7 @@ export const AuditTrailPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setInspectedLog(null)}
-                className="text-slate-400 hover:text-white p-1"
+                className="text-slate-400 hover:text-black p-1"
                 aria-label="Close"
               >
                 ✕
@@ -377,7 +377,7 @@ export const AuditTrailPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setInspectedLog(null)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold rounded-lg transition"
+                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-black text-xs font-semibold rounded-lg transition"
               >
                 Close
               </button>

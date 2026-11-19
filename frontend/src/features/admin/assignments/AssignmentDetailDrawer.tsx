@@ -195,7 +195,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="text-slate-400 hover:text-white p-1 text-base rounded-lg hover:bg-slate-800 transition"
+            className="text-slate-400 hover:text-black p-1 text-base rounded-lg hover:bg-slate-800 transition"
             aria-label="Close drawer"
           >
             ✕
@@ -232,7 +232,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                   </div>
 
                   <div className="text-xs text-slate-300 bg-slate-950/80 rounded-lg p-3 border border-amber-500/20">
-                    <div className="font-semibold text-white mb-1">Administrative Justification:</div>
+                    <div className="font-semibold text-black mb-1">Administrative Justification:</div>
                     <p className="italic text-slate-300">
                       "{overrideRecord?.reason || 'Manual reassignment approved by curriculum administrator.'}"
                     </p>
@@ -245,7 +245,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                   <div className="pt-2 border-t border-amber-500/20 grid grid-cols-2 gap-3 text-xs">
                     <div>
                       <span className="text-[10px] text-slate-400 uppercase block">Original Instructor</span>
-                      <span className="font-semibold text-white">
+                      <span className="font-semibold text-black">
                         {previousFaculty ? previousFaculty.name : overrideRecord?.previous_faculty_id || 'System Recommendation'}
                       </span>
                     </div>
@@ -346,7 +346,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
 
                 {/* "Why this faculty" Section */}
                 <div className="pt-3 border-t border-slate-800 space-y-2">
-                  <div className="text-xs font-semibold text-white flex items-center gap-1.5">
+                  <div className="text-xs font-semibold text-black flex items-center gap-1.5">
                     <span>💡</span>
                     <span>Why This Faculty Was Assigned:</span>
                   </div>
@@ -391,7 +391,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                     >
                       <div className="flex items-start justify-between">
                         <div>
-                          <div className="font-semibold text-white">
+                          <div className="font-semibold text-black">
                             {alt.name}{' '}
                             <span className="text-slate-400 font-normal">({alt.rank})</span>
                           </div>
@@ -461,7 +461,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                     setSelectedFacultyId(e.target.value);
                     setAcknowledged(false);
                   }}
-                  className="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full bg-slate-900 border border-slate-700 text-black rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
                 >
                   <option value="">-- Choose Instructor --</option>
                   {facultyList
@@ -501,7 +501,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                               : 'bg-amber-950/30 border-amber-800/50 text-amber-300'
                           }`}
                         >
-                          <span className="font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-950 text-white">
+                          <span className="font-mono font-bold text-[11px] px-1.5 py-0.5 rounded bg-slate-950 text-black">
                             {v.rule_id}
                           </span>
                           <span className="leading-tight">{v.explanation}</span>
@@ -527,7 +527,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                   value={overrideReason}
                   onChange={(e) => setOverrideReason(e.target.value)}
                   placeholder="Explain institutional necessity (e.g., sabbatical replacement, grant load-release swap)..."
-                  className="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full bg-slate-900 border border-slate-700 text-black rounded-lg p-2.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
@@ -584,7 +584,7 @@ export const AssignmentDetailDrawer: React.FC<AssignmentDetailDrawerProps> = ({
                     (hasLiveHardViolations && !acknowledged)
                   }
                   onClick={handleApplyOverride}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-black text-xs font-bold uppercase tracking-wider rounded-lg shadow-sm transition"
                 >
                   {overrideMutation.isPending ? 'Validating...' : 'Confirm Override'}
                 </button>

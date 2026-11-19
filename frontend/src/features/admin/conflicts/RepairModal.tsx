@@ -56,7 +56,7 @@ export const RepairModal: React.FC<RepairModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="text-slate-400 hover:text-white p-1 text-base"
+            className="text-slate-400 hover:text-black p-1 text-base"
             aria-label="Close"
           >
             ✕
@@ -102,7 +102,7 @@ export const RepairModal: React.FC<RepairModalProps> = ({
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-sm text-white">{alt.title}</span>
+                      <span className="font-bold text-sm text-black">{alt.title}</span>
                       <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
                         {alt.repair_type}
                       </span>
@@ -177,7 +177,7 @@ export const RepairModal: React.FC<RepairModalProps> = ({
                     }}
                     className={`px-4 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
                       isSelected
-                        ? 'bg-purple-600 hover:bg-purple-500 text-white shadow-sm shadow-purple-600/30'
+                        ? 'bg-purple-600 hover:bg-purple-500 text-black shadow-sm shadow-purple-600/30'
                         : 'bg-slate-800 hover:bg-slate-700 text-slate-300'
                     }`}
                   >

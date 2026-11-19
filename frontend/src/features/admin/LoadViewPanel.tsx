@@ -122,8 +122,8 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
             onClick={() => setFilter('all')}
             className={`px-3 py-1 rounded-lg text-xs font-medium transition cursor-pointer ${
               filter === 'all'
-                ? 'bg-blue-600 text-white'
-                : 'bg-slate-800 text-slate-400 hover:text-white'
+                ? 'bg-blue-600 text-black'
+                : 'bg-slate-800 text-slate-400 hover:text-black'
             }`}
           >
             All ({chartData.length})
@@ -133,7 +133,7 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
             onClick={() => setFilter('over')}
             className={`px-3 py-1 rounded-lg text-xs font-medium transition cursor-pointer ${
               filter === 'over'
-                ? 'bg-rose-600 text-white'
+                ? 'bg-rose-600 text-black'
                 : 'bg-slate-800 text-rose-400 hover:bg-slate-700'
             }`}
           >
@@ -144,7 +144,7 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
             onClick={() => setFilter('balanced')}
             className={`px-3 py-1 rounded-lg text-xs font-medium transition cursor-pointer ${
               filter === 'balanced'
-                ? 'bg-emerald-600 text-white'
+                ? 'bg-emerald-600 text-black'
                 : 'bg-slate-800 text-emerald-400 hover:bg-slate-700'
             }`}
           >
@@ -155,7 +155,7 @@ export const LoadViewPanel: React.FC<LoadViewProps> = ({ currentTerm }) => {
             onClick={() => setFilter('under')}
             className={`px-3 py-1 rounded-lg text-xs font-medium transition cursor-pointer ${
               filter === 'under'
-                ? 'bg-sky-600 text-white'
+                ? 'bg-sky-600 text-black'
                 : 'bg-slate-800 text-sky-400 hover:bg-slate-700'
             }`}
           >

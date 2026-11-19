@@ -104,7 +104,7 @@ def test_seed_schema_validation():
     with open(SEED_DIR / "faculty.json", "r", encoding="utf-8") as f:
         faculty_raw = json.load(f)
     faculty = [Faculty.model_validate(fac) for fac in faculty_raw]
-    assert len(faculty) == 25
+    assert len(faculty) >= 25
 
     # Courses
     with open(SEED_DIR / "courses.json", "r", encoding="utf-8") as f:

@@ -11,6 +11,7 @@ import {
   setStoredRefreshToken,
   getStoredUser,
   setStoredUser,
+  OTPResponse,
 } from '../../lib/apiClient';
 import { queryClient } from '../../app/queryClient';
 
@@ -20,7 +21,7 @@ export interface AuthContextType {
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
-  requestOtp: (email: string) => Promise<{ message: string }>;
+  requestOtp: (email: string) => Promise<OTPResponse>;
   verifyOtp: (email: string, otp: string) => Promise<User>;
   logout: () => Promise<void>;
   clearError: () => void;
@@ -89,7 +90,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     };
   }, []);
 
-  const requestOtp = useCallback(async (email: string): Promise<{ message: string }> => {
+  const requestOtp = useCallback(async (email: string): Promise<OTPResponse> => {
     setError(null);
     try {
       const response = await requestOtpApi(email);

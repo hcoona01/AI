@@ -27,6 +27,10 @@ class OTPResponse(BaseModel):
         default="If the provided email is registered, a one-time passcode has been sent."
     )
     status: str = Field(default="sent")
+    dev_code: str | None = Field(
+        default=None,
+        description="One-time passcode returned exclusively when OTP_DEV_MODE is enabled",
+    )
 
 
 class TokenResponse(BaseModel):

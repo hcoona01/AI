@@ -1,5 +1,28 @@
 # Engineering Progress Log
 
+## 2026-11-19: Persistent Seed Synchronization & Direct Dev OTP Auto-Fill for Testing
+- **Task Objective**: Resolve login/OTP delivery issues for `om@gmail.com` across Render restarts and GitHub Gist sync, and enable seamless single-click OTP autofill in dev/staging environments.
+- **Changes Implemented**:
+  - In [`data/seed/faculty.json`](file:///e:/AI%20project/data/seed/faculty.json) & [`data/seed/users.json`](file:///e:/AI%20project/data/seed/users.json):
+    - Added faculty `f-007` (`Om`, `om@gmail.com`, Assistant Professor) and user `u-f-007` to seed files so newly deployed/restarted Render containers will permanently retain Om even in local disk mode.
+  - In [`backend/app/schemas/auth.py`](file:///e:/AI%20project/backend/app/schemas/auth.py):
+    - Added optional `dev_code: str | None = Field(default=None)` to `OTPResponse`.
+  - In [`backend/app/services/auth_service.py`](file:///e:/AI%20project/backend/app/services/auth_service.py) & [`backend/app/api/v1/auth.py`](file:///e:/AI%20project/backend/app/api/v1/auth.py):
+    - Attached `dev_code` to `OTPResponse` when `settings.OTP_DEV_MODE` is enabled for existing accounts, preventing the need to access Render server logs during testing.
+  - In [`frontend/src/features/auth/LoginPage.tsx`](file:///e:/AI%20project/frontend/src/features/auth/LoginPage.tsx) & [`frontend/src/features/auth/OtpStep.tsx`](file:///e:/AI%20project/frontend/src/features/auth/OtpStep.tsx):
+    - Added quick-fill button for `om@gmail.com` (Om) alongside Admin and Faculty quick-fill cards.
+    - Added instant auto-fill banner in `OtpStep` allowing users to click and automatically insert the received dev OTP and sign in.
+  - In [`ml/tests/test_datagen.py`](file:///e:/AI%20project/ml/tests/test_datagen.py):
+    - Updated faculty seed count assertion to `>= 25` to allow dynamic and persisted user entries.
+- **Test Results & Verification Status**:
+  - `pytest backend/tests/test_auth.py`: 13/13 passed.
+  - Full test suite `pytest backend/tests ml/tests`: 236/236 passed in 44.89s.
+  - Frontend production build: `npm --prefix frontend run build`: 779 modules transformed cleanly in 20.16s.
+- **Next Steps / Backlog Items**:
+  - Commit and push to GitHub `origin/main`.
+  - Deploy frontend to Vercel production.
+
+
 ## 2026-11-17: OTP Rate Limit Increase from 3 to 8 Requests
 - **Task Objective**: Increase the passwordless email OTP rate limit from 3 to 8 requests per 10 minutes per email and per client IP, making it configurable via `OTP_MAX_REQUESTS` and updating the CI test suite and production deployments.
 - **Changes Implemented**:

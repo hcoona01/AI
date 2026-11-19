@@ -62,7 +62,11 @@ async def request_otp(
     """Request a 6-digit one-time passcode. Always returns a generic confirmation message."""
     client_ip = get_client_ip(request)
     result = await auth_service.request_otp(email=payload.email, client_ip=client_ip)
-    return OTPResponse(message=result["message"], status=result["status"])
+    return OTPResponse(
+        message=result["message"],
+        status=result["status"],
+        dev_code=result.get("dev_code"),
+    )
 
 
 @router.get("/dev-otp")

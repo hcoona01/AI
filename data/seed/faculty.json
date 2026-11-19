@@ -1109,5 +1109,28 @@
       "c-cs250",
       "c-cs210"
     ]
+  },
+  {
+    "id": "f-007",
+    "name": "Om",
+    "email": "om@gmail.com",
+    "rank": "Assistant Professor",
+    "expertise": [
+      {
+        "tag": "Data Structures",
+        "proficiency": 3
+      },
+      {
+        "tag": "Algorithms",
+        "proficiency": 3
+      }
+    ],
+    "max_weekly_load_hours": 12.0,
+    "max_courses": 3,
+    "min_courses": 1,
+    "max_preparations": 2,
+    "unavailable_slots": [],
+    "leave_terms": [],
+    "preferred_course_ids": []
   }
 ]

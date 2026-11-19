@@ -160,5 +160,11 @@
     "email": "claude.shannon@university.edu",
     "role": "faculty",
     "faculty_id": "f-25"
+  },
+  {
+    "id": "u-f-007",
+    "email": "om@gmail.com",
+    "role": "faculty",
+    "faculty_id": "f-007"
   }
 ]

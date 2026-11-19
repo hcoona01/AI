@@ -45,7 +45,12 @@ def test_generic_response_for_existing_and_nonexistent_email():
     data_nonexistent = resp_nonexistent.json()
 
     # Generic messages must match exactly to prevent account enumeration
-    assert data_existing == data_nonexistent
+    assert data_existing["message"] == data_nonexistent["message"]
+    assert data_existing["status"] == data_nonexistent["status"]
+
+    # In dev mode, existing users receive dev_code while non-existent do not
+    assert data_existing.get("dev_code") is not None
+    assert data_nonexistent.get("dev_code") is None
 
     # Confirm OTP was only generated for existing user
     otp_svc = get_otp_service()

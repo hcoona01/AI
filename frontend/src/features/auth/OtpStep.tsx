@@ -8,6 +8,7 @@ const otpSchema = z
 
 export interface OtpStepProps {
   email: string;
+  devCode?: string | null;
   onVerify: (otp: string) => Promise<void>;
   onResend: () => Promise<void>;
   onChangeEmail: () => void;
@@ -17,6 +18,7 @@ export interface OtpStepProps {
 
 export const OtpStep: React.FC<OtpStepProps> = ({
   email,
+  devCode,
   onVerify,
   onResend,
   onChangeEmail,
@@ -110,13 +112,32 @@ export const OtpStep: React.FC<OtpStepProps> = ({
       </div>
 
       <div
-        className="p-3.5 bg-[#e7efcf] border border-[#d5e0b0] rounded-2xl text-xs text-[#2c3a10] flex items-start gap-2.5"
+        className="p-3.5 bg-[#e7efcf] border border-[#d5e0b0] rounded-2xl text-xs text-[#2c3a10] flex flex-col gap-2"
         role="status"
       >
-        <div>
-          <strong className="font-semibold">Development mode:</strong> The one-time passcode is
-          printed directly in your backend terminal console.
+        <div className="flex items-center justify-between">
+          <span>
+            <strong className="font-semibold">Development mode:</strong>{' '}
+            {devCode ? 'Passcode generated:' : 'Passcode is printed in your backend console.'}
+          </span>
+          {devCode && (
+            <span className="font-mono font-bold text-sm bg-white/90 px-2.5 py-0.5 rounded-lg border border-[#c4d496] text-black tracking-widest">
+              {devCode}
+            </span>
+          )}
         </div>
+        {devCode && (
+          <button
+            type="button"
+            onClick={() => {
+              setOtp(devCode);
+              void handleSubmit(devCode);
+            }}
+            className="self-start text-[11px] font-semibold text-[#3b520c] underline hover:text-black cursor-pointer"
+          >
+            Click here to auto-fill & sign in →
+          </button>
+        )}
       </div>
 
       <form

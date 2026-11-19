@@ -79,25 +79,33 @@ class AuthService:
 
         return None
 
-    async def request_otp(self, email: str, client_ip: str) -> dict[str, str]:
+    async def request_otp(self, email: str, client_ip: str) -> dict[str, Any]:
         """Process OTP request with rate limiting and generic response to prevent user enumeration."""
         # 1. Rate limiting checked regardless of user existence (up to 8 per email/IP per 10m)
         self.otp_service.check_and_record_rate_limit(email=email, client_ip=client_ip)
 
         # 2. Check if user exists
         user = await self.get_user_by_email(email)
+        dev_code: str | None = None
         if user is not None:
-            self.otp_service.generate_and_store_otp(email)
+            generated_otp = self.otp_service.generate_and_store_otp(email)
+            from app.core.config import settings
+
+            if settings.OTP_DEV_MODE:
+                dev_code = generated_otp
         else:
             logger.info(
                 f"OTP requested for non-existent email '{email}'. Silently omitted code generation."
             )
 
-        # 3. Always return identical generic message
-        return {
+        # 3. Always return generic message, attaching dev_code if in dev mode
+        resp: dict[str, Any] = {
             "message": "If the provided email is registered, a one-time passcode has been sent.",
             "status": "sent",
         }
+        if dev_code is not None:
+            resp["dev_code"] = dev_code
+        return resp
 
     async def verify_otp(self, email: str, otp: str) -> tuple[User, str, str]:
         """Verify OTP with attempt limits, constant-time compare, and issue access & refresh tokens."""

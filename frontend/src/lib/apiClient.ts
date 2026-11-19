@@ -98,6 +98,7 @@ export interface HealthResponse {
 export interface OTPResponse {
   message: string;
   status: string;
+  dev_code?: string;
 }
 
 export interface TokenResponse {

@@ -25,6 +25,7 @@ export const LoginPage: React.FC = () => {
 
   const [step, setStep] = useState<'email' | 'otp'>('email');
   const [email, setEmail] = useState<string>('');
+  const [devCode, setDevCode] = useState<string | null>(null);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -51,7 +52,12 @@ export const LoginPage: React.FC = () => {
     setIsLoading(true);
 
     try {
-      await requestOtp(parseResult.data);
+      const resp = await requestOtp(parseResult.data);
+      if (resp?.dev_code) {
+        setDevCode(resp.dev_code);
+      } else {
+        setDevCode(null);
+      }
       setStep('otp');
     } catch {
       // Server error handled via context
@@ -74,7 +80,10 @@ export const LoginPage: React.FC = () => {
   };
 
   const handleResendOtp = async (): Promise<void> => {
-    await requestOtp(email);
+    const resp = await requestOtp(email);
+    if (resp?.dev_code) {
+      setDevCode(resp.dev_code);
+    }
   };
 
   const handleQuickFill = (demoEmail: string): void => {
@@ -176,12 +185,24 @@ export const LoginPage: React.FC = () => {
                     <span className="pill">Faculty (f-01)</span>
                   </div>
                 </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleQuickFill('om@gmail.com')}
+                  className="w-full text-left p-3 rounded-2xl bg-white/80 hover:bg-white border border-slate-200 hover:border-[#b4cd52] transition cursor-pointer shadow-xs"
+                >
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-mono text-slate-700 font-medium">om@gmail.com</span>
+                    <span className="pill">Faculty (f-007)</span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
         ) : (
           <OtpStep
             email={email}
+            devCode={devCode}
             onVerify={handleVerifyOtp}
             onResend={handleResendOtp}
             onChangeEmail={() => {
